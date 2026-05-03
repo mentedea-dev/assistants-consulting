@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import SplitText from "@/components/SplitText";
 import CountUp from "@/components/CountUp";
 import SectionDivider from "@/components/SectionDivider";
 import PageTransition from "@/components/PageTransition";
@@ -72,21 +73,25 @@ export default function Home() {
                 </p>
               </FadeIn>
 
-              <FadeIn delay={0.5} distance={30}>
-                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal text-white leading-[1.05] tracking-tight mb-10">
-                  {t("hero.title.1")}
-                  <br />
-                  <span className="text-white/50">{t("hero.title.2")}</span>
-                  <br />
-                  <span className="text-white">{t("hero.title.3")}</span>
-                  <motion.span
-                    className="inline-block w-3 h-3 rounded-full bg-orange ml-2 align-super"
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 1.5, type: "spring", stiffness: 300, damping: 15 }}
-                  />
-                </h1>
-              </FadeIn>
+              <div className="mb-10">
+                <SplitText
+                  as="h1"
+                  className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal text-white leading-[1.05] tracking-tight"
+                  delay={0.4}
+                  stagger={0.02}
+                  yOffset={25}
+                  suffix={
+                    <motion.span
+                      className="inline-block w-3 h-3 rounded-full bg-orange ml-2 align-super"
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 2.2, type: "spring", stiffness: 300, damping: 15 }}
+                    />
+                  }
+                >
+                  {`${t("hero.title.1")}\n${t("hero.title.2")}\n${t("hero.title.3")}`}
+                </SplitText>
+              </div>
 
               <FadeIn delay={0.7} distance={20}>
                 <p className="text-lg md:text-xl text-white/60 max-w-xl leading-relaxed mb-12 font-light">
@@ -151,18 +156,22 @@ export default function Home() {
         {/* ═══════════════════════ MAIN SERVICES ═══════════════════════ */}
         <section className="py-28 md:py-40">
           <div className="container">
-            <FadeIn>
-              <div className="max-w-2xl mb-20 md:mb-28">
+            <div className="max-w-2xl mb-20 md:mb-28">
+              <FadeIn>
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("services.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-navy tracking-tight leading-[1.1]">
-                  {t("services.title.1")}
-                  <br />
-                  {t("services.title.2")}
-                </h2>
-              </div>
-            </FadeIn>
+              </FadeIn>
+              <SplitText
+                as="h2"
+                className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-navy tracking-tight leading-[1.1]"
+                delay={0.1}
+                stagger={0.018}
+                yOffset={18}
+              >
+                {`${t("services.title.1")}\n${t("services.title.2")}`}
+              </SplitText>
+            </div>
 
             <div className="space-y-24 md:space-y-36">
               {serviceKeys.map((service, i) => (
@@ -213,18 +222,22 @@ export default function Home() {
         {/* ═══════════════════════ ADDITIONAL SERVICES ═══════════════════════ */}
         <section className="py-24 md:py-32 bg-navy">
           <div className="container">
-            <FadeIn>
-              <div className="max-w-2xl mb-16 md:mb-20">
+            <div className="max-w-2xl mb-16 md:mb-20">
+              <FadeIn>
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("additionalServices.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl font-serif font-normal text-white tracking-tight leading-[1.1]">
-                  {t("additionalServices.title.1")}
-                  <br />
-                  {t("additionalServices.title.2")}
-                </h2>
-              </div>
-            </FadeIn>
+              </FadeIn>
+              <SplitText
+                as="h2"
+                className="text-3xl md:text-5xl font-serif font-normal text-white tracking-tight leading-[1.1]"
+                delay={0.1}
+                stagger={0.018}
+                yOffset={18}
+              >
+                {`${t("additionalServices.title.1")}\n${t("additionalServices.title.2")}`}
+              </SplitText>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {additionalServiceKeys.map((service, i) => (
@@ -255,11 +268,15 @@ export default function Home() {
                   <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                     {t("insights.tag")}
                   </p>
-                  <h2 className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight leading-[1.1] mb-8">
-                    {t("insights.title.1")}
-                    <br />
-                    {t("insights.title.2")}
-                  </h2>
+                  <SplitText
+                    as="h2"
+                    className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight leading-[1.1] mb-8"
+                    delay={0.1}
+                    stagger={0.02}
+                    yOffset={15}
+                  >
+                    {`${t("insights.title.1")}\n${t("insights.title.2")}`}
+                  </SplitText>
                   <p className="text-steel-light leading-[1.8] mb-10 font-light">
                     {t("insights.desc")}
                   </p>
@@ -315,12 +332,18 @@ export default function Home() {
           <div className="container relative z-10 text-center">
             <FadeIn>
               <SectionDivider variant="dark" className="mb-12" />
-              <h2 className="text-4xl md:text-6xl font-serif font-normal text-white tracking-tight mb-8 leading-[1.1]">
-                {t("cta.title.1")}
-                <br />
-                {t("cta.title.2")}
-                <span className="inflection-dot" />
-              </h2>
+            </FadeIn>
+            <SplitText
+              as="h2"
+              className="text-4xl md:text-6xl font-serif font-normal text-white tracking-tight mb-8 leading-[1.1]"
+              delay={0.1}
+              stagger={0.02}
+              yOffset={20}
+              suffix={<span className="inflection-dot" />}
+            >
+              {`${t("cta.title.1")}\n${t("cta.title.2")}`}
+            </SplitText>
+            <FadeIn delay={0.5}>
               <p className="text-white/40 max-w-lg mx-auto mb-12 leading-[1.8] font-light">
                 {t("cta.desc")}
               </p>

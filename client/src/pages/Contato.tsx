@@ -4,6 +4,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import SplitText from "@/components/SplitText";
 import PageTransition from "@/components/PageTransition";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SEO from "@/components/SEO";
@@ -99,13 +100,15 @@ export default function Contato() {
                 {t("contact.tag")}
               </p>
             </FadeIn>
-            <FadeIn delay={0.15}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl">
-                {t("contact.title.1")}
-                <br />
-                <span className="text-steel-light">{t("contact.title.2")}</span>
-              </h1>
-            </FadeIn>
+            <SplitText
+              as="h1"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl"
+              delay={0.2}
+              stagger={0.02}
+              yOffset={22}
+            >
+              {`${t("contact.title.1")}\n${t("contact.title.2")}`}
+            </SplitText>
             <FadeIn delay={0.25}>
               <p className="text-steel-light mt-6 max-w-2xl leading-relaxed font-light text-base">
                 {t("contact.form.intro")}

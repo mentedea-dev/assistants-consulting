@@ -114,3 +114,10 @@
 - [x] Aumentar footer logo de h-5 para h-8 (proporção com header)
 - [x] Verificar TypeScript e testes (15 testes passando, 0 erros)
 - [x] Verificação visual em todas as páginas (Home, Serviços, Insights, Contato)
+
+## Fase 16: Animação Split Text nos Headings
+- [x] Criar componente SplitText com Framer Motion (letras aparecendo sequencialmente)
+- [x] Integrar nos headings principais: Home hero, Serviços, Sobre, Clientes, Insights, Contato
+- [x] Garantir que a animação só dispara quando o elemento entra no viewport (whileInView)
+- [x] Manter performance (useReducedMotion para acessibilidade)
+- [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)

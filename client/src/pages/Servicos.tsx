@@ -4,6 +4,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import SplitText from "@/components/SplitText";
 import SectionDivider from "@/components/SectionDivider";
 import PageTransition from "@/components/PageTransition";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -84,13 +85,15 @@ export default function Servicos() {
                 {t("servicesPage.tag")}
               </p>
             </FadeIn>
-            <FadeIn delay={0.15}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl">
-                {t("servicesPage.title.1")}
-                <br />
-                <span className="text-steel-light">{t("servicesPage.title.2")}</span>
-              </h1>
-            </FadeIn>
+            <SplitText
+              as="h1"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl"
+              delay={0.2}
+              stagger={0.02}
+              yOffset={22}
+            >
+              {`${t("servicesPage.title.1")}\n${t("servicesPage.title.2")}`}
+            </SplitText>
             <FadeIn delay={0.3}>
               <p className="text-steel-light text-lg max-w-2xl mt-8 leading-[1.8] font-light">
                 {t("servicesPage.subtitle")}

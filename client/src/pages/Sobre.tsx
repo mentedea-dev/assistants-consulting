@@ -4,6 +4,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import SplitText from "@/components/SplitText";
 import CountUp from "@/components/CountUp";
 import SectionDivider from "@/components/SectionDivider";
 import PageTransition from "@/components/PageTransition";
@@ -53,13 +54,15 @@ export default function Sobre() {
                 {t("about.tag")}
               </p>
             </FadeIn>
-            <FadeIn delay={0.15}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl">
-                {t("about.title.1")}
-                <br />
-                <span className="text-steel-light">{t("about.title.2")}</span>
-              </h1>
-            </FadeIn>
+            <SplitText
+              as="h1"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl"
+              delay={0.2}
+              stagger={0.02}
+              yOffset={22}
+            >
+              {`${t("about.title.1")}\n${t("about.title.2")}`}
+            </SplitText>
           </div>
         </section>
 
