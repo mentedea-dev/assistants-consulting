@@ -31,7 +31,7 @@ function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
       <img
         src={src}
         alt="Assistants"
-        className="h-5 md:h-6 w-auto transition-opacity duration-300 group-hover:opacity-80"
+        className="h-9 md:h-12 w-auto transition-opacity duration-300 group-hover:opacity-80"
       />
     </Link>
   );

@@ -100,5 +100,8 @@
 - [x] Endpoint aceita array de artigos com título, excerpt, conteúdo, tag
 - [x] Gerar slug automático e definir status como published
 - [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)
-- [ ] Salvar checkpoint e solicitar deploy
-- [ ] Configurar tarefa agendada semanal para buscar e publicar notícias do setor
+- [x] Salvar checkpoint e solicitar deploy (deploy concluído em assistantsc-axqadaye.manus.space)
+- [x] Configurar tarefa agendada semanal para buscar e publicar notícias do setor (toda segunda-feira às 9h)
+
+## Fase 14: Ajustes Visuais
+- [x] Aumentar significativamente o tamanho do logo no header (h-9 mobile / h-12 desktop)
