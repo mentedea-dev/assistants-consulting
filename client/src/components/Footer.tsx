@@ -48,17 +48,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-4">
-            <div className="flex items-center gap-2 mb-7">
-              <span className="text-lg font-semibold text-white tracking-[0.2em] uppercase">
-                <span className="relative inline-block">
-                  A
-                  <span
-                    className="absolute w-[5px] h-[5px] rounded-full bg-orange"
-                    style={{ top: '42%', left: '46%', transform: 'translate(-50%, -50%)' }}
-                  />
-                </span>
-                SSISTANTS
-              </span>
+            <div className="mb-7">
+              <img
+                src="/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp"
+                alt="Assistants"
+                className="h-5 w-auto"
+              />
             </div>
             <p className="text-sm leading-[1.9] max-w-sm text-white/40 font-light">
               {t("footer.description")}

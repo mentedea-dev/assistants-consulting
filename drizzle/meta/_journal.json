@@ -15,6 +15,13 @@
       "when": 1777783300546,
       "tag": "0001_yellow_la_nuit",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1777786178588,
+      "tag": "0002_purple_iron_lad",
+      "breakpoints": true
     }
   ]
 }

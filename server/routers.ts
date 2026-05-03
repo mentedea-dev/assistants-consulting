@@ -4,7 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, protectedProcedure, adminProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { getDb } from "./db";
-import { contacts, articles, newsletterSubscribers, chatMessages } from "../drizzle/schema";
+import { contacts, articles, newsletterSubscribers, chatMessages, siteSettings } from "../drizzle/schema";
 import { eq, desc, and } from "drizzle-orm";
 import { invokeLLM } from "./_core/llm";
 import { notifyOwner } from "./_core/notification";
@@ -207,6 +207,47 @@ export const appRouter = router({
         .where(eq(newsletterSubscribers.active, true))
         .orderBy(desc(newsletterSubscribers.subscribedAt));
     }),
+  }),
+
+  // ═══════════════════════ SETTINGS ═══════════════════════
+  settings: router({
+    get: publicProcedure
+      .input(z.object({ key: z.string() }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return null;
+        const result = await db.select().from(siteSettings)
+          .where(eq(siteSettings.key, input.key))
+          .limit(1);
+        return result[0] || null;
+      }),
+
+    getAll: adminProcedure.query(async () => {
+      const db = await getDb();
+      if (!db) return [];
+      return db.select().from(siteSettings);
+    }),
+
+    set: adminProcedure
+      .input(z.object({ key: z.string(), value: z.string() }))
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+        const existing = await db.select().from(siteSettings)
+          .where(eq(siteSettings.key, input.key))
+          .limit(1);
+        if (existing.length > 0) {
+          await db.update(siteSettings)
+            .set({ value: input.value })
+            .where(eq(siteSettings.key, input.key));
+        } else {
+          await db.insert(siteSettings).values({
+            key: input.key,
+            value: input.value,
+          });
+        }
+        return { success: true };
+      }),
   }),
 
   // ═══════════════════════ CHAT ═══════════════════════

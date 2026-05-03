@@ -1,8 +1,7 @@
 /*
  * PENTAGRAM CRAFT: Header
+ * - Official wordmark image
  * - Scroll-aware: transparent on top, solid with shadow on scroll
- * - Wordmark with inflection dot
- * - Nav links with animated underline on hover
  * - Language toggle (PT/EN)
  * - Mobile: full-screen overlay with staggered animation
  */
@@ -12,6 +11,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
+
+const WORDMARK_DARK = "/manus-storage/Assistants_FINAL_Wordmark_200b4094.webp";
+const WORDMARK_LIGHT = "/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
@@ -23,19 +25,14 @@ const navKeys = [
 ];
 
 function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
-  const textColor = variant === "dark" ? "text-navy" : "text-white";
+  const src = variant === "dark" ? WORDMARK_DARK : WORDMARK_LIGHT;
   return (
-    <Link href="/" className="select-none group">
-      <span className={`text-base md:text-lg font-semibold tracking-[0.18em] uppercase ${textColor} transition-colors duration-300`}>
-        <span className="relative inline-block">
-          A
-          <span
-            className="absolute w-[5px] h-[5px] rounded-full bg-orange group-hover:scale-150 transition-transform duration-300"
-            style={{ top: '38%', left: '48%', transform: 'translate(-50%, -50%)' }}
-          />
-        </span>
-        SSISTANTS
-      </span>
+    <Link href="/" className="select-none group flex items-center">
+      <img
+        src={src}
+        alt="Assistants"
+        className="h-5 md:h-6 w-auto transition-opacity duration-300 group-hover:opacity-80"
+      />
     </Link>
   );
 }

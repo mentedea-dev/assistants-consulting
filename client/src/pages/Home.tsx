@@ -14,10 +14,10 @@ import { ArrowRight, TrendingUp, Shield, BarChart3, Users, FileSearch, Briefcase
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/hero-abstract-3f4orXLiYPo2vZNPLk4ZWi.webp";
-const HEALTH_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/services-health-oSYmVgz3SLW5sqUk5brVYQ.webp";
-const PENSION_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/services-pension-fRnGwb3JVktfCHfLSH2Qq4.webp";
-const BENEFITS_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/services-benefits-nBQ6XyP5ZvCghxLMwnwihV.webp";
+const HERO_IMG = "/manus-storage/v3_01_hero_principal_6dab2755.webp";
+const HEALTH_IMG = "/manus-storage/v2_03_saude_550a80a3.webp";
+const PENSION_IMG = "/manus-storage/v2_02_previdencia_cb4d1913.webp";
+const BENEFITS_IMG = "/manus-storage/v2_06_beneficios_712e1ff4.webp";
 
 const serviceKeys = [
   { icon: Shield, titleKey: "service.health.title", descKey: "service.health.desc", img: HEALTH_IMG },

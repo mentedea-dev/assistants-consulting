@@ -55,3 +55,11 @@
 - [x] Preview de markdown no editor admin (split-view)
 - [x] Performance: lazy loading de imagens, code splitting por rota
 - [x] Dark mode avaliado: não implementado por incoerência com Brand Book
+
+## Fase 8: Identidade Visual Oficial e Admin
+- [ ] Upload de todos os assets oficiais (imagens temáticas, wordmark, símbolo, favicon)
+- [ ] Substituir imagens genéricas pelas oficiais em todas as páginas
+- [ ] Integrar wordmark oficial no Header e Footer
+- [ ] Configurar favicon oficial
+- [ ] Adicionar suporte ao Google Search Console (meta tag de verificação)
+- [ ] Melhorar interface do painel admin (mais amigável e intuitiva)

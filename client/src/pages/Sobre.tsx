@@ -12,7 +12,7 @@ import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Target, Eye, Gem, Scale, Award, BookOpen } from "lucide-react";
 
-const TEXTURE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/about-texture-KGggM3VhLLJWdcbHSdSMLp.webp";
+const TEXTURE_IMG = "/manus-storage/v2_10_institucional_42ba4921.webp";
 
 export default function Sobre() {
   const { t } = useLanguage();
