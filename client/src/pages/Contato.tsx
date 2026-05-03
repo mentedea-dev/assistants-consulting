@@ -16,11 +16,21 @@ import { trpc } from "@/lib/trpc";
 export default function Contato() {
   const { t } = useLanguage();
 
-  const contactInfo = [
-    { icon: MapPin, label: t("contact.info.address.label"), value: t("contact.info.address.value"), detail: t("contact.info.address.detail") },
-    { icon: Phone, label: t("contact.info.phone.label"), value: "+55 (11) 3000-0000", detail: t("contact.info.phone.detail") },
-    { icon: Mail, label: t("contact.info.email.label"), value: "contato@assistants.com.br", detail: t("contact.info.email.detail") },
-    { icon: Clock, label: t("contact.hours.title"), value: t("contact.hours.weekdays"), detail: t("contact.hours.timezone") },
+  const offices = [
+    {
+      label: t("contact.info.matrix.label"),
+      address: t("contact.info.matrix.address"),
+      address2: t("contact.info.matrix.address2"),
+      city: t("contact.info.matrix.city"),
+      phone: t("contact.info.matrix.phone"),
+    },
+    {
+      label: t("contact.info.branch.label"),
+      address: t("contact.info.branch.address"),
+      address2: "",
+      city: t("contact.info.branch.city"),
+      phone: t("contact.info.branch.phone"),
+    },
   ];
 
   const [formData, setFormData] = useState({
@@ -102,7 +112,7 @@ export default function Contato() {
             </FadeIn>
             <SplitText
               as="h1"
-              className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif text-navy tracking-tight leading-[1.05] max-w-4xl"
               delay={0.2}
               stagger={0.02}
               yOffset={22}
@@ -128,7 +138,7 @@ export default function Contato() {
                     <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6">
                       <CheckCircle2 size={32} className="text-green-600" />
                     </div>
-                    <h3 className="text-2xl font-serif font-normal text-navy mb-3">
+                    <h3 className="text-2xl font-serif text-navy mb-3">
                       {t("contact.success.title")}
                     </h3>
                     <p className="text-steel-light font-light max-w-md">
@@ -174,7 +184,7 @@ export default function Contato() {
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
                             <User size={18} className="text-orange" />
-                            <h3 className="text-lg font-serif font-normal text-navy">{t("contact.step1.title")}</h3>
+                            <h3 className="text-lg font-serif text-navy">{t("contact.step1.title")}</h3>
                           </div>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -239,7 +249,7 @@ export default function Contato() {
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
                             <Briefcase size={18} className="text-orange" />
-                            <h3 className="text-lg font-serif font-normal text-navy">{t("contact.step2.title")}</h3>
+                            <h3 className="text-lg font-serif text-navy">{t("contact.step2.title")}</h3>
                           </div>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -349,7 +359,7 @@ export default function Contato() {
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
                             <Building2 size={18} className="text-orange" />
-                            <h3 className="text-lg font-serif font-normal text-navy">{t("contact.step3.title")}</h3>
+                            <h3 className="text-lg font-serif text-navy">{t("contact.step3.title")}</h3>
                           </div>
 
                           {/* Summary of previous steps */}
@@ -425,22 +435,53 @@ export default function Contato() {
               {/* Contact info sidebar */}
               <FadeIn delay={0.2} className="lg:col-span-4">
                 <div className="bg-navy p-8 md:p-10 sticky top-28">
-                  <h3 className="text-lg font-serif font-normal text-white tracking-tight mb-8">
+                  <h3 className="text-lg font-serif text-white tracking-tight mb-8">
                     {t("contact.info.title")}
                   </h3>
                   <div className="space-y-7">
-                    {contactInfo.map((info) => (
-                      <div key={info.label} className="flex gap-4 group">
-                        <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-orange/10 transition-colors duration-300">
-                          <info.icon size={16} className="text-orange" strokeWidth={1.5} />
+                    {offices.map((office) => (
+                      <div key={office.label} className="group">
+                        <div className="flex gap-4">
+                          <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-orange/10 transition-colors duration-300">
+                            <MapPin size={16} className="text-orange" strokeWidth={1.5} />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{office.label}</p>
+                            <p className="text-sm text-white font-medium">{office.address}</p>
+                            {office.address2 && <p className="text-sm text-white font-medium">{office.address2}</p>}
+                            <p className="text-xs text-white/50 mt-0.5 font-light">{office.city}</p>
+                          </div>
                         </div>
-                        <div>
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{info.label}</p>
-                          <p className="text-sm text-white font-medium">{info.value}</p>
-                          <p className="text-xs text-white/35 mt-0.5 font-light">{info.detail}</p>
+                        <div className="flex gap-4 mt-3 ml-[52px]">
+                          <Phone size={13} className="text-orange/60 shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <p className="text-sm text-white/80">{office.phone}</p>
                         </div>
                       </div>
                     ))}
+
+                    {/* Email */}
+                    <div className="flex gap-4 group">
+                      <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-orange/10 transition-colors duration-300">
+                        <Mail size={16} className="text-orange" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{t("contact.info.email.label")}</p>
+                        <p className="text-sm text-white font-medium">{t("contact.info.email.value")}</p>
+                        <p className="text-xs text-white/35 mt-0.5 font-light">{t("contact.info.email.detail")}</p>
+                      </div>
+                    </div>
+
+                    {/* Horário */}
+                    <div className="flex gap-4 group">
+                      <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-orange/10 transition-colors duration-300">
+                        <Clock size={16} className="text-orange" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{t("contact.hours.title")}</p>
+                        <p className="text-sm text-white font-medium">{t("contact.hours.weekdays")}</p>
+                        <p className="text-xs text-white/35 mt-0.5 font-light">{t("contact.hours.timezone")}</p>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Response time badge */}

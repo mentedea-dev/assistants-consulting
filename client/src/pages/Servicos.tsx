@@ -87,7 +87,7 @@ export default function Servicos() {
             </FadeIn>
             <SplitText
               as="h1"
-              className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif text-navy tracking-tight leading-[1.05] max-w-4xl"
               delay={0.2}
               stagger={0.02}
               yOffset={22}
@@ -128,7 +128,7 @@ export default function Servicos() {
                           {area.subtitle}
                         </span>
                       </div>
-                      <h2 className="text-3xl md:text-4xl font-serif font-normal text-navy tracking-tight mb-4 leading-tight">
+                      <h2 className="text-3xl md:text-4xl font-serif text-navy tracking-tight mb-4 leading-tight">
                         {area.title}
                       </h2>
                       <p className="text-steel-light leading-[1.8] mb-8 font-light">{area.description}</p>
@@ -156,7 +156,7 @@ export default function Servicos() {
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("additionalServices.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl font-serif font-normal text-white tracking-tight leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1]">
                   {t("additionalServices.title.1")}
                   <br />
                   {t("additionalServices.title.2")}
@@ -168,7 +168,7 @@ export default function Servicos() {
                 <FadeIn key={i} delay={i * 0.08}>
                   <div className="group p-8 md:p-10 border border-white/6 hover:border-orange/20 transition-all duration-500 card-lift h-full">
                     <service.icon size={20} className="text-orange mb-7" strokeWidth={1.5} />
-                    <h3 className="text-lg font-serif font-normal text-white mb-4 tracking-tight">{service.title}</h3>
+                    <h3 className="text-lg font-serif text-white mb-4 tracking-tight">{service.title}</h3>
                     <p className="text-white/40 text-sm leading-[1.8] font-light">{service.desc}</p>
                   </div>
                 </FadeIn>
@@ -182,7 +182,7 @@ export default function Servicos() {
           <div className="container text-center">
             <SectionDivider className="mb-14" />
             <FadeIn>
-              <h2 className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight mb-6 leading-[1.1]">
+              <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight mb-6 leading-[1.1]">
                 {t("servicesPage.cta.title")}
                 <span className="inflection-dot" />
               </h2>

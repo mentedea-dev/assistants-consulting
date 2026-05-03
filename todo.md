@@ -121,3 +121,19 @@
 - [x] Garantir que a animação só dispara quando o elemento entra no viewport (whileInView)
 - [x] Manter performance (useReducedMotion para acessibilidade)
 - [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)
+
+## Fase 17: Refinamento Final Pentagram + Correções
+- [ ] Equilibrar proporção logo/nav no header (h-10/h-14, nav text-sm)
+- [ ] h3 com font-weight 500 (mais legível em tamanhos menores)
+- [ ] Aumentar textura CTA (opacity 0.06)
+- [ ] Hover mais pronunciado nos article cards
+- [ ] Footer logo h-10 (proporcional ao header)
+- [ ] Verificar e corrigir informação sobre escritório em Brasília
+
+## Fase 18: Atualizar Informações de Contato Reais
+- [x] Atualizar endereço SP: Rua Cláudio Soares, 72 — 8º andar — Pinheiros, SP 05422-030
+- [x] Adicionar escritório Brasília (Matriz): SCS Quadra 9, Ed. Parque Cidade Corporate Building, Torre C, Bloco C, 10º andar, DF 70308-200
+- [x] Atualizar telefones: SP +55 11 3335-3366, BSB +55 61 3550-4379
+- [x] Atualizar e-mail: relacionamento@assistants.com.br
+- [x] Atualizar i18n PT e EN
+- [x] Atualizar sidebar de contato e footer

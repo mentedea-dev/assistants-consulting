@@ -166,7 +166,7 @@ export default function Insights() {
             </FadeIn>
             <SplitText
               as="h1"
-              className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif text-navy tracking-tight leading-[1.05] max-w-4xl"
               delay={0.2}
               stagger={0.02}
               yOffset={22}
@@ -254,7 +254,7 @@ export default function Insights() {
                         <span className="text-[11px] text-white/35 font-light">{featured.date}</span>
                         <span className="text-[11px] text-white/35 font-light">{featured.readTime} {t("insightsPage.readTime")}</span>
                       </div>
-                      <h2 className="text-3xl md:text-5xl font-serif font-normal text-white tracking-tight leading-[1.1] mb-8">
+                      <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1] mb-8">
                         {featured.title}
                       </h2>
                       <p className="text-white/45 leading-[1.8] mb-10 max-w-2xl font-light text-lg">
@@ -323,7 +323,7 @@ export default function Insights() {
                             </span>
                             <span className="text-[11px] text-steel-light font-light">{article.date}</span>
                           </div>
-                          <h3 className="text-lg font-serif font-normal text-navy tracking-tight leading-snug mb-4 group-hover:text-orange transition-colors duration-300">
+                          <h3 className="text-lg font-serif text-navy tracking-tight leading-snug mb-4 group-hover:text-orange transition-colors duration-300">
                             {article.title}
                           </h3>
                           <p className="text-steel-light text-sm leading-[1.8] font-light flex-1">
@@ -379,7 +379,7 @@ export default function Insights() {
         <section className="py-20 md:py-28 bg-navy">
           <div className="container text-center">
             <FadeIn>
-              <h2 className="text-3xl md:text-4xl font-serif font-normal text-white tracking-tight mb-5">
+              <h2 className="text-3xl md:text-4xl font-serif text-white tracking-tight mb-5">
                 {t("insightsPage.newsletter.title")}
               </h2>
               <p className="text-white/40 max-w-lg mx-auto mb-10 font-light leading-[1.8]">

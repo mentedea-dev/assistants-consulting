@@ -76,7 +76,7 @@ export default function Home() {
               <div className="mb-10">
                 <SplitText
                   as="h1"
-                  className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal text-white leading-[1.05] tracking-tight"
+                  className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif text-white leading-[1.05] tracking-tight"
                   delay={0.4}
                   stagger={0.02}
                   yOffset={25}
@@ -141,7 +141,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
               {statKeys.map((stat, i) => (
                 <FadeIn key={stat.labelKey} delay={i * 0.12} className="text-center md:text-left">
-                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-white tracking-tight">
+                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight">
                     <CountUp end={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} duration={2.5} />
                   </div>
                   <p className="text-xs text-white/35 mt-3 tracking-wide uppercase font-medium">
@@ -164,7 +164,7 @@ export default function Home() {
               </FadeIn>
               <SplitText
                 as="h2"
-                className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-navy tracking-tight leading-[1.1]"
+                className="text-3xl md:text-5xl lg:text-6xl font-serif text-navy tracking-tight leading-[1.1]"
                 delay={0.1}
                 stagger={0.018}
                 yOffset={18}
@@ -196,7 +196,7 @@ export default function Home() {
                         </div>
                         <div className="h-px flex-1 bg-navy/8" />
                       </div>
-                      <h3 className="text-2xl md:text-4xl font-serif font-normal text-navy tracking-tight mb-5 leading-tight">
+                      <h3 className="text-2xl md:text-4xl font-serif text-navy tracking-tight mb-5 leading-tight">
                         {t(service.titleKey)}
                       </h3>
                       <p className="text-steel-light leading-[1.8] mb-8 font-light">
@@ -230,7 +230,7 @@ export default function Home() {
               </FadeIn>
               <SplitText
                 as="h2"
-                className="text-3xl md:text-5xl font-serif font-normal text-white tracking-tight leading-[1.1]"
+                className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1]"
                 delay={0.1}
                 stagger={0.018}
                 yOffset={18}
@@ -244,7 +244,7 @@ export default function Home() {
                 <FadeIn key={service.titleKey} delay={i * 0.12}>
                   <div className="group p-8 md:p-10 border border-white/8 hover:border-orange/25 transition-all duration-500 card-lift h-full">
                     <service.icon size={22} className="text-orange mb-7" strokeWidth={1.5} />
-                    <h3 className="text-xl font-serif font-normal text-white mb-4 tracking-tight">
+                    <h3 className="text-xl font-serif text-white mb-4 tracking-tight">
                       {t(service.titleKey)}
                     </h3>
                     <p className="text-white/45 text-sm leading-[1.8] font-light">
@@ -270,7 +270,7 @@ export default function Home() {
                   </p>
                   <SplitText
                     as="h2"
-                    className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight leading-[1.1] mb-8"
+                    className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1] mb-8"
                     delay={0.1}
                     stagger={0.02}
                     yOffset={15}
@@ -301,7 +301,7 @@ export default function Home() {
                       <FadeIn key={i} delay={i * 0.1} direction="left" distance={20}>
                         <Link
                           href="/insights"
-                          className="group block p-7 border border-navy/6 hover:border-orange/20 transition-all duration-500 card-lift bg-white"
+                          className="group block p-7 border border-navy/6 hover:border-orange/25 hover:shadow-lg transition-all duration-500 card-lift bg-white"
                         >
                           <div className="flex items-center gap-3 mb-4">
                             <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-orange bg-orange/8 px-3 py-1.5">
@@ -309,7 +309,7 @@ export default function Home() {
                             </span>
                             <span className="text-[11px] text-steel-light font-light">{article.date}</span>
                           </div>
-                          <h3 className="text-lg font-serif font-normal text-navy group-hover:text-orange transition-colors duration-300 tracking-tight leading-snug">
+                          <h3 className="text-lg font-serif text-navy group-hover:text-orange transition-colors duration-300 tracking-tight leading-snug">
                             {article.title}
                           </h3>
                         </Link>
@@ -324,7 +324,7 @@ export default function Home() {
 
         {/* ═══════════════════════ CTA ═══════════════════════ */}
         <section className="py-28 md:py-36 bg-navy relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.04]">
+          <div className="absolute inset-0 opacity-[0.06]">
             <img src={HERO_IMG} alt="" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/50 via-transparent to-navy-deep/50" />
@@ -335,7 +335,7 @@ export default function Home() {
             </FadeIn>
             <SplitText
               as="h2"
-              className="text-4xl md:text-6xl font-serif font-normal text-white tracking-tight mb-8 leading-[1.1]"
+              className="text-4xl md:text-6xl font-serif text-white tracking-tight mb-8 leading-[1.1]"
               delay={0.1}
               stagger={0.02}
               yOffset={20}

@@ -31,7 +31,7 @@ function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
       <img
         src={src}
         alt="Assistants"
-        className="h-14 md:h-[4.5rem] w-auto transition-opacity duration-300 group-hover:opacity-80"
+        className="h-10 md:h-14 w-auto transition-opacity duration-300 group-hover:opacity-80"
       />
     </Link>
   );
@@ -74,7 +74,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-[13px] font-medium tracking-wide transition-colors duration-300 py-1 ${
+                className={`relative text-sm font-medium tracking-wide transition-colors duration-300 py-1 ${
                   location === link.href ? navActiveColor : navColor
                 } hover:${navActiveColor}`}
               >

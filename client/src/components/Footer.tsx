@@ -52,7 +52,7 @@ export default function Footer() {
               <img
                 src="/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp"
                 alt="Assistants"
-                className="h-8 w-auto"
+                className="h-10 w-auto"
               />
             </div>
             <p className="text-sm leading-[1.9] max-w-sm text-white/40 font-light">
@@ -134,10 +134,10 @@ export default function Footer() {
               {t("footer.location")}
             </span>
             <a
-              href="mailto:contato@assistants.com.br"
+              href="mailto:relacionamento@assistants.com.br"
               className="text-[11px] text-white/30 hover:text-orange transition-colors duration-300 font-light"
             >
-              contato@assistants.com.br
+              relacionamento@assistants.com.br
             </a>
           </div>
         </div>
