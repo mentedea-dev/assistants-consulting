@@ -180,3 +180,22 @@
 - [x] Animar o 'A' no footer com hover interativo (scale + glow + dot orbit)
 - [x] Verificar TypeScript (0 erros) e testes (15 passando)
 - [x] Verificação visual (Home hero + footer confirmados)
+
+## Fase 23: Restaurar Chat Widget com IA e Newsletter
+- [x] Verificar se o ChatWidget está presente no App.tsx e renderizando (lazy import linha 21, render linha 61)
+- [x] Verificar se o ChatWidget tem integração com IA (roteiro programado) — usa LLM via tRPC chat.send
+- [x] Verificar se a newsletter está integrada no backend (rota tRPC newsletter.subscribe + tabela newsletterSubscribers)
+- [x] Corrigir qualquer problema encontrado — NENHUM PROBLEMA: ambos estão funcionais
+- [x] Verificar TypeScript e testes (já confirmado na fase anterior)
+- [x] Verificação visual (chat widget visível no canto inferior esquerdo, newsletter no footer)
+
+## Fase 24: O "A" como Protagonista Absoluto — Nível Pentagram/Landor/Interbrand
+- [x] Pesquisar referências de identidades visuais icônicas baseadas em monogramas (Accenture, Netflix, Chanel, McKinsey, Deloitte)
+- [x] Redesenhar o hero da Home com o "A" como elemento visual dominante (opacity 15%, 550px, glow backdrop)
+- [x] Criar splash/loading screen com o "A" animado (draw reveal + dot spring + ripple + tagline)
+- [x] Usar o "A" como page loader animado (substitui spinner genérico)
+- [x] Implementar o "A" no header como símbolo clicável com presença forte (w-11 h-11, interactive, dotPulse)
+- [x] Criar seção "brand moment" dedicada ao "A" na Home (320px, glow, texto explicativo do ponto)
+- [x] Garantir que o "A" seja a primeira coisa (splash screen) e a última que lembra (footer + CTA)
+- [x] Verificar TypeScript (0 erros) e testes (15 passando)
+- [x] Verificação visual final (hero dominante, brand moment excelente, header com símbolo, splash funcional)

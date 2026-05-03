@@ -66,14 +66,18 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-navy/50 to-navy/30" />
           </motion.div>
 
-          {/* Brand Symbol watermark */}
+          {/* Brand Symbol — DOMINANT presence */}
           <motion.div
-            className="absolute right-[-5%] md:right-[5%] top-1/2 -translate-y-1/2 z-[1] pointer-events-none select-none"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.5, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute right-[-8%] md:right-[2%] lg:right-[5%] top-1/2 -translate-y-1/2 z-[2] pointer-events-none select-none"
+            initial={{ opacity: 0, scale: 0.85, x: 60 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <BrandSymbol variant="light" className="w-[280px] md:w-[380px] lg:w-[480px] h-auto opacity-[0.035]" drawReveal dotPulse />
+            <div className="relative">
+              {/* Glow backdrop */}
+              <div className="absolute inset-0 blur-[80px] bg-orange/10 rounded-full scale-75" />
+              <BrandSymbol variant="light" className="w-[320px] md:w-[450px] lg:w-[550px] h-auto opacity-[0.15]" drawReveal dotPulse />
+            </div>
           </motion.div>
 
           <motion.div className="container relative z-10 pt-24 pb-16" style={{ opacity: heroOpacity }}>
@@ -196,6 +200,57 @@ export default function Home() {
                   ))}
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════ BRAND MOMENT ═══════════════════════ */}
+        <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+          <div className="container relative z-10">
+            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+              {/* The A — large, proud, animated */}
+              <motion.div
+                className="flex-shrink-0"
+                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="relative">
+                  {/* Ambient glow */}
+                  <div className="absolute inset-0 blur-[50px] bg-orange/15 rounded-full scale-90" />
+                  <BrandSymbol
+                    variant="dark"
+                    className="w-[180px] h-[180px] md:w-[260px] md:h-[260px] lg:w-[320px] lg:h-[320px]"
+                    interactive
+                    drawReveal
+                    dotPulse
+                  />
+                </div>
+              </motion.div>
+
+              {/* Brand statement */}
+              <motion.div
+                className="text-center md:text-left max-w-lg"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.3em] mb-5">
+                  {locale === 'pt' ? 'O ponto de inflexão' : 'The inflection point'}
+                </p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-navy tracking-tight leading-[1.1] mb-6">
+                  {locale === 'pt'
+                    ? 'Onde complexidade se transforma em clareza.'
+                    : 'Where complexity becomes clarity.'}
+                </h2>
+                <p className="text-steel-light text-base md:text-lg leading-relaxed font-light">
+                  {locale === 'pt'
+                    ? 'O ponto laranja do nosso A representa o momento exato em que dados se transformam em decisões. Há 35 anos, somos esse ponto de inflexão para as maiores organizações do Brasil.'
+                    : 'The orange dot in our A represents the exact moment when data becomes decisions. For 35 years, we have been this inflection point for Brazil\'s largest organizations.'}
+                </p>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -378,9 +433,12 @@ export default function Home() {
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/50 via-transparent to-navy-deep/50" />
 
-          {/* Brand Symbol watermark */}
-          <div className="absolute left-[-5%] md:left-[8%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
-            <BrandSymbol variant="light" className="w-[200px] md:w-[300px] lg:w-[360px] h-auto opacity-[0.04]" drawReveal dotPulse />
+          {/* Brand Symbol — DOMINANT */}
+          <div className="absolute left-[-10%] md:left-[3%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
+            <div className="relative">
+              <div className="absolute inset-0 blur-[60px] bg-orange/8 rounded-full scale-75" />
+              <BrandSymbol variant="light" className="w-[280px] md:w-[400px] lg:w-[480px] h-auto opacity-[0.12]" drawReveal dotPulse />
+            </div>
           </div>
 
           <div className="container relative z-10 text-center">

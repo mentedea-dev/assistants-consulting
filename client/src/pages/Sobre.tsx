@@ -158,9 +158,12 @@ export default function Sobre() {
 
         {/* Timeline */}
         <section className="py-24 md:py-32 bg-navy relative overflow-hidden">
-          {/* Brand Symbol watermark */}
-          <div className="absolute right-[-3%] md:right-[5%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
-            <BrandSymbol variant="light" className="w-[250px] md:w-[350px] h-auto opacity-[0.03]" drawReveal dotPulse />
+          {/* Brand Symbol — DOMINANT */}
+          <div className="absolute right-[-10%] md:right-[2%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
+            <div className="relative">
+              <div className="absolute inset-0 blur-[60px] bg-orange/6 rounded-full scale-75" />
+              <BrandSymbol variant="light" className="w-[300px] md:w-[420px] lg:w-[500px] h-auto opacity-[0.10]" drawReveal dotPulse />
+            </div>
           </div>
           <div className="container relative z-10">
             <FadeIn>

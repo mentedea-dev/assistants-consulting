@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
+import BrandSymbol from "./BrandSymbol";
 
 const WORDMARK_DARK = "/manus-storage/Assistants_FINAL_Wordmark_200b4094.webp";
 const WORDMARK_LIGHT = "/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp";
@@ -27,11 +28,17 @@ const navKeys = [
 function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
   const src = variant === "dark" ? WORDMARK_DARK : WORDMARK_LIGHT;
   return (
-    <Link href="/" className="select-none group flex items-center">
+    <Link href="/" className="select-none group flex items-center gap-3">
+      <BrandSymbol
+        variant={variant}
+        className="w-9 h-9 md:w-11 md:h-11"
+        interactive
+        dotPulse
+      />
       <img
         src={src}
         alt="Assistants"
-        className="h-10 md:h-14 w-auto transition-opacity duration-300 group-hover:opacity-80"
+        className="h-8 md:h-11 w-auto transition-opacity duration-300 group-hover:opacity-80"
       />
     </Link>
   );

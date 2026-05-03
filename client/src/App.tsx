@@ -5,8 +5,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import "@/i18n"; // Register all translations
-import { lazy, Suspense } from "react";
-import { Loader2 } from "lucide-react";
+import { lazy, Suspense, useState, useCallback } from "react";
+import SplashScreen from "./components/SplashScreen";
 
 // Code splitting: lazy load all pages for better performance
 const Home = lazy(() => import("./pages/Home"));
@@ -20,11 +20,12 @@ const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ChatWidget = lazy(() => import("./components/ChatWidget"));
 import GoogleVerification from "./components/GoogleVerification";
+import BrandSymbol from "./components/BrandSymbol";
 
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-linen">
-      <Loader2 size={24} className="animate-spin text-navy" />
+      <BrandSymbol variant="dark" className="w-12 h-12" animate dotPulse />
     </div>
   );
 }
@@ -49,12 +50,24 @@ function Router() {
 }
 
 function App() {
+  // Show splash only on first visit per session
+  const [showSplash, setShowSplash] = useState(() => {
+    const seen = sessionStorage.getItem("splash_seen");
+    return !seen;
+  });
+
+  const handleSplashComplete = useCallback(() => {
+    sessionStorage.setItem("splash_seen", "1");
+    setShowSplash(false);
+  }, []);
+
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <LanguageProvider>
           <TooltipProvider>
             <Toaster />
+            {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
             <Router />
             <GoogleVerification />
             <Suspense fallback={null}>
