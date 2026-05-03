@@ -50,7 +50,7 @@ export default function Sobre() {
         <section className="pt-32 md:pt-44 pb-20 md:pb-28">
           <div className="container">
             <FadeIn>
-              <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
+              <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
                 {t("about.tag")}
               </p>
             </FadeIn>
@@ -111,7 +111,7 @@ export default function Sobre() {
           <div className="container">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-20">
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("about.values.title")}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1]">
@@ -142,7 +142,7 @@ export default function Sobre() {
           <div className="container">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-20">
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("about.timeline.tag")}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1]">
@@ -157,14 +157,14 @@ export default function Sobre() {
                   <FadeIn key={milestone.year} delay={i * 0.1} direction={i % 2 === 0 ? "right" : "left"} distance={20}>
                     <div className={`relative flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                       <motion.div
-                        className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-orange -translate-x-1/2 mt-1.5 z-10"
+                        className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-navy -translate-x-1/2 mt-1.5 z-10"
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1, type: "spring", stiffness: 300 }}
                       />
                       <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                        <span className="text-2xl font-serif text-orange">{milestone.year}</span>
+                        <span className="text-2xl font-serif text-navy">{milestone.year}</span>
                         <p className="text-white/50 text-sm mt-2 leading-relaxed font-light">{milestone.event}</p>
                       </div>
                     </div>
@@ -183,7 +183,7 @@ export default function Sobre() {
               {credentials.map((cred, i) => (
                 <FadeIn key={i} delay={i * 0.1}>
                   <div className="flex items-start gap-4 p-7 border border-navy/6 card-lift">
-                    <cred.icon size={18} className="text-orange shrink-0 mt-0.5" strokeWidth={1.5} />
+                    <cred.icon size={18} className="text-navy shrink-0 mt-0.5" strokeWidth={1.5} />
                     <span className="text-sm text-navy/70 leading-relaxed font-light">{cred.label}</span>
                   </div>
                 </FadeIn>

@@ -47,7 +47,7 @@ export default function Clientes() {
         <section className="pt-32 md:pt-44 pb-20 md:pb-28">
           <div className="container">
             <FadeIn>
-              <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
+              <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
                 {t("clients.tag")}
               </p>
             </FadeIn>
@@ -91,7 +91,7 @@ export default function Clientes() {
           <div className="container">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-20">
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("clients.sectors.tag")}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1]">
@@ -105,7 +105,7 @@ export default function Clientes() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {sectors.map((sector, i) => (
                 <FadeIn key={sector.name} delay={i * 0.08}>
-                  <div className="group p-8 md:p-9 bg-white border border-navy/5 hover:border-orange/20 transition-all duration-500 card-lift h-full">
+                  <div className="group p-8 md:p-9 bg-white border border-navy/5 hover:border-navy/15 transition-all duration-500 card-lift h-full">
                     <div className="w-11 h-11 bg-navy/4 flex items-center justify-center mb-6">
                       <sector.icon size={20} className="text-navy" strokeWidth={1.5} />
                     </div>
@@ -127,7 +127,7 @@ export default function Clientes() {
           <div className="container">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-20">
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("clients.testimonials.tag")}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1]">
@@ -140,7 +140,7 @@ export default function Clientes() {
               {testimonials.map((testimonial, i) => (
                 <FadeIn key={i} delay={i * 0.12}>
                   <div className="relative p-8 md:p-10 border border-navy/6 h-full flex flex-col card-lift">
-                    <span className="absolute top-6 right-8 text-6xl font-serif text-orange/10 leading-none select-none">&ldquo;</span>
+                    <span className="absolute top-6 right-8 text-6xl font-serif text-navy/8 leading-none select-none">&ldquo;</span>
                     <p className="text-navy/75 text-[15px] leading-[1.9] font-light flex-1 relative z-10 italic">
                       &ldquo;{testimonial.quote}&rdquo;
                     </p>

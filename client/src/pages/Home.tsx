@@ -68,7 +68,7 @@ export default function Home() {
           <motion.div className="container relative z-10 pt-24 pb-16" style={{ opacity: heroOpacity }}>
             <div className="max-w-3xl">
               <FadeIn delay={0.3} distance={20}>
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-8">
+                <p className="text-white/50 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-8">
                   {t("hero.tag")}
                 </p>
               </FadeIn>
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="container">
             <div className="max-w-2xl mb-20 md:mb-28">
               <FadeIn>
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("services.tag")}
                 </p>
               </FadeIn>
@@ -186,7 +186,7 @@ export default function Home() {
                         >
                           <img src={service.img} alt={t(service.titleKey)} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                         </motion.div>
-                        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-orange/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-navy/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                     </div>
                     <div className={`md:col-span-5 ${i % 2 === 1 ? "md:order-1" : ""}`}>
@@ -204,9 +204,9 @@ export default function Home() {
                       </p>
                       <Link
                         href="/servicos"
-                        className="group inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-orange transition-colors duration-300"
+                        className="group inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-steel transition-colors duration-300"
                       >
-                        <span className="border-b border-navy/20 group-hover:border-orange/40 transition-colors duration-300 pb-0.5">
+                        <span className="border-b border-navy/20 group-hover:border-navy/40 transition-colors duration-300 pb-0.5">
                           {t("services.learnMore")}
                         </span>
                         <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -224,7 +224,7 @@ export default function Home() {
           <div className="container">
             <div className="max-w-2xl mb-16 md:mb-20">
               <FadeIn>
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-white/40 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("additionalServices.tag")}
                 </p>
               </FadeIn>
@@ -242,8 +242,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {additionalServiceKeys.map((service, i) => (
                 <FadeIn key={service.titleKey} delay={i * 0.12}>
-                  <div className="group p-8 md:p-10 border border-white/8 hover:border-orange/25 transition-all duration-500 card-lift h-full">
-                    <service.icon size={22} className="text-orange mb-7" strokeWidth={1.5} />
+                  <div className="group p-8 md:p-10 border border-white/8 hover:border-white/20 transition-all duration-500 card-lift h-full">
+                    <service.icon size={22} className="text-white/60 mb-7" strokeWidth={1.5} />
                     <h3 className="text-xl font-serif text-white mb-4 tracking-tight">
                       {t(service.titleKey)}
                     </h3>
@@ -265,7 +265,7 @@ export default function Home() {
             <FadeIn>
               <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
                 <div className="md:col-span-5">
-                  <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                  <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                     {t("insights.tag")}
                   </p>
                   <SplitText
@@ -282,9 +282,9 @@ export default function Home() {
                   </p>
                   <Link
                     href="/insights"
-                    className="group inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-orange transition-colors duration-300"
+                    className="group inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-steel transition-colors duration-300"
                   >
-                    <span className="border-b border-navy/20 group-hover:border-orange/40 transition-colors duration-300 pb-0.5">
+                    <span className="border-b border-navy/20 group-hover:border-navy/40 transition-colors duration-300 pb-0.5">
                       {t("insights.viewAll")}
                     </span>
                     <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -301,15 +301,15 @@ export default function Home() {
                       <FadeIn key={i} delay={i * 0.1} direction="left" distance={20}>
                         <Link
                           href="/insights"
-                          className="group block p-7 border border-navy/6 hover:border-orange/25 hover:shadow-lg transition-all duration-500 card-lift bg-white"
+                          className="group block p-7 border border-navy/6 hover:border-navy/20 hover:shadow-lg transition-all duration-500 card-lift bg-white"
                         >
                           <div className="flex items-center gap-3 mb-4">
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-orange bg-orange/8 px-3 py-1.5">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-navy bg-navy/8 px-3 py-1.5">
                               {article.tag}
                             </span>
                             <span className="text-[11px] text-steel-light font-light">{article.date}</span>
                           </div>
-                          <h3 className="text-lg font-serif text-navy group-hover:text-orange transition-colors duration-300 tracking-tight leading-snug">
+                          <h3 className="text-lg font-serif text-navy group-hover:text-steel transition-colors duration-300 tracking-tight leading-snug">
                             {article.title}
                           </h3>
                         </Link>

@@ -81,7 +81,7 @@ export default function Servicos() {
         <section className="pt-32 md:pt-44 pb-20 md:pb-28">
           <div className="container">
             <FadeIn>
-              <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
+              <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
                 {t("servicesPage.tag")}
               </p>
             </FadeIn>
@@ -116,7 +116,7 @@ export default function Servicos() {
                         className="relative overflow-hidden aspect-[3/2] mb-6 md:mb-0 group"
                       >
                         <img src={area.img} alt={area.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-orange/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-navy/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </motion.div>
                     </div>
                     <div className={`md:col-span-7 ${i % 2 === 1 ? "md:order-1" : ""}`}>
@@ -124,7 +124,7 @@ export default function Servicos() {
                         <div className="w-12 h-12 bg-navy/5 flex items-center justify-center">
                           <area.icon size={22} className="text-navy" strokeWidth={1.5} />
                         </div>
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-orange">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-navy">
                           {area.subtitle}
                         </span>
                       </div>
@@ -135,7 +135,7 @@ export default function Servicos() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
                         {area.items.map((item, j) => (
                           <div key={j} className="flex items-start gap-3 py-2.5 border-b border-navy/5">
-                            <div className="w-1.5 h-1.5 rounded-full bg-orange mt-2 shrink-0" />
+                            <div className="w-1.5 h-1.5 rounded-full bg-navy/40 mt-2 shrink-0" />
                             <span className="text-sm text-navy/80 leading-relaxed font-light">{item}</span>
                           </div>
                         ))}
@@ -153,7 +153,7 @@ export default function Servicos() {
           <div className="container">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-24">
-                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-white/40 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("additionalServices.tag")}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1]">
@@ -166,8 +166,8 @@ export default function Servicos() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {specializedServices.map((service, i) => (
                 <FadeIn key={i} delay={i * 0.08}>
-                  <div className="group p-8 md:p-10 border border-white/6 hover:border-orange/20 transition-all duration-500 card-lift h-full">
-                    <service.icon size={20} className="text-orange mb-7" strokeWidth={1.5} />
+                  <div className="group p-8 md:p-10 border border-white/6 hover:border-white/20 transition-all duration-500 card-lift h-full">
+                    <service.icon size={20} className="text-white/60 mb-7" strokeWidth={1.5} />
                     <h3 className="text-lg font-serif text-white mb-4 tracking-tight">{service.title}</h3>
                     <p className="text-white/40 text-sm leading-[1.8] font-light">{service.desc}</p>
                   </div>

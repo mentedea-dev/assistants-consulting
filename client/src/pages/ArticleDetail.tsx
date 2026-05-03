@@ -28,7 +28,7 @@ export default function ArticleDetail() {
         <div className="min-h-screen bg-linen">
           <Header />
           <div className="pt-40 flex justify-center">
-            <Loader2 className="animate-spin text-orange" size={32} />
+            <Loader2 className="animate-spin text-navy" size={32} />
           </div>
         </div>
       </PageTransition>
@@ -50,7 +50,7 @@ export default function ArticleDetail() {
               </p>
               <Link
                 href="/insights"
-                className="inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-orange transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-steel transition-colors"
               >
                 <ArrowLeft size={14} /> {t("article.backToInsights")}
               </Link>
@@ -91,7 +91,7 @@ export default function ArticleDetail() {
               <div className="mb-12">
                 <div className="flex items-center gap-4 mb-6">
                   {article.tag && (
-                    <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-orange bg-orange/8 px-3 py-1.5">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-navy bg-navy/8 px-3 py-1.5">
                       <Tag size={10} />
                       {article.tag}
                     </span>
@@ -132,7 +132,7 @@ export default function ArticleDetail() {
                 prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
                 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
                 prose-p:text-steel-light prose-p:mb-6
-                prose-a:text-orange prose-a:no-underline hover:prose-a:underline
+                prose-a:text-navy prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-navy prose-strong:font-medium
                 prose-ul:text-steel-light prose-ol:text-steel-light
                 prose-blockquote:border-l-orange prose-blockquote:text-navy prose-blockquote:font-serif prose-blockquote:italic

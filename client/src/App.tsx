@@ -24,7 +24,7 @@ import GoogleVerification from "./components/GoogleVerification";
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-linen">
-      <Loader2 size={24} className="animate-spin text-orange" />
+      <Loader2 size={24} className="animate-spin text-navy" />
     </div>
   );
 }

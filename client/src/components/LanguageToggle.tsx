@@ -10,15 +10,15 @@ export default function LanguageToggle({ className = "" }: { className?: string 
         onClick={() => setLocale("pt")}
         className={`text-[11px] font-medium tracking-wide px-2 py-1 transition-all duration-300 relative ${
           locale === "pt"
-            ? "text-orange"
-            : "text-white/40 hover:text-white/70"
+            ? "text-white"
+            : "text-white/35 hover:text-white/60"
         }`}
       >
         PT
         {locale === "pt" && (
           <motion.div
             layoutId="lang-indicator"
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-orange"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-[1.5px] bg-white/70"
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
           />
         )}
@@ -28,15 +28,15 @@ export default function LanguageToggle({ className = "" }: { className?: string 
         onClick={() => setLocale("en")}
         className={`text-[11px] font-medium tracking-wide px-2 py-1 transition-all duration-300 relative ${
           locale === "en"
-            ? "text-orange"
-            : "text-white/40 hover:text-white/70"
+            ? "text-white"
+            : "text-white/35 hover:text-white/60"
         }`}
       >
         EN
         {locale === "en" && (
           <motion.div
             layoutId="lang-indicator"
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-orange"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-[1.5px] bg-white/70"
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
           />
         )}

@@ -82,7 +82,7 @@ export default function Header() {
                 {location === link.href && (
                   <motion.div
                     layoutId="nav-underline"
-                    className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-orange"
+                    className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-navy"
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -152,8 +152,8 @@ export default function Header() {
                 className="mt-8"
               >
                 <p className="text-xs uppercase tracking-widest text-steel-light mb-3">{t("nav.contact")}</p>
-                <a href="mailto:contato@assistants.com.br" className="text-sm text-navy">
-                  contato@assistants.com.br
+                <a href="mailto:relacionamento@assistants.com.br" className="text-sm text-navy">
+                  relacionamento@assistants.com.br
                 </a>
               </motion.div>
             </nav>

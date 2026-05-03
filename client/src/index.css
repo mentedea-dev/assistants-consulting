@@ -41,20 +41,24 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Brand Colors — Assistants Consulting */
-  --color-navy: oklch(0.18 0.04 250);
-  --color-navy-light: oklch(0.24 0.04 250);
-  --color-navy-deep: oklch(0.12 0.04 250);
-  --color-orange: oklch(0.72 0.17 55);
-  --color-orange-light: oklch(0.78 0.14 55);
-  --color-steel: oklch(0.42 0.03 240);
-  --color-steel-light: oklch(0.55 0.02 240);
-  --color-linen: oklch(0.98 0.003 90);
-  --color-linen-warm: oklch(0.96 0.006 80);
+  /* Brand Colors — Assistants Consulting (Brand Book Oficial) */
+  /* Abyssal Navy #0B1929 */
+  --color-navy: oklch(0.210 0.038 253);
+  --color-navy-light: oklch(0.280 0.035 253);
+  --color-navy-deep: oklch(0.150 0.035 253);
+  /* Inflection Orange #E67E22 */
+  --color-orange: oklch(0.696 0.160 55.5);
+  --color-orange-light: oklch(0.750 0.140 55.5);
+  /* Steel Grey #3D4F5F */
+  --color-steel: oklch(0.419 0.035 246);
+  --color-steel-light: oklch(0.550 0.025 246);
+  /* Background Linen */
+  --color-linen: oklch(0.980 0.005 78);
+  --color-linen-warm: oklch(0.965 0.007 78);
 
-  /* Typography */
+  /* Typography — Sans-serif geométrica alinhada com o wordmark */
   --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-display: 'DM Sans', system-ui, -apple-system, sans-serif;
 
   /* Animation tokens */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -68,38 +72,38 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.98 0.003 90);
-  --foreground: oklch(0.18 0.04 250);
+  --background: oklch(0.980 0.005 78);
+  --foreground: oklch(0.210 0.038 253);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 250);
+  --card-foreground: oklch(0.210 0.038 253);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 250);
-  --primary: oklch(0.18 0.04 250);
-  --primary-foreground: oklch(0.98 0.003 90);
-  --secondary: oklch(0.95 0.003 90);
-  --secondary-foreground: oklch(0.42 0.03 240);
-  --muted: oklch(0.95 0.003 90);
-  --muted-foreground: oklch(0.55 0.02 240);
-  --accent: oklch(0.72 0.17 55);
+  --popover-foreground: oklch(0.210 0.038 253);
+  --primary: oklch(0.210 0.038 253);
+  --primary-foreground: oklch(0.980 0.005 78);
+  --secondary: oklch(0.955 0.004 78);
+  --secondary-foreground: oklch(0.419 0.035 246);
+  --muted: oklch(0.955 0.004 78);
+  --muted-foreground: oklch(0.550 0.025 246);
+  --accent: oklch(0.696 0.160 55.5);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.90 0.005 250);
-  --input: oklch(0.90 0.005 250);
-  --ring: oklch(0.72 0.17 55);
-  --chart-1: oklch(0.18 0.04 250);
-  --chart-2: oklch(0.72 0.17 55);
-  --chart-3: oklch(0.42 0.03 240);
-  --chart-4: oklch(0.55 0.02 240);
-  --chart-5: oklch(0.30 0.04 250);
-  --sidebar: oklch(0.98 0.003 90);
-  --sidebar-foreground: oklch(0.18 0.04 250);
-  --sidebar-primary: oklch(0.18 0.04 250);
-  --sidebar-primary-foreground: oklch(0.98 0.003 90);
-  --sidebar-accent: oklch(0.95 0.003 90);
-  --sidebar-accent-foreground: oklch(0.18 0.04 250);
-  --sidebar-border: oklch(0.90 0.005 250);
-  --sidebar-ring: oklch(0.72 0.17 55);
+  --border: oklch(0.910 0.005 253);
+  --input: oklch(0.910 0.005 253);
+  --ring: oklch(0.210 0.038 253);
+  --chart-1: oklch(0.210 0.038 253);
+  --chart-2: oklch(0.696 0.160 55.5);
+  --chart-3: oklch(0.419 0.035 246);
+  --chart-4: oklch(0.550 0.025 246);
+  --chart-5: oklch(0.300 0.035 253);
+  --sidebar: oklch(0.980 0.005 78);
+  --sidebar-foreground: oklch(0.210 0.038 253);
+  --sidebar-primary: oklch(0.210 0.038 253);
+  --sidebar-primary-foreground: oklch(0.980 0.005 78);
+  --sidebar-accent: oklch(0.955 0.004 78);
+  --sidebar-accent-foreground: oklch(0.210 0.038 253);
+  --sidebar-border: oklch(0.910 0.005 253);
+  --sidebar-ring: oklch(0.210 0.038 253);
 }
 
 @layer base {
@@ -108,7 +112,7 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-weight: 300;
+    font-weight: 350;
     letter-spacing: -0.01em;
   }
   button:not(:disabled),
@@ -128,22 +132,22 @@
     scroll-behavior: smooth;
   }
 
-  /* Selection color */
+  /* Selection color — navy, not orange */
   ::selection {
-    background: oklch(0.72 0.17 55 / 0.15);
+    background: oklch(0.210 0.038 253 / 0.12);
   }
 
-  /* Headings use serif font */
+  /* Headings — sans-serif geométrica (alinhada com wordmark) */
   h1, h2 {
-    font-family: var(--font-serif);
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 500;
     letter-spacing: -0.025em;
   }
 
   h3 {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
   }
 
   /* Large headings get tighter tracking */
@@ -156,9 +160,9 @@
     transition: color var(--duration-fast) var(--ease-out-expo);
   }
 
-  /* Focus visible */
+  /* Focus visible — navy ring, not orange */
   :focus-visible {
-    outline: 2px solid oklch(0.72 0.17 55 / 0.5);
+    outline: 2px solid oklch(0.210 0.038 253 / 0.4);
     outline-offset: 3px;
   }
 }
@@ -200,13 +204,13 @@
     }
   }
 
-  /* Decorative inflection dot */
+  /* Decorative inflection dot — Brand Book: orange ONLY for the A dot */
   .inflection-dot {
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: oklch(0.72 0.17 55);
+    background: oklch(0.696 0.160 55.5);
     vertical-align: super;
     margin-left: 2px;
     animation: pulse-dot 3s ease-in-out infinite;
@@ -214,17 +218,17 @@
 
   @keyframes pulse-dot {
     0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.3); opacity: 0.7; }
+    50% { transform: scale(1.15); opacity: 0.8; }
   }
 
-  /* Decorative line */
+  /* Decorative line — navy-based, not orange */
   .deco-line {
     height: 1px;
     background: linear-gradient(
       90deg,
       transparent 0%,
-      oklch(0.72 0.17 55 / 0.4) 20%,
-      oklch(0.72 0.17 55 / 0.4) 80%,
+      oklch(0.210 0.038 253 / 0.15) 20%,
+      oklch(0.210 0.038 253 / 0.15) 80%,
       transparent 100%
     );
   }
@@ -236,13 +240,13 @@
                 border-color var(--duration-normal) var(--ease-out-expo);
   }
   .card-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px oklch(0.18 0.04 250 / 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -8px oklch(0.210 0.038 253 / 0.06);
   }
 
   /* Text gradient */
   .text-gradient {
-    background: linear-gradient(135deg, oklch(0.18 0.04 250) 0%, oklch(0.42 0.03 240) 100%);
+    background: linear-gradient(135deg, oklch(0.210 0.038 253) 0%, oklch(0.419 0.035 246) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -251,15 +255,15 @@
   /* Stagger children animation */
   .stagger-children > * {
     opacity: 0;
-    transform: translateY(16px);
-    animation: stagger-in 0.6s var(--ease-out-expo) forwards;
+    transform: translateY(12px);
+    animation: stagger-in 0.5s var(--ease-out-expo) forwards;
   }
   .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-  .stagger-children > *:nth-child(2) { animation-delay: 80ms; }
-  .stagger-children > *:nth-child(3) { animation-delay: 160ms; }
-  .stagger-children > *:nth-child(4) { animation-delay: 240ms; }
-  .stagger-children > *:nth-child(5) { animation-delay: 320ms; }
-  .stagger-children > *:nth-child(6) { animation-delay: 400ms; }
+  .stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+  .stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+  .stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+  .stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+  .stagger-children > *:nth-child(6) { animation-delay: 300ms; }
 
   @keyframes stagger-in {
     to { opacity: 1; transform: translateY(0); }
@@ -267,32 +271,32 @@
 }
 
 @layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  /* Keep font-serif for backward compat but point to display */
   .font-serif {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
   }
 }
 
 /* ═══════ Mobile Refinements ═══════ */
 @media (max-width: 639px) {
-  /* Reduce hero text on small screens */
   .hero-headline {
     font-size: clamp(2.25rem, 8vw, 3.5rem) !important;
     line-height: 1.1 !important;
   }
 
-  /* Tighter section padding on mobile */
   section {
     padding-top: max(3rem, 8vh);
     padding-bottom: max(3rem, 8vh);
   }
 
-  /* Full-width buttons on mobile */
   .mobile-full-btn {
     width: 100%;
     justify-content: center;
   }
 
-  /* Reduce stat numbers on mobile */
   .stat-number {
     font-size: clamp(2rem, 6vw, 3rem) !important;
   }
@@ -305,7 +309,6 @@
     min-width: 44px;
   }
 
-  /* Larger tap targets for nav links */
   nav a {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;

@@ -70,7 +70,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-white/50 hover:text-orange transition-colors duration-300 font-light"
+                  className="text-sm text-white/50 hover:text-white/70 transition-colors duration-300 font-light"
                 >
                   {link.label}
                 </Link>
@@ -107,7 +107,7 @@ export default function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder={t("newsletter.placeholder")}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:border-orange/50 focus:ring-0 outline-none transition-all duration-300"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:border-white/30 focus:ring-0 outline-none transition-all duration-300"
               />
               <button
                 type="submit"
@@ -135,7 +135,7 @@ export default function Footer() {
             </span>
             <a
               href="mailto:relacionamento@assistants.com.br"
-              className="text-[11px] text-white/30 hover:text-orange transition-colors duration-300 font-light"
+              className="text-[11px] text-white/30 hover:text-white/70 transition-colors duration-300 font-light"
             >
               relacionamento@assistants.com.br
             </a>

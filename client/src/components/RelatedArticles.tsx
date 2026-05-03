@@ -32,9 +32,9 @@ export default function RelatedArticles({ currentSlug, currentTag }: RelatedArti
           </h2>
           <Link
             href="/insights"
-            className="group hidden sm:inline-flex items-center gap-2 text-sm font-medium text-steel-light hover:text-orange transition-colors duration-300"
+            className="group hidden sm:inline-flex items-center gap-2 text-sm font-medium text-steel-light hover:text-steel transition-colors duration-300"
           >
-            <span className="border-b border-transparent group-hover:border-orange/40 transition-colors duration-300 pb-0.5">
+            <span className="border-b border-transparent group-hover:border-navy/30 transition-colors duration-300 pb-0.5">
               {t("article.viewAll")}
             </span>
             <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -47,11 +47,11 @@ export default function RelatedArticles({ currentSlug, currentTag }: RelatedArti
           <FadeIn key={article.id} delay={i * 0.1}>
             <Link
               href={`/insights/${article.slug}`}
-              className="group block h-full p-6 border border-navy/6 hover:border-orange/20 transition-all duration-500 bg-white hover:shadow-md"
+              className="group block h-full p-6 border border-navy/6 hover:border-navy/15 transition-all duration-500 bg-white hover:shadow-md"
             >
               <div className="flex items-center gap-3 mb-4">
                 {article.tag && (
-                  <span className="inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.15em] text-orange bg-orange/8 px-2.5 py-1">
+                  <span className="inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.15em] text-navy bg-navy/8 px-2.5 py-1">
                     <Tag size={8} />
                     {article.tag}
                   </span>
@@ -65,7 +65,7 @@ export default function RelatedArticles({ currentSlug, currentTag }: RelatedArti
                   </span>
                 )}
               </div>
-              <h3 className="text-base font-serif font-medium text-navy group-hover:text-orange transition-colors duration-300 tracking-tight leading-snug mb-3 line-clamp-2">
+              <h3 className="text-base font-serif font-medium text-navy group-hover:text-steel transition-colors duration-300 tracking-tight leading-snug mb-3 line-clamp-2">
                 {article.title}
               </h3>
               {article.excerpt && (

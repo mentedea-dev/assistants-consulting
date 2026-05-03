@@ -123,12 +123,12 @@
 - [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)
 
 ## Fase 17: Refinamento Final Pentagram + Correções
-- [ ] Equilibrar proporção logo/nav no header (h-10/h-14, nav text-sm)
-- [ ] h3 com font-weight 500 (mais legível em tamanhos menores)
-- [ ] Aumentar textura CTA (opacity 0.06)
-- [ ] Hover mais pronunciado nos article cards
-- [ ] Footer logo h-10 (proporcional ao header)
-- [ ] Verificar e corrigir informação sobre escritório em Brasília
+- [x] Equilibrar proporção logo/nav no header (h-10/h-14, nav text-sm)
+- [x] h3 com font-weight 500 (mais legível em tamanhos menores)
+- [x] Aumentar textura CTA (opacity 0.06)
+- [x] Hover mais pronunciado nos article cards
+- [x] Footer logo h-10 (proporcional ao header)
+- [x] Verificar e corrigir informação sobre escritório em Brasília (dados reais adicionados na Fase 18)
 
 ## Fase 18: Atualizar Informações de Contato Reais
 - [x] Atualizar endereço SP: Rua Cláudio Soares, 72 — 8º andar — Pinheiros, SP 05422-030
@@ -137,3 +137,15 @@
 - [x] Atualizar e-mail: relacionamento@assistants.com.br
 - [x] Atualizar i18n PT e EN
 - [x] Atualizar sidebar de contato e footer
+
+## Fase 19: Revisão Integral de Branding (Brand Book Oficial)
+- [x] Upload de todos os assets oficiais (wordmark, symbol, favicon, ícones, imagens de serviços, hero)
+- [x] Substituir hero por v3_01_hero_principal.webp oficial
+- [x] Substituir imagens de serviços por assets oficiais (v2_02, v2_03, v2_06)
+- [x] Corrigir paleta de cores para exatos: Navy #0B1929, Orange #E67E22, Steel #3D4F5F
+- [x] Mudar tipografia de headings de serif (Cormorant Garamond) para sans-serif geométrica (alinhado com wordmark)
+- [x] Reduzir drasticamente uso de orange (apenas CTAs primários, ponto de inflexão do hero e SectionDivider dot)
+- [x] Reposicionar/redesenhar widget de chat (mais discreto, integrado à marca — bottom-left, navy-based)
+- [x] Integrar ícones de diferenciais (assets uploadados; página Sobre usa Lucide icons para credenciais)
+- [x] Verificar e corrigir stats (números corretos)
+- [x] Testar todas as páginas (TypeScript 0 erros, 15 testes passando, verificação visual OK)

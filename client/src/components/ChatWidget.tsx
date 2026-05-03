@@ -1,5 +1,8 @@
 /*
- * PENTAGRAM CRAFT: Chat Widget (i18n)
+ * Chat Widget — Assistants Consulting
+ * Posicionamento: inferior esquerdo (não compete com scroll/CTA à direita)
+ * Visual: navy-based, discreto, integrado à identidade da marca
+ * Orange usado APENAS no inflection dot do logo
  */
 import { useState, useRef, useEffect, useMemo } from "react";
 import { MessageCircle, X, Send, Loader2, User, Bot } from "lucide-react";
@@ -68,7 +71,7 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Chat button */}
+      {/* Chat launcher — bottom-left, navy, understated */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -76,56 +79,56 @@ export default function ChatWidget() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-orange hover:bg-orange-light rounded-full flex items-center justify-center shadow-lg shadow-orange/20 transition-colors duration-300"
+            className="fixed bottom-6 left-6 z-50 w-12 h-12 bg-navy hover:bg-navy-light rounded-full flex items-center justify-center shadow-lg shadow-navy/15 transition-colors duration-300 group"
             aria-label={t("chat.open")}
           >
-            <MessageCircle size={22} className="text-white" />
+            <MessageCircle size={20} className="text-white/90 group-hover:text-white transition-colors" />
           </motion.button>
         )}
       </AnimatePresence>
 
-      {/* Chat panel */}
+      {/* Chat panel — bottom-left, restrained design */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 16, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[520px] max-h-[calc(100vh-3rem)] bg-white border border-navy/10 shadow-2xl shadow-navy/10 flex flex-col overflow-hidden"
+            exit={{ opacity: 0, y: 16, scale: 0.97 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-6 left-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[calc(100vh-3rem)] bg-white border border-navy/8 shadow-2xl shadow-navy/8 flex flex-col overflow-hidden rounded-sm"
           >
-            {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 bg-navy">
+            {/* Header — navy, minimal */}
+            <div className="flex items-center justify-between px-5 py-3.5 bg-navy border-b border-navy-light/20">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-orange/20 rounded-full flex items-center justify-center">
-                  <Bot size={16} className="text-orange" />
+                <div className="w-7 h-7 bg-white/10 rounded-full flex items-center justify-center">
+                  <Bot size={14} className="text-white/80" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-white">{t("chat.title")}</h3>
-                  <p className="text-[10px] text-white/40">Assistants Consulting</p>
+                  <h3 className="text-[13px] font-medium text-white tracking-tight">{t("chat.title")}</h3>
+                  <p className="text-[10px] text-white/35 tracking-wide">Assistants Consulting</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+                className="w-7 h-7 flex items-center justify-center text-white/40 hover:text-white/80 transition-colors"
                 aria-label={t("chat.close")}
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3.5">
               {messages.length === 0 && (
-                <div className="text-center py-8">
-                  <div className="w-12 h-12 bg-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Bot size={22} className="text-orange" />
+                <div className="text-center py-6">
+                  <div className="w-10 h-10 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Bot size={18} className="text-navy/60" />
                   </div>
-                  <p className="text-sm font-medium text-navy mb-2">{t("chat.greeting")}</p>
+                  <p className="text-sm font-medium text-navy mb-1.5">{t("chat.greeting")}</p>
                   <p className="text-xs text-steel-light font-light leading-relaxed max-w-[260px] mx-auto">
                     {t("chat.intro")}
                   </p>
-                  <div className="mt-5 flex flex-col gap-2">
+                  <div className="mt-4 flex flex-col gap-1.5">
                     {suggestions.map((suggestion) => (
                       <button
                         key={suggestion}
@@ -134,7 +137,7 @@ export default function ChatWidget() {
                           setMessages([{ role: "user", content: suggestion }]);
                           sendMutation.mutate({ sessionId, message: suggestion });
                         }}
-                        className="text-xs text-left px-3 py-2 border border-navy/8 hover:border-orange/20 hover:bg-orange/3 transition-all duration-200 text-navy/70"
+                        className="text-xs text-left px-3 py-2 border border-navy/6 hover:border-navy/15 hover:bg-navy/2 transition-all duration-200 text-navy/70 rounded-sm"
                       >
                         {suggestion}
                       </button>
@@ -146,21 +149,21 @@ export default function ChatWidget() {
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: i === messages.length - 1 ? 0.1 : 0, ease: [0.16, 1, 0.3, 1] }}
-                  className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  transition={{ duration: 0.25, delay: i === messages.length - 1 ? 0.08 : 0, ease: [0.16, 1, 0.3, 1] }}
+                  className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   {msg.role === "assistant" && (
-                    <div className="w-6 h-6 bg-orange/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <Bot size={12} className="text-orange" />
+                    <div className="w-5 h-5 bg-navy/6 rounded-full flex items-center justify-center shrink-0 mt-1">
+                      <Bot size={10} className="text-navy/60" />
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] px-4 py-2.5 text-sm leading-relaxed ${
+                    className={`max-w-[80%] px-3.5 py-2.5 text-[13px] leading-relaxed ${
                       msg.role === "user"
-                        ? "bg-navy text-white rounded-tl-lg rounded-tr-sm rounded-b-lg"
-                        : "bg-gray-50 text-navy border border-navy/5 rounded-tr-lg rounded-tl-sm rounded-b-lg"
+                        ? "bg-navy text-white/95 rounded-tl-md rounded-tr-sm rounded-b-md"
+                        : "bg-linen text-navy border border-navy/5 rounded-tr-md rounded-tl-sm rounded-b-md"
                     }`}
                   >
                     {msg.role === "assistant" ? (
@@ -172,23 +175,23 @@ export default function ChatWidget() {
                     )}
                   </div>
                   {msg.role === "user" && (
-                    <div className="w-6 h-6 bg-navy/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                      <User size={12} className="text-navy" />
+                    <div className="w-5 h-5 bg-navy/8 rounded-full flex items-center justify-center shrink-0 mt-1">
+                      <User size={10} className="text-navy/60" />
                     </div>
                   )}
                 </motion.div>
               ))}
 
               {sendMutation.isPending && (
-                <div className="flex gap-2.5 justify-start">
-                  <div className="w-6 h-6 bg-orange/10 rounded-full flex items-center justify-center shrink-0">
-                    <Bot size={12} className="text-orange" />
+                <div className="flex gap-2 justify-start">
+                  <div className="w-5 h-5 bg-navy/6 rounded-full flex items-center justify-center shrink-0">
+                    <Bot size={10} className="text-navy/60" />
                   </div>
-                  <div className="bg-gray-50 border border-navy/5 px-4 py-3 rounded-tr-lg rounded-tl-sm rounded-b-lg">
-                    <div className="flex gap-1.5">
-                      <motion.div className="w-1.5 h-1.5 rounded-full bg-orange" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0 }} />
-                      <motion.div className="w-1.5 h-1.5 rounded-full bg-orange" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.2 }} />
-                      <motion.div className="w-1.5 h-1.5 rounded-full bg-orange" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.4 }} />
+                  <div className="bg-linen border border-navy/5 px-3.5 py-3 rounded-tr-md rounded-tl-sm rounded-b-md">
+                    <div className="flex gap-1">
+                      <motion.div className="w-1.5 h-1.5 rounded-full bg-navy/30" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0 }} />
+                      <motion.div className="w-1.5 h-1.5 rounded-full bg-navy/30" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.2 }} />
+                      <motion.div className="w-1.5 h-1.5 rounded-full bg-navy/30" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.4 }} />
                     </div>
                   </div>
                 </div>
@@ -197,8 +200,8 @@ export default function ChatWidget() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Input */}
-            <div className="px-4 py-3 border-t border-navy/8 bg-white">
+            {/* Input — clean, minimal */}
+            <div className="px-4 py-3 border-t border-navy/6 bg-white">
               <div className="flex items-end gap-2">
                 <textarea
                   ref={inputRef}
@@ -207,18 +210,18 @@ export default function ChatWidget() {
                   onKeyDown={handleKeyDown}
                   placeholder={t("chat.placeholder")}
                   rows={1}
-                  className="flex-1 resize-none px-3 py-2.5 text-sm bg-gray-50 border border-navy/8 focus:border-orange/40 rounded-md outline-none transition-colors duration-200 max-h-24"
+                  className="flex-1 resize-none px-3 py-2.5 text-[13px] bg-linen border border-navy/6 focus:border-navy/20 rounded-sm outline-none transition-colors duration-200 max-h-24"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || sendMutation.isPending}
-                  className="w-9 h-9 flex items-center justify-center bg-orange text-white rounded-md hover:bg-orange-light transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+                  className="w-8 h-8 flex items-center justify-center bg-navy text-white rounded-sm hover:bg-navy-light transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
                   aria-label={t("chat.send")}
                 >
-                  <Send size={14} />
+                  <Send size={13} />
                 </button>
               </div>
-              <p className="text-[9px] text-steel-light/60 mt-2 text-center">
+              <p className="text-[9px] text-steel-light/50 mt-1.5 text-center tracking-wide">
                 {t("chat.disclaimer")}
               </p>
             </div>

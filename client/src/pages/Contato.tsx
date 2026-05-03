@@ -89,7 +89,7 @@ export default function Contato() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const inputClasses = "w-full px-4 py-3.5 bg-white border border-navy/10 text-navy text-sm font-light focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all duration-300 placeholder:text-steel-light/50 rounded-sm";
+  const inputClasses = "w-full px-4 py-3.5 bg-white border border-navy/10 text-navy text-sm font-light focus:border-navy focus:ring-1 focus:ring-navy/20 outline-none transition-all duration-300 placeholder:text-steel-light/50 rounded-sm";
   const selectClasses = `${inputClasses} appearance-none cursor-pointer`;
   const labelClasses = "block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-2";
 
@@ -106,7 +106,7 @@ export default function Contato() {
         <section className="pt-32 md:pt-44 pb-16 md:pb-20">
           <div className="container">
             <FadeIn>
-              <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
+              <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
                 {t("contact.tag")}
               </p>
             </FadeIn>
@@ -157,16 +157,16 @@ export default function Contato() {
                               onClick={() => s < step ? setStep(s) : undefined}
                               className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${
                                 s === step
-                                  ? "bg-orange text-white"
+                                  ? "bg-navy text-white"
                                   : s < step
-                                  ? "bg-orange/10 text-orange cursor-pointer"
+                                  ? "bg-navy/10 text-navy cursor-pointer"
                                   : "bg-navy/5 text-navy/30"
                               }`}
                             >
                               {s < step ? "✓" : s}
                             </button>
                             {s < 3 && (
-                              <div className={`w-12 md:w-20 h-px transition-colors duration-300 ${s < step ? "bg-orange/30" : "bg-navy/8"}`} />
+                              <div className={`w-12 md:w-20 h-px transition-colors duration-300 ${s < step ? "bg-navy/20" : "bg-navy/8"}`} />
                             )}
                           </div>
                         ))}
@@ -183,7 +183,7 @@ export default function Contato() {
                       {step === 1 && (
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
-                            <User size={18} className="text-orange" />
+                            <User size={18} className="text-navy" />
                             <h3 className="text-lg font-serif text-navy">{t("contact.step1.title")}</h3>
                           </div>
 
@@ -248,7 +248,7 @@ export default function Contato() {
                       {step === 2 && (
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
-                            <Briefcase size={18} className="text-orange" />
+                            <Briefcase size={18} className="text-navy" />
                             <h3 className="text-lg font-serif text-navy">{t("contact.step2.title")}</h3>
                           </div>
 
@@ -289,7 +289,7 @@ export default function Contato() {
                                         ? level === "high"
                                           ? "bg-red-50 border-red-300 text-red-700"
                                           : level === "medium"
-                                          ? "bg-orange/10 border-orange/40 text-orange"
+                                          ? "bg-navy/10 border-navy/30 text-navy"
                                           : "bg-green-50 border-green-300 text-green-700"
                                         : "bg-white border-navy/10 text-navy/50 hover:border-navy/25"
                                     }`}
@@ -309,7 +309,7 @@ export default function Contato() {
                                     onClick={() => setFormData({ ...formData, contatoPreferido: method })}
                                     className={`flex-1 py-3 px-3 text-xs font-medium border rounded-sm transition-all duration-300 ${
                                       formData.contatoPreferido === method
-                                        ? "bg-orange/10 border-orange/40 text-orange"
+                                        ? "bg-navy/10 border-navy/30 text-navy"
                                         : "bg-white border-navy/10 text-navy/50 hover:border-navy/25"
                                     }`}
                                   >
@@ -358,7 +358,7 @@ export default function Contato() {
                       {step === 3 && (
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
-                            <Building2 size={18} className="text-orange" />
+                            <Building2 size={18} className="text-navy" />
                             <h3 className="text-lg font-serif text-navy">{t("contact.step3.title")}</h3>
                           </div>
 
@@ -442,8 +442,8 @@ export default function Contato() {
                     {offices.map((office) => (
                       <div key={office.label} className="group">
                         <div className="flex gap-4">
-                          <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-orange/10 transition-colors duration-300">
-                            <MapPin size={16} className="text-orange" strokeWidth={1.5} />
+                          <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
+                            <MapPin size={16} className="text-navy" strokeWidth={1.5} />
                           </div>
                           <div>
                             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{office.label}</p>
@@ -453,7 +453,7 @@ export default function Contato() {
                           </div>
                         </div>
                         <div className="flex gap-4 mt-3 ml-[52px]">
-                          <Phone size={13} className="text-orange/60 shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <Phone size={13} className="text-white/60 shrink-0 mt-0.5" strokeWidth={1.5} />
                           <p className="text-sm text-white/80">{office.phone}</p>
                         </div>
                       </div>
@@ -461,8 +461,8 @@ export default function Contato() {
 
                     {/* Email */}
                     <div className="flex gap-4 group">
-                      <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-orange/10 transition-colors duration-300">
-                        <Mail size={16} className="text-orange" strokeWidth={1.5} />
+                      <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
+                        <Mail size={16} className="text-navy" strokeWidth={1.5} />
                       </div>
                       <div>
                         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{t("contact.info.email.label")}</p>
@@ -473,8 +473,8 @@ export default function Contato() {
 
                     {/* Horário */}
                     <div className="flex gap-4 group">
-                      <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-orange/10 transition-colors duration-300">
-                        <Clock size={16} className="text-orange" strokeWidth={1.5} />
+                      <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
+                        <Clock size={16} className="text-navy" strokeWidth={1.5} />
                       </div>
                       <div>
                         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{t("contact.hours.title")}</p>

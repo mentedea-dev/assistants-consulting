@@ -160,7 +160,7 @@ export default function Insights() {
         <section className="pt-32 md:pt-44 pb-16 md:pb-20">
           <div className="container">
             <FadeIn>
-              <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
+              <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
                 {t("insightsPage.tag")}
               </p>
             </FadeIn>
@@ -194,7 +194,7 @@ export default function Insights() {
                     className={`px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${
                       selectedTag === "all"
                         ? "bg-navy text-white"
-                        : "bg-white border border-navy/10 text-steel-light hover:border-orange/30 hover:text-navy"
+                        : "bg-white border border-navy/10 text-steel-light hover:border-navy/20 hover:text-navy"
                     }`}
                   >
                     {locale === "pt" ? "Todos" : "All"}
@@ -205,8 +205,8 @@ export default function Insights() {
                       onClick={() => handleTagChange(tag)}
                       className={`px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${
                         selectedTag === tag
-                          ? "bg-orange text-white"
-                          : "bg-white border border-navy/10 text-steel-light hover:border-orange/30 hover:text-navy"
+                          ? "bg-navy text-white"
+                          : "bg-white border border-navy/10 text-steel-light hover:border-navy/20 hover:text-navy"
                       }`}
                     >
                       {tag}
@@ -222,7 +222,7 @@ export default function Insights() {
                     value={searchQuery}
                     onChange={(e) => handleSearch(e.target.value)}
                     placeholder={locale === "pt" ? "Buscar artigos..." : "Search articles..."}
-                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-navy/10 text-sm text-navy placeholder:text-steel-light/50 focus:border-orange/40 focus:ring-0 outline-none transition-all duration-300"
+                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-navy/10 text-sm text-navy placeholder:text-steel-light/50 focus:border-navy/30 focus:ring-0 outline-none transition-all duration-300"
                   />
                 </div>
               </div>
@@ -248,7 +248,7 @@ export default function Insights() {
                   <div className="relative p-10 md:p-16 lg:p-20">
                     <div className="max-w-3xl">
                       <div className="flex items-center gap-4 mb-8">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-navy bg-orange px-3 py-1.5">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white bg-navy px-3 py-1.5">
                           {featured.tag}
                         </span>
                         <span className="text-[11px] text-white/35 font-light">{featured.date}</span>
@@ -263,16 +263,16 @@ export default function Insights() {
                       {(featured as any).slug ? (
                         <Link
                           href={`/insights/${(featured as any).slug}`}
-                          className="group/btn inline-flex items-center gap-3 text-orange text-sm font-medium hover:text-orange-light transition-colors duration-300"
+                          className="group/btn inline-flex items-center gap-3 text-navy text-sm font-medium hover:text-steel transition-colors duration-300"
                         >
-                          <span className="border-b border-orange/30 group-hover/btn:border-orange/60 pb-0.5 transition-colors duration-300">
+                          <span className="border-b border-navy/30 group-hover/btn:border-navy/60 pb-0.5 transition-colors duration-300">
                             {t("insightsPage.readFull")}
                           </span>
                           <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
                         </Link>
                       ) : (
-                        <span className="group/btn inline-flex items-center gap-3 text-orange text-sm font-medium">
-                          <span className="border-b border-orange/30 pb-0.5">
+                        <span className="group/btn inline-flex items-center gap-3 text-navy text-sm font-medium">
+                          <span className="border-b border-navy/30 pb-0.5">
                             {t("insightsPage.readFull")}
                           </span>
                           <ArrowRight size={14} />
@@ -294,7 +294,7 @@ export default function Insights() {
           <div className="container">
             {isLoading ? (
               <div className="flex items-center justify-center py-20">
-                <Loader2 size={32} className="animate-spin text-orange" />
+                <Loader2 size={32} className="animate-spin text-navy" />
               </div>
             ) : gridArticles.length === 0 ? (
               <div className="text-center py-20">
@@ -304,7 +304,7 @@ export default function Insights() {
                 {(selectedTag !== "all" || searchQuery) && (
                   <button
                     onClick={() => { setSelectedTag("all"); setSearchQuery(""); }}
-                    className="mt-4 text-orange text-sm font-medium hover:text-orange-light transition-colors"
+                    className="mt-4 text-navy text-sm font-medium hover:text-steel transition-colors"
                   >
                     {locale === "pt" ? "Limpar filtros" : "Clear filters"}
                   </button>
@@ -315,15 +315,15 @@ export default function Insights() {
                 {gridArticles.map((article, i) => (
                   <FadeIn key={i} delay={i * 0.06}>
                     <Link href={(article as any).slug ? `/insights/${(article as any).slug}` : "#"} className="block h-full">
-                      <article className="group bg-white border border-navy/5 hover:border-orange/15 transition-all duration-500 card-lift h-full flex flex-col cursor-pointer">
+                      <article className="group bg-white border border-navy/5 hover:border-navy/15 transition-all duration-500 card-lift h-full flex flex-col cursor-pointer">
                         <div className="p-8 md:p-9 flex flex-col flex-1">
                           <div className="flex items-center gap-3 mb-5">
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-orange bg-orange/8 px-3 py-1.5">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-navy bg-navy/8 px-3 py-1.5">
                               {article.tag}
                             </span>
                             <span className="text-[11px] text-steel-light font-light">{article.date}</span>
                           </div>
-                          <h3 className="text-lg font-serif text-navy tracking-tight leading-snug mb-4 group-hover:text-orange transition-colors duration-300">
+                          <h3 className="text-lg font-serif text-navy tracking-tight leading-snug mb-4 group-hover:text-steel transition-colors duration-300">
                             {article.title}
                           </h3>
                           <p className="text-steel-light text-sm leading-[1.8] font-light flex-1">
@@ -331,7 +331,7 @@ export default function Insights() {
                           </p>
                           <div className="mt-7 pt-5 border-t border-navy/5 flex items-center justify-between">
                             <span className="text-[11px] text-steel-light font-light">{article.readTime} {t("insightsPage.readTime")}</span>
-                            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-navy group-hover:text-orange transition-colors duration-300">
+                            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-navy group-hover:text-steel transition-colors duration-300">
                               {t("insightsPage.read")}
                               <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform duration-300" />
                             </span>
@@ -354,7 +354,7 @@ export default function Insights() {
                     className={`w-10 h-10 flex items-center justify-center text-sm font-medium transition-all duration-300 ${
                       currentPage === page
                         ? "bg-navy text-white"
-                        : "bg-white border border-navy/10 text-steel-light hover:border-orange/30 hover:text-navy"
+                        : "bg-white border border-navy/10 text-steel-light hover:border-navy/20 hover:text-navy"
                     }`}
                   >
                     {page}
@@ -392,7 +392,7 @@ export default function Insights() {
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   required
                   placeholder={t("insightsPage.newsletter.placeholder")}
-                  className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:border-orange/50 focus:ring-0 outline-none transition-all duration-300"
+                  className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:border-white/30 focus:ring-0 outline-none transition-all duration-300"
                 />
                 <button
                   type="submit"
