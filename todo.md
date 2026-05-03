@@ -71,3 +71,13 @@
 - [x] Redesenhar layout do formulário com UX aprimorada (multi-step 3 etapas)
 - [x] Manter i18n (PT/EN) nos novos campos
 - [x] Testar envio e visualização no admin (15 testes passando)
+
+## Fase 10: Aprimoramento Insights/Notícias + Chat IA + Importação
+- [x] Aprimorar página de Insights com layout de blog profissional (categorias, filtros, busca)
+- [x] Adicionar suporte a categorias/tags nos artigos (schema + admin)
+- [x] Melhorar o system prompt do chat IA com roteiro detalhado dos serviços da Assistants
+- [x] Permitir ao admin configurar o roteiro/contexto do chat IA via painel (Settings > Roteiro do Chat IA)
+- [x] Extrair conteúdo de notícias do site atual (www.assistants.com.br) — 25 artigos extraídos
+- [x] Criar endpoint de importação em massa de artigos (articles.importBatch)
+- [x] UI de importação no Admin com pré-visualização JSON
+- [ ] Migrar artigos existentes do site atual para o novo CMS (aguardando deploy + login admin)

@@ -12,16 +12,25 @@ import { trpc } from "@/lib/trpc";
 import { useState, useMemo, useEffect } from "react";
 import { toast } from "sonner";
 import { getLoginUrl } from "@/const";
-import {
-  FileText, MessageSquare, Mail, Plus, Edit, Trash2,
+import { FileText, MessageSquare, Mail, Plus, Edit, Trash2,
   Eye, Clock, ArrowLeft, Loader2, CheckCircle2,
   Columns2, PenLine, Settings, LayoutDashboard,
   Users, TrendingUp, Search, ExternalLink, Save,
-  Globe, BarChart3
+  Globe, BarChart3, Upload
 } from "lucide-react";
 import { Streamdown } from "streamdown";
 
 type Tab = "dashboard" | "articles" | "contacts" | "newsletter" | "settings";
+
+interface ImportArticle {
+  title: string;
+  excerpt?: string;
+  content?: string;
+  tag?: string;
+  readTime?: string;
+  status?: "draft" | "published";
+  publishedAt?: string;
+}
 
 export default function Admin() {
   const { user, loading, isAuthenticated } = useAuth();
@@ -37,9 +46,13 @@ export default function Admin() {
     status: "draft" as "draft" | "published",
   });
   const [showPreview, setShowPreview] = useState(false);
+  const [showImport, setShowImport] = useState(false);
+  const [importJson, setImportJson] = useState("");
+  const [importPreview, setImportPreview] = useState<ImportArticle[]>([]);
 
   // Settings state
   const [googleVerification, setGoogleVerification] = useState("");
+  const [chatBrief, setChatBrief] = useState("");
   const [settingsLoaded, setSettingsLoaded] = useState(false);
 
   // Queries
@@ -54,6 +67,8 @@ export default function Admin() {
     if (!settingsLoaded && settingsQuery.data) {
       const gv = settingsQuery.data.find((s) => s.key === "google_verification");
       if (gv) setGoogleVerification(gv.value || "");
+      const cb = settingsQuery.data.find((s) => s.key === "chat_brief");
+      if (cb) setChatBrief(cb.value || "");
       setSettingsLoaded(true);
     }
   }, [settingsQuery.data, settingsLoaded]);
@@ -128,6 +143,39 @@ export default function Admin() {
 
   const handleSaveGoogleVerification = () => {
     saveSetting.mutate({ key: "google_verification", value: googleVerification });
+  };
+
+  const handleSaveChatBrief = () => {
+    saveSetting.mutate({ key: "chat_brief", value: chatBrief });
+  };
+
+  const importArticles = trpc.articles.importBatch.useMutation({
+    onSuccess: (data) => {
+      toast.success(`${data.imported} artigos importados com sucesso!`);
+      articlesQuery.refetch();
+      setShowImport(false);
+      setImportJson("");
+      setImportPreview([]);
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const handleParseImport = () => {
+    try {
+      const parsed = JSON.parse(importJson);
+      const arr = Array.isArray(parsed) ? parsed : parsed.articles || [];
+      setImportPreview(arr);
+    } catch {
+      toast.error("JSON inv\u00e1lido. Verifique o formato.");
+    }
+  };
+
+  const handleConfirmImport = () => {
+    if (importPreview.length === 0) {
+      toast.error("Nenhum artigo para importar.");
+      return;
+    }
+    importArticles.mutate({ articles: importPreview });
   };
 
   // Dashboard metrics
@@ -392,16 +440,24 @@ export default function Admin() {
           )}
 
           {/* ═══ ARTICLES TAB ═══ */}
-          {activeTab === "articles" && !showEditor && (
+          {activeTab === "articles" && !showEditor && !showImport && (
             <div>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-serif font-medium text-navy">Artigos</h2>
-                <button
-                  onClick={() => setShowEditor(true)}
-                  className="inline-flex items-center gap-2 bg-orange text-white px-5 py-2.5 text-sm font-medium rounded-lg hover:bg-orange-light transition-colors shadow-sm"
-                >
-                  <Plus size={14} /> Novo artigo
-                </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setShowImport(true)}
+                    className="inline-flex items-center gap-2 border border-gray-300 text-navy px-4 py-2.5 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <Upload size={14} /> Importar
+                  </button>
+                  <button
+                    onClick={() => setShowEditor(true)}
+                    className="inline-flex items-center gap-2 bg-orange text-white px-5 py-2.5 text-sm font-medium rounded-lg hover:bg-orange-light transition-colors shadow-sm"
+                  >
+                    <Plus size={14} /> Novo artigo
+                  </button>
+                </div>
               </div>
 
               <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
@@ -462,6 +518,86 @@ export default function Admin() {
                   </div>
                 )}
               </div>
+            </div>
+          )}
+
+          {/* ═══ IMPORT ARTICLES ═══ */}
+          {activeTab === "articles" && showImport && (
+            <div>
+              <button
+                onClick={() => { setShowImport(false); setImportJson(""); setImportPreview([]); }}
+                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-navy mb-6 transition-colors"
+              >
+                <ArrowLeft size={14} /> Voltar aos artigos
+              </button>
+
+              <h2 className="text-xl font-serif font-medium text-navy mb-4">Importar Artigos</h2>
+              <p className="text-sm text-gray-500 mb-4 leading-relaxed">
+                Cole o JSON com os artigos a importar. O formato aceito é um array de objetos com os campos:
+                <code className="bg-gray-100 px-1.5 py-0.5 rounded text-[11px] ml-1">title, excerpt, content, tag, readTime, status, publishedAt</code>
+              </p>
+
+              {importPreview.length === 0 ? (
+                <div className="space-y-4">
+                  <textarea
+                    value={importJson}
+                    onChange={(e) => setImportJson(e.target.value)}
+                    rows={14}
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm font-mono focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all resize-y"
+                    placeholder='[{"title": "Meu Artigo", "excerpt": "Resumo...", "tag": "Sa\u00fade", "status": "published", "publishedAt": "2025-06-01"}]'
+                  />
+                  <button
+                    onClick={handleParseImport}
+                    disabled={!importJson.trim()}
+                    className="inline-flex items-center gap-2 bg-navy text-white px-5 py-2.5 text-sm font-medium rounded-lg hover:bg-navy-light transition-colors disabled:opacity-50"
+                  >
+                    <Eye size={14} /> Pré-visualizar
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <p className="text-sm font-medium text-green-800">
+                      <CheckCircle2 size={14} className="inline mr-1.5" />
+                      {importPreview.length} artigo(s) prontos para importa\u00e7\u00e3o
+                    </p>
+                  </div>
+
+                  <div className="bg-white border border-gray-200 rounded-lg max-h-80 overflow-y-auto divide-y divide-gray-100">
+                    {importPreview.map((article, i) => (
+                      <div key={i} className="px-4 py-3">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-medium text-orange bg-orange/10 px-2 py-0.5 rounded">
+                            {article.tag || "Sem tag"}
+                          </span>
+                          <span className="text-[10px] text-gray-400">{article.publishedAt || "Sem data"}</span>
+                        </div>
+                        <p className="text-sm font-medium text-navy mt-1">{article.title}</p>
+                        {article.excerpt && (
+                          <p className="text-xs text-gray-400 mt-0.5 truncate">{article.excerpt}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={handleConfirmImport}
+                      disabled={importArticles.isPending}
+                      className="inline-flex items-center gap-2 bg-orange text-white px-5 py-2.5 text-sm font-medium rounded-lg hover:bg-orange-light transition-colors disabled:opacity-60"
+                    >
+                      {importArticles.isPending ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
+                      Confirmar importa\u00e7\u00e3o
+                    </button>
+                    <button
+                      onClick={() => setImportPreview([])}
+                      className="text-sm text-gray-500 hover:text-navy transition-colors"
+                    >
+                      Voltar e editar JSON
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -772,6 +908,46 @@ export default function Admin() {
                   >
                     {saveSetting.isPending ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
                     Salvar
+                  </button>
+                </div>
+              </div>
+
+              {/* Chat IA — Roteiro Editável */}
+              <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-orange/10 rounded-lg flex items-center justify-center">
+                    <MessageSquare size={18} className="text-orange" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-navy">Roteiro do Chat IA</h3>
+                    <p className="text-xs text-gray-400">Personalize as instruções e contexto do assistente virtual</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      Instruções adicionais para o assistente
+                    </label>
+                    <textarea
+                      value={chatBrief}
+                      onChange={(e) => setChatBrief(e.target.value)}
+                      rows={10}
+                      className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all resize-y"
+                      placeholder={`Exemplo:\n- Nosso diferencial é a experiência de 35 anos no mercado\n- Temos sede em São Paulo e atendemos todo o Brasil\n- Nossos principais clientes são empresas do setor financeiro e saúde\n- Horário de atendimento: seg-sex, 9h às 18h\n- E-mail de contato: contato@assistants.com.br\n- Telefone: (11) 1234-5678`}
+                    />
+                    <p className="text-[11px] text-gray-400 mt-1.5">
+                      Escreva informações específicas sobre a empresa que o assistente deve usar nas respostas.
+                      O roteiro base (áreas de atuação, diretrizes de resposta) já está configurado automaticamente.
+                      Use este campo para adicionar detalhes como endereço, telefone, diferenciais, horários, etc.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleSaveChatBrief}
+                    disabled={saveSetting.isPending}
+                    className="inline-flex items-center gap-2 bg-navy text-white px-5 py-2.5 text-sm font-medium rounded-lg hover:bg-navy-light transition-colors disabled:opacity-60"
+                  >
+                    {saveSetting.isPending ? <Loader2 size={14} className="animate-spin" /> : <Save size={14} />}
+                    Salvar roteiro
                   </button>
                 </div>
               </div>

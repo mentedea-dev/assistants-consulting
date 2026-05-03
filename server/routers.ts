@@ -184,6 +184,48 @@ export const appRouter = router({
         await db.delete(articles).where(eq(articles.id, input.id));
         return { success: true };
       }),
+
+    importBatch: adminProcedure
+      .input(z.object({
+        articles: z.array(z.object({
+          title: z.string().min(3),
+          excerpt: z.string().optional(),
+          content: z.string().optional(),
+          tag: z.string().optional(),
+          readTime: z.string().optional(),
+          status: z.enum(["draft", "published"]).optional(),
+          publishedAt: z.string().optional(),
+        })),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database not available");
+
+        let imported = 0;
+        for (const article of input.articles) {
+          const slug = article.title
+            .toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "")
+            + "-" + nanoid(6);
+
+          await db.insert(articles).values({
+            title: article.title,
+            slug,
+            excerpt: article.excerpt || null,
+            content: article.content || null,
+            tag: article.tag || null,
+            readTime: article.readTime || null,
+            status: article.status || "published",
+            authorId: ctx.user.id,
+            publishedAt: article.publishedAt ? new Date(article.publishedAt) : new Date(),
+          });
+          imported++;
+        }
+
+        return { success: true, imported };
+      }),
   }),
 
   // ═══════════════════════ NEWSLETTER ═══════════════════════
@@ -286,6 +328,17 @@ export const appRouter = router({
           .where(eq(chatMessages.sessionId, input.sessionId))
           .orderBy(chatMessages.createdAt);
 
+        // Load custom brief from settings
+        let customBrief = "";
+        try {
+          const briefSetting = await db.select().from(siteSettings)
+            .where(eq(siteSettings.key, "chat_brief"))
+            .limit(1);
+          if (briefSetting.length > 0 && briefSetting[0].value) {
+            customBrief = briefSetting[0].value;
+          }
+        } catch { /* non-blocking */ }
+
         const systemPrompt = `Você é o assistente virtual da Assistants Consulting, uma empresa de consultoria atuarial com 35 anos de mercado no Brasil. 
 
 Áreas de atuação:
@@ -305,7 +358,7 @@ Diretrizes de resposta:
 - Quando a pergunta exigir análise específica do caso do cliente, sugira agendar uma conversa com os atuários da equipe
 - Nunca invente dados ou números específicos sobre a empresa
 - Oriente o usuário a entrar em contato pelo formulário ou e-mail contato@assistants.com.br para assuntos que exijam sigilo ou análise detalhada
-- Se a pergunta não for relacionada a atuária, seguros, previdência ou saúde suplementar, redirecione educadamente para os temas de competência da empresa`;
+- Se a pergunta não for relacionada a atuária, seguros, previdência ou saúde suplementar, redirecione educadamente para os temas de competência da empresa${customBrief ? `\n\nInformações adicionais fornecidas pela empresa:\n${customBrief}` : ""}`;
 
         const messages = [
           { role: "system" as const, content: systemPrompt },

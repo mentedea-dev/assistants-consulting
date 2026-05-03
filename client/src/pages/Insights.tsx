@@ -1,5 +1,8 @@
 /*
- * PENTAGRAM CRAFT: Insights (i18n)
+ * PENTAGRAM CRAFT: Insights / Notícias (i18n)
+ * - Filtros por categoria/tag
+ * - Busca por título
+ * - Paginação
  */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,12 +11,14 @@ import SectionDivider from "@/components/SectionDivider";
 import PageTransition from "@/components/PageTransition";
 import { useLanguage } from "@/contexts/LanguageContext";
 import SEO from "@/components/SEO";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2, Search, Filter } from "lucide-react";
 import { motion } from "framer-motion";
 import { trpc } from "@/lib/trpc";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { toast } from "sonner";
 import { Link } from "wouter";
+
+const ARTICLES_PER_PAGE = 9;
 
 function getStaticArticles(t: (key: string) => string) {
   return [
@@ -64,8 +69,12 @@ function getStaticArticles(t: (key: string) => string) {
 
 export default function Insights() {
   const { t, locale } = useLanguage();
-  const { data: dbArticles } = trpc.articles.list.useQuery({ status: "published" });
+  const { data: dbArticles, isLoading } = trpc.articles.list.useQuery({ status: "published" });
   const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [selectedTag, setSelectedTag] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
   const subscribeMutation = trpc.newsletter.subscribe.useMutation({
     onSuccess: () => {
       toast.success(t("insightsPage.newsletter.success"));
@@ -95,8 +104,50 @@ export default function Insights() {
       }))
     : staticArticles;
 
-  const featured = displayArticles[0];
-  const rest = displayArticles.slice(1);
+  // Extract unique tags for filter
+  const allTags = useMemo(() => {
+    const tags = displayArticles.map(a => a.tag).filter(Boolean);
+    return Array.from(new Set(tags));
+  }, [displayArticles]);
+
+  // Filter articles
+  const filteredArticles = useMemo(() => {
+    let articles = displayArticles;
+    if (selectedTag !== "all") {
+      articles = articles.filter(a => a.tag === selectedTag);
+    }
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      articles = articles.filter(a =>
+        a.title.toLowerCase().includes(q) ||
+        a.excerpt.toLowerCase().includes(q) ||
+        a.tag.toLowerCase().includes(q)
+      );
+    }
+    return articles;
+  }, [displayArticles, selectedTag, searchQuery]);
+
+  // Pagination
+  const totalPages = Math.ceil(filteredArticles.length / ARTICLES_PER_PAGE);
+  const paginatedArticles = filteredArticles.slice(
+    (currentPage - 1) * ARTICLES_PER_PAGE,
+    currentPage * ARTICLES_PER_PAGE
+  );
+
+  const featured = selectedTag === "all" && !searchQuery.trim() && currentPage === 1
+    ? paginatedArticles[0]
+    : null;
+  const gridArticles = featured ? paginatedArticles.slice(1) : paginatedArticles;
+
+  const handleTagChange = (tag: string) => {
+    setSelectedTag(tag);
+    setCurrentPage(1);
+  };
+
+  const handleSearch = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
+  };
 
   return (
     <PageTransition>
@@ -105,7 +156,7 @@ export default function Insights() {
         <Header />
 
         {/* Hero */}
-        <section className="pt-32 md:pt-44 pb-20 md:pb-28">
+        <section className="pt-32 md:pt-44 pb-16 md:pb-20">
           <div className="container">
             <FadeIn>
               <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
@@ -123,6 +174,55 @@ export default function Insights() {
               <p className="text-steel-light text-lg max-w-2xl mt-8 leading-[1.8] font-light">
                 {t("insightsPage.subtitle")}
               </p>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* Filters & Search */}
+        <section className="pb-10 md:pb-14">
+          <div className="container">
+            <FadeIn delay={0.4}>
+              <div className="flex flex-col md:flex-row gap-5 items-start md:items-center justify-between">
+                {/* Category filters */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <Filter size={14} className="text-steel-light mr-1" />
+                  <button
+                    onClick={() => handleTagChange("all")}
+                    className={`px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${
+                      selectedTag === "all"
+                        ? "bg-navy text-white"
+                        : "bg-white border border-navy/10 text-steel-light hover:border-orange/30 hover:text-navy"
+                    }`}
+                  >
+                    {locale === "pt" ? "Todos" : "All"}
+                  </button>
+                  {allTags.map(tag => (
+                    <button
+                      key={tag}
+                      onClick={() => handleTagChange(tag)}
+                      className={`px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${
+                        selectedTag === tag
+                          ? "bg-orange text-white"
+                          : "bg-white border border-navy/10 text-steel-light hover:border-orange/30 hover:text-navy"
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Search */}
+                <div className="relative w-full md:w-72">
+                  <Search size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-steel-light" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    placeholder={locale === "pt" ? "Buscar artigos..." : "Search articles..."}
+                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-navy/10 text-sm text-navy placeholder:text-steel-light/50 focus:border-orange/40 focus:ring-0 outline-none transition-all duration-300"
+                  />
+                </div>
+              </div>
             </FadeIn>
           </div>
         </section>
@@ -183,41 +283,91 @@ export default function Insights() {
           </section>
         )}
 
-        <SectionDivider className="mb-16" />
+        {!featured && <SectionDivider className="mb-16" />}
+        {featured && <SectionDivider className="mb-16" />}
 
         {/* Articles grid */}
         <section className="pb-20 md:pb-28">
           <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {rest.map((article, i) => (
-                <FadeIn key={i} delay={i * 0.08}>
-                  <Link href={(article as any).slug ? `/insights/${(article as any).slug}` : "#"} className="block h-full">
-                    <article className="group bg-white border border-navy/5 hover:border-orange/15 transition-all duration-500 card-lift h-full flex flex-col cursor-pointer">
-                      <div className="p-8 md:p-9 flex flex-col flex-1">
-                        <div className="flex items-center gap-3 mb-5">
-                          <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-orange bg-orange/8 px-3 py-1.5">
-                            {article.tag}
-                          </span>
-                          <span className="text-[11px] text-steel-light font-light">{article.date}</span>
+            {isLoading ? (
+              <div className="flex items-center justify-center py-20">
+                <Loader2 size={32} className="animate-spin text-orange" />
+              </div>
+            ) : gridArticles.length === 0 ? (
+              <div className="text-center py-20">
+                <p className="text-steel-light text-lg font-light">
+                  {locale === "pt" ? "Nenhum artigo encontrado." : "No articles found."}
+                </p>
+                {(selectedTag !== "all" || searchQuery) && (
+                  <button
+                    onClick={() => { setSelectedTag("all"); setSearchQuery(""); }}
+                    className="mt-4 text-orange text-sm font-medium hover:text-orange-light transition-colors"
+                  >
+                    {locale === "pt" ? "Limpar filtros" : "Clear filters"}
+                  </button>
+                )}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {gridArticles.map((article, i) => (
+                  <FadeIn key={i} delay={i * 0.06}>
+                    <Link href={(article as any).slug ? `/insights/${(article as any).slug}` : "#"} className="block h-full">
+                      <article className="group bg-white border border-navy/5 hover:border-orange/15 transition-all duration-500 card-lift h-full flex flex-col cursor-pointer">
+                        <div className="p-8 md:p-9 flex flex-col flex-1">
+                          <div className="flex items-center gap-3 mb-5">
+                            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-orange bg-orange/8 px-3 py-1.5">
+                              {article.tag}
+                            </span>
+                            <span className="text-[11px] text-steel-light font-light">{article.date}</span>
+                          </div>
+                          <h3 className="text-lg font-serif font-medium text-navy tracking-tight leading-snug mb-4 group-hover:text-orange transition-colors duration-300">
+                            {article.title}
+                          </h3>
+                          <p className="text-steel-light text-sm leading-[1.8] font-light flex-1">
+                            {article.excerpt}
+                          </p>
+                          <div className="mt-7 pt-5 border-t border-navy/5 flex items-center justify-between">
+                            <span className="text-[11px] text-steel-light font-light">{article.readTime} {t("insightsPage.readTime")}</span>
+                            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-navy group-hover:text-orange transition-colors duration-300">
+                              {t("insightsPage.read")}
+                              <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform duration-300" />
+                            </span>
+                          </div>
                         </div>
-                        <h3 className="text-lg font-serif font-medium text-navy tracking-tight leading-snug mb-4 group-hover:text-orange transition-colors duration-300">
-                          {article.title}
-                        </h3>
-                        <p className="text-steel-light text-sm leading-[1.8] font-light flex-1">
-                          {article.excerpt}
-                        </p>
-                        <div className="mt-7 pt-5 border-t border-navy/5 flex items-center justify-between">
-                          <span className="text-[11px] text-steel-light font-light">{article.readTime} {t("insightsPage.readTime")}</span>
-                          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-navy group-hover:text-orange transition-colors duration-300">
-                            {t("insightsPage.read")}
-                            <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-                          </span>
-                        </div>
-                      </div>
-                    </article>
-                  </Link>
-                </FadeIn>
-              ))}
+                      </article>
+                    </Link>
+                  </FadeIn>
+                ))}
+              </div>
+            )}
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-14">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`w-10 h-10 flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+                      currentPage === page
+                        ? "bg-navy text-white"
+                        : "bg-white border border-navy/10 text-steel-light hover:border-orange/30 hover:text-navy"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Results count */}
+            <div className="text-center mt-6">
+              <p className="text-xs text-steel-light font-light">
+                {locale === "pt"
+                  ? `${filteredArticles.length} artigo${filteredArticles.length !== 1 ? "s" : ""} encontrado${filteredArticles.length !== 1 ? "s" : ""}`
+                  : `${filteredArticles.length} article${filteredArticles.length !== 1 ? "s" : ""} found`
+                }
+              </p>
             </div>
           </div>
         </section>
