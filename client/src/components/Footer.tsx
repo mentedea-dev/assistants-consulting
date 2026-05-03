@@ -1,18 +1,38 @@
 /*
  * PENTAGRAM CRAFT: Footer
  * - Generous spacing, refined typography
- * - Hover states with smooth transitions
+ * - Newsletter subscription form
  * - Wordmark with inflection dot
  */
 import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const subscribeMutation = trpc.newsletter.subscribe.useMutation({
+    onSuccess: () => {
+      toast.success("Inscrito com sucesso!");
+      setEmail("");
+    },
+    onError: () => {
+      toast.error("Erro ao inscrever. Tente novamente.");
+    },
+  });
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) subscribeMutation.mutate({ email });
+  };
+
   return (
     <footer className="bg-navy text-white/70">
       <div className="container py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-8">
           {/* Brand column */}
-          <div className="md:col-span-5">
+          <div className="md:col-span-4">
             <div className="flex items-center gap-2 mb-7">
               <span className="text-lg font-semibold text-white tracking-[0.2em] uppercase">
                 <span className="relative inline-block">
@@ -32,7 +52,7 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
               Navegação
             </h4>
@@ -56,7 +76,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
             <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
               Áreas de Atuação
             </h4>
@@ -73,6 +93,37 @@ export default function Footer() {
                 </span>
               ))}
             </nav>
+          </div>
+
+          {/* Newsletter */}
+          <div className="md:col-span-3">
+            <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
+              Newsletter
+            </h4>
+            <p className="text-sm text-white/40 font-light mb-5 leading-relaxed">
+              Receba análises atuariais exclusivas no seu e-mail.
+            </p>
+            <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="seu@email.com"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:border-orange/50 focus:ring-0 outline-none transition-all duration-300"
+              />
+              <button
+                type="submit"
+                disabled={subscribeMutation.isPending}
+                className="inline-flex items-center justify-center gap-2 bg-orange text-white px-5 py-3 text-xs font-medium tracking-wide hover:bg-orange-light transition-all duration-300 disabled:opacity-60"
+              >
+                {subscribeMutation.isPending ? (
+                  <Loader2 size={12} className="animate-spin" />
+                ) : (
+                  "Inscrever-se"
+                )}
+              </button>
+            </form>
           </div>
         </div>
 

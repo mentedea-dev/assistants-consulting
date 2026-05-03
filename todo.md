@@ -1,25 +1,41 @@
-# Refinamentos Pentagram — Assistants Consulting
+# Funcionalidades Full-Stack — Assistants Consulting
 
-## Fase 1: Tipografia e Sistema de Design
-- [ ] Adicionar fonte serifada (Playfair Display) para headlines de impacto
-- [ ] Aumentar contraste tipográfico (display 700 vs body 300)
-- [ ] Refinar espaçamento com proporção áurea (1.618x)
-- [ ] Adicionar variáveis CSS para animação (durations, easings)
-- [ ] Cursor customizado sutil
+## Fase 1: Upgrade e Banco de Dados
+- [x] Executar webdev_add_feature (web-db-user)
+- [x] Criar schema do banco: contacts, articles, newsletter_subscribers, chat_messages
+- [x] Rodar migrations
 
-## Fase 2: Hero e Componentes
-- [ ] Parallax sutil no hero background
-- [ ] Transição de página com fade/slide
-- [ ] Hover states sofisticados nos cards (lift + glow)
-- [ ] Ponto de inflexão como elemento decorativo recorrente
-- [ ] Linhas animadas como divisores de seção
-- [ ] Header com transição de cor ao scrollar (transparente → sólido)
-- [ ] Scroll progress indicator sutil
+## Fase 2: Formulário de Contato
+- [x] Criar endpoint POST /api/contacts para receber mensagens
+- [x] Salvar mensagens no banco de dados
+- [x] Conectar formulário frontend ao endpoint tRPC
+- [x] Feedback visual de sucesso/erro no formulário
+- [x] Notificar owner quando novo contato chegar
 
-## Fase 3: Páginas Internas
-- [ ] Sobre: Timeline mais visual com animação
-- [ ] Serviços: Cards com hover parallax interno
-- [ ] Insights: Featured article com tratamento editorial premium
-- [ ] Contato: Animação sutil no formulário (focus states)
-- [ ] Clientes: Testimonials com animação de entrada staggered
-- [ ] Mobile: Breakpoints dedicados com tratamento específico
+## Fase 3: Painel Admin (Insights)
+- [x] Criar rota /admin protegida por autenticação (role admin)
+- [x] CRUD de artigos (criar, editar, publicar, despublicar)
+- [x] Editor de conteúdo com formatação básica (markdown)
+- [x] Listar artigos com status (rascunho/publicado)
+- [x] Página Insights consumir artigos do banco de dados
+- [x] Painel para visualizar mensagens de contato recebidas
+
+## Fase 4: Newsletter
+- [x] Criar endpoint POST /api/newsletter para captura de e-mails
+- [x] Formulário de inscrição no footer e página Insights
+- [x] Armazenar subscribers no banco
+- [x] Painel admin para visualizar inscritos
+
+## Fase 5: Chat com IA
+- [x] Criar endpoint POST /api/chat para mensagens
+- [x] Integrar com LLM (BUILT_IN_FORGE_API)
+- [x] Definir system prompt com conhecimento da Assistants
+- [x] Componente de chat flutuante no frontend
+- [x] Histórico de conversas por sessão
+- [x] Sugestões de perguntas rápidas
+- [x] Fallback para contato humano quando necessário
+
+## Testes
+- [x] Testes vitest para validação de inputs (contacts, newsletter, chat)
+- [x] Testes de controle de acesso (admin vs user vs público)
+- [x] 15 testes passando (100%)

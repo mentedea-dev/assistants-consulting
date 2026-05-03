@@ -1,16 +1,17 @@
 /*
  * PENTAGRAM CRAFT: Contato
  * - Refined form with animated focus states
+ * - Connected to tRPC contacts.submit mutation
  * - Serif headlines, generous spacing
- * - Contact info with subtle animations
  */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import PageTransition from "@/components/PageTransition";
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
 
 const contactInfo = [
   {
@@ -48,11 +49,30 @@ export default function Contato() {
     assunto: "",
     mensagem: "",
   });
+  const [submitted, setSubmitted] = useState(false);
+
+  const submitMutation = trpc.contacts.submit.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      toast.success("Mensagem enviada com sucesso. Entraremos em contato em breve.");
+      setFormData({ nome: "", empresa: "", email: "", telefone: "", assunto: "", mensagem: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    },
+    onError: (error) => {
+      toast.error("Erro ao enviar mensagem. Por favor, tente novamente.");
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Mensagem enviada com sucesso. Entraremos em contato em breve.");
-    setFormData({ nome: "", empresa: "", email: "", telefone: "", assunto: "", mensagem: "" });
+    submitMutation.mutate({
+      name: formData.nome,
+      company: formData.empresa || undefined,
+      email: formData.email,
+      phone: formData.telefone || undefined,
+      subject: formData.assunto || undefined,
+      message: formData.mensagem,
+    });
   };
 
   const handleChange = (
@@ -92,114 +112,136 @@ export default function Contato() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
               {/* Form */}
               <FadeIn className="md:col-span-7">
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {submitted ? (
+                  <div className="flex flex-col items-center justify-center py-20 text-center">
+                    <CheckCircle2 size={48} className="text-green-600 mb-6" />
+                    <h3 className="text-2xl font-serif font-medium text-navy mb-3">
+                      Mensagem enviada
+                    </h3>
+                    <p className="text-steel-light font-light max-w-md">
+                      Agradecemos o seu contato. Nossa equipe retornará em até 24 horas úteis.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
+                          Nome completo
+                        </label>
+                        <input
+                          type="text"
+                          name="nome"
+                          value={formData.nome}
+                          onChange={handleChange}
+                          required
+                          className={inputClasses}
+                          placeholder="Seu nome"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
+                          Empresa
+                        </label>
+                        <input
+                          type="text"
+                          name="empresa"
+                          value={formData.empresa}
+                          onChange={handleChange}
+                          className={inputClasses}
+                          placeholder="Nome da empresa"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
+                          E-mail
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className={inputClasses}
+                          placeholder="seu@email.com"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
+                          Telefone
+                        </label>
+                        <input
+                          type="tel"
+                          name="telefone"
+                          value={formData.telefone}
+                          onChange={handleChange}
+                          className={inputClasses}
+                          placeholder="+55 (11) 0000-0000"
+                        />
+                      </div>
+                    </div>
+
                     <div>
                       <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                        Nome completo
+                        Assunto
                       </label>
-                      <input
-                        type="text"
-                        name="nome"
-                        value={formData.nome}
+                      <select
+                        name="assunto"
+                        value={formData.assunto}
                         onChange={handleChange}
                         required
-                        className={inputClasses}
-                        placeholder="Seu nome"
-                      />
+                        className={`${inputClasses} appearance-none`}
+                      >
+                        <option value="">Selecione o assunto</option>
+                        <option value="Saúde Suplementar">Saúde Suplementar</option>
+                        <option value="Previdência Complementar">Previdência Complementar</option>
+                        <option value="Benefícios Pós-Emprego (CPC 33)">Benefícios Pós-Emprego (CPC 33)</option>
+                        <option value="Auditoria Atuarial">Auditoria Atuarial</option>
+                        <option value="Due Diligence">Due Diligence</option>
+                        <option value="HR Consulting">HR Consulting</option>
+                        <option value="Outro">Outro</option>
+                      </select>
                     </div>
-                    <div>
-                      <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                        Empresa
-                      </label>
-                      <input
-                        type="text"
-                        name="empresa"
-                        value={formData.empresa}
-                        onChange={handleChange}
-                        className={inputClasses}
-                        placeholder="Nome da empresa"
-                      />
-                    </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                     <div>
                       <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                        E-mail
+                        Mensagem
                       </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
+                      <textarea
+                        name="mensagem"
+                        value={formData.mensagem}
                         onChange={handleChange}
                         required
-                        className={inputClasses}
-                        placeholder="seu@email.com"
+                        rows={4}
+                        className={`${inputClasses} resize-none`}
+                        placeholder="Descreva brevemente seu desafio ou necessidade..."
                       />
                     </div>
-                    <div>
-                      <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                        Telefone
-                      </label>
-                      <input
-                        type="tel"
-                        name="telefone"
-                        value={formData.telefone}
-                        onChange={handleChange}
-                        className={inputClasses}
-                        placeholder="+55 (11) 0000-0000"
-                      />
+
+                    <div className="pt-4">
+                      <button
+                        type="submit"
+                        disabled={submitMutation.isPending}
+                        className="group inline-flex items-center gap-3 bg-orange text-white px-10 py-4.5 text-sm font-medium tracking-wide hover:bg-orange-light transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                      >
+                        {submitMutation.isPending ? (
+                          <>
+                            <Loader2 size={15} className="animate-spin" />
+                            Enviando...
+                          </>
+                        ) : (
+                          <>
+                            Enviar mensagem
+                            <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
+                          </>
+                        )}
+                      </button>
                     </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                      Assunto
-                    </label>
-                    <select
-                      name="assunto"
-                      value={formData.assunto}
-                      onChange={handleChange}
-                      required
-                      className={`${inputClasses} appearance-none`}
-                    >
-                      <option value="">Selecione o assunto</option>
-                      <option value="saude">Saúde Suplementar</option>
-                      <option value="previdencia">Previdência Complementar</option>
-                      <option value="beneficios">Benefícios Pós-Emprego (CPC 33)</option>
-                      <option value="auditoria">Auditoria Atuarial</option>
-                      <option value="due-diligence">Due Diligence</option>
-                      <option value="hr">HR Consulting</option>
-                      <option value="outro">Outro</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                      Mensagem
-                    </label>
-                    <textarea
-                      name="mensagem"
-                      value={formData.mensagem}
-                      onChange={handleChange}
-                      required
-                      rows={4}
-                      className={`${inputClasses} resize-none`}
-                      placeholder="Descreva brevemente seu desafio ou necessidade..."
-                    />
-                  </div>
-
-                  <div className="pt-4">
-                    <button
-                      type="submit"
-                      className="group inline-flex items-center gap-3 bg-orange text-white px-10 py-4.5 text-sm font-medium tracking-wide hover:bg-orange-light transition-all duration-300"
-                    >
-                      Enviar mensagem
-                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  </div>
-                </form>
+                  </form>
+                )}
               </FadeIn>
 
               {/* Contact info */}

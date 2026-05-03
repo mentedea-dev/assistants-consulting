@@ -10,6 +10,9 @@ import Sobre from "./pages/Sobre";
 import Clientes from "./pages/Clientes";
 import Insights from "./pages/Insights";
 import Contato from "./pages/Contato";
+import Admin from "./pages/Admin";
+import ArticleDetail from "./pages/ArticleDetail";
+import ChatWidget from "./components/ChatWidget";
 
 function Router() {
   return (
@@ -19,7 +22,9 @@ function Router() {
       <Route path="/sobre" component={Sobre} />
       <Route path="/clientes" component={Clientes} />
       <Route path="/insights" component={Insights} />
+      <Route path="/insights/:slug" component={ArticleDetail} />
       <Route path="/contato" component={Contato} />
+      <Route path="/admin" component={Admin} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -33,6 +38,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <ChatWidget />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
