@@ -94,3 +94,11 @@
 - [x] Integrar na página ArticleDetail.tsx após os botões de compartilhamento
 - [x] Adicionar i18n PT/EN para labels da seção
 - [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)
+
+## Fase 13: Publicação Automática de Notícias (Tarefa Agendada)
+- [x] Criar endpoint POST /api/scheduled/publish-news protegido por OAuth
+- [x] Endpoint aceita array de artigos com título, excerpt, conteúdo, tag
+- [x] Gerar slug automático e definir status como published
+- [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)
+- [ ] Salvar checkpoint e solicitar deploy
+- [ ] Configurar tarefa agendada semanal para buscar e publicar notícias do setor
