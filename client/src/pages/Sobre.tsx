@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { Target, Eye, Gem, Scale, Award, BookOpen } from "lucide-react";
 
 const TEXTURE_IMG = "/manus-storage/v2_10_institucional_42ba4921.webp";
+const EQUIPE_IMG = "/manus-storage/v2_09_equipe_0ae78527.webp";
 
 export default function Sobre() {
   const { t } = useLanguage();
@@ -134,6 +135,23 @@ export default function Sobre() {
                 </FadeIn>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Team Image */}
+        <section className="py-16 md:py-20">
+          <div className="container">
+            <FadeIn>
+              <div className="relative overflow-hidden aspect-[21/9] md:aspect-[3/1]">
+                <img
+                  src={EQUIPE_IMG}
+                  alt={t("about.team.alt")}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
+              </div>
+            </FadeIn>
           </div>
         </section>
 

@@ -1,8 +1,9 @@
 /**
  * SplitText — Editorial text reveal animation (Pentagram-style)
  * 
- * Splits text into individual characters and animates them sequentially
- * with a staggered fade-in + slight vertical movement.
+ * Splits text into WORDS and animates them sequentially
+ * with a staggered fade-in + slight vertical movement + blur.
+ * Words stay together — no orphan letters on line breaks.
  * 
  * Respects prefers-reduced-motion for accessibility.
  * Only triggers when element enters viewport (IntersectionObserver via Framer Motion).
@@ -15,11 +16,11 @@ interface SplitTextProps {
   className?: string;
   /** Delay before animation starts (seconds) */
   delay?: number;
-  /** Duration per character (seconds) */
+  /** Duration per word (seconds) */
   charDuration?: number;
-  /** Stagger between characters (seconds) */
+  /** Stagger between words (seconds) */
   stagger?: number;
-  /** Vertical offset for each character (px) */
+  /** Vertical offset for each word (px) */
   yOffset?: number;
   /** HTML tag to render */
   as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
@@ -31,9 +32,9 @@ export default function SplitText({
   children,
   className = "",
   delay = 0,
-  charDuration = 0.5,
-  stagger = 0.025,
-  yOffset = 20,
+  charDuration = 0.45,
+  stagger = 0.07,
+  yOffset = 16,
   as: Tag = "h1",
   suffix,
 }: SplitTextProps) {
@@ -49,7 +50,7 @@ export default function SplitText({
     );
   }
 
-  // Split text into lines (by \n or <br>) then into characters
+  // Split text into lines (by \n) then into words
   const lines = children.split("\n");
 
   const containerVariants = {
@@ -62,14 +63,16 @@ export default function SplitText({
     },
   };
 
-  const charVariants = {
+  const wordVariants = {
     hidden: {
       opacity: 0,
       y: yOffset,
+      filter: "blur(3px)",
     },
     visible: {
       opacity: 1,
       y: 0,
+      filter: "blur(0px)",
       transition: {
         duration: charDuration,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
@@ -90,14 +93,13 @@ export default function SplitText({
     >
       {lines.map((line, lineIndex) => (
         <span key={lineIndex} className="block">
-          {line.split("").map((char, charIndex) => (
+          {line.split(" ").map((word, wordIndex, arr) => (
             <motion.span
-              key={`${lineIndex}-${charIndex}`}
-              variants={charVariants}
+              key={`${lineIndex}-${wordIndex}`}
+              variants={wordVariants}
               className="inline-block"
-              style={{ whiteSpace: char === " " ? "pre" : "normal" }}
             >
-              {char === " " ? "\u00A0" : char}
+              {word}{wordIndex < arr.length - 1 ? "\u00A0" : ""}
             </motion.span>
           ))}
           {lineIndex === lines.length - 1 && suffix}

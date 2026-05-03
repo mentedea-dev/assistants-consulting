@@ -134,9 +134,13 @@ export default function Servicos() {
                       <p className="text-steel-light leading-[1.8] mb-8 font-light">{area.description}</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
                         {area.items.map((item, j) => (
-                          <div key={j} className="flex items-start gap-3 py-2.5 border-b border-navy/5">
-                            <div className="w-1.5 h-1.5 rounded-full bg-navy/40 mt-2 shrink-0" />
-                            <span className="text-sm text-navy/80 leading-relaxed font-light">{item}</span>
+                          <div key={j} className="flex items-start gap-3 py-3 border-b border-navy/5 last:border-b-0">
+                            <div className="w-5 h-5 rounded-full bg-navy/5 flex items-center justify-center mt-0.5 shrink-0">
+                              <svg width="10" height="8" viewBox="0 0 10 8" fill="none" className="text-navy/70">
+                                <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </div>
+                            <span className="text-sm text-navy/80 leading-relaxed">{item}</span>
                           </div>
                         ))}
                       </div>

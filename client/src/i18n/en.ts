@@ -121,6 +121,7 @@ const en: Record<string, string> = {
   "about.para1": "Founded in 1991, Assistants was established with the mission of transforming actuarial complexity into strategic clarity. Over more than three decades, we have consolidated our position as one of Brazil's most respected actuarial consultancies, serving the country's largest corporate groups, health insurance operators and pension entities.",
   "about.para2": "Our team comprises actuaries credentialed by the IBA (Brazilian Institute of Actuaries), with multidisciplinary backgrounds in mathematics, statistics, economics and finance. We combine technical rigour with business acumen, delivering solutions that go beyond the report — we provide actuarial intelligence that underpins strategic decisions.",
   "about.para3": "We operate across the three major verticals of actuarial science: supplementary health insurance, complementary pension funds and post-employment benefits. In each, we apply cutting-edge methodologies aligned with international standards (IAS 19, IFRS 17, Solvency II) and Brazilian regulatory requirements (ANS, PREVIC, SUSEP, CVM).",
+  "about.team.alt": "Assistants Consulting actuarial team",
 
   // Values
   "about.values.title": "Our Values",

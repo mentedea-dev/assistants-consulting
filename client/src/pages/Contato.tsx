@@ -147,35 +147,43 @@ export default function Contato() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="bg-white border border-navy/5 rounded-sm">
-                    {/* Step indicator */}
+                    {/* Step indicator — premium progress bar */}
                     <div className="px-8 md:px-10 pt-8 pb-6 border-b border-navy/5">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-between mb-4">
                         {[1, 2, 3].map((s) => (
-                          <div key={s} className="flex items-center gap-3">
+                          <div key={s} className="flex flex-col items-center flex-1">
                             <button
                               type="button"
                               onClick={() => s < step ? setStep(s) : undefined}
-                              className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300 ${
+                              className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
                                 s === step
-                                  ? "bg-navy text-white"
+                                  ? "bg-navy text-white shadow-md shadow-navy/20"
                                   : s < step
-                                  ? "bg-navy/10 text-navy cursor-pointer"
+                                  ? "bg-navy/10 text-navy cursor-pointer hover:bg-navy/15"
                                   : "bg-navy/5 text-navy/30"
                               }`}
                             >
-                              {s < step ? "✓" : s}
+                              {s < step ? (
+                                <CheckCircle2 size={18} strokeWidth={2} />
+                              ) : s}
                             </button>
-                            {s < 3 && (
-                              <div className={`w-12 md:w-20 h-px transition-colors duration-300 ${s < step ? "bg-navy/20" : "bg-navy/8"}`} />
-                            )}
+                            <span className={`text-[10px] mt-2 font-medium uppercase tracking-wider transition-colors duration-300 ${
+                              s === step ? "text-navy" : s < step ? "text-navy/50" : "text-navy/25"
+                            }`}>
+                              {s === 1 && t("contact.step1.label")}
+                              {s === 2 && t("contact.step2.label")}
+                              {s === 3 && t("contact.step3.label")}
+                            </span>
                           </div>
                         ))}
                       </div>
-                      <p className="text-xs text-steel-light mt-3 font-light">
-                        {step === 1 && t("contact.step1.label")}
-                        {step === 2 && t("contact.step2.label")}
-                        {step === 3 && t("contact.step3.label")}
-                      </p>
+                      {/* Progress bar */}
+                      <div className="w-full h-0.5 bg-navy/5 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-navy transition-all duration-500 ease-out"
+                          style={{ width: `${((step - 1) / 2) * 100}%` }}
+                        />
+                      </div>
                     </div>
 
                     <div className="px-8 md:px-10 py-8">

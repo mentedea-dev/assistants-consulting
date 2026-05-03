@@ -204,9 +204,9 @@ export default function Home() {
                       </p>
                       <Link
                         href="/servicos"
-                        className="group inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-steel transition-colors duration-300"
+                        className="link-underline text-sm font-medium text-navy hover:text-navy/70 transition-colors duration-300"
                       >
-                        <span className="border-b border-navy/20 group-hover:border-navy/40 transition-colors duration-300 pb-0.5">
+                        <span>
                           {t("services.learnMore")}
                         </span>
                         <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -242,12 +242,14 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {additionalServiceKeys.map((service, i) => (
                 <FadeIn key={service.titleKey} delay={i * 0.12}>
-                  <div className="group p-8 md:p-10 border border-white/8 hover:border-white/20 transition-all duration-500 card-lift h-full">
-                    <service.icon size={22} className="text-white/60 mb-7" strokeWidth={1.5} />
+                  <div className="group p-8 md:p-10 border border-white/8 hover:border-white/20 hover:bg-white/[0.03] transition-all duration-500 card-lift h-full">
+                    <div className="w-11 h-11 flex items-center justify-center border border-white/10 group-hover:border-white/25 transition-colors duration-500 mb-7">
+                      <service.icon size={20} className="text-white/70 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                    </div>
                     <h3 className="text-xl font-serif text-white mb-4 tracking-tight">
                       {t(service.titleKey)}
                     </h3>
-                    <p className="text-white/45 text-sm leading-[1.8] font-light">
+                    <p className="text-white/45 text-sm leading-[1.8] font-light group-hover:text-white/60 transition-colors duration-500">
                       {t(service.descKey)}
                     </p>
                   </div>
@@ -282,9 +284,9 @@ export default function Home() {
                   </p>
                   <Link
                     href="/insights"
-                    className="group inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-steel transition-colors duration-300"
+                    className="link-underline text-sm font-medium text-navy hover:text-navy/70 transition-colors duration-300"
                   >
-                    <span className="border-b border-navy/20 group-hover:border-navy/40 transition-colors duration-300 pb-0.5">
+                    <span>
                       {t("insights.viewAll")}
                     </span>
                     <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />

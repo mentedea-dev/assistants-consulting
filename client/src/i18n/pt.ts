@@ -121,6 +121,7 @@ const pt: Record<string, string> = {
   "about.para1": "Fundada em 1991, a Assistants nasceu com a missão de transformar a complexidade atuarial em clareza estratégica. Ao longo de mais de três décadas, consolidamos nossa posição como uma das consultorias atuariais mais respeitadas do Brasil, atendendo os maiores grupos corporativos, operadoras de saúde e entidades de previdência do país.",
   "about.para2": "Nossa equipe é composta por atuários credenciados pelo IBA, com formação multidisciplinar em matemática, estatística, economia e finanças. Combinamos rigor técnico com visão de negócios, entregando soluções que vão além do laudo — oferecemos inteligência atuarial que fundamenta decisões estratégicas.",
   "about.para3": "Atuamos nas três grandes verticais da ciência atuarial: saúde suplementar, previdência complementar e benefícios pós-emprego. Em cada uma delas, aplicamos metodologias de ponta, aderentes aos padrões internacionais (IAS 19, IFRS 17, Solvência II) e às normas regulatórias brasileiras (ANS, PREVIC, SUSEP, CVM).",
+  "about.team.alt": "Equipe de atuários da Assistants Consulting",
 
   // Values
   "about.values.title": "Nossos Valores",

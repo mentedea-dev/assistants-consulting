@@ -149,3 +149,17 @@
 - [x] Integrar ícones de diferenciais (assets uploadados; página Sobre usa Lucide icons para credenciais)
 - [x] Verificar e corrigir stats (números corretos)
 - [x] Testar todas as páginas (TypeScript 0 erros, 15 testes passando, verificação visual OK)
+
+## Fase 20: Elevação de Qualidade — Padrão Pentagram/Landor Premium
+- [x] Corrigir SplitText: evitar quebra de palavra (letra órfã) — usar word-based split em vez de char-based para linhas longas
+- [x] Corrigir font-weight dos headings: DM Sans weight 600 para impacto visual em tamanhos grandes
+- [x] Melhorar cards de "Serviços Especializados" na Home: hover elevation, icon container, bg shift, text transition
+- [x] Refinar links "Saiba mais": link-underline animado no hover
+- [x] Melhorar step indicators do formulário de contato: maior (w-10), com labels, barra de progresso
+- [x] Refinar tags de categorias nos Insights: estilo navy/8 leve (já implementado na fase anterior)
+- [x] Melhorar visibilidade do chat widget: w-14 h-14, shadow-xl, ring-2, hover scale
+- [x] Adicionar imagem da equipe na página Sobre (v2_09_equipe — gráfico de rede/conexões)
+- [x] Substituir bullets simples por checkmarks estilizados na página Serviços
+- [x] Refinar footer: newsletter com card container, border e bg sutil
+- [x] Verificar TypeScript (0 erros) e testes (15 passando)
+- [x] Verificação visual final de todas as páginas (Home, Serviços, Sobre, Contato, Insights)

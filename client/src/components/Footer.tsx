@@ -94,33 +94,35 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="md:col-span-3">
-            <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
-              Newsletter
-            </h4>
-            <p className="text-sm text-white/40 font-light mb-5 leading-relaxed">
-              {t("newsletter.desc")}
-            </p>
-            <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder={t("newsletter.placeholder")}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:border-white/30 focus:ring-0 outline-none transition-all duration-300"
-              />
-              <button
-                type="submit"
-                disabled={subscribeMutation.isPending}
-                className="inline-flex items-center justify-center gap-2 bg-orange text-white px-5 py-3 text-xs font-medium tracking-wide hover:bg-orange-light transition-all duration-300 disabled:opacity-60"
-              >
-                {subscribeMutation.isPending ? (
-                  <Loader2 size={12} className="animate-spin" />
-                ) : (
-                  t("newsletter.subscribe")
-                )}
-              </button>
-            </form>
+            <div className="p-6 border border-white/8 bg-white/[0.02]">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">
+                Newsletter
+              </h4>
+              <p className="text-sm text-white/40 font-light mb-5 leading-relaxed">
+                {t("newsletter.desc")}
+              </p>
+              <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder={t("newsletter.placeholder")}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:border-white/25 focus:ring-0 outline-none transition-all duration-300"
+                />
+                <button
+                  type="submit"
+                  disabled={subscribeMutation.isPending}
+                  className="inline-flex items-center justify-center gap-2 bg-orange text-white px-5 py-3 text-xs font-semibold tracking-wide hover:bg-orange-light transition-all duration-300 disabled:opacity-60"
+                >
+                  {subscribeMutation.isPending ? (
+                    <Loader2 size={12} className="animate-spin" />
+                  ) : (
+                    t("newsletter.subscribe")
+                  )}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
 

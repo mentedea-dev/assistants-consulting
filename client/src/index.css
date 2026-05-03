@@ -140,7 +140,7 @@
   /* Headings — sans-serif geométrica (alinhada com wordmark) */
   h1, h2 {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.025em;
   }
 
@@ -237,11 +237,35 @@
   .card-lift {
     transition: transform var(--duration-normal) var(--ease-out-expo),
                 box-shadow var(--duration-normal) var(--ease-out-expo),
-                border-color var(--duration-normal) var(--ease-out-expo);
+                border-color var(--duration-normal) var(--ease-out-expo),
+                background-color var(--duration-normal) var(--ease-out-expo);
   }
   .card-lift:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 32px -8px oklch(0.210 0.038 253 / 0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px oklch(0.210 0.038 253 / 0.10),
+                0 8px 16px -6px oklch(0.210 0.038 253 / 0.04);
+    border-color: oklch(0.210 0.038 253 / 0.12);
+  }
+
+  /* Animated underline link */
+  .link-underline {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width var(--duration-normal) var(--ease-out-expo);
+  }
+  .link-underline:hover::after {
+    width: 100%;
   }
 
   /* Text gradient */
