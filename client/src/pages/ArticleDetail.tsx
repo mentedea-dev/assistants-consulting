@@ -10,6 +10,7 @@ import { trpc } from "@/lib/trpc";
 import { useParams, Link } from "wouter";
 import { ArrowLeft, Loader2, Clock, Tag } from "lucide-react";
 import ShareButtons from "@/components/ShareButtons";
+import RelatedArticles from "@/components/RelatedArticles";
 import { Streamdown } from "streamdown";
 import SEO from "@/components/SEO";
 
@@ -164,6 +165,12 @@ export default function ArticleDetail() {
                 </Link>
               </div>
             </FadeIn>
+
+            {/* Related Articles */}
+            <RelatedArticles
+              currentSlug={params.slug || ""}
+              currentTag={article.tag}
+            />
           </div>
         </article>
 

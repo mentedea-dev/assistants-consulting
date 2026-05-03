@@ -332,6 +332,8 @@ const en: Record<string, string> = {
   "article.ctaButton": "Speak with our actuaries",
   "article.share": "Share",
   "article.shareOn": "Share on",
+  "article.relatedTitle": "Related Articles",
+  "article.viewAll": "View all",
 
   // ═══════ Static Articles ═══════
   "articles.static.1.title": "Impacts of the CPC 33 (R2) revision on 2025 financial statements",

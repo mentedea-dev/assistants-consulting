@@ -5,7 +5,7 @@ import { publicProcedure, protectedProcedure, adminProcedure, router } from "./_
 import { z } from "zod";
 import { getDb } from "./db";
 import { contacts, articles, newsletterSubscribers, chatMessages, siteSettings } from "../drizzle/schema";
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc, and, ne } from "drizzle-orm";
 import { invokeLLM } from "./_core/llm";
 import { notifyOwner } from "./_core/notification";
 import { nanoid } from "nanoid";
@@ -108,6 +108,71 @@ export const appRouter = router({
           .where(eq(articles.slug, input.slug))
           .limit(1);
         return result[0] || null;
+      }),
+
+    getRelated: publicProcedure
+      .input(z.object({ slug: z.string(), tag: z.string().optional(), limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return [];
+        const maxItems = input.limit || 3;
+        // First try same tag
+        if (input.tag) {
+          const sameTag = await db.select({
+            id: articles.id,
+            title: articles.title,
+            slug: articles.slug,
+            excerpt: articles.excerpt,
+            tag: articles.tag,
+            readTime: articles.readTime,
+            publishedAt: articles.publishedAt,
+          }).from(articles)
+            .where(and(
+              eq(articles.status, "published"),
+              eq(articles.tag, input.tag),
+              ne(articles.slug, input.slug)
+            ))
+            .orderBy(desc(articles.publishedAt))
+            .limit(maxItems);
+          if (sameTag.length >= maxItems) return sameTag;
+          // Fill with other articles if not enough
+          const remaining = maxItems - sameTag.length;
+          const slugsToExclude = [input.slug, ...sameTag.map(a => a.slug)];
+          const others = await db.select({
+            id: articles.id,
+            title: articles.title,
+            slug: articles.slug,
+            excerpt: articles.excerpt,
+            tag: articles.tag,
+            readTime: articles.readTime,
+            publishedAt: articles.publishedAt,
+          }).from(articles)
+            .where(and(
+              eq(articles.status, "published"),
+              ne(articles.slug, input.slug),
+              input.tag ? ne(articles.tag, input.tag) : undefined
+            ))
+            .orderBy(desc(articles.publishedAt))
+            .limit(remaining);
+          return [...sameTag, ...others];
+        }
+        // No tag, just get recent excluding current
+        const recent = await db.select({
+          id: articles.id,
+          title: articles.title,
+          slug: articles.slug,
+          excerpt: articles.excerpt,
+          tag: articles.tag,
+          readTime: articles.readTime,
+          publishedAt: articles.publishedAt,
+        }).from(articles)
+          .where(and(
+            eq(articles.status, "published"),
+            ne(articles.slug, input.slug)
+          ))
+          .orderBy(desc(articles.publishedAt))
+          .limit(maxItems);
+        return recent;
       }),
 
     create: adminProcedure

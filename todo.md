@@ -87,3 +87,10 @@
 - [x] Integrar na página de detalhe do artigo (ArticleDetail.tsx)
 - [x] Adicionar i18n PT/EN para labels de compartilhamento
 - [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)
+
+## Fase 12: Artigos Relacionados
+- [x] Criar endpoint tRPC para buscar artigos relacionados (mesma tag, excluindo o atual)
+- [x] Criar componente RelatedArticles com cards estilizados
+- [x] Integrar na página ArticleDetail.tsx após os botões de compartilhamento
+- [x] Adicionar i18n PT/EN para labels da seção
+- [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)
