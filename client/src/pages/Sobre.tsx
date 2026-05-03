@@ -160,7 +160,7 @@ export default function Sobre() {
         <section className="py-24 md:py-32 bg-navy relative overflow-hidden">
           {/* Brand Symbol watermark */}
           <div className="absolute right-[-3%] md:right-[5%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
-            <BrandSymbol variant="light" className="w-[250px] md:w-[350px] h-auto opacity-[0.03]" />
+            <BrandSymbol variant="light" className="w-[250px] md:w-[350px] h-auto opacity-[0.03]" drawReveal dotPulse />
           </div>
           <div className="container relative z-10">
             <FadeIn>

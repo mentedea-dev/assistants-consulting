@@ -172,3 +172,11 @@
 - [x] Atualizar informações de contato conforme PDF (já correto desde Fase 18)
 - [x] Verificar TypeScript (0 erros) e testes (15 passando)
 - [x] Verificação visual final (Home marquee + watermark, Clientes com filtros, Footer com símbolo)
+
+## Fase 22: Animação Interativa do "A" (BrandSymbol)
+- [x] Adicionar animação de hover no BrandSymbol (glow, scale, dot orbit — prop 'interactive')
+- [x] Adicionar animação de entrada (draw/reveal) quando o 'A' aparece no viewport (prop 'drawReveal')
+- [x] Animar o watermark do hero com drawReveal + dotPulse (ring expanding)
+- [x] Animar o 'A' no footer com hover interativo (scale + glow + dot orbit)
+- [x] Verificar TypeScript (0 erros) e testes (15 passando)
+- [x] Verificação visual (Home hero + footer confirmados)

@@ -73,7 +73,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <BrandSymbol variant="light" className="w-[280px] md:w-[380px] lg:w-[480px] h-auto opacity-[0.035]" />
+            <BrandSymbol variant="light" className="w-[280px] md:w-[380px] lg:w-[480px] h-auto opacity-[0.035]" drawReveal dotPulse />
           </motion.div>
 
           <motion.div className="container relative z-10 pt-24 pb-16" style={{ opacity: heroOpacity }}>
@@ -380,7 +380,7 @@ export default function Home() {
 
           {/* Brand Symbol watermark */}
           <div className="absolute left-[-5%] md:left-[8%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
-            <BrandSymbol variant="light" className="w-[200px] md:w-[300px] lg:w-[360px] h-auto opacity-[0.04]" />
+            <BrandSymbol variant="light" className="w-[200px] md:w-[300px] lg:w-[360px] h-auto opacity-[0.04]" drawReveal dotPulse />
           </div>
 
           <div className="container relative z-10 text-center">
