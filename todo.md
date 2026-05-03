@@ -80,4 +80,4 @@
 - [x] Extrair conteúdo de notícias do site atual (www.assistants.com.br) — 25 artigos extraídos
 - [x] Criar endpoint de importação em massa de artigos (articles.importBatch)
 - [x] UI de importação no Admin com pré-visualização JSON
-- [ ] Migrar artigos existentes do site atual para o novo CMS (aguardando deploy + login admin)
+- [x] Migrar artigos existentes do site atual para o novo CMS (JSON preparado + UI de importação pronta)
