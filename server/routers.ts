@@ -29,7 +29,13 @@ export const appRouter = router({
         company: z.string().optional(),
         email: z.string().email(),
         phone: z.string().optional(),
+        jobTitle: z.string().optional(),
+        sector: z.string().optional(),
         subject: z.string().optional(),
+        serviceType: z.string().optional(),
+        urgency: z.enum(["low", "medium", "high"]).optional(),
+        howFound: z.string().optional(),
+        preferredContact: z.enum(["email", "phone", "whatsapp"]).optional(),
         message: z.string().min(10),
       }))
       .mutation(async ({ input }) => {
@@ -41,14 +47,21 @@ export const appRouter = router({
           company: input.company || null,
           email: input.email,
           phone: input.phone || null,
+          jobTitle: input.jobTitle || null,
+          sector: input.sector || null,
           subject: input.subject || null,
+          serviceType: input.serviceType || null,
+          urgency: input.urgency || "medium",
+          howFound: input.howFound || null,
+          preferredContact: input.preferredContact || "email",
           message: input.message,
         });
 
         // Notify owner about new contact
+        const urgencyLabel = input.urgency === "high" ? "🔴 URGENTE" : input.urgency === "medium" ? "🟡 Médio" : "🟢 Baixo";
         await notifyOwner({
-          title: `Novo contato: ${input.name}`,
-          content: `Nome: ${input.name}\nEmpresa: ${input.company || "N/A"}\nE-mail: ${input.email}\nAssunto: ${input.subject || "N/A"}\n\nMensagem:\n${input.message}`,
+          title: `Novo contato: ${input.name} [${urgencyLabel}]`,
+          content: `Nome: ${input.name}\nCargo: ${input.jobTitle || "N/A"}\nEmpresa: ${input.company || "N/A"}\nSetor: ${input.sector || "N/A"}\nE-mail: ${input.email}\nTelefone: ${input.phone || "N/A"}\nServiço: ${input.serviceType || input.subject || "N/A"}\nUrgência: ${urgencyLabel}\nContato preferido: ${input.preferredContact || "email"}\nComo conheceu: ${input.howFound || "N/A"}\n\nMensagem:\n${input.message}`,
         }).catch(() => { /* non-blocking */ });
 
         return { success: true };

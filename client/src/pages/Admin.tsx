@@ -631,15 +631,46 @@ export default function Admin() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-3 mb-1.5">
                               <span className="text-sm font-medium text-navy">{contact.name}</span>
+                              {contact.urgency === "high" && (
+                                <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full uppercase tracking-wider">Urgente</span>
+                              )}
                               {!contact.read && (
                                 <span className="text-[10px] font-bold text-orange bg-orange/10 px-2 py-0.5 rounded-full uppercase tracking-wider">Novo</span>
                               )}
                             </div>
-                            <p className="text-xs text-gray-500 mb-3">
-                              {contact.email} {contact.company && `· ${contact.company}`}
-                              {contact.phone && ` · ${contact.phone}`}
-                              {contact.subject && ` · ${contact.subject}`}
-                            </p>
+                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500 mb-3">
+                              <span>{contact.email}</span>
+                              {contact.company && <span>· {contact.company}</span>}
+                              {contact.jobTitle && <span>· {contact.jobTitle}</span>}
+                              {contact.phone && <span>· {contact.phone}</span>}
+                            </div>
+                            {/* Detail tags */}
+                            <div className="flex flex-wrap gap-2 mb-3">
+                              {contact.serviceType && (
+                                <span className="text-[10px] font-medium text-navy bg-navy/5 px-2 py-1 rounded">{contact.serviceType}</span>
+                              )}
+                              {contact.sector && (
+                                <span className="text-[10px] font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded">{contact.sector}</span>
+                              )}
+                              {contact.urgency && (
+                                <span className={`text-[10px] font-medium px-2 py-1 rounded ${
+                                  contact.urgency === "high" ? "text-red-700 bg-red-50" :
+                                  contact.urgency === "medium" ? "text-orange bg-orange/10" :
+                                  "text-green-700 bg-green-50"
+                                }`}>
+                                  {contact.urgency === "high" ? "Alta" : contact.urgency === "medium" ? "Média" : "Baixa"}
+                                </span>
+                              )}
+                              {contact.preferredContact && (
+                                <span className="text-[10px] font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Contato: {contact.preferredContact}</span>
+                              )}
+                              {contact.howFound && (
+                                <span className="text-[10px] font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">Via: {contact.howFound}</span>
+                              )}
+                            </div>
+                            {contact.subject && (
+                              <p className="text-xs font-medium text-navy/70 mb-2">Assunto: {contact.subject}</p>
+                            )}
                             <p className="text-sm text-gray-600 leading-relaxed bg-gray-50 rounded-lg p-3">{contact.message}</p>
                             <p className="text-[10px] text-gray-400 mt-2">
                               {new Date(contact.createdAt).toLocaleString("pt-BR")}

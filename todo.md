@@ -63,3 +63,11 @@
 - [x] Configurar favicon oficial
 - [x] Adicionar suporte ao Google Search Console (meta tag de verificação)
 - [x] Melhorar interface do painel admin (mais amigável e intuitiva)
+
+## Fase 9: Formulário de Contato Detalhado
+- [x] Adicionar campos: cargo, setor de atuação, tipo de serviço desejado, urgência, como conheceu a empresa, contato preferido
+- [x] Atualizar schema do banco para suportar novos campos (migration 0003)
+- [x] Atualizar endpoint tRPC para aceitar os novos campos
+- [x] Redesenhar layout do formulário com UX aprimorada (multi-step 3 etapas)
+- [x] Manter i18n (PT/EN) nos novos campos
+- [x] Testar envio e visualização no admin (15 testes passando)
