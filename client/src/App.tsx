@@ -19,6 +19,7 @@ const Admin = lazy(() => import("./pages/Admin"));
 const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ChatWidget = lazy(() => import("./components/ChatWidget"));
+import GoogleVerification from "./components/GoogleVerification";
 
 function PageLoader() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <TooltipProvider>
             <Toaster />
             <Router />
+            <GoogleVerification />
             <Suspense fallback={null}>
               <ChatWidget />
             </Suspense>
