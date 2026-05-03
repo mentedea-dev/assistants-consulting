@@ -1,0 +1,308 @@
+import { registerTranslations } from "@/contexts/LanguageContext";
+
+const pt: Record<string, string> = {
+  // ═══════ Navigation ═══════
+  "nav.home": "Início",
+  "nav.services": "Serviços",
+  "nav.about": "Sobre",
+  "nav.clients": "Clientes",
+  "nav.insights": "Insights",
+  "nav.contact": "Contato",
+
+  // ═══════ Hero ═══════
+  "hero.tag": "Consultoria Atuarial",
+  "hero.title.1": "O ponto de inflexão",
+  "hero.title.2": "entre risco e",
+  "hero.title.3": "certeza",
+  "hero.subtitle": "Há 35 anos, a Assistants transforma complexidade atuarial em clareza estratégica para os maiores grupos corporativos do Brasil.",
+  "hero.cta.services": "Conheça nossos serviços",
+  "hero.cta.contact": "Fale conosco",
+  "hero.scroll": "Scroll",
+
+  // ═══════ Stats ═══════
+  "stats.years": "Anos de atuação",
+  "stats.clients": "Clientes atendidos",
+  "stats.assets": "Em passivos avaliados",
+  "stats.sectors": "Setores da economia",
+
+  // ═══════ Services Section (Home) ═══════
+  "services.tag": "Áreas de Atuação",
+  "services.title.1": "Excelência atuarial em",
+  "services.title.2": "três dimensões estratégicas",
+  "services.learnMore": "Saiba mais",
+
+  // Service Items
+  "service.health.title": "Saúde Suplementar",
+  "service.health.desc": "Precificação, provisionamento técnico e modelagem de risco para operadoras e autogestões, com aderência integral às normas da ANS.",
+  "service.pension.title": "Previdência Complementar",
+  "service.pension.desc": "Avaliação atuarial de planos BD, CD e CV, estudos de solvência e ALM para entidades fechadas e abertas de previdência complementar.",
+  "service.benefits.title": "Benefícios Pós-Emprego",
+  "service.benefits.desc": "Laudos atuariais conforme CPC 33 (R2) / IAS 19, mensuração de obrigações e assessoria para demonstrações financeiras auditadas.",
+
+  // Additional Services
+  "service.audit.title": "Auditoria Atuarial",
+  "service.audit.desc": "Revisão independente de premissas, metodologias e provisões técnicas com rigor analítico e conformidade regulatória.",
+  "service.duediligence.title": "Due Diligence Atuarial",
+  "service.duediligence.desc": "Análise de passivos atuariais em operações de M&A, IPO e reestruturações societárias com quantificação precisa de riscos.",
+  "service.hr.title": "HR Consulting",
+  "service.hr.desc": "Desenho e revisão de políticas de benefícios corporativos, benchmarking de mercado e otimização de custos previdenciários.",
+
+  // Additional Services Section
+  "additionalServices.tag": "Serviços Especializados",
+  "additionalServices.title.1": "Soluções complementares de",
+  "additionalServices.title.2": "alto valor agregado",
+
+  // ═══════ Insights Section (Home) ═══════
+  "insights.tag": "Insights",
+  "insights.title.1": "Liderança de",
+  "insights.title.2": "pensamento atuarial",
+  "insights.desc": "Produzimos análises aprofundadas sobre os temas que definem o futuro da gestão de riscos no Brasil. Nosso conteúdo técnico é referência para decisores do mercado financeiro e de saúde suplementar.",
+  "insights.viewAll": "Ver todos os insights",
+
+  // ═══════ CTA Section ═══════
+  "cta.title.1": "Encontre o seu ponto",
+  "cta.title.2": "de inflexão",
+  "cta.desc": "Converse com nossos atuários sobre como podemos transformar a gestão de riscos da sua organização.",
+  "cta.button": "Agende uma conversa",
+
+  // ═══════ Services Page ═══════
+  "servicesPage.tag": "Nossos Serviços",
+  "servicesPage.title.1": "Soluções atuariais",
+  "servicesPage.title.2": "de ponta a ponta",
+  "servicesPage.subtitle": "Da modelagem de risco à conformidade regulatória, oferecemos o espectro completo de serviços atuariais para organizações que exigem excelência técnica e visão estratégica.",
+
+  // Health details
+  "servicesPage.health.subtitle": "Gestão Técnica de Riscos em Saúde",
+  "servicesPage.health.desc": "Atuamos junto a operadoras de planos de saúde, autogestões e seguradoras especializadas, oferecendo soluções atuariais que garantem sustentabilidade financeira e conformidade regulatória.",
+  "servicesPage.health.item1": "Precificação de planos e produtos",
+  "servicesPage.health.item2": "Provisões técnicas (PEONA, IBNR)",
+  "servicesPage.health.item3": "Teste de adequação de passivos (TAP/LAT)",
+  "servicesPage.health.item4": "Modelagem de sinistralidade",
+  "servicesPage.health.item5": "Nota técnica atuarial (NTAP)",
+  "servicesPage.health.item6": "Relatórios regulatórios ANS",
+
+  // Pension details
+  "servicesPage.pension.subtitle": "Avaliação e Gestão de Fundos de Pensão",
+  "servicesPage.pension.desc": "Assessoramos entidades fechadas e abertas de previdência complementar em todas as dimensões atuariais, da avaliação de planos à gestão de ativos e passivos.",
+  "servicesPage.pension.item1": "Avaliação atuarial anual (planos BD, CD e CV)",
+  "servicesPage.pension.item2": "Estudos de solvência e equilíbrio",
+  "servicesPage.pension.item3": "Asset-Liability Management (ALM)",
+  "servicesPage.pension.item4": "Redesenho de planos de benefícios",
+  "servicesPage.pension.item5": "Estudos de aderência de hipóteses",
+  "servicesPage.pension.item6": "Relatórios PREVIC e CNPC",
+
+  // Benefits details
+  "servicesPage.benefits.subtitle": "CPC 33 (R2) / IAS 19 / IFRS 17",
+  "servicesPage.benefits.desc": "Elaboramos laudos atuariais para mensuração de obrigações com benefícios pós-emprego, atendendo aos padrões contábeis nacionais e internacionais exigidos por auditores e reguladores.",
+  "servicesPage.benefits.item1": "Laudos atuariais CPC 33 (R2) / IAS 19",
+  "servicesPage.benefits.item2": "Mensuração de obrigações (DBO/PBO)",
+  "servicesPage.benefits.item3": "Análise de sensibilidade de premissas",
+  "servicesPage.benefits.item4": "Projeções de custo e fluxo de caixa",
+  "servicesPage.benefits.item5": "Assessoria para demonstrações financeiras",
+  "servicesPage.benefits.item6": "Suporte a auditorias externas",
+
+  // Extra specialized
+  "servicesPage.expertise.title": "Consultoria Regulatória",
+  "servicesPage.expertise.desc": "Assessoria especializada em conformidade com ANS, PREVIC, SUSEP e CVM, incluindo preparação para inspeções e adequação normativa.",
+  "servicesPage.stochastic.title": "Modelagem Estocástica",
+  "servicesPage.stochastic.desc": "Simulações de Monte Carlo e modelos estocásticos para avaliação de cenários, stress testing e quantificação de incertezas atuariais.",
+  "servicesPage.risk.title": "Gestão de Riscos",
+  "servicesPage.risk.desc": "Frameworks de Enterprise Risk Management (ERM) aplicados a seguradoras, operadoras e fundos de pensão, com mapeamento e mitigação de riscos.",
+
+  // CTA
+  "servicesPage.cta.title": "Pronto para elevar a gestão atuarial da sua organização",
+  "servicesPage.cta.desc": "Entre em contato com nossos especialistas para uma análise personalizada das necessidades atuariais da sua empresa.",
+  "servicesPage.cta.button": "Solicitar proposta",
+
+  // ═══════ About Page ═══════
+  "about.tag": "Sobre Nós",
+  "about.title.1": "35 anos de",
+  "about.title.2": "excelência atuarial",
+  "about.para1": "Fundada em 1991, a Assistants nasceu com a missão de transformar a complexidade atuarial em clareza estratégica. Ao longo de mais de três décadas, consolidamos nossa posição como uma das consultorias atuariais mais respeitadas do Brasil, atendendo os maiores grupos corporativos, operadoras de saúde e entidades de previdência do país.",
+  "about.para2": "Nossa equipe é composta por atuários credenciados pelo IBA, com formação multidisciplinar em matemática, estatística, economia e finanças. Combinamos rigor técnico com visão de negócios, entregando soluções que vão além do laudo — oferecemos inteligência atuarial que fundamenta decisões estratégicas.",
+  "about.para3": "Atuamos nas três grandes verticais da ciência atuarial: saúde suplementar, previdência complementar e benefícios pós-emprego. Em cada uma delas, aplicamos metodologias de ponta, aderentes aos padrões internacionais (IAS 19, IFRS 17, Solvência II) e às normas regulatórias brasileiras (ANS, PREVIC, SUSEP, CVM).",
+
+  // Values
+  "about.values.title": "Nossos Valores",
+  "about.values.heading": "Os princípios que guiam nossa atuação",
+  "about.value1.title": "Rigor Técnico",
+  "about.value1.desc": "Cada análise é fundamentada em metodologias robustas, premissas documentadas e revisão por pares. Não há atalhos na ciência atuarial.",
+  "about.value2.title": "Independência",
+  "about.value2.desc": "Nossas opiniões atuariais são isentas de conflitos de interesse. A independência técnica é a base da nossa credibilidade.",
+  "about.value3.title": "Ética Profissional",
+  "about.value3.desc": "Atuamos em conformidade com o Código de Ética do IBA e os padrões internacionais de prática atuarial.",
+  "about.value4.title": "Inovação Metodológica",
+  "about.value4.desc": "Investimos continuamente em novas técnicas de modelagem, inteligência artificial e análise preditiva aplicadas à ciência atuarial.",
+
+  // Timeline
+  "about.timeline.tag": "Nossa Trajetória",
+  "about.timeline.title": "Marcos que definem quem somos",
+  "about.milestone1": "Fundação da Assistants em São Paulo, com foco em consultoria atuarial para previdência complementar.",
+  "about.milestone2": "Expansão para saúde suplementar, atendendo as primeiras operadoras reguladas pela ANS.",
+  "about.milestone3": "Adoção pioneira do CPC 33 no Brasil, assessorando empresas listadas na B3.",
+  "about.milestone4": "Consolidação como referência em ALM e estudos de solvência para fundos de pensão.",
+  "about.milestone5": "Transformação digital: modelagem preditiva e inteligência artificial aplicada à ciência atuarial.",
+  "about.milestone6": "35 anos de atuação, com mais de 200 clientes atendidos e R$ 50 bilhões em passivos avaliados.",
+
+  // Credentials
+  "about.credential1": "Atuários credenciados pelo Instituto Brasileiro de Atuária (IBA) e membros da International Actuarial Association (IAA).",
+  "about.credential2": "Metodologias aderentes aos padrões internacionais: IAS 19, IFRS 17, Solvência II e normas CPC.",
+  "about.credential3": "Conformidade regulatória com ANS, PREVIC, SUSEP e CVM em todas as entregas.",
+
+  // ═══════ Clients Page ═══════
+  "clients.tag": "Nossos Clientes",
+  "clients.title.1": "Parceiros de",
+  "clients.title.2": "longa data",
+  "clients.subtitle": "Atendemos os maiores grupos corporativos, operadoras de saúde, entidades de previdência e instituições financeiras do Brasil.",
+
+  // Stats
+  "clients.stat1": "Clientes atendidos",
+  "clients.stat2": "Média de anos de parceria",
+  "clients.stat3": "Taxa de retenção",
+  "clients.stat4": "Anos de atuação",
+
+  // Sectors
+  "clients.sectors.tag": "Setores de Atuação",
+  "clients.sectors.title.1": "Presença em todos os",
+  "clients.sectors.title.2": "setores da economia",
+  "clients.sector1.name": "Instituições Financeiras",
+  "clients.sector1.desc": "Bancos, seguradoras e gestoras de ativos com necessidades atuariais complexas em previdência e benefícios.",
+  "clients.sector2.name": "Saúde e Seguros",
+  "clients.sector2.desc": "Operadoras de planos de saúde, autogestões e seguradoras especializadas em saúde suplementar.",
+  "clients.sector3.name": "Indústria e Manufatura",
+  "clients.sector3.desc": "Grandes grupos industriais com planos de previdência corporativa e benefícios pós-emprego.",
+  "clients.sector4.name": "Serviços e Tecnologia",
+  "clients.sector4.desc": "Empresas de serviços, tecnologia e telecomunicações com obrigações atuariais significativas.",
+  "clients.sector5.name": "Varejo e Consumo",
+  "clients.sector5.desc": "Redes varejistas e empresas de bens de consumo com grandes bases de colaboradores e planos de benefícios.",
+  "clients.sector6.name": "Energia e Infraestrutura",
+  "clients.sector6.desc": "Concessionárias, utilities e empresas de infraestrutura com passivos atuariais de longo prazo.",
+
+  // Testimonials
+  "clients.testimonials.tag": "Depoimentos",
+  "clients.testimonials.title": "O que nossos clientes dizem",
+  "clients.testimonial1.quote": "A Assistants é nossa parceira há mais de 15 anos. A qualidade técnica dos laudos e a capacidade de traduzir complexidade em clareza para o conselho são incomparáveis.",
+  "clients.testimonial1.author": "Diretor Financeiro",
+  "clients.testimonial1.company": "Grande Grupo Industrial — São Paulo",
+  "clients.testimonial2.quote": "Em um mercado onde a precisão atuarial é crítica, a Assistants se destaca pela robustez metodológica e pelo compromisso com prazos. São referência para nossas auditorias.",
+  "clients.testimonial2.author": "Superintendente de Previdência",
+  "clients.testimonial2.company": "Entidade Fechada de Previdência",
+  "clients.testimonial3.quote": "A assessoria da Assistants foi fundamental na adequação dos nossos provisionamentos às novas normas da ANS. Profissionalismo e profundidade técnica excepcionais.",
+  "clients.testimonial3.author": "Diretor Técnico",
+  "clients.testimonial3.company": "Operadora de Saúde — Nacional",
+
+  // ═══════ Insights Page ═══════
+  "insightsPage.tag": "Insights",
+  "insightsPage.title.1": "Liderança de pensamento",
+  "insightsPage.title.2": "atuarial",
+  "insightsPage.subtitle": "Análises aprofundadas sobre os temas que definem o futuro da gestão de riscos, previdência e saúde suplementar no Brasil.",
+  "insightsPage.featured": "Destaque",
+  "insightsPage.readFull": "Ler artigo completo",
+  "insightsPage.read": "Ler",
+  "insightsPage.readTime": "de leitura",
+  "insightsPage.newsletter.title": "Receba nossos insights",
+  "insightsPage.newsletter.desc": "Inscreva-se para receber análises atuariais exclusivas diretamente no seu e-mail.",
+  "insightsPage.newsletter.placeholder": "seu@email.com",
+  "insightsPage.newsletter.button": "Inscrever",
+  "insightsPage.newsletter.success": "Inscrito com sucesso! Você receberá nossos insights por e-mail.",
+  "insightsPage.newsletter.error": "Erro ao inscrever. Tente novamente.",
+
+  // ═══════ Contact Page ═══════
+  "contact.tag": "Contato",
+  "contact.title.1": "Vamos conversar sobre",
+  "contact.title.2": "o seu desafio atuarial",
+  "contact.success": "Mensagem enviada com sucesso. Entraremos em contato em breve.",
+  "contact.error": "Erro ao enviar mensagem. Por favor, tente novamente.",
+  "contact.success.title": "Mensagem enviada",
+  "contact.success.desc": "Agradecemos o seu contato. Nossa equipe retornará em até 24 horas úteis.",
+  "contact.form.name": "Nome completo",
+  "contact.form.company": "Empresa",
+  "contact.form.email": "E-mail",
+  "contact.form.phone": "Telefone",
+  "contact.form.subject": "Assunto",
+  "contact.form.selectSubject": "Selecione o assunto",
+  "contact.form.other": "Outro",
+  "contact.form.message": "Mensagem",
+  "contact.form.submit": "Enviar mensagem",
+  "contact.form.sending": "Enviando...",
+  "contact.info.title": "Informações de contato",
+  "contact.info.address.label": "Endereço",
+  "contact.info.address.value": "São Paulo, SP — Brasil",
+  "contact.info.address.detail": "Av. Paulista, 1.000 — Bela Vista",
+  "contact.info.phone.label": "Telefone",
+  "contact.info.phone.detail": "Segunda a sexta, 9h às 18h",
+  "contact.info.email.label": "E-mail",
+  "contact.info.email.detail": "Respondemos em até 24 horas úteis",
+  "contact.hours.title": "Horário",
+  "contact.hours.weekdays": "Seg — Sex, 9h às 18h",
+  "contact.hours.timezone": "Horário de Brasília (GMT-3)",
+  "contact.lgpd": "Todas as informações compartilhadas são tratadas com sigilo absoluto, em conformidade com a Lei Geral de Proteção de Dados (LGPD).",
+
+  // ═══════ Footer ═══════
+  "footer.description": "Há 35 anos transformando complexidade atuarial em clareza estratégica para os maiores grupos corporativos do Brasil.",
+  "footer.nav": "Navegação",
+  "footer.areas": "Áreas de Atuação",
+  "footer.rights": "Todos os direitos reservados.",
+  "footer.location": "São Paulo, SP — Brasil",
+
+  // ═══════ Newsletter ═══════
+  "newsletter.desc": "Receba insights atuariais exclusivos.",
+  "newsletter.placeholder": "seu@email.com",
+  "newsletter.subscribe": "Inscrever",
+  "newsletter.success": "Inscrito com sucesso!",
+  "newsletter.error": "Erro ao inscrever.",
+
+  // ═══════ Chat Widget ═══════
+  "chat.title": "Assistente Atuarial",
+  "chat.open": "Abrir chat",
+  "chat.close": "Fechar chat",
+  "chat.greeting": "Olá! Como posso ajudar?",
+  "chat.intro": "Sou o assistente virtual da Assistants. Posso responder dúvidas sobre nossos serviços, regulamentações atuariais e mais.",
+  "chat.suggestion1": "O que é CPC 33?",
+  "chat.suggestion2": "Quais serviços vocês oferecem?",
+  "chat.suggestion3": "Como funciona a avaliação atuarial?",
+  "chat.placeholder": "Digite sua mensagem...",
+  "chat.send": "Enviar",
+  "chat.disclaimer": "Assistente virtual — para análises específicas, entre em contato com nossa equipe",
+  "chat.error": "Desculpe, ocorreu um erro. Por favor, tente novamente ou entre em contato pelo e-mail contato@assistants.com.br.",
+
+  // ═══════ 404 ═══════
+  "notFound.title": "Página não encontrada",
+  "notFound.desc": "A página que você procura não existe ou foi movida para outro endereço.",
+  "notFound.back": "Voltar ao início",
+
+  // ═══════ Article Detail ═══════
+  "article.backToInsights": "Voltar aos Insights",
+  "article.notFound": "Artigo não encontrado",
+  "article.notFoundDesc": "O artigo que você procura não existe ou foi removido.",
+  "article.readTime": "de leitura",
+  "article.ctaText": "Precisa de uma análise personalizada sobre este tema?",
+  "article.ctaButton": "Fale com nossos atuários",
+
+  // ═══════ Static Articles ═══════
+  "articles.static.1.title": "Impactos da revisão do CPC 33 (R2) nas demonstrações financeiras de 2025",
+  "articles.static.1.excerpt": "A recente atualização do Pronunciamento Técnico CPC 33 introduz alterações significativas na mensuração de obrigações com benefícios pós-emprego. Analisamos os impactos quantitativos e as estratégias de transição para empresas brasileiras listadas.",
+  "articles.static.1.date": "Abril 2026",
+  "articles.static.2.tag": "Saúde",
+  "articles.static.2.title": "Judicialização na saúde suplementar: impactos atuariais e estratégias de mitigação",
+  "articles.static.2.excerpt": "O crescimento exponencial de demandas judiciais contra operadoras de saúde exige a incorporação de provisões específicas nos modelos atuariais.",
+  "articles.static.2.date": "Março 2026",
+  "articles.static.3.tag": "Previdência",
+  "articles.static.3.title": "Reforma da previdência complementar: o que muda para os planos BD em 2026",
+  "articles.static.3.excerpt": "As novas diretrizes da PREVIC para planos de benefício definido impactam diretamente os estudos de solvência e as políticas de equacionamento.",
+  "articles.static.3.date": "Fevereiro 2026",
+  "articles.static.4.tag": "Regulatório",
+  "articles.static.4.title": "IFRS 17 e seus reflexos na avaliação atuarial de seguradoras brasileiras",
+  "articles.static.4.excerpt": "A adoção plena do IFRS 17 representa uma transformação estrutural na contabilidade de contratos de seguro.",
+  "articles.static.4.date": "Janeiro 2026",
+  "articles.static.5.title": "Machine learning aplicado à modelagem de sinistralidade em saúde",
+  "articles.static.5.excerpt": "A integração de técnicas de aprendizado de máquina com modelos atuariais tradicionais permite projeções mais granulares e acuradas.",
+  "articles.static.5.date": "Dezembro 2025",
+  "articles.static.6.title": "Due diligence atuarial em operações de M&A: armadilhas e melhores práticas",
+  "articles.static.6.excerpt": "Passivos atuariais subestimados são uma das principais fontes de destruição de valor em fusões e aquisições.",
+  "articles.static.6.date": "Novembro 2025",
+};
+
+registerTranslations("pt", pt);
+export default pt;
+

@@ -12,8 +12,9 @@ import { toast } from "sonner";
 import { getLoginUrl } from "@/const";
 import {
   FileText, MessageSquare, Mail, Plus, Edit, Trash2,
-  Eye, EyeOff, ArrowLeft, Loader2, CheckCircle2, Clock
+  Eye, EyeOff, ArrowLeft, Loader2, CheckCircle2, Clock, Columns2, PenLine
 } from "lucide-react";
+import { Streamdown } from "streamdown";
 
 type Tab = "articles" | "contacts" | "newsletter";
 
@@ -30,6 +31,7 @@ export default function Admin() {
     readTime: "",
     status: "draft" as "draft" | "published",
   });
+  const [showPreview, setShowPreview] = useState(false);
 
   // Queries
   const articlesQuery = trpc.articles.list.useQuery({ status: "all" });
@@ -323,16 +325,45 @@ export default function Admin() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1.5">
-                  Conteúdo (Markdown)
-                </label>
-                <textarea
-                  value={form.content}
-                  onChange={(e) => setForm({ ...form, content: e.target.value })}
-                  rows={12}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm font-mono focus:border-orange focus:ring-0 outline-none transition-colors resize-y"
-                  placeholder="Escreva o conteúdo do artigo em Markdown..."
-                />
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-xs font-medium text-gray-600">
+                    Conteúdo (Markdown)
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setShowPreview(!showPreview)}
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-orange transition-colors"
+                  >
+                    {showPreview ? <PenLine size={12} /> : <Columns2 size={12} />}
+                    {showPreview ? "Editor" : "Preview"}
+                  </button>
+                </div>
+                {showPreview ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <textarea
+                      value={form.content}
+                      onChange={(e) => setForm({ ...form, content: e.target.value })}
+                      rows={16}
+                      className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm font-mono focus:border-orange focus:ring-0 outline-none transition-colors resize-y"
+                      placeholder="Escreva o conteúdo do artigo em Markdown..."
+                    />
+                    <div className="border border-gray-200 rounded px-5 py-4 overflow-y-auto max-h-[420px] prose prose-sm prose-headings:text-navy prose-a:text-orange">
+                      {form.content ? (
+                        <Streamdown>{form.content}</Streamdown>
+                      ) : (
+                        <p className="text-gray-300 italic text-sm">Preview aparecerá aqui...</p>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <textarea
+                    value={form.content}
+                    onChange={(e) => setForm({ ...form, content: e.target.value })}
+                    rows={12}
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm font-mono focus:border-orange focus:ring-0 outline-none transition-colors resize-y"
+                    placeholder="Escreva o conteúdo do artigo em Markdown..."
+                  />
+                )}
               </div>
 
               <div className="flex items-center gap-3 pt-2">

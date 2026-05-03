@@ -1,0 +1,307 @@
+import { registerTranslations } from "@/contexts/LanguageContext";
+
+const en: Record<string, string> = {
+  // ═══════ Navigation ═══════
+  "nav.home": "Home",
+  "nav.services": "Services",
+  "nav.about": "About",
+  "nav.clients": "Clients",
+  "nav.insights": "Insights",
+  "nav.contact": "Contact",
+
+  // ═══════ Hero ═══════
+  "hero.tag": "Actuarial Consulting",
+  "hero.title.1": "The inflection point",
+  "hero.title.2": "between risk and",
+  "hero.title.3": "certainty",
+  "hero.subtitle": "For 35 years, Assistants has been transforming actuarial complexity into strategic clarity for Brazil's largest corporate groups.",
+  "hero.cta.services": "Explore our services",
+  "hero.cta.contact": "Get in touch",
+  "hero.scroll": "Scroll",
+
+  // ═══════ Stats ═══════
+  "stats.years": "Years of experience",
+  "stats.clients": "Clients served",
+  "stats.assets": "In liabilities assessed",
+  "stats.sectors": "Economic sectors",
+
+  // ═══════ Services Section (Home) ═══════
+  "services.tag": "Practice Areas",
+  "services.title.1": "Actuarial excellence across",
+  "services.title.2": "three strategic dimensions",
+  "services.learnMore": "Learn more",
+
+  // Service Items
+  "service.health.title": "Supplementary Health Insurance",
+  "service.health.desc": "Pricing, technical provisioning and risk modelling for health insurance operators and self-managed plans, in full compliance with ANS regulations.",
+  "service.pension.title": "Complementary Pension Funds",
+  "service.pension.desc": "Actuarial valuation of defined benefit, defined contribution and variable contribution plans, solvency studies and ALM for closed and open pension entities.",
+  "service.benefits.title": "Post-Employment Benefits",
+  "service.benefits.desc": "Actuarial reports in accordance with CPC 33 (R2) / IAS 19, measurement of obligations and advisory services for audited financial statements.",
+
+  // Additional Services
+  "service.audit.title": "Actuarial Audit",
+  "service.audit.desc": "Independent review of assumptions, methodologies and technical provisions with analytical rigour and regulatory compliance.",
+  "service.duediligence.title": "Actuarial Due Diligence",
+  "service.duediligence.desc": "Analysis of actuarial liabilities in M&A transactions, IPOs and corporate restructurings with precise risk quantification.",
+  "service.hr.title": "HR Consulting",
+  "service.hr.desc": "Design and review of corporate benefit policies, market benchmarking and optimisation of pension costs.",
+
+  // Additional Services Section
+  "additionalServices.tag": "Specialised Services",
+  "additionalServices.title.1": "Complementary solutions of",
+  "additionalServices.title.2": "high added value",
+
+  // ═══════ Insights Section (Home) ═══════
+  "insights.tag": "Insights",
+  "insights.title.1": "Actuarial",
+  "insights.title.2": "thought leadership",
+  "insights.desc": "We produce in-depth analyses on the topics shaping the future of risk management in Brazil. Our technical content is a reference for decision-makers in the financial and supplementary health insurance markets.",
+  "insights.viewAll": "View all insights",
+
+  // ═══════ CTA Section ═══════
+  "cta.title.1": "Find your",
+  "cta.title.2": "inflection point",
+  "cta.desc": "Speak with our actuaries about how we can transform your organisation's risk management.",
+  "cta.button": "Schedule a conversation",
+
+  // ═══════ Services Page ═══════
+  "servicesPage.tag": "Our Services",
+  "servicesPage.title.1": "End-to-end",
+  "servicesPage.title.2": "actuarial solutions",
+  "servicesPage.subtitle": "From risk modelling to regulatory compliance, we offer the full spectrum of actuarial services for organisations that demand technical excellence and strategic vision.",
+
+  // Health details
+  "servicesPage.health.subtitle": "Technical Health Risk Management",
+  "servicesPage.health.desc": "We work with health insurance operators, self-managed plans and specialised insurers, delivering actuarial solutions that ensure financial sustainability and regulatory compliance.",
+  "servicesPage.health.item1": "Plan and product pricing",
+  "servicesPage.health.item2": "Technical provisions (PEONA, IBNR)",
+  "servicesPage.health.item3": "Liability adequacy test (TAP/LAT)",
+  "servicesPage.health.item4": "Claims experience modelling",
+  "servicesPage.health.item5": "Actuarial technical note (NTAP)",
+  "servicesPage.health.item6": "ANS regulatory reports",
+
+  // Pension details
+  "servicesPage.pension.subtitle": "Pension Fund Valuation and Management",
+  "servicesPage.pension.desc": "We advise closed and open complementary pension entities across all actuarial dimensions, from plan valuation to asset-liability management.",
+  "servicesPage.pension.item1": "Annual actuarial valuation (DB, DC and VC plans)",
+  "servicesPage.pension.item2": "Solvency and equilibrium studies",
+  "servicesPage.pension.item3": "Asset-Liability Management (ALM)",
+  "servicesPage.pension.item4": "Benefit plan redesign",
+  "servicesPage.pension.item5": "Assumption adherence studies",
+  "servicesPage.pension.item6": "PREVIC and CNPC reports",
+
+  // Benefits details
+  "servicesPage.benefits.subtitle": "CPC 33 (R2) / IAS 19 / IFRS 17",
+  "servicesPage.benefits.desc": "We prepare actuarial reports for the measurement of post-employment benefit obligations, meeting national and international accounting standards required by auditors and regulators.",
+  "servicesPage.benefits.item1": "Actuarial reports CPC 33 (R2) / IAS 19",
+  "servicesPage.benefits.item2": "Obligation measurement (DBO/PBO)",
+  "servicesPage.benefits.item3": "Assumption sensitivity analysis",
+  "servicesPage.benefits.item4": "Cost and cash flow projections",
+  "servicesPage.benefits.item5": "Financial statement advisory",
+  "servicesPage.benefits.item6": "External audit support",
+
+  // Extra specialised
+  "servicesPage.expertise.title": "Regulatory Consulting",
+  "servicesPage.expertise.desc": "Specialised advisory on compliance with ANS, PREVIC, SUSEP and CVM, including inspection preparation and regulatory adequacy.",
+  "servicesPage.stochastic.title": "Stochastic Modelling",
+  "servicesPage.stochastic.desc": "Monte Carlo simulations and stochastic models for scenario assessment, stress testing and quantification of actuarial uncertainties.",
+  "servicesPage.risk.title": "Risk Management",
+  "servicesPage.risk.desc": "Enterprise Risk Management (ERM) frameworks applied to insurers, health operators and pension funds, with risk mapping and mitigation.",
+
+  // CTA
+  "servicesPage.cta.title": "Ready to elevate your organisation's actuarial management",
+  "servicesPage.cta.desc": "Contact our specialists for a personalised analysis of your company's actuarial needs.",
+  "servicesPage.cta.button": "Request a proposal",
+
+  // ═══════ About Page ═══════
+  "about.tag": "About Us",
+  "about.title.1": "35 years of",
+  "about.title.2": "actuarial excellence",
+  "about.para1": "Founded in 1991, Assistants was established with the mission of transforming actuarial complexity into strategic clarity. Over more than three decades, we have consolidated our position as one of Brazil's most respected actuarial consultancies, serving the country's largest corporate groups, health insurance operators and pension entities.",
+  "about.para2": "Our team comprises actuaries credentialed by the IBA (Brazilian Institute of Actuaries), with multidisciplinary backgrounds in mathematics, statistics, economics and finance. We combine technical rigour with business acumen, delivering solutions that go beyond the report — we provide actuarial intelligence that underpins strategic decisions.",
+  "about.para3": "We operate across the three major verticals of actuarial science: supplementary health insurance, complementary pension funds and post-employment benefits. In each, we apply cutting-edge methodologies aligned with international standards (IAS 19, IFRS 17, Solvency II) and Brazilian regulatory requirements (ANS, PREVIC, SUSEP, CVM).",
+
+  // Values
+  "about.values.title": "Our Values",
+  "about.values.heading": "The principles that guide our practice",
+  "about.value1.title": "Technical Rigour",
+  "about.value1.desc": "Every analysis is grounded in robust methodologies, documented assumptions and peer review. There are no shortcuts in actuarial science.",
+  "about.value2.title": "Independence",
+  "about.value2.desc": "Our actuarial opinions are free from conflicts of interest. Technical independence is the foundation of our credibility.",
+  "about.value3.title": "Professional Ethics",
+  "about.value3.desc": "We operate in compliance with the IBA Code of Ethics and international standards of actuarial practice.",
+  "about.value4.title": "Methodological Innovation",
+  "about.value4.desc": "We continuously invest in new modelling techniques, artificial intelligence and predictive analytics applied to actuarial science.",
+
+  // Timeline
+  "about.timeline.tag": "Our Journey",
+  "about.timeline.title": "Milestones that define who we are",
+  "about.milestone1": "Assistants founded in São Paulo, focused on actuarial consulting for complementary pension funds.",
+  "about.milestone2": "Expansion into supplementary health insurance, serving the first operators regulated by ANS.",
+  "about.milestone3": "Pioneering adoption of CPC 33 in Brazil, advising companies listed on B3.",
+  "about.milestone4": "Consolidation as a benchmark in ALM and solvency studies for pension funds.",
+  "about.milestone5": "Digital transformation: predictive modelling and artificial intelligence applied to actuarial science.",
+  "about.milestone6": "35 years of practice, with over 200 clients served and R$ 50 billion in liabilities assessed.",
+
+  // Credentials
+  "about.credential1": "Actuaries credentialed by the Brazilian Institute of Actuaries (IBA) and members of the International Actuarial Association (IAA).",
+  "about.credential2": "Methodologies aligned with international standards: IAS 19, IFRS 17, Solvency II and CPC standards.",
+  "about.credential3": "Regulatory compliance with ANS, PREVIC, SUSEP and CVM across all deliverables.",
+
+  // ═══════ Clients Page ═══════
+  "clients.tag": "Our Clients",
+  "clients.title.1": "Long-standing",
+  "clients.title.2": "partners",
+  "clients.subtitle": "We serve Brazil's largest corporate groups, health insurance operators, pension entities and financial institutions.",
+
+  // Stats
+  "clients.stat1": "Clients served",
+  "clients.stat2": "Average years of partnership",
+  "clients.stat3": "Client retention rate",
+  "clients.stat4": "Years of experience",
+
+  // Sectors
+  "clients.sectors.tag": "Sectors Served",
+  "clients.sectors.title.1": "Presence across all",
+  "clients.sectors.title.2": "sectors of the economy",
+  "clients.sector1.name": "Financial Institutions",
+  "clients.sector1.desc": "Banks, insurers and asset managers with complex actuarial needs in pensions and benefits.",
+  "clients.sector2.name": "Health and Insurance",
+  "clients.sector2.desc": "Health insurance operators, self-managed plans and insurers specialising in supplementary health.",
+  "clients.sector3.name": "Industry and Manufacturing",
+  "clients.sector3.desc": "Major industrial groups with corporate pension plans and post-employment benefits.",
+  "clients.sector4.name": "Services and Technology",
+  "clients.sector4.desc": "Service, technology and telecommunications companies with significant actuarial obligations.",
+  "clients.sector5.name": "Retail and Consumer Goods",
+  "clients.sector5.desc": "Retail chains and consumer goods companies with large employee bases and benefit plans.",
+  "clients.sector6.name": "Energy and Infrastructure",
+  "clients.sector6.desc": "Concessionaires, utilities and infrastructure companies with long-term actuarial liabilities.",
+
+  // Testimonials
+  "clients.testimonials.tag": "Testimonials",
+  "clients.testimonials.title": "What our clients say",
+  "clients.testimonial1.quote": "Assistants has been our partner for over 15 years. The technical quality of their reports and their ability to translate complexity into clarity for the board are unmatched.",
+  "clients.testimonial1.author": "Chief Financial Officer",
+  "clients.testimonial1.company": "Major Industrial Group — São Paulo",
+  "clients.testimonial2.quote": "In a market where actuarial precision is critical, Assistants stands out for its methodological robustness and commitment to deadlines. They are the benchmark for our audits.",
+  "clients.testimonial2.author": "Pension Superintendent",
+  "clients.testimonial2.company": "Closed Pension Entity",
+  "clients.testimonial3.quote": "Assistants' advisory was instrumental in adapting our provisioning to the new ANS regulations. Exceptional professionalism and technical depth.",
+  "clients.testimonial3.author": "Technical Director",
+  "clients.testimonial3.company": "Health Insurance Operator — Nationwide",
+
+  // ═══════ Insights Page ═══════
+  "insightsPage.tag": "Insights",
+  "insightsPage.title.1": "Actuarial",
+  "insightsPage.title.2": "thought leadership",
+  "insightsPage.subtitle": "In-depth analyses on the topics shaping the future of risk management, pensions and supplementary health insurance in Brazil.",
+  "insightsPage.featured": "Featured",
+  "insightsPage.readFull": "Read full article",
+  "insightsPage.read": "Read",
+  "insightsPage.readTime": "read",
+  "insightsPage.newsletter.title": "Receive our insights",
+  "insightsPage.newsletter.desc": "Subscribe to receive exclusive actuarial analyses directly in your inbox.",
+  "insightsPage.newsletter.placeholder": "your@email.com",
+  "insightsPage.newsletter.button": "Subscribe",
+  "insightsPage.newsletter.success": "Successfully subscribed! You will receive our insights by email.",
+  "insightsPage.newsletter.error": "Subscription error. Please try again.",
+
+  // ═══════ Contact Page ═══════
+  "contact.tag": "Contact",
+  "contact.title.1": "Let's discuss",
+  "contact.title.2": "your actuarial challenge",
+  "contact.success": "Message sent successfully. We will be in touch shortly.",
+  "contact.error": "Error sending message. Please try again.",
+  "contact.success.title": "Message sent",
+  "contact.success.desc": "Thank you for reaching out. Our team will respond within 24 business hours.",
+  "contact.form.name": "Full name",
+  "contact.form.company": "Company",
+  "contact.form.email": "Email",
+  "contact.form.phone": "Phone",
+  "contact.form.subject": "Subject",
+  "contact.form.selectSubject": "Select subject",
+  "contact.form.other": "Other",
+  "contact.form.message": "Message",
+  "contact.form.submit": "Send message",
+  "contact.form.sending": "Sending...",
+  "contact.info.title": "Contact information",
+  "contact.info.address.label": "Address",
+  "contact.info.address.value": "São Paulo, SP — Brazil",
+  "contact.info.address.detail": "Av. Paulista, 1,000 — Bela Vista",
+  "contact.info.phone.label": "Phone",
+  "contact.info.phone.detail": "Monday to Friday, 9am to 6pm",
+  "contact.info.email.label": "Email",
+  "contact.info.email.detail": "We respond within 24 business hours",
+  "contact.hours.title": "Business hours",
+  "contact.hours.weekdays": "Mon — Fri, 9am to 6pm",
+  "contact.hours.timezone": "Brasília Time (GMT-3)",
+  "contact.lgpd": "All information shared is treated with absolute confidentiality, in compliance with the Brazilian General Data Protection Law (LGPD).",
+
+  // ═══════ Footer ═══════
+  "footer.description": "For 35 years, transforming actuarial complexity into strategic clarity for Brazil's largest corporate groups.",
+  "footer.nav": "Navigation",
+  "footer.areas": "Practice Areas",
+  "footer.rights": "All rights reserved.",
+  "footer.location": "São Paulo, SP — Brazil",
+
+  // ═══════ Newsletter ═══════
+  "newsletter.desc": "Receive exclusive actuarial insights.",
+  "newsletter.placeholder": "your@email.com",
+  "newsletter.subscribe": "Subscribe",
+  "newsletter.success": "Successfully subscribed!",
+  "newsletter.error": "Subscription error.",
+
+  // ═══════ Chat Widget ═══════
+  "chat.title": "Actuarial Assistant",
+  "chat.open": "Open chat",
+  "chat.close": "Close chat",
+  "chat.greeting": "Hello! How can I help you?",
+  "chat.intro": "I am Assistants' virtual assistant. I can answer questions about our services, actuarial regulations and more.",
+  "chat.suggestion1": "What is CPC 33?",
+  "chat.suggestion2": "What services do you offer?",
+  "chat.suggestion3": "How does an actuarial valuation work?",
+  "chat.placeholder": "Type your message...",
+  "chat.send": "Send",
+  "chat.disclaimer": "Virtual assistant — for specific analyses, please contact our team",
+  "chat.error": "Sorry, an error occurred. Please try again or contact us at contato@assistants.com.br.",
+
+  // ═══════ 404 ═══════
+  "notFound.title": "Page not found",
+  "notFound.desc": "The page you are looking for does not exist or has been moved.",
+  "notFound.back": "Back to home",
+
+  // ═══════ Article Detail ═══════
+  "article.backToInsights": "Back to Insights",
+  "article.notFound": "Article not found",
+  "article.notFoundDesc": "The article you are looking for does not exist or has been removed.",
+  "article.readTime": "read",
+  "article.ctaText": "Need a personalised analysis on this topic?",
+  "article.ctaButton": "Speak with our actuaries",
+
+  // ═══════ Static Articles ═══════
+  "articles.static.1.title": "Impacts of the CPC 33 (R2) revision on 2025 financial statements",
+  "articles.static.1.excerpt": "The recent update to Technical Pronouncement CPC 33 introduces significant changes to the measurement of post-employment benefit obligations. We analyse the quantitative impacts and transition strategies for Brazilian listed companies.",
+  "articles.static.1.date": "April 2026",
+  "articles.static.2.tag": "Health",
+  "articles.static.2.title": "Litigation in supplementary health insurance: actuarial impacts and mitigation strategies",
+  "articles.static.2.excerpt": "The exponential growth of lawsuits against health insurers demands the incorporation of specific provisions into actuarial models.",
+  "articles.static.2.date": "March 2026",
+  "articles.static.3.tag": "Pension",
+  "articles.static.3.title": "Complementary pension reform: what changes for DB plans in 2026",
+  "articles.static.3.excerpt": "PREVIC's new guidelines for defined benefit plans directly impact solvency studies and deficit recovery policies.",
+  "articles.static.3.date": "February 2026",
+  "articles.static.4.tag": "Regulatory",
+  "articles.static.4.title": "IFRS 17 and its implications for actuarial valuation of Brazilian insurers",
+  "articles.static.4.excerpt": "Full adoption of IFRS 17 represents a structural transformation in insurance contract accounting.",
+  "articles.static.4.date": "January 2026",
+  "articles.static.5.title": "Machine learning applied to health claims modelling",
+  "articles.static.5.excerpt": "Integrating machine learning techniques with traditional actuarial models enables more granular and accurate projections.",
+  "articles.static.5.date": "December 2025",
+  "articles.static.6.title": "Actuarial due diligence in M&A transactions: pitfalls and best practices",
+  "articles.static.6.excerpt": "Underestimated actuarial liabilities are one of the main sources of value destruction in mergers and acquisitions.",
+  "articles.static.6.date": "November 2025",
+};
+
+registerTranslations("en", en);
+export default en;

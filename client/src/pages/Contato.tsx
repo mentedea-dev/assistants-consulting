@@ -1,65 +1,41 @@
 /*
- * PENTAGRAM CRAFT: Contato
- * - Refined form with animated focus states
- * - Connected to tRPC contacts.submit mutation
- * - Serif headlines, generous spacing
+ * PENTAGRAM CRAFT: Contato (i18n)
  */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import PageTransition from "@/components/PageTransition";
+import { useLanguage } from "@/contexts/LanguageContext";
+import SEO from "@/components/SEO";
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 
-const contactInfo = [
-  {
-    icon: MapPin,
-    label: "Endereço",
-    value: "São Paulo, SP — Brasil",
-    detail: "Av. Paulista, 1.000 — Bela Vista",
-  },
-  {
-    icon: Phone,
-    label: "Telefone",
-    value: "+55 (11) 3000-0000",
-    detail: "Segunda a sexta, 9h às 18h",
-  },
-  {
-    icon: Mail,
-    label: "E-mail",
-    value: "contato@assistants.com.br",
-    detail: "Respondemos em até 24 horas úteis",
-  },
-  {
-    icon: Clock,
-    label: "Horário",
-    value: "Seg — Sex, 9h às 18h",
-    detail: "Horário de Brasília (GMT-3)",
-  },
-];
-
 export default function Contato() {
+  const { t } = useLanguage();
+
+  const contactInfo = [
+    { icon: MapPin, label: t("contact.info.address.label"), value: t("contact.info.address.value"), detail: t("contact.info.address.detail") },
+    { icon: Phone, label: t("contact.info.phone.label"), value: "+55 (11) 3000-0000", detail: t("contact.info.phone.detail") },
+    { icon: Mail, label: t("contact.info.email.label"), value: "contato@assistants.com.br", detail: t("contact.info.email.detail") },
+    { icon: Clock, label: t("contact.hours.title"), value: t("contact.hours.weekdays"), detail: t("contact.hours.timezone") },
+  ];
+
   const [formData, setFormData] = useState({
-    nome: "",
-    empresa: "",
-    email: "",
-    telefone: "",
-    assunto: "",
-    mensagem: "",
+    nome: "", empresa: "", email: "", telefone: "", assunto: "", mensagem: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
   const submitMutation = trpc.contacts.submit.useMutation({
     onSuccess: () => {
       setSubmitted(true);
-      toast.success("Mensagem enviada com sucesso. Entraremos em contato em breve.");
+      toast.success(t("contact.success"));
       setFormData({ nome: "", empresa: "", email: "", telefone: "", assunto: "", mensagem: "" });
       setTimeout(() => setSubmitted(false), 5000);
     },
-    onError: (error) => {
-      toast.error("Erro ao enviar mensagem. Por favor, tente novamente.");
+    onError: () => {
+      toast.error(t("contact.error"));
     },
   });
 
@@ -75,9 +51,7 @@ export default function Contato() {
     });
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -86,6 +60,7 @@ export default function Contato() {
   return (
     <PageTransition>
       <div className="min-h-screen bg-linen">
+        <SEO title={`${t("contact.tag")} — Assistants Consulting`} description={t("contact.title.1") + " " + t("contact.title.2")} />
         <Header />
 
         {/* Hero */}
@@ -93,14 +68,14 @@ export default function Contato() {
           <div className="container">
             <FadeIn>
               <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
-                Contato
+                {t("contact.tag")}
               </p>
             </FadeIn>
             <FadeIn delay={0.15}>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-navy tracking-tight leading-[1.05] max-w-4xl">
-                Vamos conversar sobre
+                {t("contact.title.1")}
                 <br />
-                <span className="text-steel-light">o seu desafio atuarial</span>
+                <span className="text-steel-light">{t("contact.title.2")}</span>
               </h1>
             </FadeIn>
           </div>
@@ -116,10 +91,10 @@ export default function Contato() {
                   <div className="flex flex-col items-center justify-center py-20 text-center">
                     <CheckCircle2 size={48} className="text-green-600 mb-6" />
                     <h3 className="text-2xl font-serif font-medium text-navy mb-3">
-                      Mensagem enviada
+                      {t("contact.success.title")}
                     </h3>
                     <p className="text-steel-light font-light max-w-md">
-                      Agradecemos o seu contato. Nossa equipe retornará em até 24 horas úteis.
+                      {t("contact.success.desc")}
                     </p>
                   </div>
                 ) : (
@@ -127,114 +102,67 @@ export default function Contato() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                       <div>
                         <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                          Nome completo
+                          {t("contact.form.name")}
                         </label>
-                        <input
-                          type="text"
-                          name="nome"
-                          value={formData.nome}
-                          onChange={handleChange}
-                          required
-                          className={inputClasses}
-                          placeholder="Seu nome"
-                        />
+                        <input type="text" name="nome" value={formData.nome} onChange={handleChange} required className={inputClasses} />
                       </div>
                       <div>
                         <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                          Empresa
+                          {t("contact.form.company")}
                         </label>
-                        <input
-                          type="text"
-                          name="empresa"
-                          value={formData.empresa}
-                          onChange={handleChange}
-                          className={inputClasses}
-                          placeholder="Nome da empresa"
-                        />
+                        <input type="text" name="empresa" value={formData.empresa} onChange={handleChange} className={inputClasses} />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                       <div>
                         <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                          E-mail
+                          {t("contact.form.email")}
                         </label>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          className={inputClasses}
-                          placeholder="seu@email.com"
-                        />
+                        <input type="email" name="email" value={formData.email} onChange={handleChange} required className={inputClasses} />
                       </div>
                       <div>
                         <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                          Telefone
+                          {t("contact.form.phone")}
                         </label>
-                        <input
-                          type="tel"
-                          name="telefone"
-                          value={formData.telefone}
-                          onChange={handleChange}
-                          className={inputClasses}
-                          placeholder="+55 (11) 0000-0000"
-                        />
+                        <input type="tel" name="telefone" value={formData.telefone} onChange={handleChange} className={inputClasses} />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                        Assunto
+                        {t("contact.form.subject")}
                       </label>
-                      <select
-                        name="assunto"
-                        value={formData.assunto}
-                        onChange={handleChange}
-                        required
-                        className={`${inputClasses} appearance-none`}
-                      >
-                        <option value="">Selecione o assunto</option>
-                        <option value="Saúde Suplementar">Saúde Suplementar</option>
-                        <option value="Previdência Complementar">Previdência Complementar</option>
-                        <option value="Benefícios Pós-Emprego (CPC 33)">Benefícios Pós-Emprego (CPC 33)</option>
-                        <option value="Auditoria Atuarial">Auditoria Atuarial</option>
-                        <option value="Due Diligence">Due Diligence</option>
-                        <option value="HR Consulting">HR Consulting</option>
-                        <option value="Outro">Outro</option>
+                      <select name="assunto" value={formData.assunto} onChange={handleChange} required className={`${inputClasses} appearance-none`}>
+                        <option value="">{t("contact.form.selectSubject")}</option>
+                        <option value="Saúde Suplementar">{t("service.health.title")}</option>
+                        <option value="Previdência Complementar">{t("service.pension.title")}</option>
+                        <option value="Benefícios Pós-Emprego (CPC 33)">{t("service.benefits.title")}</option>
+                        <option value="Auditoria Atuarial">{t("service.audit.title")}</option>
+                        <option value="Due Diligence">{t("service.duediligence.title")}</option>
+                        <option value="HR Consulting">{t("service.hr.title")}</option>
+                        <option value="Outro">{t("contact.form.other")}</option>
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-[10px] font-semibold text-navy/60 uppercase tracking-[0.2em] mb-1">
-                        Mensagem
+                        {t("contact.form.message")}
                       </label>
-                      <textarea
-                        name="mensagem"
-                        value={formData.mensagem}
-                        onChange={handleChange}
-                        required
-                        rows={4}
-                        className={`${inputClasses} resize-none`}
-                        placeholder="Descreva brevemente seu desafio ou necessidade..."
-                      />
+                      <textarea name="mensagem" value={formData.mensagem} onChange={handleChange} required rows={4} className={`${inputClasses} resize-none`} />
                     </div>
 
                     <div className="pt-4">
-                      <button
-                        type="submit"
-                        disabled={submitMutation.isPending}
-                        className="group inline-flex items-center gap-3 bg-orange text-white px-10 py-4.5 text-sm font-medium tracking-wide hover:bg-orange-light transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
-                      >
+                      <button type="submit" disabled={submitMutation.isPending}
+                        className="group inline-flex items-center gap-3 bg-orange text-white px-10 py-4.5 text-sm font-medium tracking-wide hover:bg-orange-light transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed">
                         {submitMutation.isPending ? (
                           <>
                             <Loader2 size={15} className="animate-spin" />
-                            Enviando...
+                            {t("contact.form.sending")}
                           </>
                         ) : (
                           <>
-                            Enviar mensagem
+                            {t("contact.form.submit")}
                             <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
                           </>
                         )}
@@ -248,7 +176,7 @@ export default function Contato() {
               <FadeIn delay={0.2} className="md:col-span-5">
                 <div className="bg-navy p-10 md:p-12 sticky top-28">
                   <h3 className="text-lg font-serif font-medium text-white tracking-tight mb-10">
-                    Informações de contato
+                    {t("contact.info.title")}
                   </h3>
                   <div className="space-y-9">
                     {contactInfo.map((info) => (
@@ -257,9 +185,7 @@ export default function Contato() {
                           <info.icon size={17} className="text-orange" strokeWidth={1.5} />
                         </div>
                         <div>
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1.5">
-                            {info.label}
-                          </p>
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1.5">{info.label}</p>
                           <p className="text-sm text-white font-medium">{info.value}</p>
                           <p className="text-xs text-white/35 mt-1 font-light">{info.detail}</p>
                         </div>
@@ -269,8 +195,7 @@ export default function Contato() {
 
                   <div className="mt-12 pt-8 border-t border-white/8">
                     <p className="text-[11px] text-white/25 leading-relaxed font-light">
-                      Todas as informações compartilhadas são tratadas com sigilo
-                      absoluto, em conformidade com a Lei Geral de Proteção de Dados (LGPD).
+                      {t("contact.lgpd")}
                     </p>
                   </div>
                 </div>

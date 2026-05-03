@@ -3,20 +3,23 @@
  * - Scroll-aware: transparent on top, solid with shadow on scroll
  * - Wordmark with inflection dot
  * - Nav links with animated underline on hover
+ * - Language toggle (PT/EN)
  * - Mobile: full-screen overlay with staggered animation
  */
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
-const navLinks = [
-  { href: "/", label: "Início" },
-  { href: "/servicos", label: "Serviços" },
-  { href: "/sobre", label: "Sobre" },
-  { href: "/clientes", label: "Clientes" },
-  { href: "/insights", label: "Insights" },
-  { href: "/contato", label: "Contato" },
+const navKeys = [
+  { href: "/", key: "nav.home" },
+  { href: "/servicos", key: "nav.services" },
+  { href: "/sobre", key: "nav.about" },
+  { href: "/clientes", key: "nav.clients" },
+  { href: "/insights", key: "nav.insights" },
+  { href: "/contato", key: "nav.contact" },
 ];
 
 function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
@@ -41,6 +44,7 @@ export default function Header() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +54,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Determine if we're on the homepage (hero has dark bg)
   const isHome = location === "/";
   const headerBg = scrolled
     ? "bg-linen/95 backdrop-blur-xl shadow-[0_1px_0_0_rgba(11,25,41,0.06)]"
@@ -69,8 +72,8 @@ export default function Header() {
           <Wordmark variant={wordmarkVariant} />
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
+          <nav className="hidden md:flex items-center gap-8">
+            {navKeys.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -78,7 +81,7 @@ export default function Header() {
                   location === link.href ? navActiveColor : navColor
                 } hover:${navActiveColor}`}
               >
-                {link.label}
+                {t(link.key)}
                 {location === link.href && (
                   <motion.div
                     layoutId="nav-underline"
@@ -88,6 +91,7 @@ export default function Header() {
                 )}
               </Link>
             ))}
+            <LanguageToggle />
           </nav>
 
           {/* Mobile menu button */}
@@ -112,7 +116,7 @@ export default function Header() {
             className="fixed inset-0 z-40 bg-linen md:hidden"
           >
             <nav className="flex flex-col items-start pt-28 px-8">
-              {navLinks.map((link, i) => (
+              {navKeys.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, x: -30 }}
@@ -127,19 +131,30 @@ export default function Header() {
                       location === link.href ? "text-navy" : "text-steel"
                     }`}
                   >
-                    {link.label}
+                    {t(link.key)}
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Language toggle in mobile */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.35, duration: 0.5 }}
+                className="mt-8 flex items-center gap-3"
+              >
+                <span className="text-xs uppercase tracking-widest text-steel-light">Idioma</span>
+                <LanguageToggle className="[&_button]:!text-navy [&_button]:!text-sm" />
+              </motion.div>
 
               {/* Contact info in mobile menu */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="mt-12"
+                className="mt-8"
               >
-                <p className="text-xs uppercase tracking-widest text-steel-light mb-3">Contato</p>
+                <p className="text-xs uppercase tracking-widest text-steel-light mb-3">{t("nav.contact")}</p>
                 <a href="mailto:contato@assistants.com.br" className="text-sm text-navy">
                   contato@assistants.com.br
                 </a>

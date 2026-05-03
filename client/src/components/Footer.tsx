@@ -1,24 +1,23 @@
 /*
- * PENTAGRAM CRAFT: Footer
- * - Generous spacing, refined typography
- * - Newsletter subscription form
- * - Wordmark with inflection dot
+ * PENTAGRAM CRAFT: Footer (i18n)
  */
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const subscribeMutation = trpc.newsletter.subscribe.useMutation({
     onSuccess: () => {
-      toast.success("Inscrito com sucesso!");
+      toast.success(t("newsletter.success"));
       setEmail("");
     },
     onError: () => {
-      toast.error("Erro ao inscrever. Tente novamente.");
+      toast.error(t("newsletter.error"));
     },
   });
 
@@ -26,6 +25,22 @@ export default function Footer() {
     e.preventDefault();
     if (email) subscribeMutation.mutate({ email });
   };
+
+  const navLinks = [
+    { href: "/servicos", label: t("nav.services") },
+    { href: "/sobre", label: t("nav.about") },
+    { href: "/clientes", label: t("nav.clients") },
+    { href: "/insights", label: t("nav.insights") },
+    { href: "/contato", label: t("nav.contact") },
+  ];
+
+  const serviceAreas = [
+    t("service.health.title"),
+    t("service.pension.title"),
+    t("service.benefits.title"),
+    t("service.audit.title"),
+    t("service.duediligence.title"),
+  ];
 
   return (
     <footer className="bg-navy text-white/70">
@@ -46,24 +61,17 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm leading-[1.9] max-w-sm text-white/40 font-light">
-              Consultoria atuarial com 35 anos de excelência. Transformamos complexidade
-              analítica em clareza estratégica para os maiores grupos corporativos do Brasil.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Navigation */}
           <div className="md:col-span-2">
             <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
-              Navegação
+              {t("footer.nav")}
             </h4>
             <nav className="flex flex-col gap-4">
-              {[
-                { href: "/servicos", label: "Serviços" },
-                { href: "/sobre", label: "Sobre" },
-                { href: "/clientes", label: "Clientes" },
-                { href: "/insights", label: "Insights" },
-                { href: "/contato", label: "Contato" },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -78,16 +86,10 @@ export default function Footer() {
           {/* Services */}
           <div className="md:col-span-3">
             <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
-              Áreas de Atuação
+              {t("footer.areas")}
             </h4>
             <nav className="flex flex-col gap-4">
-              {[
-                "Saúde Suplementar",
-                "Previdência Complementar",
-                "Benefícios Pós-Emprego",
-                "Auditoria Atuarial",
-                "Due Diligence",
-              ].map((item) => (
+              {serviceAreas.map((item) => (
                 <span key={item} className="text-sm text-white/50 font-light">
                   {item}
                 </span>
@@ -101,7 +103,7 @@ export default function Footer() {
               Newsletter
             </h4>
             <p className="text-sm text-white/40 font-light mb-5 leading-relaxed">
-              Receba análises atuariais exclusivas no seu e-mail.
+              {t("newsletter.desc")}
             </p>
             <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
               <input
@@ -109,7 +111,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="seu@email.com"
+                placeholder={t("newsletter.placeholder")}
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:border-orange/50 focus:ring-0 outline-none transition-all duration-300"
               />
               <button
@@ -120,7 +122,7 @@ export default function Footer() {
                 {subscribeMutation.isPending ? (
                   <Loader2 size={12} className="animate-spin" />
                 ) : (
-                  "Inscrever-se"
+                  t("newsletter.subscribe")
                 )}
               </button>
             </form>
@@ -130,11 +132,11 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-20 pt-8 border-t border-white/6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <p className="text-[11px] text-white/25 font-light">
-            &copy; {new Date().getFullYear()} Assistants Consulting. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Assistants Consulting. {t("footer.rights")}
           </p>
           <div className="flex items-center gap-8">
             <span className="text-[11px] text-white/25 font-light">
-              São Paulo, SP — Brasil
+              {t("footer.location")}
             </span>
             <a
               href="mailto:contato@assistants.com.br"

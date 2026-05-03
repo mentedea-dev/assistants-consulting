@@ -1,19 +1,19 @@
 /*
- * PENTAGRAM CRAFT: Article Detail
- * - Individual article page with markdown rendering
- * - Loads article by slug from database
- * - Editorial layout with serif typography
+ * PENTAGRAM CRAFT: Article Detail (i18n)
  */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import PageTransition from "@/components/PageTransition";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 import { useParams, Link } from "wouter";
 import { ArrowLeft, Loader2, Clock, Tag } from "lucide-react";
 import { Streamdown } from "streamdown";
+import SEO from "@/components/SEO";
 
 export default function ArticleDetail() {
+  const { t, locale } = useLanguage();
   const params = useParams<{ slug: string }>();
   const { data: article, isLoading } = trpc.articles.getBySlug.useQuery(
     { slug: params.slug || "" },
@@ -41,16 +41,16 @@ export default function ArticleDetail() {
           <section className="pt-40 pb-28">
             <div className="container text-center">
               <h1 className="text-3xl font-serif font-medium text-navy mb-4">
-                Artigo não encontrado
+                {t("article.notFound")}
               </h1>
               <p className="text-steel-light mb-8 font-light">
-                O artigo que você procura não existe ou foi removido.
+                {t("article.notFoundDesc")}
               </p>
               <Link
                 href="/insights"
                 className="inline-flex items-center gap-2 text-sm font-medium text-navy hover:text-orange transition-colors"
               >
-                <ArrowLeft size={14} /> Voltar aos Insights
+                <ArrowLeft size={14} /> {t("article.backToInsights")}
               </Link>
             </div>
           </section>
@@ -60,8 +60,15 @@ export default function ArticleDetail() {
     );
   }
 
+  const dateLocale = locale === "pt" ? "pt-BR" : "en-US";
+
   return (
     <PageTransition>
+      <SEO
+        title={`${article.title} — Assistants Consulting`}
+        description={article.excerpt || article.title}
+        type="article"
+      />
       <div className="min-h-screen bg-linen">
         <Header />
 
@@ -73,7 +80,7 @@ export default function ArticleDetail() {
                 href="/insights"
                 className="inline-flex items-center gap-2 text-sm text-steel-light hover:text-navy transition-colors mb-12"
               >
-                <ArrowLeft size={14} /> Voltar aos Insights
+                <ArrowLeft size={14} /> {t("article.backToInsights")}
               </Link>
             </FadeIn>
 
@@ -90,7 +97,7 @@ export default function ArticleDetail() {
                   {article.readTime && (
                     <span className="inline-flex items-center gap-1.5 text-[11px] text-steel-light font-light">
                       <Clock size={11} />
-                      {article.readTime} de leitura
+                      {article.readTime} {t("article.readTime")}
                     </span>
                   )}
                 </div>
@@ -105,7 +112,7 @@ export default function ArticleDetail() {
                 <div className="mt-8 pt-6 border-t border-navy/8">
                   <span className="text-xs text-steel-light font-light">
                     {article.publishedAt
-                      ? new Date(article.publishedAt).toLocaleDateString("pt-BR", {
+                      ? new Date(article.publishedAt).toLocaleDateString(dateLocale, {
                           day: "numeric",
                           month: "long",
                           year: "numeric",
@@ -136,13 +143,13 @@ export default function ArticleDetail() {
             <FadeIn delay={0.3}>
               <div className="mt-16 pt-10 border-t border-navy/8">
                 <p className="text-sm text-steel-light font-light mb-4">
-                  Precisa de uma análise personalizada sobre este tema?
+                  {t("article.ctaText")}
                 </p>
                 <Link
                   href="/contato"
                   className="inline-flex items-center gap-2 bg-orange text-white px-7 py-3 text-sm font-medium hover:bg-orange-light transition-colors"
                 >
-                  Fale com nossos atuários
+                  {t("article.ctaButton")}
                 </Link>
               </div>
             </FadeIn>

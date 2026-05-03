@@ -1,15 +1,12 @@
 /*
- * PENTAGRAM CRAFT: Chat Widget
- * - Floating chat button with AI assistant
- * - Uses tRPC chat.send mutation
- * - Session-based conversation history
- * - Minimalist design consistent with brand
+ * PENTAGRAM CRAFT: Chat Widget (i18n)
  */
 import { useState, useRef, useEffect, useMemo } from "react";
 import { MessageCircle, X, Send, Loader2, User, Bot } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { motion, AnimatePresence } from "framer-motion";
 import { Streamdown } from "streamdown";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Message {
   role: "user" | "assistant";
@@ -17,13 +14,13 @@ interface Message {
 }
 
 export default function ChatWidget() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  // Generate stable session ID
   const sessionId = useMemo(() => {
     const stored = sessionStorage.getItem("chat-session-id");
     if (stored) return stored;
@@ -39,7 +36,7 @@ export default function ChatWidget() {
     onError: () => {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Desculpe, ocorreu um erro. Por favor, tente novamente ou entre em contato pelo e-mail contato@assistants.com.br." },
+        { role: "assistant", content: t("chat.error") },
       ]);
     },
   });
@@ -47,7 +44,6 @@ export default function ChatWidget() {
   const handleSend = () => {
     const trimmed = input.trim();
     if (!trimmed || sendMutation.isPending) return;
-
     setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
     setInput("");
     sendMutation.mutate({ sessionId, message: trimmed });
@@ -65,10 +61,10 @@ export default function ChatWidget() {
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
+    if (isOpen && inputRef.current) inputRef.current.focus();
   }, [isOpen]);
+
+  const suggestions = [t("chat.suggestion1"), t("chat.suggestion2"), t("chat.suggestion3")];
 
   return (
     <>
@@ -81,7 +77,7 @@ export default function ChatWidget() {
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
             className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-orange hover:bg-orange-light rounded-full flex items-center justify-center shadow-lg shadow-orange/20 transition-colors duration-300"
-            aria-label="Abrir chat"
+            aria-label={t("chat.open")}
           >
             <MessageCircle size={22} className="text-white" />
           </motion.button>
@@ -105,14 +101,14 @@ export default function ChatWidget() {
                   <Bot size={16} className="text-orange" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-white">Assistente Atuarial</h3>
+                  <h3 className="text-sm font-medium text-white">{t("chat.title")}</h3>
                   <p className="text-[10px] text-white/40">Assistants Consulting</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="w-8 h-8 flex items-center justify-center text-white/50 hover:text-white transition-colors"
-                aria-label="Fechar chat"
+                aria-label={t("chat.close")}
               >
                 <X size={18} />
               </button>
@@ -125,16 +121,12 @@ export default function ChatWidget() {
                   <div className="w-12 h-12 bg-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Bot size={22} className="text-orange" />
                   </div>
-                  <p className="text-sm font-medium text-navy mb-2">Olá! Como posso ajudar?</p>
+                  <p className="text-sm font-medium text-navy mb-2">{t("chat.greeting")}</p>
                   <p className="text-xs text-steel-light font-light leading-relaxed max-w-[260px] mx-auto">
-                    Sou o assistente virtual da Assistants. Posso responder dúvidas sobre nossos serviços, regulamentações atuariais e mais.
+                    {t("chat.intro")}
                   </p>
                   <div className="mt-5 flex flex-col gap-2">
-                    {[
-                      "O que é CPC 33?",
-                      "Quais serviços vocês oferecem?",
-                      "Como funciona a avaliação atuarial?",
-                    ].map((suggestion) => (
+                    {suggestions.map((suggestion) => (
                       <button
                         key={suggestion}
                         onClick={() => {
@@ -152,7 +144,13 @@ export default function ChatWidget() {
               )}
 
               {messages.map((msg, i) => (
-                <div key={i} className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: i === messages.length - 1 ? 0.1 : 0, ease: [0.16, 1, 0.3, 1] }}
+                  className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                >
                   {msg.role === "assistant" && (
                     <div className="w-6 h-6 bg-orange/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                       <Bot size={12} className="text-orange" />
@@ -178,7 +176,7 @@ export default function ChatWidget() {
                       <User size={12} className="text-navy" />
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
 
               {sendMutation.isPending && (
@@ -187,7 +185,11 @@ export default function ChatWidget() {
                     <Bot size={12} className="text-orange" />
                   </div>
                   <div className="bg-gray-50 border border-navy/5 px-4 py-3 rounded-tr-lg rounded-tl-sm rounded-b-lg">
-                    <Loader2 size={14} className="animate-spin text-orange" />
+                    <div className="flex gap-1.5">
+                      <motion.div className="w-1.5 h-1.5 rounded-full bg-orange" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0 }} />
+                      <motion.div className="w-1.5 h-1.5 rounded-full bg-orange" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.2 }} />
+                      <motion.div className="w-1.5 h-1.5 rounded-full bg-orange" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 0.8, delay: 0.4 }} />
+                    </div>
                   </div>
                 </div>
               )}
@@ -203,7 +205,7 @@ export default function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Digite sua mensagem..."
+                  placeholder={t("chat.placeholder")}
                   rows={1}
                   className="flex-1 resize-none px-3 py-2.5 text-sm bg-gray-50 border border-navy/8 focus:border-orange/40 rounded-md outline-none transition-colors duration-200 max-h-24"
                 />
@@ -211,13 +213,13 @@ export default function ChatWidget() {
                   onClick={handleSend}
                   disabled={!input.trim() || sendMutation.isPending}
                   className="w-9 h-9 flex items-center justify-center bg-orange text-white rounded-md hover:bg-orange-light transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
-                  aria-label="Enviar mensagem"
+                  aria-label={t("chat.send")}
                 >
                   <Send size={14} />
                 </button>
               </div>
               <p className="text-[9px] text-steel-light/60 mt-2 text-center">
-                Assistente virtual — para análises específicas, entre em contato com nossa equipe
+                {t("chat.disclaimer")}
               </p>
             </div>
           </motion.div>

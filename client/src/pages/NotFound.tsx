@@ -1,16 +1,17 @@
 /*
- * PENTAGRAM CRAFT: 404
- * - Serif type, generous whitespace
- * - Subtle animation
+ * PENTAGRAM CRAFT: 404 (i18n)
  */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import FadeIn from "@/components/FadeIn";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
+  const { t } = useLanguage();
+
   return (
     <PageTransition>
       <div className="min-h-screen bg-linen">
@@ -24,19 +25,19 @@ export default function NotFound() {
             </FadeIn>
             <FadeIn delay={0.15}>
               <h1 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight -mt-16 md:-mt-24 relative z-10">
-                Página não encontrada
+                {t("notFound.title")}
               </h1>
             </FadeIn>
             <FadeIn delay={0.3}>
               <p className="text-steel-light mt-5 max-w-md mx-auto leading-[1.8] font-light">
-                A página que você procura não existe ou foi movida para outro endereço.
+                {t("notFound.desc")}
               </p>
               <Link
                 href="/"
                 className="group inline-flex items-center gap-3 bg-navy text-white px-8 py-4 text-sm font-medium tracking-wide mt-10 hover:bg-navy-light transition-all duration-300"
               >
                 <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform duration-300" />
-                Voltar ao início
+                {t("notFound.back")}
               </Link>
             </FadeIn>
           </div>

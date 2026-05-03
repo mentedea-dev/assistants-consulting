@@ -260,3 +260,68 @@
     font-family: var(--font-serif);
   }
 }
+
+/* ═══════ Mobile Refinements ═══════ */
+@media (max-width: 639px) {
+  /* Reduce hero text on small screens */
+  .hero-headline {
+    font-size: clamp(2.25rem, 8vw, 3.5rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Tighter section padding on mobile */
+  section {
+    padding-top: max(3rem, 8vh);
+    padding-bottom: max(3rem, 8vh);
+  }
+
+  /* Full-width buttons on mobile */
+  .mobile-full-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Reduce stat numbers on mobile */
+  .stat-number {
+    font-size: clamp(2rem, 6vw, 3rem) !important;
+  }
+}
+
+/* ═══════ Touch-friendly targets ═══════ */
+@media (pointer: coarse) {
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Larger tap targets for nav links */
+  nav a {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* ═══════ Reduced motion ═══════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .inflection-dot {
+    animation: none !important;
+  }
+}
+
+/* ═══════ Print styles ═══════ */
+@media print {
+  header, footer, .chat-widget, .scroll-indicator {
+    display: none !important;
+  }
+  body {
+    color: #000 !important;
+    background: #fff !important;
+  }
+}

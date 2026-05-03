@@ -39,3 +39,19 @@
 - [x] Testes vitest para validação de inputs (contacts, newsletter, chat)
 - [x] Testes de controle de acesso (admin vs user vs público)
 - [x] 15 testes passando (100%)
+
+## Fase 6: Internacionalização (PT/EN)
+- [x] Criar sistema de i18n com contexto React e toggle de idioma
+- [x] Criar arquivo de traduções PT-BR completo
+- [x] Criar arquivo de traduções EN completo (tradução juramentada com terminologia atuarial)
+- [x] Adicionar toggle de idioma no Header
+- [x] Traduzir todas as páginas (Home, Serviços, Sobre, Clientes, Insights, Contato)
+- [x] Traduzir componentes compartilhados (Footer, ChatWidget)
+
+## Fase 7: Refinamentos Finais
+- [x] Responsividade mobile cirúrgica (verificar todos os breakpoints)
+- [x] Animações do chat (typing indicator, entrada escalonada)
+- [x] SEO dinâmico com meta tags Open Graph por página
+- [x] Preview de markdown no editor admin (split-view)
+- [x] Performance: lazy loading de imagens, code splitting por rota
+- [x] Dark mode avaliado: não implementado por incoerência com Brand Book
