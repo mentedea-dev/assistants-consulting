@@ -54,7 +54,7 @@ export default function Sobre() {
               </p>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-navy tracking-tight leading-[1.05] max-w-4xl">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl">
                 {t("about.title.1")}
                 <br />
                 <span className="text-steel-light">{t("about.title.2")}</span>
@@ -88,7 +88,7 @@ export default function Sobre() {
                         { value: 50, suffix: "bi+", prefix: "R$", label: t("stats.assets") },
                       ].map((stat, i) => (
                         <div key={stat.label}>
-                          <div className="text-4xl md:text-5xl font-serif font-medium text-navy tracking-tight">
+                          <div className="text-4xl md:text-5xl font-serif font-normal text-navy tracking-tight">
                             <CountUp end={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} duration={2.5} />
                           </div>
                           <p className="text-xs text-steel-light mt-2 uppercase tracking-wide font-medium">{stat.label}</p>
@@ -111,7 +111,7 @@ export default function Sobre() {
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("about.values.title")}
                 </p>
-                <h2 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight leading-[1.1]">
                   {t("about.values.heading")}
                 </h2>
               </div>
@@ -124,7 +124,7 @@ export default function Sobre() {
                       <value.icon size={20} className="text-navy" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-serif font-medium text-navy tracking-tight mb-3">{value.title}</h3>
+                      <h3 className="text-xl font-serif font-normal text-navy tracking-tight mb-3">{value.title}</h3>
                       <p className="text-steel-light text-sm leading-[1.8] font-light">{value.desc}</p>
                     </div>
                   </div>
@@ -142,7 +142,7 @@ export default function Sobre() {
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("about.timeline.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl font-serif font-medium text-white tracking-tight leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl font-serif font-normal text-white tracking-tight leading-[1.1]">
                   {t("about.timeline.title")}
                 </h2>
               </div>
@@ -161,7 +161,7 @@ export default function Sobre() {
                         transition={{ delay: i * 0.1, type: "spring", stiffness: 300 }}
                       />
                       <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                        <span className="text-2xl font-serif font-medium text-orange">{milestone.year}</span>
+                        <span className="text-2xl font-serif font-normal text-orange">{milestone.year}</span>
                         <p className="text-white/50 text-sm mt-2 leading-relaxed font-light">{milestone.event}</p>
                       </div>
                     </div>

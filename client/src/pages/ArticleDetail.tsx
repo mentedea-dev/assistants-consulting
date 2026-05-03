@@ -42,7 +42,7 @@ export default function ArticleDetail() {
           <Header />
           <section className="pt-40 pb-28">
             <div className="container text-center">
-              <h1 className="text-3xl font-serif font-medium text-navy mb-4">
+              <h1 className="text-3xl font-serif font-normal text-navy mb-4">
                 {t("article.notFound")}
               </h1>
               <p className="text-steel-light mb-8 font-light">
@@ -103,7 +103,7 @@ export default function ArticleDetail() {
                     </span>
                   )}
                 </div>
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium text-navy tracking-tight leading-[1.1]">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-navy tracking-tight leading-[1.1]">
                   {article.title}
                 </h1>
                 {article.excerpt && (

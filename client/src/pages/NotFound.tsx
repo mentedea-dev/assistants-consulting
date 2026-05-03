@@ -19,12 +19,12 @@ export default function NotFound() {
         <section className="pt-40 md:pt-52 pb-28 md:pb-36">
           <div className="container text-center">
             <FadeIn>
-              <div className="text-[10rem] md:text-[16rem] font-serif font-medium text-navy/[0.03] leading-none select-none">
+              <div className="text-[10rem] md:text-[16rem] font-serif font-normal text-navy/[0.03] leading-none select-none">
                 404
               </div>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <h1 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight -mt-16 md:-mt-24 relative z-10">
+              <h1 className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight -mt-16 md:-mt-24 relative z-10">
                 {t("notFound.title")}
               </h1>
             </FadeIn>

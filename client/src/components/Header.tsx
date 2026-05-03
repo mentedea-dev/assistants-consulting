@@ -65,7 +65,7 @@ export default function Header() {
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBg}`}>
-        <div className="container flex items-center justify-between h-18 md:h-22">
+        <div className="container flex items-center justify-between h-20 md:h-24">
           <Wordmark variant={wordmarkVariant} />
 
           {/* Desktop nav */}
@@ -124,7 +124,7 @@ export default function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`block py-4 text-3xl font-serif font-medium border-b border-navy/5 ${
+                    className={`block py-4 text-3xl font-serif font-normal border-b border-navy/5 ${
                       location === link.href ? "text-navy" : "text-steel"
                     }`}
                   >

@@ -52,7 +52,7 @@ export default function Footer() {
               <img
                 src="/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp"
                 alt="Assistants"
-                className="h-5 w-auto"
+                className="h-8 w-auto"
               />
             </div>
             <p className="text-sm leading-[1.9] max-w-sm text-white/40 font-light">

@@ -73,7 +73,7 @@ export default function Home() {
               </FadeIn>
 
               <FadeIn delay={0.5} distance={30}>
-                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-medium text-white leading-[1.05] tracking-tight mb-10">
+                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal text-white leading-[1.05] tracking-tight mb-10">
                   {t("hero.title.1")}
                   <br />
                   <span className="text-white/50">{t("hero.title.2")}</span>
@@ -136,7 +136,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
               {statKeys.map((stat, i) => (
                 <FadeIn key={stat.labelKey} delay={i * 0.12} className="text-center md:text-left">
-                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium text-white tracking-tight">
+                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-white tracking-tight">
                     <CountUp end={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} duration={2.5} />
                   </div>
                   <p className="text-xs text-white/35 mt-3 tracking-wide uppercase font-medium">
@@ -156,7 +156,7 @@ export default function Home() {
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("services.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium text-navy tracking-tight leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-navy tracking-tight leading-[1.1]">
                   {t("services.title.1")}
                   <br />
                   {t("services.title.2")}
@@ -187,7 +187,7 @@ export default function Home() {
                         </div>
                         <div className="h-px flex-1 bg-navy/8" />
                       </div>
-                      <h3 className="text-2xl md:text-4xl font-serif font-medium text-navy tracking-tight mb-5 leading-tight">
+                      <h3 className="text-2xl md:text-4xl font-serif font-normal text-navy tracking-tight mb-5 leading-tight">
                         {t(service.titleKey)}
                       </h3>
                       <p className="text-steel-light leading-[1.8] mb-8 font-light">
@@ -218,7 +218,7 @@ export default function Home() {
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("additionalServices.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl font-serif font-medium text-white tracking-tight leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl font-serif font-normal text-white tracking-tight leading-[1.1]">
                   {t("additionalServices.title.1")}
                   <br />
                   {t("additionalServices.title.2")}
@@ -231,7 +231,7 @@ export default function Home() {
                 <FadeIn key={service.titleKey} delay={i * 0.12}>
                   <div className="group p-8 md:p-10 border border-white/8 hover:border-orange/25 transition-all duration-500 card-lift h-full">
                     <service.icon size={22} className="text-orange mb-7" strokeWidth={1.5} />
-                    <h3 className="text-xl font-serif font-medium text-white mb-4 tracking-tight">
+                    <h3 className="text-xl font-serif font-normal text-white mb-4 tracking-tight">
                       {t(service.titleKey)}
                     </h3>
                     <p className="text-white/45 text-sm leading-[1.8] font-light">
@@ -255,7 +255,7 @@ export default function Home() {
                   <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                     {t("insights.tag")}
                   </p>
-                  <h2 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight leading-[1.1] mb-8">
+                  <h2 className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight leading-[1.1] mb-8">
                     {t("insights.title.1")}
                     <br />
                     {t("insights.title.2")}
@@ -292,7 +292,7 @@ export default function Home() {
                             </span>
                             <span className="text-[11px] text-steel-light font-light">{article.date}</span>
                           </div>
-                          <h3 className="text-lg font-serif font-medium text-navy group-hover:text-orange transition-colors duration-300 tracking-tight leading-snug">
+                          <h3 className="text-lg font-serif font-normal text-navy group-hover:text-orange transition-colors duration-300 tracking-tight leading-snug">
                             {article.title}
                           </h3>
                         </Link>
@@ -315,7 +315,7 @@ export default function Home() {
           <div className="container relative z-10 text-center">
             <FadeIn>
               <SectionDivider variant="dark" className="mb-12" />
-              <h2 className="text-4xl md:text-6xl font-serif font-medium text-white tracking-tight mb-8 leading-[1.1]">
+              <h2 className="text-4xl md:text-6xl font-serif font-normal text-white tracking-tight mb-8 leading-[1.1]">
                 {t("cta.title.1")}
                 <br />
                 {t("cta.title.2")}

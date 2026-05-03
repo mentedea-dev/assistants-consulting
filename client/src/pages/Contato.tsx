@@ -100,7 +100,7 @@ export default function Contato() {
               </p>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-navy tracking-tight leading-[1.05] max-w-4xl">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl">
                 {t("contact.title.1")}
                 <br />
                 <span className="text-steel-light">{t("contact.title.2")}</span>
@@ -125,7 +125,7 @@ export default function Contato() {
                     <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-6">
                       <CheckCircle2 size={32} className="text-green-600" />
                     </div>
-                    <h3 className="text-2xl font-serif font-medium text-navy mb-3">
+                    <h3 className="text-2xl font-serif font-normal text-navy mb-3">
                       {t("contact.success.title")}
                     </h3>
                     <p className="text-steel-light font-light max-w-md">
@@ -171,7 +171,7 @@ export default function Contato() {
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
                             <User size={18} className="text-orange" />
-                            <h3 className="text-lg font-serif font-medium text-navy">{t("contact.step1.title")}</h3>
+                            <h3 className="text-lg font-serif font-normal text-navy">{t("contact.step1.title")}</h3>
                           </div>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -236,7 +236,7 @@ export default function Contato() {
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
                             <Briefcase size={18} className="text-orange" />
-                            <h3 className="text-lg font-serif font-medium text-navy">{t("contact.step2.title")}</h3>
+                            <h3 className="text-lg font-serif font-normal text-navy">{t("contact.step2.title")}</h3>
                           </div>
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -346,7 +346,7 @@ export default function Contato() {
                         <div className="space-y-6 animate-in fade-in duration-300">
                           <div className="flex items-center gap-3 mb-6">
                             <Building2 size={18} className="text-orange" />
-                            <h3 className="text-lg font-serif font-medium text-navy">{t("contact.step3.title")}</h3>
+                            <h3 className="text-lg font-serif font-normal text-navy">{t("contact.step3.title")}</h3>
                           </div>
 
                           {/* Summary of previous steps */}
@@ -422,7 +422,7 @@ export default function Contato() {
               {/* Contact info sidebar */}
               <FadeIn delay={0.2} className="lg:col-span-4">
                 <div className="bg-navy p-8 md:p-10 sticky top-28">
-                  <h3 className="text-lg font-serif font-medium text-white tracking-tight mb-8">
+                  <h3 className="text-lg font-serif font-normal text-white tracking-tight mb-8">
                     {t("contact.info.title")}
                   </h3>
                   <div className="space-y-7">

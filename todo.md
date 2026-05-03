@@ -105,3 +105,12 @@
 
 ## Fase 14: Ajustes Visuais
 - [x] Aumentar significativamente o tamanho do logo no header (h-9 mobile / h-12 desktop)
+
+## Fase 15: Auditoria de Design — Padrão Pentagram
+- [x] Substituir Playfair Display por Cormorant Garamond (mais elegante e distinta)
+- [x] Reduzir font-weight dos headings de 500 para 400 (mais editorial)
+- [x] Ajustar letter-spacing dos headings (-0.025em geral, -0.03em para h1)
+- [x] Aumentar header height (h-20/h-24) para acomodar logo grande
+- [x] Aumentar footer logo de h-5 para h-8 (proporção com header)
+- [x] Verificar TypeScript e testes (15 testes passando, 0 erros)
+- [x] Verificação visual em todas as páginas (Home, Serviços, Insights, Contato)

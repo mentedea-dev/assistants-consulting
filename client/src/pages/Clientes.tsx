@@ -51,7 +51,7 @@ export default function Clientes() {
               </p>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-navy tracking-tight leading-[1.05] max-w-4xl">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal text-navy tracking-tight leading-[1.05] max-w-4xl">
                 {t("clients.title.1")}
                 <br />
                 <span className="text-steel-light">{t("clients.title.2")}</span>
@@ -71,7 +71,7 @@ export default function Clientes() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
               {stats.map((stat, i) => (
                 <FadeIn key={stat.label} delay={i * 0.12} className="text-center md:text-left">
-                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium text-white tracking-tight">
+                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal text-white tracking-tight">
                     <CountUp end={stat.value} suffix={stat.suffix} duration={2.5} />
                   </div>
                   <p className="text-xs text-white/35 mt-3 tracking-wide uppercase font-medium">
@@ -91,7 +91,7 @@ export default function Clientes() {
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("clients.sectors.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight leading-[1.1]">
                   {t("clients.sectors.title.1")}
                   <br />
                   {t("clients.sectors.title.2")}
@@ -106,7 +106,7 @@ export default function Clientes() {
                     <div className="w-11 h-11 bg-navy/4 flex items-center justify-center mb-6">
                       <sector.icon size={20} className="text-navy" strokeWidth={1.5} />
                     </div>
-                    <h3 className="text-lg font-serif font-medium text-navy tracking-tight mb-3">
+                    <h3 className="text-lg font-serif font-normal text-navy tracking-tight mb-3">
                       {sector.name}
                     </h3>
                     <p className="text-steel-light text-sm leading-[1.8] font-light">
@@ -127,7 +127,7 @@ export default function Clientes() {
                 <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("clients.testimonials.tag")}
                 </p>
-                <h2 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight leading-[1.1]">
+                <h2 className="text-3xl md:text-5xl font-serif font-normal text-navy tracking-tight leading-[1.1]">
                   {t("clients.testimonials.title")}
                 </h2>
               </div>
