@@ -330,6 +330,8 @@ const pt: Record<string, string> = {
   "article.readTime": "de leitura",
   "article.ctaText": "Precisa de uma análise personalizada sobre este tema?",
   "article.ctaButton": "Fale com nossos atuários",
+  "article.share": "Compartilhar",
+  "article.shareOn": "Compartilhar no",
 
   // ═══════ Static Articles ═══════
   "articles.static.1.title": "Impactos da revisão do CPC 33 (R2) nas demonstrações financeiras de 2025",

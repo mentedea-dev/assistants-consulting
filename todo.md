@@ -81,3 +81,9 @@
 - [x] Criar endpoint de importação em massa de artigos (articles.importBatch)
 - [x] UI de importação no Admin com pré-visualização JSON
 - [x] Migrar artigos existentes do site atual para o novo CMS (JSON preparado + UI de importação pronta)
+
+## Fase 11: Botões de Compartilhamento Social
+- [x] Criar componente ShareButtons com LinkedIn, Twitter/X, WhatsApp e Facebook
+- [x] Integrar na página de detalhe do artigo (ArticleDetail.tsx)
+- [x] Adicionar i18n PT/EN para labels de compartilhamento
+- [x] Verificar TypeScript e testes (15 testes passando, 0 erros TS)

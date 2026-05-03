@@ -330,6 +330,8 @@ const en: Record<string, string> = {
   "article.readTime": "read",
   "article.ctaText": "Need a personalised analysis on this topic?",
   "article.ctaButton": "Speak with our actuaries",
+  "article.share": "Share",
+  "article.shareOn": "Share on",
 
   // ═══════ Static Articles ═══════
   "articles.static.1.title": "Impacts of the CPC 33 (R2) revision on 2025 financial statements",

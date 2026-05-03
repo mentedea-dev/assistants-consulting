@@ -9,6 +9,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 import { useParams, Link } from "wouter";
 import { ArrowLeft, Loader2, Clock, Tag } from "lucide-react";
+import ShareButtons from "@/components/ShareButtons";
 import { Streamdown } from "streamdown";
 import SEO from "@/components/SEO";
 
@@ -139,9 +140,19 @@ export default function ArticleDetail() {
               </div>
             </FadeIn>
 
-            {/* CTA */}
+            {/* Share buttons */}
             <FadeIn delay={0.3}>
-              <div className="mt-16 pt-10 border-t border-navy/8">
+              <div className="mt-14 pt-8 border-t border-navy/8">
+                <ShareButtons
+                  title={article.title}
+                  excerpt={article.excerpt || undefined}
+                />
+              </div>
+            </FadeIn>
+
+            {/* CTA */}
+            <FadeIn delay={0.4}>
+              <div className="mt-10 pt-8 border-t border-navy/8">
                 <p className="text-sm text-steel-light font-light mb-4">
                   {t("article.ctaText")}
                 </p>
