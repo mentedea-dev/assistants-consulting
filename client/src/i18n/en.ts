@@ -151,6 +151,7 @@ const en: Record<string, string> = {
   "about.credential3": "Regulatory compliance with ANS, PREVIC, SUSEP and CVM across all deliverables.",
 
   // ═══════ Clients Page ═══════
+  "clients.trust": "Companies that trust Assistants",
   "clients.tag": "Our Clients",
   "clients.title.1": "Long-standing",
   "clients.title.2": "partners",
@@ -178,6 +179,20 @@ const en: Record<string, string> = {
   "clients.sector5.desc": "Retail chains and consumer goods companies with large employee bases and benefit plans.",
   "clients.sector6.name": "Energy and Infrastructure",
   "clients.sector6.desc": "Concessionaires, utilities and infrastructure companies with long-term actuarial liabilities.",
+
+  // Client Logo Wall
+  "clients.logowall.tag": "Who Trusts Us",
+  "clients.logowall.title.1": "Clients that define",
+  "clients.logowall.title.2": "the Brazilian market",
+  "clients.logowall.subtitle": "Over 64 leading organizations trust Assistants for their actuarial needs. 90% of our clients have been with us for more than 10 years.",
+  "clients.cat.gov": "Government & State-Owned",
+  "clients.cat.energy": "Energy & Infrastructure",
+  "clients.cat.health": "Healthcare",
+  "clients.cat.finance": "Financial & Pension",
+  "clients.cat.industry": "Industry & Multinationals",
+  "clients.cat.services": "Services & Technology",
+  "clients.cat.international": "International Operations",
+  "clients.cat.all": "All",
 
   // Testimonials
   "clients.testimonials.tag": "Testimonials",

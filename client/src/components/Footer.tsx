@@ -7,6 +7,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import BrandSymbol from "@/components/BrandSymbol";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -48,11 +49,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-4">
-            <div className="mb-7">
+            <div className="mb-7 flex items-center gap-4">
+              <BrandSymbol variant="light" className="w-10 h-10 flex-shrink-0" />
               <img
                 src="/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp"
                 alt="Assistants"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
             </div>
             <p className="text-sm leading-[1.9] max-w-sm text-white/40 font-light">

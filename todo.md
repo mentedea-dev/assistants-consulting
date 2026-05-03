@@ -163,3 +163,12 @@
 - [x] Refinar footer: newsletter com card container, border e bg sutil
 - [x] Verificar TypeScript (0 erros) e testes (15 passando)
 - [x] Verificação visual final de todas as páginas (Home, Serviços, Sobre, Contato, Insights)
+
+## Fase 21: Clientes Reais + "A" como Símbolo de Marca + Padrão Big4
+- [x] Atualizar página Clientes com todos os ~64 nomes reais do PDF da apresentação
+- [x] Categorizar clientes por setor (Governo/Estatal, Energia, Saúde, Financeiro, Indústria, Serviços, Internacional)
+- [x] Criar o "A" como símbolo de marca marcante — SVG inline (BrandSymbol), destaque no hero, CTA, timeline
+- [x] Usar o "A" como elemento de identidade visual recorrente (hero watermark, CTA watermark, timeline, footer)
+- [x] Atualizar informações de contato conforme PDF (já correto desde Fase 18)
+- [x] Verificar TypeScript (0 erros) e testes (15 passando)
+- [x] Verificação visual final (Home marquee + watermark, Clientes com filtros, Footer com símbolo)

@@ -151,6 +151,7 @@ const pt: Record<string, string> = {
   "about.credential3": "Conformidade regulatória com ANS, PREVIC, SUSEP e CVM em todas as entregas.",
 
   // ═══════ Clients Page ═══════
+  "clients.trust": "Empresas que confiam na Assistants",
   "clients.tag": "Nossos Clientes",
   "clients.title.1": "Parceiros de",
   "clients.title.2": "longa data",
@@ -178,6 +179,20 @@ const pt: Record<string, string> = {
   "clients.sector5.desc": "Redes varejistas e empresas de bens de consumo com grandes bases de colaboradores e planos de benefícios.",
   "clients.sector6.name": "Energia e Infraestrutura",
   "clients.sector6.desc": "Concessionárias, utilities e empresas de infraestrutura com passivos atuariais de longo prazo.",
+
+  // Client Logo Wall
+  "clients.logowall.tag": "Quem Confia em Nós",
+  "clients.logowall.title.1": "Clientes que definem",
+  "clients.logowall.title.2": "o mercado brasileiro",
+  "clients.logowall.subtitle": "Mais de 64 organizações líderes confiam na Assistants para suas necessidades atuariais. 90% dos nossos clientes estão conosco há mais de 10 anos.",
+  "clients.cat.gov": "Governo e Estatais",
+  "clients.cat.energy": "Energia e Infraestrutura",
+  "clients.cat.health": "Saúde",
+  "clients.cat.finance": "Financeiro e Previdência",
+  "clients.cat.industry": "Indústria e Multinacionais",
+  "clients.cat.services": "Serviços e Tecnologia",
+  "clients.cat.international": "Atuação Internacional",
+  "clients.cat.all": "Todos",
 
   // Testimonials
   "clients.testimonials.tag": "Depoimentos",

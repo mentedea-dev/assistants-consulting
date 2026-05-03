@@ -11,6 +11,7 @@ import SectionDivider from "@/components/SectionDivider";
 import PageTransition from "@/components/PageTransition";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "wouter";
+import BrandSymbol from "@/components/BrandSymbol";
 import { ArrowRight, TrendingUp, Shield, BarChart3, Users, FileSearch, Briefcase } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -63,6 +64,16 @@ export default function Home() {
           <motion.div className="absolute inset-0" style={{ y: heroY }}>
             <img src={HERO_IMG} alt="" className="w-full h-[120%] object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-navy/50 to-navy/30" />
+          </motion.div>
+
+          {/* Brand Symbol watermark */}
+          <motion.div
+            className="absolute right-[-5%] md:right-[5%] top-1/2 -translate-y-1/2 z-[1] pointer-events-none select-none"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <BrandSymbol variant="light" className="w-[280px] md:w-[380px] lg:w-[480px] h-auto opacity-[0.035]" />
           </motion.div>
 
           <motion.div className="container relative z-10 pt-24 pb-16" style={{ opacity: heroOpacity }}>
@@ -148,6 +159,42 @@ export default function Home() {
                     {t(stat.labelKey)}
                   </p>
                 </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════ CLIENT TRUST ═══════════════════════ */}
+        <section className="py-14 md:py-16 bg-linen border-y border-navy/5 overflow-hidden">
+          <div className="container mb-8">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-steel/40 text-center">
+              {t("clients.trust")}
+            </p>
+          </div>
+          <div className="relative">
+            {/* Fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-linen to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-linen to-transparent z-10" />
+            {/* Marquee */}
+            <div className="flex animate-marquee">
+              {[...Array(2)].map((_, setIdx) => (
+                <div key={setIdx} className="flex shrink-0 items-center gap-12 md:gap-16 px-6 md:px-8">
+                  {[
+                    "Banco Central do Brasil", "Eletrobras", "Sabesp", "Carrefour",
+                    "Fujitsu", "Bridgestone", "Banco do Brasil", "Caixa Econômica Federal",
+                    "Petros", "Funcef", "Previ", "Embratel",
+                    "Grupo Pão de Açúcar", "Syngenta", "Reckitt Benckiser", "Goodyear",
+                    "Fundação Itaú Unibanco", "Fundação Cesp", "Real Grandeza", "Valia",
+                    "Telos", "Sistel", "Postalis", "Serpros",
+                  ].map((name) => (
+                    <span
+                      key={`${setIdx}-${name}`}
+                      className="text-sm md:text-base font-medium text-navy/30 whitespace-nowrap tracking-tight"
+                    >
+                      {name}
+                    </span>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
@@ -330,6 +377,11 @@ export default function Home() {
             <img src={HERO_IMG} alt="" loading="lazy" className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/50 via-transparent to-navy-deep/50" />
+
+          {/* Brand Symbol watermark */}
+          <div className="absolute left-[-5%] md:left-[8%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
+            <BrandSymbol variant="light" className="w-[200px] md:w-[300px] lg:w-[360px] h-auto opacity-[0.04]" />
+          </div>
 
           <div className="container relative z-10 text-center">
             <FadeIn>

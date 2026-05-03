@@ -12,6 +12,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Target, Eye, Gem, Scale, Award, BookOpen } from "lucide-react";
+import BrandSymbol from "@/components/BrandSymbol";
 
 const TEXTURE_IMG = "/manus-storage/v2_10_institucional_42ba4921.webp";
 const EQUIPE_IMG = "/manus-storage/v2_09_equipe_0ae78527.webp";
@@ -156,8 +157,12 @@ export default function Sobre() {
         </section>
 
         {/* Timeline */}
-        <section className="py-24 md:py-32 bg-navy">
-          <div className="container">
+        <section className="py-24 md:py-32 bg-navy relative overflow-hidden">
+          {/* Brand Symbol watermark */}
+          <div className="absolute right-[-3%] md:right-[5%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
+            <BrandSymbol variant="light" className="w-[250px] md:w-[350px] h-auto opacity-[0.03]" />
+          </div>
+          <div className="container relative z-10">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-20">
                 <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
