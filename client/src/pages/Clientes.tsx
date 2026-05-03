@@ -1,11 +1,15 @@
 /*
- * Design: Swiss Precision Meets Data Narrative
- * Clientes: Setores atendidos + depoimentos + logos
+ * PENTAGRAM CRAFT: Clientes
+ * - Serif headlines, staggered sector cards
+ * - Testimonials with editorial treatment
+ * - Stats with golden ratio spacing
  */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import CountUp from "@/components/CountUp";
+import SectionDivider from "@/components/SectionDivider";
+import PageTransition from "@/components/PageTransition";
 import { Building2, Heart, Landmark, Factory, ShoppingBag, Zap } from "lucide-react";
 
 const sectors = [
@@ -64,113 +68,132 @@ const testimonials = [
 
 export default function Clientes() {
   return (
-    <div className="min-h-screen bg-linen">
-      <Header />
+    <PageTransition>
+      <div className="min-h-screen bg-linen">
+        <Header />
 
-      {/* Page header */}
-      <section className="pt-28 md:pt-36 pb-16 md:pb-20">
-        <div className="container">
-          <FadeIn>
-            <p className="text-orange text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-              Clientes
-            </p>
-            <h1 className="text-4xl md:text-6xl font-bold text-navy tracking-tight leading-tight max-w-3xl">
-              A confiança dos maiores
-              <br />
-              <span className="text-steel">grupos do Brasil</span>
-            </h1>
-            <p className="text-steel-light text-lg max-w-2xl mt-6 leading-relaxed">
-              Atendemos organizações de todos os portes e setores que compartilham
-              uma exigência comum: excelência técnica sem concessões.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Stats bar */}
-      <section className="bg-navy py-14">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: 200, suffix: "+", label: "Clientes atendidos" },
-              { value: 15, suffix: "+", label: "Setores da economia" },
-              { value: 95, suffix: "%", label: "Taxa de retenção" },
-              { value: 35, suffix: "+", label: "Anos de confiança" },
-            ].map((stat, i) => (
-              <FadeIn key={stat.label} delay={i * 0.1} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-                  <CountUp end={stat.value} suffix={stat.suffix} />
-                </div>
-                <p className="text-sm text-white/40 mt-2">{stat.label}</p>
-              </FadeIn>
-            ))}
+        {/* Hero */}
+        <section className="pt-32 md:pt-44 pb-20 md:pb-28">
+          <div className="container">
+            <FadeIn>
+              <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-6">
+                Clientes
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-navy tracking-tight leading-[1.05] max-w-4xl">
+                A confiança dos maiores
+                <br />
+                <span className="text-steel-light">grupos do Brasil</span>
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <p className="text-steel-light text-lg max-w-2xl mt-8 leading-[1.8] font-light">
+                Atendemos organizações de todos os portes e setores que compartilham
+                uma exigência comum: excelência técnica sem concessões.
+              </p>
+            </FadeIn>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Sectors */}
-      <section className="py-20 md:py-28">
-        <div className="container">
-          <FadeIn>
-            <p className="text-orange text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-              Setores de Atuação
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-16">
-              Presença em todos os setores estratégicos
-            </h2>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sectors.map((sector, i) => (
-              <FadeIn key={sector.name} delay={i * 0.08}>
-                <div className="p-8 bg-white border border-navy/5 hover:border-orange/20 transition-colors duration-300 h-full">
-                  <div className="w-10 h-10 rounded-sm bg-navy/5 flex items-center justify-center mb-5">
-                    <sector.icon size={20} className="text-navy" />
+        {/* Stats bar */}
+        <section className="bg-navy py-20 md:py-24">
+          <div className="container">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6">
+              {[
+                { value: 200, suffix: "+", label: "Clientes atendidos" },
+                { value: 12, suffix: "+", label: "Setores da economia" },
+                { value: 97, suffix: "%", label: "Taxa de retenção" },
+                { value: 35, suffix: "+", label: "Anos de confiança" },
+              ].map((stat, i) => (
+                <FadeIn key={stat.label} delay={i * 0.12} className="text-center md:text-left">
+                  <div className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium text-white tracking-tight">
+                    <CountUp end={stat.value} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <h3 className="text-lg font-semibold text-navy tracking-tight mb-3">
-                    {sector.name}
-                  </h3>
-                  <p className="text-steel-light text-sm leading-relaxed">
-                    {sector.desc}
+                  <p className="text-xs text-white/35 mt-3 tracking-wide uppercase font-medium">
+                    {stat.label}
                   </p>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Testimonials */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="container">
-          <FadeIn>
-            <p className="text-orange text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-              Depoimentos
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-16">
-              O que dizem nossos clientes
-            </h2>
-          </FadeIn>
+        {/* Sectors */}
+        <section className="py-28 md:py-36">
+          <div className="container">
+            <FadeIn>
+              <div className="max-w-2xl mb-16 md:mb-20">
+                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                  Setores de Atuação
+                </p>
+                <h2 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight leading-[1.1]">
+                  Presença em todos os
+                  <br />
+                  setores estratégicos
+                </h2>
+              </div>
+            </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div className="p-8 border-l-2 border-orange bg-linen h-full flex flex-col">
-                  <p className="text-navy/80 text-sm leading-relaxed italic flex-1">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="mt-6 pt-4 border-t border-navy/10">
-                    <p className="text-sm font-semibold text-navy">{testimonial.author}</p>
-                    <p className="text-xs text-steel-light mt-0.5">{testimonial.company}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {sectors.map((sector, i) => (
+                <FadeIn key={sector.name} delay={i * 0.08}>
+                  <div className="group p-8 md:p-9 bg-white border border-navy/5 hover:border-orange/20 transition-all duration-500 card-lift h-full">
+                    <div className="w-11 h-11 bg-navy/4 flex items-center justify-center mb-6">
+                      <sector.icon size={20} className="text-navy" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-lg font-serif font-medium text-navy tracking-tight mb-3">
+                      {sector.name}
+                    </h3>
+                    <p className="text-steel-light text-sm leading-[1.8] font-light">
+                      {sector.desc}
+                    </p>
                   </div>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
-    </div>
+        {/* Testimonials */}
+        <section className="py-24 md:py-32 bg-white">
+          <div className="container">
+            <FadeIn>
+              <div className="max-w-2xl mb-16 md:mb-20">
+                <p className="text-orange text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                  Depoimentos
+                </p>
+                <h2 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight leading-[1.1]">
+                  O que dizem nossos clientes
+                </h2>
+              </div>
+            </FadeIn>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+              {testimonials.map((testimonial, i) => (
+                <FadeIn key={i} delay={i * 0.12}>
+                  <div className="relative p-8 md:p-10 border border-navy/6 h-full flex flex-col card-lift">
+                    {/* Quote mark */}
+                    <span className="absolute top-6 right-8 text-6xl font-serif text-orange/10 leading-none select-none">"</span>
+                    
+                    <p className="text-navy/75 text-[15px] leading-[1.9] font-light flex-1 relative z-10 italic">
+                      "{testimonial.quote}"
+                    </p>
+                    <div className="mt-8 pt-6 border-t border-navy/6">
+                      <p className="text-sm font-medium text-navy">{testimonial.author}</p>
+                      <p className="text-xs text-steel-light mt-1 font-light">{testimonial.company}</p>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <SectionDivider className="py-4" />
+
+        <Footer />
+      </div>
+    </PageTransition>
   );
 }

@@ -1,33 +1,48 @@
+/*
+ * PENTAGRAM CRAFT: 404
+ * - Serif type, generous whitespace
+ * - Subtle animation
+ */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
+import FadeIn from "@/components/FadeIn";
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-linen">
-      <Header />
-      <section className="pt-28 md:pt-36 pb-20 md:pb-28">
-        <div className="container text-center">
-          <div className="text-8xl md:text-[12rem] font-bold text-navy/5 leading-none select-none">
-            404
+    <PageTransition>
+      <div className="min-h-screen bg-linen">
+        <Header />
+        <section className="pt-40 md:pt-52 pb-28 md:pb-36">
+          <div className="container text-center">
+            <FadeIn>
+              <div className="text-[10rem] md:text-[16rem] font-serif font-medium text-navy/[0.03] leading-none select-none">
+                404
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <h1 className="text-3xl md:text-5xl font-serif font-medium text-navy tracking-tight -mt-16 md:-mt-24 relative z-10">
+                Página não encontrada
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <p className="text-steel-light mt-5 max-w-md mx-auto leading-[1.8] font-light">
+                A página que você procura não existe ou foi movida para outro endereço.
+              </p>
+              <Link
+                href="/"
+                className="group inline-flex items-center gap-3 bg-navy text-white px-8 py-4 text-sm font-medium tracking-wide mt-10 hover:bg-navy-light transition-all duration-300"
+              >
+                <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform duration-300" />
+                Voltar ao início
+              </Link>
+            </FadeIn>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-navy tracking-tight -mt-8 md:-mt-16 relative z-10">
-            Página não encontrada
-          </h1>
-          <p className="text-steel-light mt-4 max-w-md mx-auto">
-            A página que você procura não existe ou foi movida para outro endereço.
-          </p>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 bg-navy text-white px-6 py-3 text-sm font-semibold tracking-wide mt-8 hover:bg-navy-light transition-colors"
-          >
-            <ArrowLeft size={16} />
-            Voltar ao início
-          </Link>
-        </div>
-      </section>
-      <Footer />
-    </div>
+        </section>
+        <Footer />
+      </div>
+    </PageTransition>
   );
 }
