@@ -174,7 +174,7 @@ export default function Insights() {
               {`${t("insightsPage.title.1")}\n${t("insightsPage.title.2")}`}
             </SplitText>
             <FadeIn delay={0.3}>
-              <p className="text-steel-light text-lg max-w-2xl mt-8 leading-[1.8] font-light">
+              <p className="text-steel text-lg max-w-2xl mt-8 leading-[1.8] font-light">
                 {t("insightsPage.subtitle")}
               </p>
             </FadeIn>
@@ -188,13 +188,13 @@ export default function Insights() {
               <div className="flex flex-col md:flex-row gap-5 items-start md:items-center justify-between">
                 {/* Category filters */}
                 <div className="flex items-center gap-2 flex-wrap">
-                  <Filter size={14} className="text-steel-light mr-1" />
+                  <Filter size={14} className="text-steel mr-1" />
                   <button
                     onClick={() => handleTagChange("all")}
                     className={`px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${
                       selectedTag === "all"
                         ? "bg-navy text-white"
-                        : "bg-white border border-navy/10 text-steel-light hover:border-navy/20 hover:text-navy"
+                        : "bg-white border border-navy/10 text-steel hover:border-navy/20 hover:text-navy"
                     }`}
                   >
                     {locale === "pt" ? "Todos" : "All"}
@@ -206,7 +206,7 @@ export default function Insights() {
                       className={`px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${
                         selectedTag === tag
                           ? "bg-navy text-white"
-                          : "bg-white border border-navy/10 text-steel-light hover:border-navy/20 hover:text-navy"
+                          : "bg-white border border-navy/10 text-steel hover:border-navy/20 hover:text-navy"
                       }`}
                     >
                       {tag}
@@ -216,13 +216,13 @@ export default function Insights() {
 
                 {/* Search */}
                 <div className="relative w-full md:w-72">
-                  <Search size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-steel-light" />
+                  <Search size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-steel" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => handleSearch(e.target.value)}
                     placeholder={locale === "pt" ? "Buscar artigos..." : "Search articles..."}
-                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-navy/10 text-sm text-navy placeholder:text-steel-light/50 focus:border-navy/30 focus:ring-0 outline-none transition-all duration-300"
+                    className="w-full pl-10 pr-4 py-2.5 bg-white border border-navy/10 text-sm text-navy placeholder:text-steel/50 focus:border-navy/30 focus:ring-0 outline-none transition-all duration-300"
                   />
                 </div>
               </div>
@@ -298,7 +298,7 @@ export default function Insights() {
               </div>
             ) : gridArticles.length === 0 ? (
               <div className="text-center py-20">
-                <p className="text-steel-light text-lg font-light">
+                <p className="text-steel text-lg font-light">
                   {locale === "pt" ? "Nenhum artigo encontrado." : "No articles found."}
                 </p>
                 {(selectedTag !== "all" || searchQuery) && (
@@ -321,16 +321,16 @@ export default function Insights() {
                             <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-navy bg-navy/8 px-3 py-1.5">
                               {article.tag}
                             </span>
-                            <span className="text-[11px] text-steel-light font-light">{article.date}</span>
+                            <span className="text-[11px] text-steel font-light">{article.date}</span>
                           </div>
                           <h3 className="text-lg font-serif text-navy tracking-tight leading-snug mb-4 group-hover:text-steel transition-colors duration-300">
                             {article.title}
                           </h3>
-                          <p className="text-steel-light text-sm leading-[1.8] font-light flex-1">
+                          <p className="text-steel text-sm leading-[1.8] font-light flex-1">
                             {article.excerpt}
                           </p>
                           <div className="mt-7 pt-5 border-t border-navy/5 flex items-center justify-between">
-                            <span className="text-[11px] text-steel-light font-light">{article.readTime} {t("insightsPage.readTime")}</span>
+                            <span className="text-[11px] text-steel font-light">{article.readTime} {t("insightsPage.readTime")}</span>
                             <span className="inline-flex items-center gap-1.5 text-xs font-medium text-navy group-hover:text-steel transition-colors duration-300">
                               {t("insightsPage.read")}
                               <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform duration-300" />
@@ -354,7 +354,7 @@ export default function Insights() {
                     className={`w-10 h-10 flex items-center justify-center text-sm font-medium transition-all duration-300 ${
                       currentPage === page
                         ? "bg-navy text-white"
-                        : "bg-white border border-navy/10 text-steel-light hover:border-navy/20 hover:text-navy"
+                        : "bg-white border border-navy/10 text-steel hover:border-navy/20 hover:text-navy"
                     }`}
                   >
                     {page}
@@ -365,7 +365,7 @@ export default function Insights() {
 
             {/* Results count */}
             <div className="text-center mt-6">
-              <p className="text-xs text-steel-light font-light">
+              <p className="text-xs text-steel font-light">
                 {locale === "pt"
                   ? `${filteredArticles.length} artigo${filteredArticles.length !== 1 ? "s" : ""} encontrado${filteredArticles.length !== 1 ? "s" : ""}`
                   : `${filteredArticles.length} article${filteredArticles.length !== 1 ? "s" : ""} found`
@@ -382,7 +382,7 @@ export default function Insights() {
               <h2 className="text-3xl md:text-4xl font-serif text-white tracking-tight mb-5">
                 {t("insightsPage.newsletter.title")}
               </h2>
-              <p className="text-white/40 max-w-lg mx-auto mb-10 font-light leading-[1.8]">
+              <p className="text-white/60 max-w-lg mx-auto mb-10 font-light leading-[1.8]">
                 {t("insightsPage.newsletter.desc")}
               </p>
               <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -392,7 +392,7 @@ export default function Insights() {
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   required
                   placeholder={t("insightsPage.newsletter.placeholder")}
-                  className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/45 focus:border-white/40 focus:ring-0 outline-none transition-all duration-300"
+                  className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/60 focus:border-white/40 focus:ring-0 outline-none transition-all duration-300"
                 />
                 <button
                   type="submit"

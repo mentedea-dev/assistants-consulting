@@ -95,7 +95,7 @@ export default function Servicos() {
               {`${t("servicesPage.title.1")}\n${t("servicesPage.title.2")}`}
             </SplitText>
             <FadeIn delay={0.3}>
-              <p className="text-steel-light text-lg max-w-2xl mt-8 leading-[1.8] font-light">
+              <p className="text-steel text-lg max-w-2xl mt-8 leading-[1.8] font-light">
                 {t("servicesPage.subtitle")}
               </p>
             </FadeIn>
@@ -131,7 +131,7 @@ export default function Servicos() {
                       <h2 className="text-3xl md:text-4xl font-serif text-navy tracking-tight mb-4 leading-tight">
                         {area.title}
                       </h2>
-                      <p className="text-steel-light leading-[1.8] mb-8 font-light">{area.description}</p>
+                      <p className="text-steel leading-[1.8] mb-8 font-light">{area.description}</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
                         {area.items.map((item, j) => (
                           <div key={j} className="flex items-start gap-3 py-3 border-b border-navy/5 last:border-b-0">
@@ -157,7 +157,7 @@ export default function Servicos() {
           <div className="container">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-24">
-                <p className="text-white/40 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-white/60 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("additionalServices.tag")}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1]">
@@ -173,7 +173,7 @@ export default function Servicos() {
                   <div className="group p-8 md:p-10 border border-white/6 hover:border-white/20 transition-all duration-500 card-lift h-full">
                     <service.icon size={20} className="text-white/60 mb-7" strokeWidth={1.5} />
                     <h3 className="text-lg font-serif text-white mb-4 tracking-tight">{service.title}</h3>
-                    <p className="text-white/40 text-sm leading-[1.8] font-light">{service.desc}</p>
+                    <p className="text-white/60 text-sm leading-[1.8] font-light">{service.desc}</p>
                   </div>
                 </FadeIn>
               ))}
@@ -190,7 +190,7 @@ export default function Servicos() {
                 {t("servicesPage.cta.title")}
                 <span className="inflection-dot" />
               </h2>
-              <p className="text-steel-light max-w-lg mx-auto mb-12 leading-[1.8] font-light">
+              <p className="text-steel max-w-lg mx-auto mb-12 leading-[1.8] font-light">
                 {t("servicesPage.cta.desc")}
               </p>
               <Link

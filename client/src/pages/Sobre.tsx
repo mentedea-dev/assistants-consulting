@@ -96,7 +96,7 @@ export default function Sobre() {
                           <div className="text-4xl md:text-5xl font-serif text-navy tracking-tight">
                             <CountUp end={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} duration={2.5} />
                           </div>
-                          <p className="text-xs text-steel-light mt-2 uppercase tracking-wide font-medium">{stat.label}</p>
+                          <p className="text-xs text-steel mt-2 uppercase tracking-wide font-medium">{stat.label}</p>
                           {i < 2 && <div className="h-px bg-navy/6 mt-6" />}
                         </div>
                       ))}
@@ -130,7 +130,7 @@ export default function Sobre() {
                     </div>
                     <div>
                       <h3 className="text-xl font-serif text-navy tracking-tight mb-3">{value.title}</h3>
-                      <p className="text-steel-light text-sm leading-[1.8] font-light">{value.desc}</p>
+                      <p className="text-steel text-sm leading-[1.8] font-light">{value.desc}</p>
                     </div>
                   </div>
                 </FadeIn>
@@ -162,13 +162,13 @@ export default function Sobre() {
           <div className="absolute right-[-10%] md:right-[2%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
             <div className="relative">
               <div className="absolute inset-0 blur-[60px] bg-orange/6 rounded-full scale-75" />
-              <BrandSymbol variant="light" className="w-[300px] md:w-[420px] lg:w-[500px] h-auto opacity-[0.10]" drawReveal dotPulse />
+              <BrandSymbol variant="light" className="w-[300px] md:w-[420px] lg:w-[500px] h-auto opacity-[0.15]" drawReveal dotPulse />
             </div>
           </div>
           <div className="container relative z-10">
             <FadeIn>
               <div className="max-w-2xl mb-16 md:mb-20">
-                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-white/60 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("about.timeline.tag")}
                 </p>
                 <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1]">
@@ -183,15 +183,15 @@ export default function Sobre() {
                   <FadeIn key={milestone.year} delay={i * 0.1} direction={i % 2 === 0 ? "right" : "left"} distance={20}>
                     <div className={`relative flex items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                       <motion.div
-                        className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-navy -translate-x-1/2 mt-1.5 z-10"
+                        className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-orange -translate-x-1/2 mt-1.5 z-10"
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1, type: "spring", stiffness: 300 }}
                       />
                       <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                        <span className="text-2xl font-serif text-navy">{milestone.year}</span>
-                        <p className="text-white/50 text-sm mt-2 leading-relaxed font-light">{milestone.event}</p>
+                        <span className="text-2xl font-serif text-white">{milestone.year}</span>
+                        <p className="text-white/65 text-sm mt-2 leading-relaxed font-light">{milestone.event}</p>
                       </div>
                     </div>
                   </FadeIn>

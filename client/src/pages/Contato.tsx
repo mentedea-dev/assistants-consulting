@@ -120,7 +120,7 @@ export default function Contato() {
               {`${t("contact.title.1")}\n${t("contact.title.2")}`}
             </SplitText>
             <FadeIn delay={0.25}>
-              <p className="text-steel-light mt-6 max-w-2xl leading-relaxed font-light text-base">
+              <p className="text-steel mt-6 max-w-2xl leading-relaxed font-light text-base">
                 {t("contact.form.intro")}
               </p>
             </FadeIn>
@@ -141,7 +141,7 @@ export default function Contato() {
                     <h3 className="text-2xl font-serif text-navy mb-3">
                       {t("contact.success.title")}
                     </h3>
-                    <p className="text-steel-light font-light max-w-md">
+                    <p className="text-steel font-light max-w-md">
                       {t("contact.success.desc")}
                     </p>
                   </div>

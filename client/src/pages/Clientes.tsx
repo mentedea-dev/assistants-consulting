@@ -163,7 +163,7 @@ export default function Clientes() {
               {`${t("clients.title.1")}\n${t("clients.title.2")}`}
             </SplitText>
             <FadeIn delay={0.3}>
-              <p className="text-steel-light text-lg max-w-2xl mt-8 leading-[1.8] font-light">
+              <p className="text-steel text-lg max-w-2xl mt-8 leading-[1.8] font-light">
                 {t("clients.subtitle")}
               </p>
             </FadeIn>
@@ -179,7 +179,7 @@ export default function Clientes() {
                   <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight">
                     <CountUp end={stat.value} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <p className="text-xs text-white/55 mt-3 tracking-wide uppercase font-medium">
+                  <p className="text-xs text-white/70 mt-3 tracking-wide uppercase font-medium">
                     {stat.label}
                   </p>
                 </FadeIn>
@@ -201,7 +201,7 @@ export default function Clientes() {
                   <br />
                   {t("clients.logowall.title.2")}
                 </h2>
-                <p className="text-steel-light text-base max-w-2xl mt-6 leading-[1.8] font-light">
+                <p className="text-steel text-base max-w-2xl mt-6 leading-[1.8] font-light">
                   {t("clients.logowall.subtitle")}
                 </p>
               </div>
@@ -258,7 +258,7 @@ export default function Clientes() {
             {/* Client count badge */}
             <FadeIn delay={0.2}>
               <div className="mt-8 text-center">
-                <span className="text-xs text-steel-light uppercase tracking-wide font-medium">
+                <span className="text-xs text-steel uppercase tracking-wide font-medium">
                   {filteredClients.length} {activeCategory === "all" ? "organizações" : "organizações neste setor"}
                 </span>
               </div>
@@ -292,7 +292,7 @@ export default function Clientes() {
                     <h3 className="text-lg font-serif text-navy tracking-tight mb-3">
                       {sector.name}
                     </h3>
-                    <p className="text-steel-light text-sm leading-[1.8] font-light">
+                    <p className="text-steel text-sm leading-[1.8] font-light">
                       {sector.desc}
                     </p>
                   </div>
@@ -326,7 +326,7 @@ export default function Clientes() {
                     </p>
                     <div className="mt-8 pt-6 border-t border-navy/6">
                       <p className="text-sm font-medium text-navy">{testimonial.author}</p>
-                      <p className="text-xs text-steel-light mt-1 font-light">{testimonial.company}</p>
+                      <p className="text-xs text-steel mt-1 font-light">{testimonial.company}</p>
                     </div>
                   </div>
                 </FadeIn>

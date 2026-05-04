@@ -11,9 +11,9 @@ const en: Record<string, string> = {
 
   // ═══════ Hero ═══════
   "hero.tag": "Actuarial Consulting",
-  "hero.title.1": "The inflection point",
-  "hero.title.2": "between risk and",
-  "hero.title.3": "certainty",
+  "hero.title.1": "Clarity",
+  "hero.title.2": "to",
+  "hero.title.3": "decide.",
   "hero.subtitle": "For 35 years, Assistants has been transforming actuarial complexity into strategic clarity for Brazil's largest corporate groups.",
   "hero.cta.services": "Explore our services",
   "hero.cta.contact": "Get in touch",

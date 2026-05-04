@@ -7,6 +7,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import "@/i18n"; // Register all translations
 import { lazy, Suspense, useState, useCallback } from "react";
 import SplashScreen from "./components/SplashScreen";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Code splitting: lazy load all pages for better performance
 const Home = lazy(() => import("./pages/Home"));
@@ -32,8 +33,10 @@ function PageLoader() {
 
 function Router() {
   return (
-    <Suspense fallback={<PageLoader />}>
-      <Switch>
+    <>
+      <ScrollToTop />
+      <Suspense fallback={<PageLoader />}>
+        <Switch>
         <Route path="/" component={Home} />
         <Route path="/servicos" component={Servicos} />
         <Route path="/sobre" component={Sobre} />
@@ -44,8 +47,9 @@ function Router() {
         <Route path="/admin" component={Admin} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
-      </Switch>
-    </Suspense>
+        </Switch>
+      </Suspense>
+    </>
   );
 }
 

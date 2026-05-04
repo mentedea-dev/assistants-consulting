@@ -11,9 +11,9 @@ const pt: Record<string, string> = {
 
   // ═══════ Hero ═══════
   "hero.tag": "Consultoria Atuarial",
-  "hero.title.1": "O ponto de inflexão",
-  "hero.title.2": "entre risco e",
-  "hero.title.3": "certeza",
+  "hero.title.1": "Clareza",
+  "hero.title.2": "para",
+  "hero.title.3": "decidir.",
   "hero.subtitle": "Há 35 anos, a Assistants transforma complexidade atuarial em clareza estratégica para os maiores grupos corporativos do Brasil.",
   "hero.cta.services": "Conheça nossos serviços",
   "hero.cta.contact": "Fale conosco",

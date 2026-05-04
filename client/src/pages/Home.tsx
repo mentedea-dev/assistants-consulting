@@ -75,8 +75,8 @@ export default function Home() {
           >
             <div className="relative">
               {/* Glow backdrop */}
-              <div className="absolute inset-0 blur-[80px] bg-orange/10 rounded-full scale-75" />
-              <BrandSymbol variant="light" className="w-[320px] md:w-[450px] lg:w-[550px] h-auto opacity-[0.15]" drawReveal dotPulse />
+              <div className="absolute inset-0 blur-[100px] bg-orange/15 rounded-full scale-90" />
+              <BrandSymbol variant="light" className="w-[320px] md:w-[450px] lg:w-[550px] h-auto opacity-[0.22]" drawReveal dotPulse />
             </div>
           </motion.div>
 
@@ -159,7 +159,7 @@ export default function Home() {
                   <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight">
                     <CountUp end={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <p className="text-xs text-white/55 mt-3 tracking-wide uppercase font-medium">
+                  <p className="text-xs text-white/70 mt-3 tracking-wide uppercase font-medium">
                     {t(stat.labelKey)}
                   </p>
                 </FadeIn>
@@ -171,7 +171,7 @@ export default function Home() {
         {/* ═══════════════════════ CLIENT TRUST ═══════════════════════ */}
         <section className="py-14 md:py-16 bg-linen border-y border-navy/5 overflow-hidden">
           <div className="container mb-8">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-steel/40 text-center">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-steel/60 text-center">
               {t("clients.trust")}
             </p>
           </div>
@@ -193,7 +193,7 @@ export default function Home() {
                   ].map((name) => (
                     <span
                       key={`${setIdx}-${name}`}
-                      className="text-sm md:text-base font-medium text-navy/30 whitespace-nowrap tracking-tight"
+                      className="text-sm md:text-base font-medium text-navy/45 whitespace-nowrap tracking-tight"
                     >
                       {name}
                     </span>
@@ -218,10 +218,10 @@ export default function Home() {
               >
                 <div className="relative">
                   {/* Ambient glow */}
-                  <div className="absolute inset-0 blur-[50px] bg-orange/15 rounded-full scale-90" />
+                  <div className="absolute inset-0 blur-[60px] bg-orange/20 rounded-full scale-100" />
                   <BrandSymbol
                     variant="dark"
-                    className="w-[180px] h-[180px] md:w-[260px] md:h-[260px] lg:w-[320px] lg:h-[320px]"
+                    className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px]"
                     interactive
                     drawReveal
                     dotPulse
@@ -245,7 +245,7 @@ export default function Home() {
                     ? 'Onde complexidade se transforma em clareza.'
                     : 'Where complexity becomes clarity.'}
                 </h2>
-                <p className="text-steel-light text-base md:text-lg leading-relaxed font-light">
+                <p className="text-steel text-base md:text-lg leading-relaxed font-light">
                   {locale === 'pt'
                     ? 'O ponto laranja do nosso A representa o momento exato em que dados se transformam em decisões. Há 35 anos, somos esse ponto de inflexão para as maiores organizações do Brasil.'
                     : 'The orange dot in our A represents the exact moment when data becomes decisions. For 35 years, we have been this inflection point for Brazil\'s largest organizations.'}
@@ -301,7 +301,7 @@ export default function Home() {
                       <h3 className="text-2xl md:text-4xl font-serif text-navy tracking-tight mb-5 leading-tight">
                         {t(service.titleKey)}
                       </h3>
-                      <p className="text-steel-light leading-[1.8] mb-8 font-light">
+                      <p className="text-steel leading-[1.8] mb-8 font-light">
                         {t(service.descKey)}
                       </p>
                       <Link
@@ -326,7 +326,7 @@ export default function Home() {
           <div className="container">
             <div className="max-w-2xl mb-16 md:mb-20">
               <FadeIn>
-                <p className="text-white/40 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                <p className="text-white/60 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
                   {t("additionalServices.tag")}
                 </p>
               </FadeIn>
@@ -351,7 +351,7 @@ export default function Home() {
                     <h3 className="text-xl font-serif text-white mb-4 tracking-tight">
                       {t(service.titleKey)}
                     </h3>
-                    <p className="text-white/45 text-sm leading-[1.8] font-light group-hover:text-white/60 transition-colors duration-500">
+                    <p className="text-white/60 text-sm leading-[1.8] font-light group-hover:text-white/80 transition-colors duration-500">
                       {t(service.descKey)}
                     </p>
                   </div>
@@ -381,7 +381,7 @@ export default function Home() {
                   >
                     {`${t("insights.title.1")}\n${t("insights.title.2")}`}
                   </SplitText>
-                  <p className="text-steel-light leading-[1.8] mb-10 font-light">
+                  <p className="text-steel leading-[1.8] mb-10 font-light">
                     {t("insights.desc")}
                   </p>
                   <Link
@@ -411,7 +411,7 @@ export default function Home() {
                             <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-navy bg-navy/8 px-3 py-1.5">
                               {article.tag}
                             </span>
-                            <span className="text-[11px] text-steel-light font-light">{article.date}</span>
+                            <span className="text-[11px] text-steel font-light">{article.date}</span>
                           </div>
                           <h3 className="text-lg font-serif text-navy group-hover:text-steel transition-colors duration-300 tracking-tight leading-snug">
                             {article.title}
@@ -436,8 +436,8 @@ export default function Home() {
           {/* Brand Symbol — DOMINANT */}
           <div className="absolute left-[-10%] md:left-[3%] top-1/2 -translate-y-1/2 pointer-events-none select-none">
             <div className="relative">
-              <div className="absolute inset-0 blur-[60px] bg-orange/8 rounded-full scale-75" />
-              <BrandSymbol variant="light" className="w-[280px] md:w-[400px] lg:w-[480px] h-auto opacity-[0.12]" drawReveal dotPulse />
+              <div className="absolute inset-0 blur-[60px] bg-orange/12 rounded-full scale-90" />
+              <BrandSymbol variant="light" className="w-[280px] md:w-[400px] lg:w-[480px] h-auto opacity-[0.18]" drawReveal dotPulse />
             </div>
           </div>
 
@@ -456,7 +456,7 @@ export default function Home() {
               {`${t("cta.title.1")}\n${t("cta.title.2")}`}
             </SplitText>
             <FadeIn delay={0.5}>
-              <p className="text-white/40 max-w-lg mx-auto mb-12 leading-[1.8] font-light">
+              <p className="text-white/60 max-w-lg mx-auto mb-12 leading-[1.8] font-light">
                 {t("cta.desc")}
               </p>
               <Link

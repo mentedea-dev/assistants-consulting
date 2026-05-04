@@ -148,7 +148,7 @@ export default function Header() {
                 transition={{ delay: 0.35, duration: 0.5 }}
                 className="mt-8 flex items-center gap-3"
               >
-                <span className="text-xs uppercase tracking-widest text-steel-light">Idioma</span>
+                <span className="text-xs uppercase tracking-widest text-steel">Idioma</span>
                 <LanguageToggle className="[&_button]:!text-navy [&_button]:!text-sm" />
               </motion.div>
 
@@ -159,7 +159,7 @@ export default function Header() {
                 transition={{ delay: 0.4, duration: 0.5 }}
                 className="mt-8"
               >
-                <p className="text-xs uppercase tracking-widest text-steel-light mb-3">{t("nav.contact")}</p>
+                <p className="text-xs uppercase tracking-widest text-steel mb-3">{t("nav.contact")}</p>
                 <a href="mailto:relacionamento@assistants.com.br" className="text-sm text-navy">
                   relacionamento@assistants.com.br
                 </a>

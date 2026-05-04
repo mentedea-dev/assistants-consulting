@@ -199,3 +199,14 @@
 - [x] Garantir que o "A" seja a primeira coisa (splash screen) e a última que lembra (footer + CTA)
 - [x] Verificar TypeScript (0 erros) e testes (15 passando)
 - [x] Verificação visual final (hero dominante, brand moment excelente, header com símbolo, splash funcional)
+
+## Fase 25: Tagline + Contraste + Scroll + Destaque do A
+- [x] Substituir tagline "O ponto de inflexão entre risco e certeza" por "Clareza para decidir." (PT) / "Clarity to decide." (EN)
+- [x] Atualizar SplashScreen com nova tagline e A_PATH_STROKE (fix do underline)
+- [x] Criar componente ScrollToTop para rolar ao topo em toda mudança de rota (fix "Saiba mais")
+- [x] Aumentar destaque do A: hero opacity 0.15→0.22, CTA 0.12→0.18, Brand Moment tamanho 320→380px
+- [x] Aumentar glow do A: hero blur-[100px] bg-orange/15, Brand Moment blur-[60px] bg-orange/20
+- [x] Melhorar contraste em todas as páginas: steel-light → steel (fundo claro), white/40 → white/60 (fundo escuro)
+- [x] Corrigir timeline Sobre: dot bg-navy → bg-orange, year text-navy → text-white, tag text-steel → text-white/60
+- [x] Corrigir footer: placeholder white/40 → white/55, bottom bar white/45 → white/55
+- [x] Verificar TypeScript (0 erros) e testes (15 passando)
