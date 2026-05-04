@@ -251,13 +251,13 @@ export default function Insights() {
                         <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white bg-navy px-3 py-1.5">
                           {featured.tag}
                         </span>
-                        <span className="text-[11px] text-white/35 font-light">{featured.date}</span>
-                        <span className="text-[11px] text-white/35 font-light">{featured.readTime} {t("insightsPage.readTime")}</span>
+                        <span className="text-[11px] text-white/55 font-light">{featured.date}</span>
+                        <span className="text-[11px] text-white/55 font-light">{featured.readTime} {t("insightsPage.readTime")}</span>
                       </div>
                       <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1] mb-8">
                         {featured.title}
                       </h2>
-                      <p className="text-white/45 leading-[1.8] mb-10 max-w-2xl font-light text-lg">
+                      <p className="text-white/65 leading-[1.8] mb-10 max-w-2xl font-light text-lg">
                         {featured.excerpt}
                       </p>
                       {(featured as any).slug ? (
@@ -392,7 +392,7 @@ export default function Insights() {
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   required
                   placeholder={t("insightsPage.newsletter.placeholder")}
-                  className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/30 focus:border-white/30 focus:ring-0 outline-none transition-all duration-300"
+                  className="flex-1 px-5 py-3.5 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/45 focus:border-white/40 focus:ring-0 outline-none transition-all duration-300"
                 />
                 <button
                   type="submit"

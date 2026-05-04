@@ -451,13 +451,13 @@ export default function Contato() {
                       <div key={office.label} className="group">
                         <div className="flex gap-4">
                           <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
-                            <MapPin size={16} className="text-navy" strokeWidth={1.5} />
+                            <MapPin size={16} className="text-orange" strokeWidth={1.5} />
                           </div>
                           <div>
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{office.label}</p>
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-1">{office.label}</p>
                             <p className="text-sm text-white font-medium">{office.address}</p>
                             {office.address2 && <p className="text-sm text-white font-medium">{office.address2}</p>}
-                            <p className="text-xs text-white/50 mt-0.5 font-light">{office.city}</p>
+                            <p className="text-xs text-white/70 mt-0.5 font-light">{office.city}</p>
                           </div>
                         </div>
                         <div className="flex gap-4 mt-3 ml-[52px]">
@@ -470,24 +470,24 @@ export default function Contato() {
                     {/* Email */}
                     <div className="flex gap-4 group">
                       <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
-                        <Mail size={16} className="text-navy" strokeWidth={1.5} />
+                        <Mail size={16} className="text-orange" strokeWidth={1.5} />
                       </div>
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{t("contact.info.email.label")}</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-1">{t("contact.info.email.label")}</p>
                         <p className="text-sm text-white font-medium">{t("contact.info.email.value")}</p>
-                        <p className="text-xs text-white/35 mt-0.5 font-light">{t("contact.info.email.detail")}</p>
+                        <p className="text-xs text-white/70 mt-0.5 font-light">{t("contact.info.email.detail")}</p>
                       </div>
                     </div>
 
                     {/* Horário */}
                     <div className="flex gap-4 group">
                       <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
-                        <Clock size={16} className="text-navy" strokeWidth={1.5} />
+                        <Clock size={16} className="text-orange" strokeWidth={1.5} />
                       </div>
                       <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30 mb-1">{t("contact.hours.title")}</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-1">{t("contact.hours.title")}</p>
                         <p className="text-sm text-white font-medium">{t("contact.hours.weekdays")}</p>
-                        <p className="text-xs text-white/35 mt-0.5 font-light">{t("contact.hours.timezone")}</p>
+                        <p className="text-xs text-white/70 mt-0.5 font-light">{t("contact.hours.timezone")}</p>
                       </div>
                     </div>
                   </div>
@@ -496,15 +496,15 @@ export default function Contato() {
                   <div className="mt-8 p-4 bg-white/5 border border-white/8 rounded-sm">
                     <div className="flex items-center gap-2 mb-2">
                       <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/50">{t("contact.response.badge")}</span>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/70">{t("contact.response.badge")}</span>
                     </div>
-                    <p className="text-xs text-white/70 font-light leading-relaxed">
+                    <p className="text-xs text-white/80 font-light leading-relaxed">
                       {t("contact.response.time")}
                     </p>
                   </div>
 
                   <div className="mt-8 pt-6 border-t border-white/8">
-                    <p className="text-[11px] text-white/25 leading-relaxed font-light">
+                    <p className="text-[11px] text-white/50 leading-relaxed font-light">
                       {t("contact.lgpd")}
                     </p>
                   </div>

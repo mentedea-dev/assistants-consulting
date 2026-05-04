@@ -57,14 +57,14 @@ export default function Footer() {
                 className="h-9 w-auto"
               />
             </div>
-            <p className="text-sm leading-[1.9] max-w-sm text-white/40 font-light">
+            <p className="text-sm leading-[1.9] max-w-sm text-white/60 font-light">
               {t("footer.description")}
             </p>
           </div>
 
           {/* Navigation */}
           <div className="md:col-span-2">
-            <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
+            <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50 mb-6">
               {t("footer.nav")}
             </h4>
             <nav className="flex flex-col gap-4">
@@ -72,7 +72,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-white/50 hover:text-white/70 transition-colors duration-300 font-light"
+                  className="text-sm text-white/60 hover:text-white/90 transition-colors duration-300 font-light"
                 >
                   {link.label}
                 </Link>
@@ -82,12 +82,12 @@ export default function Footer() {
 
           {/* Services */}
           <div className="md:col-span-3">
-            <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/30 mb-6">
+            <h4 className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50 mb-6">
               {t("footer.areas")}
             </h4>
             <nav className="flex flex-col gap-4">
               {serviceAreas.map((item) => (
-                <span key={item} className="text-sm text-white/50 font-light">
+                <span key={item} className="text-sm text-white/60 font-light">
                   {item}
                 </span>
               ))}
@@ -97,10 +97,10 @@ export default function Footer() {
           {/* Newsletter */}
           <div className="md:col-span-3">
             <div className="p-6 border border-white/8 bg-white/[0.02]">
-              <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50 mb-3">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60 mb-3">
                 Newsletter
               </h4>
-              <p className="text-sm text-white/40 font-light mb-5 leading-relaxed">
+              <p className="text-sm text-white/60 font-light mb-5 leading-relaxed">
                 {t("newsletter.desc")}
               </p>
               <form onSubmit={handleSubscribe} className="flex flex-col gap-3">
@@ -110,7 +110,7 @@ export default function Footer() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder={t("newsletter.placeholder")}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/25 focus:border-white/25 focus:ring-0 outline-none transition-all duration-300"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white text-sm placeholder:text-white/40 focus:border-white/35 focus:ring-0 outline-none transition-all duration-300"
                 />
                 <button
                   type="submit"
@@ -130,16 +130,16 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-20 pt-8 border-t border-white/6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-[11px] text-white/25 font-light">
+          <p className="text-[11px] text-white/45 font-light">
             &copy; {new Date().getFullYear()} Assistants Consulting. {t("footer.rights")}
           </p>
           <div className="flex items-center gap-8">
-            <span className="text-[11px] text-white/25 font-light">
+            <span className="text-[11px] text-white/45 font-light">
               {t("footer.location")}
             </span>
             <a
               href="mailto:relacionamento@assistants.com.br"
-              className="text-[11px] text-white/30 hover:text-white/70 transition-colors duration-300 font-light"
+              className="text-[11px] text-white/45 hover:text-white/80 transition-colors duration-300 font-light"
             >
               relacionamento@assistants.com.br
             </a>

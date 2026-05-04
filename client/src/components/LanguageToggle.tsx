@@ -11,7 +11,7 @@ export default function LanguageToggle({ className = "" }: { className?: string 
         className={`text-[11px] font-medium tracking-wide px-2 py-1 transition-all duration-300 relative ${
           locale === "pt"
             ? "text-white"
-            : "text-white/35 hover:text-white/60"
+            : "text-white/55 hover:text-white/80"
         }`}
       >
         PT
@@ -23,13 +23,13 @@ export default function LanguageToggle({ className = "" }: { className?: string 
           />
         )}
       </button>
-      <span className="text-white/15 text-[10px]">|</span>
+      <span className="text-white/40 text-[10px]">|</span>
       <button
         onClick={() => setLocale("en")}
         className={`text-[11px] font-medium tracking-wide px-2 py-1 transition-all duration-300 relative ${
           locale === "en"
             ? "text-white"
-            : "text-white/35 hover:text-white/60"
+            : "text-white/55 hover:text-white/80"
         }`}
       >
         EN

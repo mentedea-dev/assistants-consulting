@@ -9,8 +9,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const A_PATH =
+const A_PATH_FILL =
   "M 51 0 L 565 1409 L 913 1409 L 1425 0 Z M 346 0 L 537 582 L 676 987 Q 688 1022 711 1093 Q 728 1151 739 1192 Q 740 1190 751 1152 Q 768 1093 791 1022 L 803 987 L 942 582 L 1133 0 Z";
+
+/* Stroke path without bottom horizontal line — prevents the "underline" artifact */
+const A_PATH_STROKE =
+  "M 51 0 L 565 1409 L 913 1409 L 1425 0 M 346 0 L 537 582 L 676 987 Q 688 1022 711 1093 Q 728 1151 739 1192 Q 740 1190 751 1152 Q 768 1093 791 1022 L 803 987 L 942 582 L 1133 0";
 
 export default function SplashScreen({ onComplete }: { onComplete: () => void }) {
   const [phase, setPhase] = useState<"draw" | "dot" | "exit">("draw");
@@ -71,9 +75,9 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
           }
         >
           <g transform="translate(50, 50)">
-            {/* Stroke draw animation */}
+            {/* Stroke draw animation — uses open path to avoid bottom line */}
             <motion.path
-              d={A_PATH}
+              d={A_PATH_STROKE}
               fill="none"
               stroke="#FFFFFF"
               strokeWidth="6"
@@ -84,7 +88,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             />
             {/* Fill appears after stroke */}
             <motion.path
-              d={A_PATH}
+              d={A_PATH_FILL}
               fill="#FFFFFF"
               transform="translate(0, 500.00) scale(0.354862, -0.354862)"
               fillRule="evenodd"

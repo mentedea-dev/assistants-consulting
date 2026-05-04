@@ -179,7 +179,7 @@ export default function Clientes() {
                   <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight">
                     <CountUp end={stat.value} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <p className="text-xs text-white/35 mt-3 tracking-wide uppercase font-medium">
+                  <p className="text-xs text-white/55 mt-3 tracking-wide uppercase font-medium">
                     {stat.label}
                   </p>
                 </FadeIn>

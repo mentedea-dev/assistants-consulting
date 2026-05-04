@@ -83,7 +83,7 @@ export default function Home() {
           <motion.div className="container relative z-10 pt-24 pb-16" style={{ opacity: heroOpacity }}>
             <div className="max-w-3xl">
               <FadeIn delay={0.3} distance={20}>
-                <p className="text-white/50 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-8">
+                <p className="text-white/70 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-8">
                   {t("hero.tag")}
                 </p>
               </FadeIn>
@@ -109,7 +109,7 @@ export default function Home() {
               </div>
 
               <FadeIn delay={0.7} distance={20}>
-                <p className="text-lg md:text-xl text-white/60 max-w-xl leading-relaxed mb-12 font-light">
+                <p className="text-lg md:text-xl text-white/75 max-w-xl leading-relaxed mb-12 font-light">
                   {t("hero.subtitle")}
                 </p>
               </FadeIn>
@@ -125,7 +125,7 @@ export default function Home() {
                   </Link>
                   <Link
                     href="/contato"
-                    className="inline-flex items-center gap-3 border border-white/25 text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-white/5 hover:border-white/40 transition-all duration-300"
+                    className="inline-flex items-center gap-3 border border-white/35 text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-white/8 hover:border-white/50 transition-all duration-300"
                   >
                     {t("hero.cta.contact")}
                   </Link>
@@ -140,7 +140,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ delay: 2 }}
           >
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-medium">{t("hero.scroll")}</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-medium">{t("hero.scroll")}</span>
             <motion.div
               className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent"
               animate={{ scaleY: [0.5, 1, 0.5] }}
@@ -159,7 +159,7 @@ export default function Home() {
                   <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight">
                     <CountUp end={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <p className="text-xs text-white/35 mt-3 tracking-wide uppercase font-medium">
+                  <p className="text-xs text-white/55 mt-3 tracking-wide uppercase font-medium">
                     {t(stat.labelKey)}
                   </p>
                 </FadeIn>

@@ -105,7 +105,7 @@ export default function ChatWidget() {
                 </div>
                 <div>
                   <h3 className="text-[13px] font-medium text-white tracking-tight">{t("chat.title")}</h3>
-                  <p className="text-[10px] text-white/35 tracking-wide">Assistants Consulting</p>
+                  <p className="text-[10px] text-white/55 tracking-wide">Assistants Consulting</p>
                 </div>
               </div>
               <button

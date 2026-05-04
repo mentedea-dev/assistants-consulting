@@ -67,6 +67,7 @@ export default function Header() {
 
   const navColor = scrolled || !isHome ? "text-steel" : "text-white/70";
   const navActiveColor = scrolled || !isHome ? "text-navy" : "text-white";
+  const navUnderlineColor = scrolled || !isHome ? "bg-navy" : "bg-white";
   const wordmarkVariant = scrolled || !isHome ? "dark" : "light";
 
   return (
@@ -89,7 +90,7 @@ export default function Header() {
                 {location === link.href && (
                   <motion.div
                     layoutId="nav-underline"
-                    className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-navy"
+                    className={`absolute -bottom-0.5 left-0 right-0 h-[1.5px] ${navUnderlineColor}`}
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
