@@ -244,3 +244,6 @@
 ## Fase 33: Atualizar seção Insights com credenciais técnicas
 - [x] Incluir texto sobre produção de artigos técnicos de divulgação nacional e internacional
 - [x] Incluir participação dos sócios nos comitês técnicos do Instituto Brasileiro de Atuária (IBA)
+
+## Fase 34: Correção email na barra lateral de contato
+- [x] Reduzir tamanho da fonte do email para caber na largura sem quebra feia (text-xs + overflowWrap: anywhere)

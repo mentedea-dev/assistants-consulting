@@ -468,15 +468,17 @@ export default function Contato() {
                     ))}
 
                     {/* Email */}
-                    <div className="flex gap-3 group">
-                      <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
-                        <Mail size={16} className="text-orange" strokeWidth={1.5} />
+                    <div className="group">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
+                          <Mail size={16} className="text-orange" strokeWidth={1.5} />
+                        </div>
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60">{t("contact.info.email.label")}</p>
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-1">{t("contact.info.email.label")}</p>
-                        <p className="text-sm text-white font-medium break-all">{t("contact.info.email.value")}</p>
-                        <p className="text-xs text-white/70 mt-0.5 font-light break-words">{t("contact.info.email.detail")}</p>
-                      </div>
+                      <a href={`mailto:${t("contact.info.email.value")}`} className="block text-sm text-white font-medium hover:text-orange transition-colors duration-300 ml-12">
+                        {t("contact.info.email.value")}
+                      </a>
+                      <p className="text-xs text-white/70 mt-1 font-light ml-12">{t("contact.info.email.detail")}</p>
                     </div>
 
                     {/* Horário */}
