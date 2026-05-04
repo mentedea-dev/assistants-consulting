@@ -250,3 +250,6 @@
 
 ## Fase 35: Corrigir labels dos escritórios
 - [x] São Paulo é a MATRIZ, Brasília é o ESCRITÓRIO (labels invertidos em PT e EN + footer)
+
+## Fase 36: Melhorar texto do card Modelagem Estocástica
+- [x] Aprofundar texto com técnicas robustas de projeção em cenários dinâmicos e estocásticos (título, descrição e formulário de contato)

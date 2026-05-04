@@ -116,8 +116,8 @@ const en: Record<string, string> = {
   // Extra specialised
   "servicesPage.expertise.title": "Regulatory Consulting",
   "servicesPage.expertise.desc": "Specialised advisory on compliance with ANS, PREVIC, SUSEP and CVM, including inspection preparation and regulatory adequacy.",
-  "servicesPage.stochastic.title": "Stochastic Modelling",
-  "servicesPage.stochastic.desc": "Monte Carlo simulations and stochastic models for scenario assessment, stress testing and quantification of actuarial uncertainties.",
+  "servicesPage.stochastic.title": "Dynamic & Stochastic Projections",
+  "servicesPage.stochastic.desc": "Monte Carlo simulations, Asset Liability Management (ALM) models, multivariate stochastic projections and dynamic scenario analysis with reverse stress testing. We apply bootstrapping techniques, copulas and diffusion processes to quantify uncertainties, measure actuarial Value-at-Risk and support strategic decisions under volatility.",
   "servicesPage.risk.title": "Risk Management",
   "servicesPage.risk.desc": "Enterprise Risk Management (ERM) frameworks applied to insurers, health operators and pension funds, with risk mapping and mitigation.",
 
@@ -271,7 +271,7 @@ const en: Record<string, string> = {
   "contact.form.serviceType": "Service type",
   "contact.form.serviceType.select": "Select the service of interest",
   "contact.form.serviceType.pericia": "Actuarial Expert Witness",
-  "contact.form.serviceType.modelagem": "Stochastic Modelling",
+  "contact.form.serviceType.modelagem": "Dynamic & Stochastic Projections",
   "contact.form.serviceType.riscos": "Risk Management",
   "contact.form.other": "Other",
   "contact.form.urgency": "Urgency",

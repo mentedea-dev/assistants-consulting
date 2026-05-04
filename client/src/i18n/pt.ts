@@ -116,8 +116,8 @@ const pt: Record<string, string> = {
   // Extra specialized
   "servicesPage.expertise.title": "Consultoria Regulatória",
   "servicesPage.expertise.desc": "Assessoria especializada em conformidade com ANS, PREVIC, SUSEP e CVM, incluindo preparação para inspeções e adequação normativa.",
-  "servicesPage.stochastic.title": "Modelagem Estocástica",
-  "servicesPage.stochastic.desc": "Simulações de Monte Carlo e modelos estocásticos para avaliação de cenários, stress testing e quantificação de incertezas atuariais.",
+  "servicesPage.stochastic.title": "Projeções Dinâmicas e Estocásticas",
+  "servicesPage.stochastic.desc": "Simulações de Monte Carlo, modelos de Asset Liability Management (ALM), projeções estocásticas multivariadas e análise de cenários dinâmicos com stress testing reverso. Aplicamos técnicas de bootstrapping, cópulas e processos de difusão para quantificar incertezas, mensurar Value-at-Risk atuarial e fundamentar decisões estratégicas sob volatilidade.",
   "servicesPage.risk.title": "Gestão de Riscos",
   "servicesPage.risk.desc": "Frameworks de Enterprise Risk Management (ERM) aplicados a seguradoras, operadoras e fundos de pensão, com mapeamento e mitigação de riscos.",
 
@@ -271,7 +271,7 @@ const pt: Record<string, string> = {
   "contact.form.serviceType": "Tipo de serviço",
   "contact.form.serviceType.select": "Selecione o serviço de interesse",
   "contact.form.serviceType.pericia": "Perícia Atuarial",
-  "contact.form.serviceType.modelagem": "Modelagem Estocástica",
+  "contact.form.serviceType.modelagem": "Projeções Dinâmicas e Estocásticas",
   "contact.form.serviceType.riscos": "Gestão de Riscos",
   "contact.form.other": "Outro",
   "contact.form.urgency": "Urgência",
