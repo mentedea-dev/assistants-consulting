@@ -214,4 +214,7 @@
 ## Fase 26: Correções Tagline + Novo Repositório GitHub
 - [x] Remover ponto final da tagline no hero (manter apenas o ponto laranja animado)
 - [x] Aumentar visibilidade da tagline "Clareza para decidir" no splash screen (white/60→white/90, text-xs→text-sm)
-- [ ] Criar novo repositório no GitHub e fazer push de todo o código
+- [x] Sincronizar projeto com GitHub (push via checkpoint)
+
+## Fase 27: Destaque ao serviço de Due Diligence Atuarial
+- [x] Elevar Due Diligence Atuarial de serviço secundário para destaque principal no site

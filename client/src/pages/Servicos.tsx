@@ -64,7 +64,6 @@ export default function Servicos() {
 
   const specializedServices = [
     { icon: FileSearch, title: t("service.audit.title"), desc: t("service.audit.desc") },
-    { icon: Briefcase, title: t("service.duediligence.title"), desc: t("service.duediligence.desc") },
     { icon: Users, title: t("service.hr.title"), desc: t("service.hr.desc") },
     { icon: Scale, title: t("servicesPage.expertise.title"), desc: t("servicesPage.expertise.desc") },
     { icon: Calculator, title: t("servicesPage.stochastic.title"), desc: t("servicesPage.stochastic.desc") },
@@ -149,6 +148,78 @@ export default function Servicos() {
                 </FadeIn>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════ DUE DILIGENCE HIGHLIGHT ═══════════════════════ */}
+        <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+          {/* Background accent */}
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange/[0.03] to-transparent" />
+          <div className="container relative z-10">
+            <FadeIn>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                {/* Image */}
+                <div className="lg:col-span-5">
+                  <div className="relative overflow-hidden group">
+                    <div className="absolute top-4 left-4 z-10 bg-orange text-white text-[10px] font-semibold uppercase tracking-[0.2em] px-3 py-1.5">
+                      {t("service.duediligence.highlight.tag")}
+                    </div>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className="aspect-[4/3] overflow-hidden"
+                    >
+                      <img
+                        src="https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/due-diligence-hero-kpvZddfcQWjr4wj52Kt8fc.webp"
+                        alt={t("service.duediligence.title")}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </motion.div>
+                    <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-orange/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="lg:col-span-7">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-orange/10 flex items-center justify-center">
+                      <Briefcase size={22} className="text-orange" strokeWidth={1.5} />
+                    </div>
+                    <div className="h-px flex-1 bg-orange/15" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-navy tracking-tight mb-5 leading-tight">
+                    {t("service.duediligence.highlight.title")}
+                  </h2>
+                  <p className="text-steel leading-[1.8] mb-10 font-light text-base md:text-lg">
+                    {t("service.duediligence.highlight.desc")}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+                    {[1, 2, 3, 4, 5, 6].map((n) => (
+                      <div key={n} className="flex items-start gap-3 py-3 border-b border-orange/10 last:border-b-0">
+                        <div className="w-5 h-5 rounded-full bg-orange/10 flex items-center justify-center mt-0.5 shrink-0">
+                          <svg width="10" height="8" viewBox="0 0 10 8" fill="none" className="text-orange">
+                            <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <span className="text-sm text-navy/80 leading-relaxed">
+                          {t(`service.duediligence.highlight.item${n}`)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-10">
+                    <Link
+                      href="/contato"
+                      className="group inline-flex items-center gap-3 bg-orange text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-orange-light transition-all duration-300"
+                    >
+                      {t("servicesPage.cta.button")}
+                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </section>
 
