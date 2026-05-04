@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Assistants Consulting — Ícone</title>
+  <rect width="512" height="512" fill="#0B1929" rx="56"/>
+  <path d="M 51 0 L 565 1409 L 913 1409 L 1425 0 Z M 346 0 L 537 582 L 676 987 Q 688 1022 711 1093 Q 728 1151 739 1192 Q 740 1190 751 1152 Q 768 1093 791 1022 L 803 987 L 942 582 L 1133 0 Z" fill="#FFFFFF" transform="translate(67.89, 442.00) scale(0.264017, -0.264017)" fill-rule="evenodd"/>
+  <circle cx="263.1" cy="304.7" r="27.9" fill="#E67E22"/>
+</svg>

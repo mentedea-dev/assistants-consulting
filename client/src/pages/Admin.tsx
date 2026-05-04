@@ -16,11 +16,12 @@ import { FileText, MessageSquare, Mail, Plus, Edit, Trash2,
   Eye, Clock, ArrowLeft, Loader2, CheckCircle2,
   Columns2, PenLine, Settings, LayoutDashboard,
   Users, TrendingUp, Search, ExternalLink, Save,
-  Globe, BarChart3, Upload
+  Globe, BarChart3, Upload, Headphones, Download,
+  LineChart, Languages, Activity, BookOpen
 } from "lucide-react";
 import { Streamdown } from "streamdown";
 
-type Tab = "dashboard" | "articles" | "contacts" | "newsletter" | "settings";
+type Tab = "dashboard" | "articles" | "contacts" | "newsletter" | "settings" | "analytics";
 
 interface ImportArticle {
   title: string;
@@ -44,6 +45,18 @@ export default function Admin() {
     tag: "",
     readTime: "",
     status: "draft" as "draft" | "published",
+    // Multimodal
+    pdfUrl: "",
+    podcastUrl: "",
+    podcastDuration: "",
+    coverImage: "",
+    chartData: "",
+    chartType: "bar",
+    chartTitle: "",
+    // Multilingual
+    titleEn: "",
+    excerptEn: "",
+    contentEn: "",
   });
   const [showPreview, setShowPreview] = useState(false);
   const [showImport, setShowImport] = useState(false);
@@ -115,7 +128,12 @@ export default function Admin() {
   const resetForm = () => {
     setShowEditor(false);
     setEditingId(null);
-    setForm({ title: "", excerpt: "", content: "", tag: "", readTime: "", status: "draft" });
+    setForm({
+      title: "", excerpt: "", content: "", tag: "", readTime: "", status: "draft",
+      pdfUrl: "", podcastUrl: "", podcastDuration: "", coverImage: "",
+      chartData: "", chartType: "bar", chartTitle: "",
+      titleEn: "", excerptEn: "", contentEn: "",
+    });
     setShowPreview(false);
   };
 
@@ -137,6 +155,16 @@ export default function Admin() {
       tag: article.tag || "",
       readTime: article.readTime || "",
       status: article.status,
+      pdfUrl: (article as any).pdfUrl || "",
+      podcastUrl: (article as any).podcastUrl || "",
+      podcastDuration: (article as any).podcastDuration || "",
+      coverImage: (article as any).coverImage || "",
+      chartData: (article as any).chartData || "",
+      chartType: (article as any).chartType || "bar",
+      chartTitle: (article as any).chartTitle || "",
+      titleEn: (article as any).titleEn || "",
+      excerptEn: (article as any).excerptEn || "",
+      contentEn: (article as any).contentEn || "",
     });
     setShowEditor(true);
   };
@@ -715,6 +743,153 @@ export default function Admin() {
                   )}
                 </div>
 
+                {/* ── Multimodal Section ── */}
+                <div className="border-t border-gray-100 pt-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-5 h-5 bg-orange/10 flex items-center justify-center rounded">
+                      <Activity size={11} className="text-orange" />
+                    </div>
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Formatos Multimodais
+                    </h3>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
+                        <Download size={11} /> URL do PDF (relatório)
+                      </label>
+                      <input
+                        type="url"
+                        value={form.pdfUrl}
+                        onChange={(e) => setForm({ ...form, pdfUrl: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all"
+                        placeholder="https://..."
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
+                        <Headphones size={11} /> URL do Podcast (mp3)
+                      </label>
+                      <div className="flex gap-2">
+                        <input
+                          type="url"
+                          value={form.podcastUrl}
+                          onChange={(e) => setForm({ ...form, podcastUrl: e.target.value })}
+                          className="flex-1 px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all"
+                          placeholder="https://..."
+                        />
+                        <input
+                          type="text"
+                          value={form.podcastDuration}
+                          onChange={(e) => setForm({ ...form, podcastDuration: e.target.value })}
+                          className="w-20 px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all"
+                          placeholder="24:35"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
+                        <Eye size={11} /> URL da imagem de capa
+                      </label>
+                      <input
+                        type="url"
+                        value={form.coverImage}
+                        onChange={(e) => setForm({ ...form, coverImage: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all"
+                        placeholder="https://..."
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
+                        <LineChart size={11} /> Tipo de gráfico
+                      </label>
+                      <select
+                        value={form.chartType}
+                        onChange={(e) => setForm({ ...form, chartType: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all"
+                      >
+                        <option value="bar">Barras</option>
+                        <option value="line">Linhas</option>
+                        <option value="area">Área</option>
+                        <option value="pie">Pizza</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="mt-4">
+                    <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      Título do gráfico
+                    </label>
+                    <input
+                      type="text"
+                      value={form.chartTitle}
+                      onChange={(e) => setForm({ ...form, chartTitle: e.target.value })}
+                      className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all"
+                      placeholder="Ex: Evolução das provisões técnicas 2020–2024"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                      Dados do gráfico (JSON)
+                    </label>
+                    <textarea
+                      value={form.chartData}
+                      onChange={(e) => setForm({ ...form, chartData: e.target.value })}
+                      rows={4}
+                      className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm font-mono focus:border-orange focus:ring-1 focus:ring-orange/20 outline-none transition-all resize-none"
+                      placeholder='[{"name":"2020","valor":100},{"name":"2021","valor":120}]'
+                    />
+                    <p className="text-[11px] text-gray-400 mt-1">
+                      Formato: array de objetos com campo "name" e valores numéricos. Ex: [{`{"name":"2024","Saúde":120,"Previdência":85}`}]
+                    </p>
+                  </div>
+                </div>
+
+                {/* ── English Translation Section ── */}
+                <div className="border-t border-gray-100 pt-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-5 h-5 bg-blue-50 flex items-center justify-center rounded">
+                      <Languages size={11} className="text-blue-500" />
+                    </div>
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                      Versão em Inglês
+                    </h3>
+                  </div>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5">Título (EN)</label>
+                      <input
+                        type="text"
+                        value={form.titleEn}
+                        onChange={(e) => setForm({ ...form, titleEn: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-200 outline-none transition-all"
+                        placeholder="Article title in English"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5">Resumo (EN)</label>
+                      <textarea
+                        value={form.excerptEn}
+                        onChange={(e) => setForm({ ...form, excerptEn: e.target.value })}
+                        rows={2}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-200 outline-none transition-all resize-none"
+                        placeholder="Brief summary in English..."
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5">
+                        Conteúdo (EN — Markdown)
+                      </label>
+                      <textarea
+                        value={form.contentEn}
+                        onChange={(e) => setForm({ ...form, contentEn: e.target.value })}
+                        rows={8}
+                        className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm font-mono focus:border-blue-400 focus:ring-1 focus:ring-blue-200 outline-none transition-all resize-y"
+                        placeholder="Write the article content in English using Markdown..."
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="flex items-center gap-3 pt-2">
                   <button
                     type="submit"
@@ -864,6 +1039,113 @@ export default function Admin() {
                     ))}
                   </div>
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* ═══ ANALYTICS TAB ═══ */}
+          {activeTab === "analytics" && (
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-xl font-serif font-medium text-navy mb-2">Analytics de Conteúdo</h2>
+                <p className="text-sm text-gray-500 font-light">Métricas de engajamento e comportamento de leitura dos Insights.</p>
+              </div>
+              {/* Top articles by views */}
+              <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                <div className="px-6 py-4 border-b border-gray-100 flex items-center gap-2">
+                  <BookOpen size={15} className="text-orange" />
+                  <h3 className="text-sm font-semibold text-navy">Artigos mais lidos</h3>
+                </div>
+                <div className="divide-y divide-gray-50">
+                  {(articlesQuery.data || [])
+                    .filter(a => a.status === "published")
+                    .sort((a, b) => ((b as any).viewCount || 0) - ((a as any).viewCount || 0))
+                    .slice(0, 10)
+                    .map((article, i) => (
+                      <div key={article.id} className="px-6 py-4 flex items-center gap-4">
+                        <span className="text-xs font-bold text-gray-300 w-5 text-right">{i + 1}</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-navy truncate">{article.title}</p>
+                          <div className="flex items-center gap-3 mt-0.5">
+                            {article.tag && (
+                              <span className="text-[10px] text-steel bg-navy/5 px-2 py-0.5">{article.tag}</span>
+                            )}
+                            <span className="text-[11px] text-gray-400 font-light">
+                              {article.publishedAt ? new Date(article.publishedAt).toLocaleDateString("pt-BR", { month: "short", year: "numeric" }) : "—"}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="text-right flex-shrink-0">
+                          <p className="text-sm font-semibold text-navy">{((article as any).viewCount || 0).toLocaleString()}</p>
+                          <p className="text-[10px] text-gray-400">visualizações</p>
+                        </div>
+                        <div className="text-right flex-shrink-0">
+                          <p className="text-sm font-semibold text-steel">{((article as any).readCount || 0).toLocaleString()}</p>
+                          <p className="text-[10px] text-gray-400">leituras completas</p>
+                        </div>
+                        <div className="w-24 flex-shrink-0">
+                          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-orange rounded-full"
+                              style={{
+                                width: `${(article as any).viewCount > 0
+                                  ? Math.round(((article as any).readCount / (article as any).viewCount) * 100)
+                                  : 0}%`
+                              }}
+                            />
+                          </div>
+                          <p className="text-[10px] text-gray-400 mt-0.5 text-right">
+                            {(article as any).viewCount > 0
+                              ? `${Math.round(((article as any).readCount / (article as any).viewCount) * 100)}% conclusão`
+                              : "—"}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  {(articlesQuery.data || []).filter(a => a.status === "published").length === 0 && (
+                    <div className="p-12 text-center text-gray-400">
+                      <BarChart3 size={32} className="mx-auto mb-3 opacity-30" />
+                      <p className="text-sm">Nenhum artigo publicado ainda</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+              {/* Summary metrics */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  {
+                    label: "Total de visualizações",
+                    value: (articlesQuery.data || []).reduce((s, a) => s + ((a as any).viewCount || 0), 0).toLocaleString(),
+                    icon: Eye,
+                    color: "text-navy"
+                  },
+                  {
+                    label: "Leituras completas",
+                    value: (articlesQuery.data || []).reduce((s, a) => s + ((a as any).readCount || 0), 0).toLocaleString(),
+                    icon: BookOpen,
+                    color: "text-orange"
+                  },
+                  {
+                    label: "Artigos publicados",
+                    value: (articlesQuery.data || []).filter(a => a.status === "published").length.toString(),
+                    icon: FileText,
+                    color: "text-steel"
+                  },
+                  {
+                    label: "Assinantes newsletter",
+                    value: (newsletterQuery.data || []).filter((s: any) => s.active).length.toString(),
+                    icon: Mail,
+                    color: "text-green-600"
+                  },
+                ].map((metric) => (
+                  <div key={metric.label} className="bg-white border border-gray-200 rounded-lg p-5">
+                    <div className="flex items-center gap-2 mb-3">
+                      <metric.icon size={14} className={metric.color} />
+                      <p className="text-[11px] text-gray-500 font-medium uppercase tracking-wide">{metric.label}</p>
+                    </div>
+                    <p className={`text-2xl font-serif font-medium ${metric.color}`}>{metric.value}</p>
+                  </div>
+                ))}
               </div>
             </div>
           )}

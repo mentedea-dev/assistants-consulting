@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 765.7 690.0" width="765.7" height="690.0">
+  <title>Grid de Construção</title>
+  <rect width="765.7" height="690.0" fill="#FAFAFA"/>
+  
+  <text x="382.83889283179565" y="24" font-family="Liberation Sans, Arial" font-size="12" fill="#0B1929" text-anchor="middle" font-weight="700" letter-spacing="4px">CONSTRUCTION GRID</text>
+  <text x="382.83889283179565" y="40" font-family="Liberation Sans, Arial" font-size="10" fill="#3D4F5F" text-anchor="middle" letter-spacing="2px">Liberation Sans Bold  ·  Modified Glyph</text>
+  
+  <g transform="translate(130, 90)">
+    <rect x="0" y="0" width="505.7" height="500" fill="none" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="252.83889283179562" y1="0" x2="252.83889283179562" y2="500" stroke="#E0E0E0" stroke-width="0.5" stroke-dasharray="4,4"/>
+    <line x1="0" y1="315.5" x2="505.7" y2="315.5" stroke="#E67E22" stroke-width="0.3" stroke-dasharray="3,3" opacity="0.4"/>
+    
+    <path d="M 51 0 L 565 1409 L 913 1409 L 1425 0 Z M 346 0 L 537 582 L 676 987 Q 688 1022 711 1093 Q 728 1151 739 1192 Q 740 1190 751 1152 Q 768 1093 791 1022 L 803 987 L 942 582 L 1133 0 Z" fill="#0B1929" opacity="0.10" transform="translate(0, 500.00) scale(0.354862, -0.354862)" fill-rule="evenodd"/>
+    <circle cx="262.4" cy="315.5" r="40.0" fill="#E67E22" opacity="0.15"/>
+    
+    <line x1="515.7" y1="0" x2="515.7" y2="500" stroke="#3D4F5F" stroke-width="0.5"/>
+    <line x1="511.7" y1="0" x2="519.7" y2="0" stroke="#3D4F5F" stroke-width="0.5"/>
+    <line x1="511.7" y1="500" x2="519.7" y2="500" stroke="#3D4F5F" stroke-width="0.5"/>
+    <text x="525.7" y="254.0" font-family="Liberation Sans, Arial" font-size="10" fill="#3D4F5F">H = 500</text>
+    
+    <line x1="0" y1="510" x2="505.7" y2="510" stroke="#3D4F5F" stroke-width="0.5"/>
+    <text x="232.8" y="526" font-family="Liberation Sans, Arial" font-size="10" fill="#3D4F5F">W = 506</text>
+  </g>
+</svg>

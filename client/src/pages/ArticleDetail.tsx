@@ -1,5 +1,6 @@
 /*
- * PENTAGRAM CRAFT: Article Detail (i18n)
+ * INTERBRAND CRAFT: Article Detail — Multimodal + Behavioral Recommendations
+ * Features: PDF download, podcast player, interactive charts, behavioral tracking
  */
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,9 +9,13 @@ import PageTransition from "@/components/PageTransition";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { trpc } from "@/lib/trpc";
 import { useParams, Link } from "wouter";
-import { ArrowLeft, Loader2, Clock, Tag } from "lucide-react";
+import { ArrowLeft, Loader2, Clock, Tag, Eye } from "lucide-react";
 import ShareButtons from "@/components/ShareButtons";
-import RelatedArticles from "@/components/RelatedArticles";
+import BehavioralRelatedArticles from "@/components/BehavioralRelatedArticles";
+import PdfDownload from "@/components/PdfDownload";
+import PodcastPlayer from "@/components/PodcastPlayer";
+import ArticleChart from "@/components/ArticleChart";
+import { useArticleTracking } from "@/hooks/useArticleTracking";
 import { Streamdown } from "streamdown";
 import SEO from "@/components/SEO";
 
@@ -21,6 +26,11 @@ export default function ArticleDetail() {
     { slug: params.slug || "" },
     { enabled: !!params.slug }
   );
+  // Behavioral tracking
+  const { sessionId } = useArticleTracking({
+    slug: params.slug || "",
+    enabled: !isLoading && !!article,
+  });
 
   if (isLoading) {
     return (
@@ -104,14 +114,14 @@ export default function ArticleDetail() {
                   )}
                 </div>
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-navy tracking-tight leading-[1.1]">
-                  {article.title}
+                  {locale === "en" && (article as any).titleEn ? (article as any).titleEn : article.title}
                 </h1>
-                {article.excerpt && (
+                {(locale === "en" && (article as any).excerptEn ? (article as any).excerptEn : article.excerpt) && (
                   <p className="text-lg text-steel-light mt-6 leading-[1.8] font-light">
-                    {article.excerpt}
+                    {locale === "en" && (article as any).excerptEn ? (article as any).excerptEn : article.excerpt}
                   </p>
                 )}
-                <div className="mt-8 pt-6 border-t border-navy/8">
+                <div className="mt-8 pt-6 border-t border-navy/8 flex items-center justify-between">
                   <span className="text-xs text-steel-light font-light">
                     {article.publishedAt
                       ? new Date(article.publishedAt).toLocaleDateString(dateLocale, {
@@ -121,6 +131,12 @@ export default function ArticleDetail() {
                         })
                       : ""}
                   </span>
+                  {article.viewCount > 0 && (
+                    <span className="inline-flex items-center gap-1.5 text-[11px] text-steel-light font-light">
+                      <Eye size={11} />
+                      {article.viewCount.toLocaleString()} {locale === "pt" ? "leituras" : "reads"}
+                    </span>
+                  )}
                 </div>
               </div>
             </FadeIn>
@@ -137,12 +153,51 @@ export default function ArticleDetail() {
                 prose-ul:text-steel-light prose-ol:text-steel-light
                 prose-blockquote:border-l-orange prose-blockquote:text-navy prose-blockquote:font-serif prose-blockquote:italic
               ">
-                <Streamdown>{article.content || ""}</Streamdown>
+                <Streamdown>
+                  {locale === "en" && (article as any).contentEn
+                    ? (article as any).contentEn
+                    : article.content || ""}
+                </Streamdown>
               </div>
             </FadeIn>
 
+            {/* Podcast player */}
+            {article.podcastUrl && (
+              <FadeIn delay={0.25}>
+                <PodcastPlayer
+                  src={article.podcastUrl}
+                  duration={article.podcastDuration || undefined}
+                  title={article.title}
+                />
+              </FadeIn>
+            )}
+
+            {/* Interactive chart */}
+            {article.chartData && (
+              <FadeIn delay={0.28}>
+                <ArticleChart
+                  chartData={article.chartData}
+                  chartType={article.chartType || "bar"}
+                  chartTitle={article.chartTitle || undefined}
+                />
+              </FadeIn>
+            )}
+
+            {/* PDF download */}
+            {article.pdfUrl && (
+              <FadeIn delay={0.3}>
+                <PdfDownload
+                  url={article.pdfUrl}
+                  title={locale === "en" && article.titleEn ? article.titleEn : article.title}
+                  description={locale === "pt"
+                    ? "Baixe o relatório completo em PDF para leitura offline e compartilhamento."
+                    : "Download the full report as PDF for offline reading and sharing."}
+                />
+              </FadeIn>
+            )}
+
             {/* Share buttons */}
-            <FadeIn delay={0.3}>
+            <FadeIn delay={0.35}>
               <div className="mt-14 pt-8 border-t border-navy/8">
                 <ShareButtons
                   title={article.title}
@@ -166,10 +221,11 @@ export default function ArticleDetail() {
               </div>
             </FadeIn>
 
-            {/* Related Articles */}
-            <RelatedArticles
+            {/* Related Articles — Behavioral + Tag-based hybrid */}
+            <BehavioralRelatedArticles
               currentSlug={params.slug || ""}
               currentTag={article.tag}
+              sessionId={sessionId}
             />
           </div>
         </article>

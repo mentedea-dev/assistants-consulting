@@ -4,8 +4,8 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, protectedProcedure, adminProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { getDb } from "./db";
-import { contacts, articles, newsletterSubscribers, chatMessages, siteSettings } from "../drizzle/schema";
-import { eq, desc, and, ne } from "drizzle-orm";
+import { contacts, articles, articleViews, newsletterSubscribers, chatMessages, siteSettings } from "../drizzle/schema";
+import { eq, desc, and, ne, sql, inArray } from "drizzle-orm";
 import { invokeLLM } from "./_core/llm";
 import { notifyOwner } from "./_core/notification";
 import { nanoid } from "nanoid";
@@ -183,6 +183,16 @@ export const appRouter = router({
         tag: z.string().optional(),
         readTime: z.string().optional(),
         status: z.enum(["draft", "published"]).optional(),
+        pdfUrl: z.string().optional(),
+        podcastUrl: z.string().optional(),
+        podcastDuration: z.string().optional(),
+        coverImage: z.string().optional(),
+        chartData: z.string().optional(),
+        chartType: z.string().optional(),
+        chartTitle: z.string().optional(),
+        titleEn: z.string().optional(),
+        excerptEn: z.string().optional(),
+        contentEn: z.string().optional(),
       }))
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();

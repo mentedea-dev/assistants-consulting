@@ -44,6 +44,9 @@ export type InsertContact = typeof contacts.$inferInsert;
 
 /**
  * Articles / Insights
+ * Extended with multimodal fields: pdfUrl, podcastUrl, chartData, coverImage
+ * Extended with behavioral analytics: viewCount, readCount
+ * Extended with multilingual fields: titleEn, excerptEn, contentEn
  */
 export const articles = mysqlTable("articles", {
   id: int("id").autoincrement().primaryKey(),
@@ -58,10 +61,41 @@ export const articles = mysqlTable("articles", {
   publishedAt: timestamp("publishedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  // Multimodal
+  pdfUrl: varchar("pdfUrl", { length: 1000 }),
+  podcastUrl: varchar("podcastUrl", { length: 1000 }),
+  podcastDuration: varchar("podcastDuration", { length: 20 }),
+  coverImage: varchar("coverImage", { length: 1000 }),
+  chartData: text("chartData"),
+  chartType: varchar("chartType", { length: 50 }),
+  chartTitle: varchar("chartTitle", { length: 255 }),
+  // Behavioral analytics
+  viewCount: int("viewCount").default(0).notNull(),
+  readCount: int("readCount").default(0).notNull(),
+  // Multilingual
+  titleEn: varchar("titleEn", { length: 500 }),
+  excerptEn: text("excerptEn"),
+  contentEn: text("contentEn"),
 });
 
 export type Article = typeof articles.$inferSelect;
 export type InsertArticle = typeof articles.$inferInsert;
+
+/**
+ * Article view events — behavioral analytics for recommendation engine
+ */
+export const articleViews = mysqlTable("article_views", {
+  id: int("id").autoincrement().primaryKey(),
+  articleId: int("articleId").notNull(),
+  sessionId: varchar("sessionId", { length: 100 }).notNull(),
+  scrollDepth: int("scrollDepth").default(0),
+  timeOnPage: int("timeOnPage").default(0),
+  referrerSlug: varchar("referrerSlug", { length: 500 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ArticleView = typeof articleViews.$inferSelect;
+export type InsertArticleView = typeof articleViews.$inferInsert;
 
 /**
  * Newsletter subscribers
