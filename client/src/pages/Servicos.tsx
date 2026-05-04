@@ -51,7 +51,6 @@ export default function Servicos() {
   ];
 
   const specializedServices = [
-    { icon: TrendingUp, title: t("service.pension.title"), desc: t("service.pension.desc") },
     { icon: FileSearch, title: t("service.audit.title"), desc: t("service.audit.desc") },
     { icon: Users, title: t("service.hr.title"), desc: t("service.hr.desc") },
     { icon: Scale, title: t("servicesPage.expertise.title"), desc: t("servicesPage.expertise.desc") },
@@ -152,6 +151,77 @@ export default function Servicos() {
                       {t("servicesPage.cta.button")}
                       <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+
+        {/* ═══════════════════════ PREVIDÊNCIA COMPLEMENTAR ═══════════════════════ */}
+        <section className="py-24 md:py-32 bg-linen relative overflow-hidden">
+          {/* Background accent */}
+          <div className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-navy/[0.02] to-transparent" />
+          <div className="container relative z-10">
+            <FadeIn>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                {/* Content */}
+                <div className="lg:col-span-7">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-navy/5 flex items-center justify-center">
+                      <TrendingUp size={22} className="text-navy" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-navy">
+                      {t("servicesPage.pension.subtitle")}
+                    </span>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-navy tracking-tight mb-5 leading-tight">
+                    {t("service.pension.title")}
+                  </h2>
+                  <p className="text-steel leading-[1.8] mb-10 font-light text-base md:text-lg">
+                    {t("servicesPage.pension.desc")}
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+                    {[1, 2, 3, 4, 5, 6].map((n) => (
+                      <div key={n} className="flex items-start gap-3 py-3 border-b border-navy/5 last:border-b-0">
+                        <div className="w-5 h-5 rounded-full bg-navy/5 flex items-center justify-center mt-0.5 shrink-0">
+                          <svg width="10" height="8" viewBox="0 0 10 8" fill="none" className="text-navy/70">
+                            <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <span className="text-sm text-navy/80 leading-relaxed">
+                          {t(`servicesPage.pension.item${n}`)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-10">
+                    <Link
+                      href="/contato"
+                      className="group inline-flex items-center gap-3 border border-navy/20 text-navy px-8 py-4 text-sm font-medium tracking-wide hover:bg-navy hover:text-white transition-all duration-300"
+                    >
+                      {t("servicesPage.cta.button")}
+                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Image */}
+                <div className="lg:col-span-5 lg:order-first">
+                  <div className="relative overflow-hidden group">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className="aspect-[4/3] overflow-hidden"
+                    >
+                      <img
+                        src={PENSION_IMG}
+                        alt={t("service.pension.title")}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </motion.div>
+                    <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-navy/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 </div>
               </div>

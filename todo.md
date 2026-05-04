@@ -229,3 +229,8 @@
 - [x] Remover seção "O ponto de inflexão" (brand narcissism) da Home
 - [x] Substituir por seção orientada ao cliente: "35 anos no centro das decisões que importam"
 - [x] Atualizar chaves i18n PT e EN com novo conteúdo (CTA: "O próximo passo é uma conversa")
+
+## Fase 30: Seção dedicada de Previdência Complementar
+- [x] Analisar PDF anexo para extrair conteúdo técnico sobre Previdência Complementar
+- [x] Criar seção destacada de Previdência Complementar na página Serviços (mesmo nível de Due Diligence e CPC 33)
+- [x] Atualizar chaves i18n PT e EN com novo conteúdo (descrição expandida + itens do PDF)

@@ -19,16 +19,17 @@ import { useRef } from "react";
 const HERO_IMG = "/manus-storage/v3_01_hero_principal_6dab2755.webp";
 const HEALTH_IMG = "/manus-storage/v2_03_saude_550a80a3.webp";
 const BENEFITS_IMG = "/manus-storage/v2_06_beneficios_712e1ff4.webp";
+const PENSION_IMG = "/manus-storage/v2_02_previdencia_cb4d1913.webp";
 const DUEDILIGENCE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/due-diligence-hero-kpvZddfcQWjr4wj52Kt8fc.webp";
 
 const serviceKeys = [
   { icon: Briefcase, titleKey: "service.duediligence.title", descKey: "service.duediligence.desc", img: DUEDILIGENCE_IMG },
   { icon: BarChart3, titleKey: "service.benefits.title", descKey: "service.benefits.desc", img: BENEFITS_IMG },
+  { icon: TrendingUp, titleKey: "service.pension.title", descKey: "service.pension.desc", img: PENSION_IMG },
   { icon: Shield, titleKey: "service.health.title", descKey: "service.health.desc", img: HEALTH_IMG },
 ];
 
 const additionalServiceKeys = [
-  { icon: TrendingUp, titleKey: "service.pension.title", descKey: "service.pension.desc" },
   { icon: FileSearch, titleKey: "service.audit.title", descKey: "service.audit.desc" },
   { icon: Users, titleKey: "service.hr.title", descKey: "service.hr.desc" },
 ];

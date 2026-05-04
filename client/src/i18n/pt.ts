@@ -95,13 +95,13 @@ const pt: Record<string, string> = {
 
   // Pension details
   "servicesPage.pension.subtitle": "Avaliação e Gestão de Fundos de Pensão",
-  "servicesPage.pension.desc": "Assessoramos entidades fechadas e abertas de previdência complementar em todas as dimensões atuariais, da avaliação de planos à gestão de ativos e passivos.",
+  "servicesPage.pension.desc": "Com equipe dedicada e atuação consolidada no Brasil e na América Latina, assessoramos entidades fechadas e abertas de previdência complementar em todas as dimensões atuariais — da avaliação anual de planos à implementação de novos benefícios, passando por estudos de solvência, ALM e processos de saldamento ou retirada de patrocínio.",
   "servicesPage.pension.item1": "Avaliação atuarial anual (planos BD, CD e CV)",
   "servicesPage.pension.item2": "Estudos de solvência e equilíbrio",
   "servicesPage.pension.item3": "Asset-Liability Management (ALM)",
-  "servicesPage.pension.item4": "Redesenho de planos de benefícios",
-  "servicesPage.pension.item5": "Estudos de aderência de hipóteses",
-  "servicesPage.pension.item6": "Relatórios PREVIC e CNPC",
+  "servicesPage.pension.item4": "Saldamento de planos e retirada de patrocínio",
+  "servicesPage.pension.item5": "Teste de aderência de premissas atuariais",
+  "servicesPage.pension.item6": "Implementação de novos planos e treinamentos (Brasil e América Latina)",
 
   // Benefits details
   "servicesPage.benefits.subtitle": "CPC 33 (R2) / IAS 19 / IFRS 17",

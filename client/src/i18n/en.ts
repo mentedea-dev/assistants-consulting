@@ -95,13 +95,13 @@ const en: Record<string, string> = {
 
   // Pension details
   "servicesPage.pension.subtitle": "Pension Fund Valuation and Management",
-  "servicesPage.pension.desc": "We advise closed and open complementary pension entities across all actuarial dimensions, from plan valuation to asset-liability management.",
+  "servicesPage.pension.desc": "With a dedicated team and consolidated presence in Brazil and Latin America, we advise closed and open complementary pension entities across all actuarial dimensions — from annual plan valuation to new benefit implementation, including solvency studies, ALM and plan settlement or sponsor withdrawal processes.",
   "servicesPage.pension.item1": "Annual actuarial valuation (DB, DC and VC plans)",
   "servicesPage.pension.item2": "Solvency and equilibrium studies",
   "servicesPage.pension.item3": "Asset-Liability Management (ALM)",
-  "servicesPage.pension.item4": "Benefit plan redesign",
-  "servicesPage.pension.item5": "Assumption adherence studies",
-  "servicesPage.pension.item6": "PREVIC and CNPC reports",
+  "servicesPage.pension.item4": "Plan settlement and sponsor withdrawal",
+  "servicesPage.pension.item5": "Actuarial assumption adherence testing",
+  "servicesPage.pension.item6": "New plan implementation and training (Brazil and Latin America)",
 
   // Benefits details
   "servicesPage.benefits.subtitle": "CPC 33 (R2) / IAS 19 / IFRS 17",
