@@ -69,8 +69,11 @@ const pt: Record<string, string> = {
   "insights.viewAll": "Ver todos os insights",
 
   // ═══════ CTA Section ═══════
-  "cta.title.1": "Encontre o seu ponto",
-  "cta.title.2": "de inflexão",
+  "cta.title.1": "O próximo passo é",
+  "cta.title.2": "uma conversa",
+  "brand.tag": "Desde 1990",
+  "brand.title": "35 anos no centro das decisões que importam",
+  "brand.desc": "Quando uma operadora precisa precificar um novo produto, quando um fundo de pensão enfrenta um estudo de solvência, quando uma empresa prepara suas demonstrações financeiras — é nesse momento que atuamos.",
   "cta.desc": "Converse com nossos atuários sobre como podemos transformar a gestão de riscos da sua organização.",
   "cta.button": "Agende uma conversa",
 

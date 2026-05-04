@@ -208,7 +208,7 @@ export default function Home() {
         <section className="py-24 md:py-32 bg-white relative overflow-hidden">
           <div className="container relative z-10">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-              {/* The A — large, proud, animated */}
+              {/* The A — visual anchor */}
               <motion.div
                 className="flex-shrink-0"
                 initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
@@ -217,7 +217,6 @@ export default function Home() {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="relative">
-                  {/* Ambient glow */}
                   <div className="absolute inset-0 blur-[60px] bg-orange/20 rounded-full scale-100" />
                   <BrandSymbol
                     variant="dark"
@@ -229,7 +228,7 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* Brand statement */}
+              {/* Client-oriented statement */}
               <motion.div
                 className="text-center md:text-left max-w-lg"
                 initial={{ opacity: 0, x: 30 }}
@@ -238,17 +237,13 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
                 <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.3em] mb-5">
-                  {locale === 'pt' ? 'O ponto de inflexão' : 'The inflection point'}
+                  {t('brand.tag')}
                 </p>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-navy tracking-tight leading-[1.1] mb-6">
-                  {locale === 'pt'
-                    ? 'Onde complexidade se transforma em clareza.'
-                    : 'Where complexity becomes clarity.'}
+                  {t('brand.title')}
                 </h2>
                 <p className="text-steel text-base md:text-lg leading-relaxed font-light">
-                  {locale === 'pt'
-                    ? 'O ponto laranja do nosso A representa o momento exato em que dados se transformam em decisões. Há 35 anos, somos esse ponto de inflexão para as maiores organizações do Brasil.'
-                    : 'The orange dot in our A represents the exact moment when data becomes decisions. For 35 years, we have been this inflection point for Brazil\'s largest organizations.'}
+                  {t('brand.desc')}
                 </p>
               </motion.div>
             </div>

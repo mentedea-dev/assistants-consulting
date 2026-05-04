@@ -224,3 +224,8 @@
 - [x] Reordenar serviços principais na Home: 1) Due Diligence, 2) Benefícios Pós-Emprego (CPC 33), 3) Saúde Suplementar
 - [x] Mover Previdência Complementar para serviços secundários
 - [x] Reordenar serviços na página Serviços conforme mesma hierarquia
+
+## Fase 29: Substituir seção Brand Moment por versão orientada ao cliente
+- [x] Remover seção "O ponto de inflexão" (brand narcissism) da Home
+- [x] Substituir por seção orientada ao cliente: "35 anos no centro das decisões que importam"
+- [x] Atualizar chaves i18n PT e EN com novo conteúdo (CTA: "O próximo passo é uma conversa")

@@ -69,8 +69,11 @@ const en: Record<string, string> = {
   "insights.viewAll": "View all insights",
 
   // ═══════ CTA Section ═══════
-  "cta.title.1": "Find your",
-  "cta.title.2": "inflection point",
+  "cta.title.1": "The next step is",
+  "cta.title.2": "a conversation",
+  "brand.tag": "Since 1990",
+  "brand.title": "35 years at the center of the decisions that matter",
+  "brand.desc": "When a health plan needs to price a new product, when a pension fund faces a solvency study, when a company prepares its financial statements — that is when we act.",
   "cta.desc": "Speak with our actuaries about how we can transform your organisation's risk management.",
   "cta.button": "Schedule a conversation",
 
