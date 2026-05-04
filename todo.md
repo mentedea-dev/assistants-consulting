@@ -253,3 +253,8 @@
 
 ## Fase 36: Melhorar texto do card Modelagem Estocástica
 - [x] Aprofundar texto com técnicas robustas de projeção em cenários dinâmicos e estocásticos (título, descrição e formulário de contato)
+
+## Fase 37: Expandir cards e criar white paper
+- [x] Expandir card Auditoria Atuarial com profundidade técnica
+- [x] Expandir card HR Consulting com profundidade técnica
+- [x] Criar white paper na seção Insights sobre metodologias estocásticas aplicadas à previdência complementar

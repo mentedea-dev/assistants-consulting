@@ -41,7 +41,7 @@ const en: Record<string, string> = {
 
   // Additional Services
   "service.audit.title": "Actuarial Audit",
-  "service.audit.desc": "Independent review of assumptions, methodologies and technical provisions with analytical rigour and regulatory compliance.",
+  "service.audit.desc": "Independent review of biometric assumptions, mortality and morbidity tables, discount rates and provisioning methodologies. We verify compliance with ANS, PREVIC, SUSEP and IAS 19 standards, assess the adequacy of technical provisions (PEONA, IBNR, PSL) and issue opinions for fiscal councils and audit committees.",
   "service.duediligence.title": "Actuarial Due Diligence",
   "service.duediligence.desc": "Analysis of actuarial liabilities in M&A transactions, IPOs and corporate restructurings with precise risk quantification.",
   "service.duediligence.highlight.tag": "Featured",
@@ -54,7 +54,7 @@ const en: Record<string, string> = {
   "service.duediligence.highlight.item5": "Technical support for legal and financial advisors",
   "service.duediligence.highlight.item6": "Independent reports for investment committees",
   "service.hr.title": "HR Consulting",
-  "service.hr.desc": "Design and review of corporate benefit policies, market benchmarking and optimisation of pension costs.",
+  "service.hr.desc": "Design, pricing and restructuring of corporate benefit plans — medical, dental, life insurance and private pension. We perform sector benchmarking, loss ratio analysis, total cost of ownership (TCO) modelling and advisory on negotiations with health insurers and operators for sustainable cost optimisation.",
 
   // Additional Services Section
   "additionalServices.tag": "Specialised Services",
@@ -392,6 +392,10 @@ const en: Record<string, string> = {
   "articles.static.6.title": "Actuarial due diligence in M&A transactions: pitfalls and best practices",
   "articles.static.6.excerpt": "Underestimated actuarial liabilities are one of the main sources of value destruction in mergers and acquisitions.",
   "articles.static.6.date": "November 2025",
+  "articles.static.7.tag": "Pension",
+  "articles.static.7.title": "Stochastic methodologies applied to pension liability management: from ALM to tail risk quantification",
+  "articles.static.7.excerpt": "The growing complexity of closed pension fund liabilities demands techniques that transcend traditional deterministic projections. This paper examines the integrated application of Monte Carlo simulations, Economic Scenario Generators (ESG), copula models for risk dependence and stochastic diffusion processes in pension obligation modelling. We address the construction of Asset Liability Management (ALM) frameworks with multistage stochastic programming, actuarial Value-at-Risk and Conditional VaR measurement for tail risks, and reverse stress testing implementation following PREVIC and OECD guidelines. We also discuss the calibration of stochastic mortality models (Lee-Carter, Cairns-Blake-Dowd) and their integration with financial projections for DB plan solvency assessment under structurally low interest rate scenarios.",
+  "articles.static.7.date": "May 2026",
 };
 
 registerTranslations("en", en);

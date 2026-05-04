@@ -65,6 +65,13 @@ function getStaticArticles(t: (key: string) => string) {
       date: t("articles.static.6.date"),
       readTime: "8 min",
     },
+    {
+      tag: t("articles.static.7.tag"),
+      title: t("articles.static.7.title"),
+      excerpt: t("articles.static.7.excerpt"),
+      date: t("articles.static.7.date"),
+      readTime: "18 min",
+    },
   ];
 }
 

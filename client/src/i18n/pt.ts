@@ -41,7 +41,7 @@ const pt: Record<string, string> = {
 
   // Additional Services
   "service.audit.title": "Auditoria Atuarial",
-  "service.audit.desc": "Revisão independente de premissas, metodologias e provisões técnicas com rigor analítico e conformidade regulatória.",
+  "service.audit.desc": "Revisão independente de premissas biométricas, tábuas de mortalidade e morbidade, taxas de desconto e metodologias de provisionamento. Verificamos aderência às normas da ANS, PREVIC, SUSEP e CPC 33, avaliamos a suficiência de provisões técnicas (PEONA, IBNR, PSL) e emitimos pareceres para conselhos fiscais e comitês de auditoria.",
   "service.duediligence.title": "Due Diligence Atuarial",
   "service.duediligence.desc": "Análise de passivos atuariais em operações de M&A, IPO e reestruturações societárias com quantificação precisa de riscos.",
   "service.duediligence.highlight.tag": "Destaque",
@@ -54,7 +54,7 @@ const pt: Record<string, string> = {
   "service.duediligence.highlight.item5": "Suporte técnico a assessores jurídicos e financeiros",
   "service.duediligence.highlight.item6": "Laudos independentes para comitês de investimento",
   "service.hr.title": "HR Consulting",
-  "service.hr.desc": "Desenho e revisão de políticas de benefícios corporativos, benchmarking de mercado e otimização de custos previdenciários.",
+  "service.hr.desc": "Desenho, precificação e reestruturação de planos de benefícios corporativos — assistência médica, odontológica, seguro de vida e previdência privada. Realizamos benchmarking setorial, análise de sinistralidade, modelagem de custo total de ownership (TCO) e assessoria na negociação com operadoras e seguradoras para otimização sustentável de custos.",
 
   // Additional Services Section
   "additionalServices.tag": "Serviços Especializados",
@@ -392,6 +392,10 @@ const pt: Record<string, string> = {
   "articles.static.6.title": "Due diligence atuarial em operações de M&A: armadilhas e melhores práticas",
   "articles.static.6.excerpt": "Passivos atuariais subestimados são uma das principais fontes de destruição de valor em fusões e aquisições.",
   "articles.static.6.date": "Novembro 2025",
+  "articles.static.7.tag": "Previdência",
+  "articles.static.7.title": "Metodologias estocásticas aplicadas à gestão de passivos previdenciários: do ALM à quantificação de riscos de cauda",
+  "articles.static.7.excerpt": "A crescente complexidade dos passivos de entidades fechadas de previdência complementar exige a adoção de técnicas que transcendem as projeções determinísticas tradicionais. Este artigo examina a aplicação integrada de simulações de Monte Carlo, geradores de cenários econômicos (ESG), modelos de cópulas para dependência entre riscos e processos de difusão estocástica na modelagem de obrigações previdenciárias. Abordamos a construção de frameworks de Asset Liability Management (ALM) com programação estocástica multiestágio, a mensuração de Value-at-Risk atuarial e Conditional VaR para riscos de cauda, e a implementação de stress testing reverso conforme diretrizes da PREVIC e da OECD. Discutimos ainda a calibração de modelos de mortalidade estocástica (Lee-Carter, Cairns-Blake-Dowd) e sua integração com projeções financeiras para avaliação de solvência de planos BD sob cenários de juros estruturalmente baixos.",
+  "articles.static.7.date": "Maio 2026",
 };
 
 registerTranslations("pt", pt);
