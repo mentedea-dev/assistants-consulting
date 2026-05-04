@@ -178,6 +178,11 @@ export default function Insights() {
                 {t("insightsPage.subtitle")}
               </p>
             </FadeIn>
+            <FadeIn delay={0.4}>
+              <p className="text-steel text-base max-w-3xl mt-5 leading-[1.8] font-light">
+                {t("insightsPage.credentials")}
+              </p>
+            </FadeIn>
           </div>
         </section>
 

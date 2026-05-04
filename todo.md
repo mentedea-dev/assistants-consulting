@@ -240,3 +240,7 @@
 
 ## Fase 32: Correção overflow na aba/barra de contato à direita
 - [x] Corrigir texto que extrapola o espaço da barra lateral de contato (min-w-0, overflow-hidden, break-words, break-all)
+
+## Fase 33: Atualizar seção Insights com credenciais técnicas
+- [x] Incluir texto sobre produção de artigos técnicos de divulgação nacional e internacional
+- [x] Incluir participação dos sócios nos comitês técnicos do Instituto Brasileiro de Atuária (IBA)

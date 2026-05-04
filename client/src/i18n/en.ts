@@ -224,6 +224,7 @@ const en: Record<string, string> = {
   "insightsPage.title.1": "Actuarial",
   "insightsPage.title.2": "thought leadership",
   "insightsPage.subtitle": "In-depth analyses on the topics shaping the future of risk management, pensions and supplementary health insurance in Brazil.",
+  "insightsPage.credentials": "Assistants produces technical articles for national and international dissemination, contributing to the advancement of actuarial knowledge. Its partners serve on the technical committees of the Brazilian Institute of Actuaries (IBA), working alongside the most qualified professionals in the market to develop standards and guidelines for the profession.",
   "insightsPage.featured": "Featured",
   "insightsPage.readFull": "Read full article",
   "insightsPage.read": "Read",

@@ -224,6 +224,7 @@ const pt: Record<string, string> = {
   "insightsPage.title.1": "Liderança de pensamento",
   "insightsPage.title.2": "atuarial",
   "insightsPage.subtitle": "Análises aprofundadas sobre os temas que definem o futuro da gestão de riscos, previdência e saúde suplementar no Brasil.",
+  "insightsPage.credentials": "A Assistants produz artigos técnicos de divulgação nacional e internacional, contribuindo para o avanço do conhecimento atuarial. Seus sócios integram os comitês técnicos do Instituto Brasileiro de Atuária (IBA), atuando ao lado dos profissionais mais qualificados do mercado na formulação de normas e diretrizes para a profissão.",
   "insightsPage.featured": "Destaque",
   "insightsPage.readFull": "Ler artigo completo",
   "insightsPage.read": "Ler",
