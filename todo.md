@@ -234,3 +234,6 @@
 - [x] Analisar PDF anexo para extrair conteúdo técnico sobre Previdência Complementar
 - [x] Criar seção destacada de Previdência Complementar na página Serviços (mesmo nível de Due Diligence e CPC 33)
 - [x] Atualizar chaves i18n PT e EN com novo conteúdo (descrição expandida + itens do PDF)
+
+## Fase 31: Correção posicionamento tagline no splash screen
+- [x] Mover tagline "Clareza para decidir" para baixo do A (top: calc(50% + 130px))

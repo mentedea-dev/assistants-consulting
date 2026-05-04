@@ -38,7 +38,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
     <AnimatePresence>
       {phase !== "exit" ? null : null}
       <motion.div
-        className="fixed inset-0 z-[9999] flex items-center justify-center bg-navy"
+        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-navy"
         initial={{ opacity: 1 }}
         animate={phase === "exit" ? { opacity: 0, scale: 0.9 } : { opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -133,9 +133,9 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
           </g>
         </motion.svg>
 
-        {/* Tagline appears after dot */}
+        {/* Tagline appears after dot — positioned below the A via flex gap */}
         <motion.p
-          className="absolute bottom-[25%] text-white/90 text-sm md:text-base tracking-[0.3em] uppercase font-medium"
+          className="mt-8 md:mt-10 text-white/90 text-sm md:text-base tracking-[0.3em] uppercase font-medium"
           initial={{ opacity: 0, y: 10 }}
           animate={phase !== "draw" ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.2 }}
