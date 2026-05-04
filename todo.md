@@ -237,3 +237,6 @@
 
 ## Fase 31: Correção posicionamento tagline no splash screen
 - [x] Mover tagline "Clareza para decidir" para baixo do A (top: calc(50% + 130px))
+
+## Fase 32: Correção overflow na aba/barra de contato à direita
+- [x] Corrigir texto que extrapola o espaço da barra lateral de contato (min-w-0, overflow-hidden, break-words, break-all)

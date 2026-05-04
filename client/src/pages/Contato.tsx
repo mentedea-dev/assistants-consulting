@@ -441,50 +441,50 @@ export default function Contato() {
               </FadeIn>
 
               {/* Contact info sidebar */}
-              <FadeIn delay={0.2} className="lg:col-span-4">
-                <div className="bg-navy p-8 md:p-10 sticky top-28">
+              <FadeIn delay={0.2} className="lg:col-span-4 min-w-0">
+                <div className="bg-navy p-6 md:p-8 sticky top-28 overflow-hidden">
                   <h3 className="text-lg font-serif text-white tracking-tight mb-8">
                     {t("contact.info.title")}
                   </h3>
                   <div className="space-y-7">
                     {offices.map((office) => (
                       <div key={office.label} className="group">
-                        <div className="flex gap-4">
+                        <div className="flex gap-3">
                           <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
                             <MapPin size={16} className="text-orange" strokeWidth={1.5} />
                           </div>
-                          <div>
+                          <div className="min-w-0 flex-1">
                             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-1">{office.label}</p>
-                            <p className="text-sm text-white font-medium">{office.address}</p>
-                            {office.address2 && <p className="text-sm text-white font-medium">{office.address2}</p>}
+                            <p className="text-sm text-white font-medium break-words">{office.address}</p>
+                            {office.address2 && <p className="text-sm text-white font-medium break-words">{office.address2}</p>}
                             <p className="text-xs text-white/70 mt-0.5 font-light">{office.city}</p>
                           </div>
                         </div>
-                        <div className="flex gap-4 mt-3 ml-[52px]">
+                        <div className="flex gap-3 mt-3 ml-12">
                           <Phone size={13} className="text-white/60 shrink-0 mt-0.5" strokeWidth={1.5} />
-                          <p className="text-sm text-white/80">{office.phone}</p>
+                          <p className="text-sm text-white/80 break-words">{office.phone}</p>
                         </div>
                       </div>
                     ))}
 
                     {/* Email */}
-                    <div className="flex gap-4 group">
+                    <div className="flex gap-3 group">
                       <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
                         <Mail size={16} className="text-orange" strokeWidth={1.5} />
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-1">{t("contact.info.email.label")}</p>
-                        <p className="text-sm text-white font-medium">{t("contact.info.email.value")}</p>
-                        <p className="text-xs text-white/70 mt-0.5 font-light">{t("contact.info.email.detail")}</p>
+                        <p className="text-sm text-white font-medium break-all">{t("contact.info.email.value")}</p>
+                        <p className="text-xs text-white/70 mt-0.5 font-light break-words">{t("contact.info.email.detail")}</p>
                       </div>
                     </div>
 
                     {/* Horário */}
-                    <div className="flex gap-4 group">
+                    <div className="flex gap-3 group">
                       <div className="w-9 h-9 bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-white/10 transition-colors duration-300">
                         <Clock size={16} className="text-orange" strokeWidth={1.5} />
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 mb-1">{t("contact.hours.title")}</p>
                         <p className="text-sm text-white font-medium">{t("contact.hours.weekdays")}</p>
                         <p className="text-xs text-white/70 mt-0.5 font-light">{t("contact.hours.timezone")}</p>
