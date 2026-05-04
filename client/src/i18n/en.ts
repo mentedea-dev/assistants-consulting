@@ -13,7 +13,7 @@ const en: Record<string, string> = {
   "hero.tag": "Actuarial Consulting",
   "hero.title.1": "Clarity",
   "hero.title.2": "to",
-  "hero.title.3": "decide.",
+  "hero.title.3": "decide",
   "hero.subtitle": "For 35 years, Assistants has been transforming actuarial complexity into strategic clarity for Brazil's largest corporate groups.",
   "hero.cta.services": "Explore our services",
   "hero.cta.contact": "Get in touch",

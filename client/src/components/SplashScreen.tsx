@@ -135,12 +135,12 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
 
         {/* Tagline appears after dot */}
         <motion.p
-          className="absolute bottom-[25%] text-white/60 text-xs md:text-sm tracking-[0.3em] uppercase font-medium"
+          className="absolute bottom-[25%] text-white/90 text-sm md:text-base tracking-[0.3em] uppercase font-medium"
           initial={{ opacity: 0, y: 10 }}
           animate={phase !== "draw" ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Clareza para decidir.
+          Clareza para decidir
         </motion.p>
       </motion.div>
     </AnimatePresence>

@@ -210,3 +210,8 @@
 - [x] Corrigir timeline Sobre: dot bg-navy → bg-orange, year text-navy → text-white, tag text-steel → text-white/60
 - [x] Corrigir footer: placeholder white/40 → white/55, bottom bar white/45 → white/55
 - [x] Verificar TypeScript (0 erros) e testes (15 passando)
+
+## Fase 26: Correções Tagline + Novo Repositório GitHub
+- [x] Remover ponto final da tagline no hero (manter apenas o ponto laranja animado)
+- [x] Aumentar visibilidade da tagline "Clareza para decidir" no splash screen (white/60→white/90, text-xs→text-sm)
+- [ ] Criar novo repositório no GitHub e fazer push de todo o código
