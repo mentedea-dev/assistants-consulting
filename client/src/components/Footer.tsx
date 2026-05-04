@@ -36,11 +36,11 @@ export default function Footer() {
   ];
 
   const serviceAreas = [
+    t("service.duediligence.title"),
+    t("service.benefits.title"),
     t("service.health.title"),
     t("service.pension.title"),
-    t("service.benefits.title"),
     t("service.audit.title"),
-    t("service.duediligence.title"),
   ];
 
   return (

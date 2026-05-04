@@ -18,18 +18,17 @@ import { useRef } from "react";
 
 const HERO_IMG = "/manus-storage/v3_01_hero_principal_6dab2755.webp";
 const HEALTH_IMG = "/manus-storage/v2_03_saude_550a80a3.webp";
-const PENSION_IMG = "/manus-storage/v2_02_previdencia_cb4d1913.webp";
 const BENEFITS_IMG = "/manus-storage/v2_06_beneficios_712e1ff4.webp";
 const DUEDILIGENCE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663107262564/aXqadAyEB77qjejS4YWzRV/due-diligence-hero-kpvZddfcQWjr4wj52Kt8fc.webp";
 
 const serviceKeys = [
-  { icon: Briefcase, titleKey: "service.duediligence.title", descKey: "service.duediligence.desc", img: DUEDILIGENCE_IMG, featured: true },
-  { icon: Shield, titleKey: "service.health.title", descKey: "service.health.desc", img: HEALTH_IMG },
-  { icon: TrendingUp, titleKey: "service.pension.title", descKey: "service.pension.desc", img: PENSION_IMG },
+  { icon: Briefcase, titleKey: "service.duediligence.title", descKey: "service.duediligence.desc", img: DUEDILIGENCE_IMG },
   { icon: BarChart3, titleKey: "service.benefits.title", descKey: "service.benefits.desc", img: BENEFITS_IMG },
+  { icon: Shield, titleKey: "service.health.title", descKey: "service.health.desc", img: HEALTH_IMG },
 ];
 
 const additionalServiceKeys = [
+  { icon: TrendingUp, titleKey: "service.pension.title", descKey: "service.pension.desc" },
   { icon: FileSearch, titleKey: "service.audit.title", descKey: "service.audit.desc" },
   { icon: Users, titleKey: "service.hr.title", descKey: "service.hr.desc" },
 ];
@@ -279,14 +278,10 @@ export default function Home() {
             <div className="space-y-24 md:space-y-36">
               {serviceKeys.map((service, i) => (
                 <FadeIn key={service.titleKey} delay={0.1} distance={40}>
-                  <div className={`grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center ${(service as any).featured ? 'relative' : ''}`}>
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
                     <div className={`md:col-span-7 ${i % 2 === 1 ? "md:order-2" : ""}`}>
                       <div className="relative overflow-hidden group">
-                        {(service as any).featured && (
-                          <div className="absolute top-4 left-4 z-10 bg-orange text-white text-[10px] font-semibold uppercase tracking-[0.2em] px-3 py-1.5">
-                            {t("service.duediligence.highlight.tag")}
-                          </div>
-                        )}
+
                         <motion.div
                           whileHover={{ scale: 1.03 }}
                           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -294,15 +289,15 @@ export default function Home() {
                         >
                           <img src={service.img} alt={t(service.titleKey)} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                         </motion.div>
-                        <div className={`absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 ${(service as any).featured ? 'border-orange/60' : 'border-navy/30'} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-navy/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                     </div>
                     <div className={`md:col-span-5 ${i % 2 === 1 ? "md:order-1" : ""}`}>
                       <div className="flex items-center gap-4 mb-6">
-                        <div className={`w-11 h-11 flex items-center justify-center ${(service as any).featured ? 'bg-orange/10' : 'bg-navy/5'}`}>
-                          <service.icon size={20} className={(service as any).featured ? "text-orange" : "text-navy"} strokeWidth={1.5} />
+                        <div className="w-11 h-11 flex items-center justify-center bg-navy/5">
+                          <service.icon size={20} className="text-navy" strokeWidth={1.5} />
                         </div>
-                        <div className={`h-px flex-1 ${(service as any).featured ? 'bg-orange/20' : 'bg-navy/8'}`} />
+                        <div className="h-px flex-1 bg-navy/8" />
                       </div>
                       <h3 className="text-2xl md:text-4xl font-serif text-navy tracking-tight mb-5 leading-tight">
                         {t(service.titleKey)}
@@ -312,7 +307,7 @@ export default function Home() {
                       </p>
                       <Link
                         href="/servicos"
-                        className={`link-underline text-sm font-medium transition-colors duration-300 ${(service as any).featured ? 'text-orange hover:text-orange-light' : 'text-navy hover:text-navy/70'}`}
+                        className="link-underline text-sm font-medium transition-colors duration-300 text-navy hover:text-navy/70"
                       >
                         <span>
                           {t("services.learnMore")}

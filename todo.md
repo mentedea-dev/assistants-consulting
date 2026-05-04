@@ -218,3 +218,9 @@
 
 ## Fase 27: Destaque ao serviço de Due Diligence Atuarial
 - [x] Elevar Due Diligence Atuarial de serviço secundário para destaque principal no site
+
+## Fase 28: Reorganizar hierarquia dos serviços
+- [x] Remover badge "Destaque" do Due Diligence na Home
+- [x] Reordenar serviços principais na Home: 1) Due Diligence, 2) Benefícios Pós-Emprego (CPC 33), 3) Saúde Suplementar
+- [x] Mover Previdência Complementar para serviços secundários
+- [x] Reordenar serviços na página Serviços conforme mesma hierarquia

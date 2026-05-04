@@ -25,30 +25,6 @@ export default function Servicos() {
 
   const mainAreas = [
     {
-      icon: Shield,
-      title: t("service.health.title"),
-      subtitle: t("servicesPage.health.subtitle"),
-      img: HEALTH_IMG,
-      description: t("servicesPage.health.desc"),
-      items: [
-        t("servicesPage.health.item1"), t("servicesPage.health.item2"),
-        t("servicesPage.health.item3"), t("servicesPage.health.item4"),
-        t("servicesPage.health.item5"), t("servicesPage.health.item6"),
-      ],
-    },
-    {
-      icon: TrendingUp,
-      title: t("service.pension.title"),
-      subtitle: t("servicesPage.pension.subtitle"),
-      img: PENSION_IMG,
-      description: t("servicesPage.pension.desc"),
-      items: [
-        t("servicesPage.pension.item1"), t("servicesPage.pension.item2"),
-        t("servicesPage.pension.item3"), t("servicesPage.pension.item4"),
-        t("servicesPage.pension.item5"), t("servicesPage.pension.item6"),
-      ],
-    },
-    {
       icon: BarChart3,
       title: t("service.benefits.title"),
       subtitle: t("servicesPage.benefits.subtitle"),
@@ -60,9 +36,22 @@ export default function Servicos() {
         t("servicesPage.benefits.item5"), t("servicesPage.benefits.item6"),
       ],
     },
+    {
+      icon: Shield,
+      title: t("service.health.title"),
+      subtitle: t("servicesPage.health.subtitle"),
+      img: HEALTH_IMG,
+      description: t("servicesPage.health.desc"),
+      items: [
+        t("servicesPage.health.item1"), t("servicesPage.health.item2"),
+        t("servicesPage.health.item3"), t("servicesPage.health.item4"),
+        t("servicesPage.health.item5"), t("servicesPage.health.item6"),
+      ],
+    },
   ];
 
   const specializedServices = [
+    { icon: TrendingUp, title: t("service.pension.title"), desc: t("service.pension.desc") },
     { icon: FileSearch, title: t("service.audit.title"), desc: t("service.audit.desc") },
     { icon: Users, title: t("service.hr.title"), desc: t("service.hr.desc") },
     { icon: Scale, title: t("servicesPage.expertise.title"), desc: t("servicesPage.expertise.desc") },
@@ -101,57 +90,7 @@ export default function Servicos() {
           </div>
         </section>
 
-        {/* Main Areas */}
-        <section className="pb-28 md:pb-40">
-          <div className="container">
-            <div className="space-y-24 md:space-y-36">
-              {mainAreas.map((area, i) => (
-                <FadeIn key={i} delay={0.1} distance={40}>
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20 items-start">
-                    <div className={`md:col-span-5 ${i % 2 === 1 ? "md:order-2" : ""}`}>
-                      <motion.div
-                        whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                        className="relative overflow-hidden aspect-[3/2] mb-6 md:mb-0 group"
-                      >
-                        <img src={area.img} alt={area.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-navy/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </motion.div>
-                    </div>
-                    <div className={`md:col-span-7 ${i % 2 === 1 ? "md:order-1" : ""}`}>
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="w-12 h-12 bg-navy/5 flex items-center justify-center">
-                          <area.icon size={22} className="text-navy" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-navy">
-                          {area.subtitle}
-                        </span>
-                      </div>
-                      <h2 className="text-3xl md:text-4xl font-serif text-navy tracking-tight mb-4 leading-tight">
-                        {area.title}
-                      </h2>
-                      <p className="text-steel leading-[1.8] mb-8 font-light">{area.description}</p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
-                        {area.items.map((item, j) => (
-                          <div key={j} className="flex items-start gap-3 py-3 border-b border-navy/5 last:border-b-0">
-                            <div className="w-5 h-5 rounded-full bg-navy/5 flex items-center justify-center mt-0.5 shrink-0">
-                              <svg width="10" height="8" viewBox="0 0 10 8" fill="none" className="text-navy/70">
-                                <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            </div>
-                            <span className="text-sm text-navy/80 leading-relaxed">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════ DUE DILIGENCE HIGHLIGHT ═══════════════════════ */}
+        {/* ═══════════════════════ DUE DILIGENCE ═══════════════════════ */}
         <section className="py-24 md:py-32 bg-white relative overflow-hidden">
           {/* Background accent */}
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange/[0.03] to-transparent" />
@@ -161,9 +100,6 @@ export default function Servicos() {
                 {/* Image */}
                 <div className="lg:col-span-5">
                   <div className="relative overflow-hidden group">
-                    <div className="absolute top-4 left-4 z-10 bg-orange text-white text-[10px] font-semibold uppercase tracking-[0.2em] px-3 py-1.5">
-                      {t("service.duediligence.highlight.tag")}
-                    </div>
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -220,6 +156,56 @@ export default function Servicos() {
                 </div>
               </div>
             </FadeIn>
+          </div>
+        </section>
+
+        {/* Main Areas: Benefícios Pós-Emprego + Saúde Suplementar */}
+        <section className="pb-28 md:pb-40 pt-24 md:pt-32">
+          <div className="container">
+            <div className="space-y-24 md:space-y-36">
+              {mainAreas.map((area, i) => (
+                <FadeIn key={i} delay={0.1} distance={40}>
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20 items-start">
+                    <div className={`md:col-span-5 ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative overflow-hidden aspect-[3/2] mb-6 md:mb-0 group"
+                      >
+                        <img src={area.img} alt={area.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-navy/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </motion.div>
+                    </div>
+                    <div className={`md:col-span-7 ${i % 2 === 1 ? "md:order-1" : ""}`}>
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-12 h-12 bg-navy/5 flex items-center justify-center">
+                          <area.icon size={22} className="text-navy" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-navy">
+                          {area.subtitle}
+                        </span>
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-serif text-navy tracking-tight mb-4 leading-tight">
+                        {area.title}
+                      </h2>
+                      <p className="text-steel leading-[1.8] mb-8 font-light">{area.description}</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+                        {area.items.map((item, j) => (
+                          <div key={j} className="flex items-start gap-3 py-3 border-b border-navy/5 last:border-b-0">
+                            <div className="w-5 h-5 rounded-full bg-navy/5 flex items-center justify-center mt-0.5 shrink-0">
+                              <svg width="10" height="8" viewBox="0 0 10 8" fill="none" className="text-navy/70">
+                                <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </div>
+                            <span className="text-sm text-navy/80 leading-relaxed">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </section>
 
