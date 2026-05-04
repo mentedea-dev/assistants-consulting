@@ -27,7 +27,7 @@ export default function Contato() {
     {
       label: t("contact.info.branch.label"),
       address: t("contact.info.branch.address"),
-      address2: "",
+      address2: t("contact.info.branch.address2"),
       city: t("contact.info.branch.city"),
       phone: t("contact.info.branch.phone"),
     },

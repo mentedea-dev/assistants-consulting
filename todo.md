@@ -247,3 +247,6 @@
 
 ## Fase 34: Correção email na barra lateral de contato
 - [x] Reduzir tamanho da fonte do email para caber na largura sem quebra feia (text-xs + overflowWrap: anywhere)
+
+## Fase 35: Corrigir labels dos escritórios
+- [x] São Paulo é a MATRIZ, Brasília é o ESCRITÓRIO (labels invertidos em PT e EN + footer)
