@@ -2,6 +2,8 @@
  * Coming Soon — Página temporária de modernização
  * Exibe a mensagem "A Assistants está se modernizando e preparando um novo site. Aguarde!"
  * com animação elegante e identidade visual da marca.
+ *
+ * Layout: Símbolo "A" (grande, destacado) → "Assistants" (wordmark completa) → "CONSULTING"
  */
 import { motion } from "framer-motion";
 import BrandSymbol from "@/components/BrandSymbol";
@@ -43,7 +45,7 @@ export default function ComingSoon() {
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
-        {/* Brand Symbol with draw animation */}
+        {/* Brand Symbol "A" — destacado, grande */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,34 +53,31 @@ export default function ComingSoon() {
         >
           <BrandSymbol
             variant="light"
-            className="w-24 h-24 md:w-32 md:h-32"
+            className="w-28 h-28 md:w-36 md:h-36"
             drawReveal
             dotPulse
           />
         </motion.div>
 
-        {/* Wordmark: SSISTANTS */}
-        <motion.div
-          className="mt-6 flex items-baseline gap-0"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+        {/* Wordmark completa: "Assistants" */}
+        <motion.h2
+          className="mt-5 text-white text-2xl md:text-3xl font-bold tracking-tight"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.4 }}
         >
-          <span className="text-white text-2xl md:text-3xl font-bold tracking-tight">
-            SSISTANTS
-          </span>
-        </motion.div>
+          Assistants
+        </motion.h2>
 
         {/* CONSULTING */}
-        <motion.div
+        <motion.span
+          className="text-white/60 text-[10px] md:text-xs font-medium tracking-[0.35em] uppercase mt-1.5 block"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1.8 }}
         >
-          <span className="text-white/60 text-[10px] md:text-xs font-medium tracking-[0.35em] uppercase mt-1 block">
-            CONSULTING
-          </span>
-        </motion.div>
+          CONSULTING
+        </motion.span>
 
         {/* Divider line */}
         <motion.div
