@@ -6,6 +6,7 @@
  * Features:
  * - Publish news/insights automatically
  * - Track newsletter dispatch: every 7 new published articles triggers a newsletter
+ * - Send newsletter via SMTP from relacionamento@assistants.com.br
  */
 import type { Express, Request, Response } from "express";
 import { sdk } from "./_core/sdk";
@@ -13,6 +14,7 @@ import { getDb } from "./db";
 import { articles, newsletterSubscribers, siteSettings } from "../drizzle/schema";
 import { eq, desc, and, gte } from "drizzle-orm";
 import { notifyOwner } from "./_core/notification";
+import { sendNewsletter, sendTestNewsletter, buildNewsletterHTML } from "./emailService";
 
 function generateSlug(title: string): string {
   const base = title
@@ -36,19 +38,16 @@ function estimateReadTime(content: string): string {
 
 /**
  * Check if newsletter should be sent (every 7 new articles since last dispatch)
- * Returns the articles to include in the newsletter, or null if threshold not met
  */
 async function checkNewsletterThreshold(db: any): Promise<{ shouldSend: boolean; recentArticles: any[] }> {
-  // Get the last newsletter dispatch timestamp from settings
   const lastDispatchSetting = await db.select().from(siteSettings)
     .where(eq(siteSettings.key, "newsletter_last_dispatch"))
     .limit(1);
 
   const lastDispatchDate = lastDispatchSetting.length > 0 && lastDispatchSetting[0].value
     ? new Date(lastDispatchSetting[0].value)
-    : new Date(0); // If never sent, count all articles
+    : new Date(0);
 
-  // Count published articles since last dispatch
   const recentArticles = await db.select({
     id: articles.id,
     title: articles.title,
@@ -71,36 +70,77 @@ async function checkNewsletterThreshold(db: any): Promise<{ shouldSend: boolean;
 }
 
 /**
- * Build newsletter HTML content
+ * Update the newsletter dispatch timestamp in database
  */
-function buildNewsletterContent(articlesList: any[], siteUrl: string): { subject: string; text: string } {
-  const subject = `Assistants Consulting — ${articlesList.length} novos insights para você`;
+async function updateDispatchTimestamp(db: any): Promise<void> {
+  const existing = await db.select().from(siteSettings)
+    .where(eq(siteSettings.key, "newsletter_last_dispatch"))
+    .limit(1);
+  if (existing.length > 0) {
+    await db.update(siteSettings)
+      .set({ value: new Date().toISOString() })
+      .where(eq(siteSettings.key, "newsletter_last_dispatch"));
+  } else {
+    await db.insert(siteSettings).values({
+      key: "newsletter_last_dispatch",
+      value: new Date().toISOString(),
+    });
+  }
+}
 
-  const articleLines = articlesList.map((a, i) => {
-    const tag = a.tag ? `[${a.tag}]` : "";
-    const url = `${siteUrl}/insights/${a.slug}`;
-    return `${i + 1}. ${tag} ${a.title}\n   ${a.excerpt ? a.excerpt.slice(0, 120) + "..." : ""}\n   Leia mais: ${url}`;
-  }).join("\n\n");
+/**
+ * Dispatch newsletter to all active subscribers via SMTP
+ * Sends from: relacionamento@assistants.com.br
+ */
+async function dispatchNewsletter(db: any, recentArticles: any[]): Promise<{
+  status: string;
+  sent?: number;
+  failed?: number;
+  subscriberCount?: number;
+  errors?: string[];
+}> {
+  const subscribers = await db.select().from(newsletterSubscribers)
+    .where(eq(newsletterSubscribers.active, true));
 
-  const text = `Prezado(a) assinante,
+  if (subscribers.length === 0) {
+    return { status: "threshold_met_no_subscribers" };
+  }
 
-Compartilhamos os mais recentes insights da Assistants Consulting sobre o mercado atuarial brasileiro:
+  const siteUrl = "https://www.assistants.com.br";
 
-${articleLines}
+  // Send newsletter via SMTP (from relacionamento@assistants.com.br)
+  const result = await sendNewsletter(subscribers, recentArticles, siteUrl);
 
----
+  if (result.success) {
+    // Update dispatch timestamp only on successful send
+    await updateDispatchTimestamp(db);
 
-Acesse todos os nossos insights em: ${siteUrl}/insights
+    // Notify owner about the dispatch
+    await notifyOwner({
+      title: `Newsletter enviada: ${recentArticles.length} insights para ${result.sent} assinantes`,
+      content: `A newsletter foi enviada com sucesso de relacionamento@assistants.com.br.\n\nEnviados: ${result.sent}\nFalhas: ${result.failed}\n\nArtigos incluídos:\n${recentArticles.map((a: any, i: number) => `${i + 1}. ${a.title}`).join("\n")}`,
+    }).catch(() => { /* non-blocking */ });
 
-Atenciosamente,
-Assistants Consulting
-Consultoria Atuarial
+    return {
+      status: `dispatched_${result.sent}_of_${subscribers.length}`,
+      sent: result.sent,
+      failed: result.failed,
+      subscriberCount: subscribers.length,
+      errors: result.errors.length > 0 ? result.errors : undefined,
+    };
+  } else {
+    // SMTP not configured — fallback to notifying owner
+    await notifyOwner({
+      title: `Newsletter pronta (SMTP n\u00e3o configurado): ${recentArticles.length} novos insights`,
+      content: `SMTP n\u00e3o configurado. Configure as vari\u00e1veis SMTP_HOST, SMTP_USER, SMTP_PASS para envio autom\u00e1tico.\n\n${subscribers.length} assinantes aguardam.\n\nE-mails: ${subscribers.map((s: any) => s.email).join(", ")}`,
+    }).catch(() => { /* non-blocking */ });
 
----
-Para cancelar sua inscrição, responda este e-mail com o assunto "CANCELAR".
-www.assistants.com.br`;
-
-  return { subject, text };
+    return {
+      status: "smtp_not_configured_owner_notified",
+      subscriberCount: subscribers.length,
+      errors: result.errors,
+    };
+  }
 }
 
 export function registerScheduledRoutes(app: Express) {
@@ -110,14 +150,12 @@ export function registerScheduledRoutes(app: Express) {
    */
   app.post("/api/scheduled/publish-news", async (req: Request, res: Response) => {
     try {
-      // Authenticate the request (accepts user role)
       const user = await sdk.authenticateRequest(req);
       if (!user) {
         res.status(401).json({ error: "Authentication required" });
         return;
       }
 
-      // user.role can be "user" or "admin" — both allowed for scheduled tasks
       if (user.role !== "user" && user.role !== "admin") {
         res.status(403).json({ error: "Insufficient permissions" });
         return;
@@ -160,7 +198,7 @@ export function registerScheduledRoutes(app: Express) {
             slug,
             excerpt: excerpt ? String(excerpt).slice(0, 1000) : null,
             content: content || null,
-            tag: tag || "Notícia",
+            tag: tag || "Not\u00edcia",
             readTime,
             status: "published",
             authorId: user.id,
@@ -178,50 +216,17 @@ export function registerScheduledRoutes(app: Express) {
       console.log(`[Scheduled] Published ${published}/${items.length} articles`);
 
       // Check newsletter threshold after publishing
-      let newsletterStatus = "not_triggered";
+      let newsletterResult: any = { status: "not_triggered" };
       try {
         const { shouldSend, recentArticles } = await checkNewsletterThreshold(db);
         if (shouldSend) {
-          // Get all active subscribers
-          const subscribers = await db.select().from(newsletterSubscribers)
-            .where(eq(newsletterSubscribers.active, true));
-
-          if (subscribers.length > 0) {
-            const siteUrl = "https://assistants.com.br";
-            const { subject, text } = buildNewsletterContent(recentArticles, siteUrl);
-
-            // Notify owner to send newsletter (the actual sending happens via Gmail MCP)
-            await notifyOwner({
-              title: `Newsletter pronta: ${recentArticles.length} novos insights`,
-              content: `${subscribers.length} assinantes aguardam.\n\nAssunto: ${subject}\n\nConteúdo:\n${text}`,
-            }).catch(() => { /* non-blocking */ });
-
-            // Update last dispatch timestamp
-            const existing = await db.select().from(siteSettings)
-              .where(eq(siteSettings.key, "newsletter_last_dispatch"))
-              .limit(1);
-
-            if (existing.length > 0) {
-              await db.update(siteSettings)
-                .set({ value: new Date().toISOString() })
-                .where(eq(siteSettings.key, "newsletter_last_dispatch"));
-            } else {
-              await db.insert(siteSettings).values({
-                key: "newsletter_last_dispatch",
-                value: new Date().toISOString(),
-              });
-            }
-
-            newsletterStatus = `triggered_for_${subscribers.length}_subscribers`;
-          } else {
-            newsletterStatus = "threshold_met_no_subscribers";
-          }
+          newsletterResult = await dispatchNewsletter(db, recentArticles);
         } else {
-          newsletterStatus = "threshold_not_met";
+          newsletterResult = { status: "threshold_not_met" };
         }
       } catch (nlError: any) {
         console.error("[Scheduled] Newsletter check error:", nlError?.message);
-        newsletterStatus = `error: ${nlError?.message}`;
+        newsletterResult = { status: `error: ${nlError?.message}` };
       }
 
       res.status(200).json({
@@ -229,7 +234,7 @@ export function registerScheduledRoutes(app: Express) {
         published,
         total: items.length,
         results,
-        newsletter: newsletterStatus,
+        newsletter: newsletterResult,
       });
     } catch (error: any) {
       console.error("[Scheduled] publish-news error:", error?.message);
@@ -271,55 +276,104 @@ export function registerScheduledRoutes(app: Express) {
         return;
       }
 
-      // Get subscribers
-      const subscribers = await db.select().from(newsletterSubscribers)
-        .where(eq(newsletterSubscribers.active, true));
-
-      if (subscribers.length === 0) {
-        res.status(200).json({
-          success: true,
-          newsletter: "no_active_subscribers",
-          articlesCount: recentArticles.length,
-        });
-        return;
-      }
-
-      const siteUrl = "https://assistants.com.br";
-      const { subject, text } = buildNewsletterContent(recentArticles, siteUrl);
-
-      // Notify owner
-      await notifyOwner({
-        title: `Newsletter pronta: ${recentArticles.length} novos insights`,
-        content: `${subscribers.length} assinantes.\n\nAssunto: ${subject}\n\nConteúdo:\n${text}\n\nE-mails dos assinantes:\n${subscribers.map(s => s.email).join(", ")}`,
-      }).catch(() => { /* non-blocking */ });
-
-      // Update dispatch timestamp
-      const existing = await db.select().from(siteSettings)
-        .where(eq(siteSettings.key, "newsletter_last_dispatch"))
-        .limit(1);
-
-      if (existing.length > 0) {
-        await db.update(siteSettings)
-          .set({ value: new Date().toISOString() })
-          .where(eq(siteSettings.key, "newsletter_last_dispatch"));
-      } else {
-        await db.insert(siteSettings).values({
-          key: "newsletter_last_dispatch",
-          value: new Date().toISOString(),
-        });
-      }
+      const newsletterResult = await dispatchNewsletter(db, recentArticles);
 
       res.status(200).json({
         success: true,
-        newsletter: "dispatched",
-        subscriberCount: subscribers.length,
-        articlesIncluded: recentArticles.length,
-        subscriberEmails: subscribers.map(s => s.email),
-        newsletterSubject: subject,
-        newsletterContent: text,
+        newsletter: newsletterResult,
       });
     } catch (error: any) {
       console.error("[Scheduled] check-newsletter error:", error?.message);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  /**
+   * POST /api/scheduled/send-test-newsletter
+   * Send a test newsletter to a specific email address (for preview/testing)
+   */
+  app.post("/api/scheduled/send-test-newsletter", async (req: Request, res: Response) => {
+    try {
+      const user = await sdk.authenticateRequest(req);
+      if (!user) {
+        res.status(401).json({ error: "Authentication required" });
+        return;
+      }
+
+      const { email } = req.body as { email?: string };
+      if (!email) {
+        res.status(400).json({ error: "Email address required" });
+        return;
+      }
+
+      const db = await getDb();
+      if (!db) {
+        res.status(500).json({ error: "Database not available" });
+        return;
+      }
+
+      // Get latest published articles for the test
+      const latestArticles = await db.select({
+        title: articles.title,
+        slug: articles.slug,
+        excerpt: articles.excerpt,
+        tag: articles.tag,
+        publishedAt: articles.publishedAt,
+      }).from(articles)
+        .where(eq(articles.status, "published"))
+        .orderBy(desc(articles.publishedAt))
+        .limit(7);
+
+      if (latestArticles.length === 0) {
+        res.status(400).json({ error: "No published articles available for test" });
+        return;
+      }
+
+      const result = await sendTestNewsletter(email, latestArticles);
+
+      res.status(200).json({
+        success: result.success,
+        message: result.success
+          ? `Newsletter de teste enviada para ${email}`
+          : `Falha no envio: ${result.error}`,
+        articlesIncluded: latestArticles.length,
+      });
+    } catch (error: any) {
+      console.error("[Scheduled] send-test-newsletter error:", error?.message);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  /**
+   * GET /api/scheduled/newsletter-preview
+   * Returns the HTML of the newsletter for preview (no sending)
+   */
+  app.get("/api/scheduled/newsletter-preview", async (req: Request, res: Response) => {
+    try {
+      const db = await getDb();
+      if (!db) {
+        res.status(500).json({ error: "Database not available" });
+        return;
+      }
+
+      const latestArticles = await db.select({
+        title: articles.title,
+        slug: articles.slug,
+        excerpt: articles.excerpt,
+        tag: articles.tag,
+        publishedAt: articles.publishedAt,
+      }).from(articles)
+        .where(eq(articles.status, "published"))
+        .orderBy(desc(articles.publishedAt))
+        .limit(7);
+
+      const { subject, html } = buildNewsletterHTML(latestArticles);
+
+      // Return the HTML directly for preview in browser
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.send(html);
+    } catch (error: any) {
+      console.error("[Scheduled] newsletter-preview error:", error?.message);
       res.status(500).json({ error: "Internal server error" });
     }
   });
