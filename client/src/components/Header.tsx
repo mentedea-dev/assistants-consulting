@@ -26,20 +26,24 @@ const navKeys = [
 ];
 
 function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
-  const src = variant === "dark" ? WORDMARK_DARK : WORDMARK_LIGHT;
+  const textColor = variant === "dark" ? "text-navy" : "text-white";
+  const subtitleColor = variant === "dark" ? "text-steel" : "text-white/70";
   return (
     <Link href="/" className="select-none group flex items-center gap-3">
       <BrandSymbol
         variant={variant}
-        className="w-9 h-9 md:w-11 md:h-11"
+        className="w-10 h-10 md:w-12 md:h-12"
         interactive
         dotPulse
       />
-      <img
-        src={src}
-        alt="Assistants"
-        className="h-8 md:h-11 w-auto transition-opacity duration-300 group-hover:opacity-80"
-      />
+      <div className="flex flex-col leading-none">
+        <span className={`text-xl md:text-2xl font-bold tracking-[0.15em] uppercase ${textColor} transition-opacity duration-300 group-hover:opacity-80`} style={{ fontFamily: "'Inter', sans-serif" }}>
+          ASSISTANTS
+        </span>
+        <span className={`text-[9px] md:text-[11px] font-medium tracking-[0.35em] uppercase mt-0.5 ${subtitleColor} transition-opacity duration-300 group-hover:opacity-80`} style={{ fontFamily: "'Inter', sans-serif" }}>
+          Consulting
+        </span>
+      </div>
     </Link>
   );
 }
@@ -73,7 +77,7 @@ export default function Header() {
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBg}`}>
-        <div className="container flex items-center justify-between h-20 md:h-24">
+        <div className="container flex items-center justify-between h-22 md:h-28">
           <Wordmark variant={wordmarkVariant} />
 
           {/* Desktop nav */}
