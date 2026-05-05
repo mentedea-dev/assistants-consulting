@@ -1,6 +1,6 @@
 /*
  * PENTAGRAM CRAFT: Header
- * - Official wordmark image
+ * - Brand symbol "A" + text ASSISTANTS / CONSULTING
  * - Scroll-aware: transparent on top, solid with shadow on scroll
  * - Language toggle (PT/EN)
  * - Mobile: full-screen overlay with staggered animation
@@ -13,9 +13,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
 import BrandSymbol from "./BrandSymbol";
 
-const WORDMARK_DARK = "/brand/wordmark.webp";
-const WORDMARK_LIGHT = "/brand/wordmark-inverted.webp";
-
 const navKeys = [
   { href: "/", key: "nav.home" },
   { href: "/servicos", key: "nav.services" },
@@ -27,21 +24,27 @@ const navKeys = [
 
 function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
   const textColor = variant === "dark" ? "text-navy" : "text-white";
-  const subtitleColor = variant === "dark" ? "text-steel" : "text-white/70";
+  const subtitleColor = variant === "dark" ? "text-navy/60" : "text-white/80";
   return (
     <Link href="/" className="select-none group flex items-center gap-3">
       <BrandSymbol
         variant={variant}
-        className="w-10 h-10 md:w-12 md:h-12"
+        className="w-11 h-11 md:w-14 md:h-14"
         interactive
         dotPulse
       />
       <div className="flex flex-col leading-none">
-        <span className={`text-xl md:text-2xl font-bold tracking-[0.15em] uppercase ${textColor} transition-opacity duration-300 group-hover:opacity-80`} style={{ fontFamily: "'Inter', sans-serif" }}>
+        <span
+          className={`text-[22px] md:text-[28px] font-bold tracking-[0.12em] uppercase ${textColor} transition-opacity duration-300 group-hover:opacity-80`}
+          style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em" }}
+        >
           ASSISTANTS
         </span>
-        <span className={`text-[9px] md:text-[11px] font-medium tracking-[0.35em] uppercase mt-0.5 ${subtitleColor} transition-opacity duration-300 group-hover:opacity-80`} style={{ fontFamily: "'Inter', sans-serif" }}>
-          Consulting
+        <span
+          className={`text-[11px] md:text-[13px] font-medium tracking-[0.3em] uppercase mt-[2px] ${subtitleColor} transition-opacity duration-300 group-hover:opacity-80`}
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          CONSULTING
         </span>
       </div>
     </Link>
@@ -69,32 +72,33 @@ export default function Header() {
     ? "bg-transparent"
     : "bg-linen/80 backdrop-blur-md";
 
-  const navColor = scrolled || !isHome ? "text-steel" : "text-white/70";
+  const navColor = scrolled || !isHome ? "text-steel" : "text-white/80";
   const navActiveColor = scrolled || !isHome ? "text-navy" : "text-white";
+  const navHoverColor = scrolled || !isHome ? "hover:text-navy" : "hover:text-white";
   const navUnderlineColor = scrolled || !isHome ? "bg-navy" : "bg-white";
   const wordmarkVariant = scrolled || !isHome ? "dark" : "light";
 
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBg}`}>
-        <div className="container flex items-center justify-between h-22 md:h-28">
+        <div className="container flex items-center justify-between h-20 md:h-24">
           <Wordmark variant={wordmarkVariant} />
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navKeys.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-sm font-medium tracking-wide transition-colors duration-300 py-1 ${
+                className={`relative text-[13px] font-semibold tracking-wide uppercase transition-colors duration-300 py-1 ${
                   location === link.href ? navActiveColor : navColor
-                } hover:${navActiveColor}`}
+                } ${navHoverColor}`}
               >
                 {t(link.key)}
                 {location === link.href && (
                   <motion.div
                     layoutId="nav-underline"
-                    className={`absolute -bottom-0.5 left-0 right-0 h-[1.5px] ${navUnderlineColor}`}
+                    className={`absolute -bottom-0.5 left-0 right-0 h-[2px] ${navUnderlineColor}`}
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -103,18 +107,18 @@ export default function Header() {
             <LanguageToggle />
           </nav>
 
-          {/* Mobile menu button */}
+          {/* Mobile/Tablet menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden p-2 transition-colors ${scrolled || !isHome ? "text-navy" : "text-white"}`}
+            className={`lg:hidden p-2 transition-colors ${scrolled || !isHome ? "text-navy" : "text-white"}`}
             aria-label="Menu"
           >
-            {mobileOpen ? <X size={22} strokeWidth={1.5} /> : <Menu size={22} strokeWidth={1.5} />}
+            {mobileOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile nav overlay */}
+      {/* Mobile/Tablet nav overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -122,7 +126,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-linen md:hidden"
+            className="fixed inset-0 z-40 bg-linen lg:hidden"
           >
             <nav className="flex flex-col items-start pt-28 px-8">
               {navKeys.map((link, i) => (
