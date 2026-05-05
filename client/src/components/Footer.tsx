@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="mb-7 flex items-center gap-4">
               <BrandSymbol variant="light" className="w-10 h-10" interactive dotPulse />
               <img
-                src="/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp"
+                src="/brand/wordmark-inverted.webp"
                 alt="Assistants"
                 className="h-9 w-auto"
               />

@@ -14,8 +14,8 @@ import { motion } from "framer-motion";
 import { Target, Eye, Gem, Scale, Award, BookOpen } from "lucide-react";
 import BrandSymbol from "@/components/BrandSymbol";
 
-const TEXTURE_IMG = "/manus-storage/v2_10_institucional_42ba4921.webp";
-const EQUIPE_IMG = "/manus-storage/v2_09_equipe_0ae78527.webp";
+const TEXTURE_IMG = "/images/institutional.webp";
+const EQUIPE_IMG = "/images/team.webp";
 
 export default function Sobre() {
   const { t } = useLanguage();

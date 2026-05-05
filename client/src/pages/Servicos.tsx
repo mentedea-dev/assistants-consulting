@@ -16,9 +16,9 @@ import {
   FileSearch, Briefcase, Users, Scale, Calculator, PieChart,
 } from "lucide-react";
 
-const HEALTH_IMG = "/manus-storage/v2_03_saude_550a80a3.webp";
-const PENSION_IMG = "/manus-storage/v2_02_previdencia_cb4d1913.webp";
-const BENEFITS_IMG = "/manus-storage/v2_06_beneficios_712e1ff4.webp";
+const HEALTH_IMG = "/images/health.webp";
+const PENSION_IMG = "/images/pension.webp";
+const BENEFITS_IMG = "/images/benefits.webp";
 
 export default function Servicos() {
   const { t } = useLanguage();

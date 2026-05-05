@@ -13,8 +13,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageToggle from "./LanguageToggle";
 import BrandSymbol from "./BrandSymbol";
 
-const WORDMARK_DARK = "/manus-storage/Assistants_FINAL_Wordmark_200b4094.webp";
-const WORDMARK_LIGHT = "/manus-storage/Assistants_FINAL_Wordmark_Inverted_370d312f.webp";
+const WORDMARK_DARK = "/brand/wordmark.webp";
+const WORDMARK_LIGHT = "/brand/wordmark-inverted.webp";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
