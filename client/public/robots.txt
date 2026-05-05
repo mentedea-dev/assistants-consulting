@@ -1,0 +1,18 @@
+# Assistants Consulting — Consultoria Atuarial
+# https://www.assistants.com.br
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /manus-storage/
+
+# Sitemap
+Sitemap: https://www.assistants.com.br/sitemap.xml
+
+# Crawl-delay (cortesia para o servidor)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

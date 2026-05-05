@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Home -->
+  <url>
+    <loc>https://www.assistants.com.br/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.assistants.com.br/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.assistants.com.br/?lang=en" />
+  </url>
+  <!-- Serviços -->
+  <url>
+    <loc>https://www.assistants.com.br/servicos</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.assistants.com.br/servicos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.assistants.com.br/servicos?lang=en" />
+  </url>
+  <!-- Sobre -->
+  <url>
+    <loc>https://www.assistants.com.br/sobre</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.assistants.com.br/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.assistants.com.br/sobre?lang=en" />
+  </url>
+  <!-- Clientes -->
+  <url>
+    <loc>https://www.assistants.com.br/clientes</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.assistants.com.br/clientes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.assistants.com.br/clientes?lang=en" />
+  </url>
+  <!-- Insights (Thought Leadership) -->
+  <url>
+    <loc>https://www.assistants.com.br/insights</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.assistants.com.br/insights" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.assistants.com.br/insights?lang=en" />
+  </url>
+  <!-- Contato -->
+  <url>
+    <loc>https://www.assistants.com.br/contato</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.assistants.com.br/contato" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.assistants.com.br/contato?lang=en" />
+  </url>
+</urlset>
