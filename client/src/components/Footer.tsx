@@ -49,13 +49,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-8">
           {/* Brand column */}
           <div className="md:col-span-4">
-            <div className="mb-7 flex items-center gap-4">
-              <BrandSymbol variant="light" className="w-10 h-10" interactive dotPulse />
-              <img
-                src="/brand/wordmark-inverted.webp"
-                alt="Assistants"
-                className="h-9 w-auto"
-              />
+            <div className="mb-7 flex items-center gap-2.5">
+              <BrandSymbol variant="light" className="w-12 h-12" interactive dotPulse />
+              <div className="flex flex-col leading-none">
+                <span
+                  className="text-[22px] font-bold tracking-[0.08em] uppercase text-white"
+                  style={{ fontFamily: "'DM Sans', 'Inter', sans-serif", letterSpacing: "0.08em" }}
+                >
+                  ssistants
+                </span>
+                <span
+                  className="text-[9px] font-semibold tracking-[0.35em] uppercase mt-[3px] text-white/70"
+                  style={{ fontFamily: "'DM Sans', 'Inter', sans-serif" }}
+                >
+                  CONSULTING
+                </span>
+              </div>
             </div>
             <p className="text-sm leading-[1.9] max-w-sm text-white/60 font-light">
               {t("footer.description")}

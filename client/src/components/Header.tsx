@@ -1,6 +1,6 @@
 /*
  * PENTAGRAM CRAFT: Header
- * - Brand symbol "A" + text ASSISTANTS / CONSULTING
+ * - Brand symbol "A" (large) + "ssistants" (smaller) + "CONSULTING" below
  * - Scroll-aware: transparent on top, solid with shadow on scroll
  * - Language toggle (PT/EN)
  * - Mobile: full-screen overlay with staggered animation
@@ -24,25 +24,27 @@ const navKeys = [
 
 function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
   const textColor = variant === "dark" ? "text-navy" : "text-white";
-  const subtitleColor = variant === "dark" ? "text-navy/60" : "text-white/80";
+  const subtitleColor = variant === "dark" ? "text-navy/60" : "text-white/70";
   return (
-    <Link href="/" className="select-none group flex items-center gap-3">
+    <Link href="/" className="select-none group flex items-center gap-2.5">
+      {/* The "A" — large brand symbol */}
       <BrandSymbol
         variant={variant}
-        className="w-11 h-11 md:w-14 md:h-14"
+        className="w-12 h-12 md:w-[56px] md:h-[56px]"
         interactive
         dotPulse
       />
+      {/* "ssistants" smaller + "CONSULTING" below */}
       <div className="flex flex-col leading-none">
         <span
-          className={`text-[22px] md:text-[28px] font-bold tracking-[0.12em] uppercase ${textColor} transition-opacity duration-300 group-hover:opacity-80`}
-          style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em" }}
+          className={`text-[20px] md:text-[26px] font-bold tracking-[0.08em] uppercase ${textColor} transition-opacity duration-300 group-hover:opacity-80`}
+          style={{ fontFamily: "'DM Sans', 'Inter', sans-serif", letterSpacing: "0.08em" }}
         >
-          ASSISTANTS
+          ssistants
         </span>
         <span
-          className={`text-[11px] md:text-[13px] font-medium tracking-[0.3em] uppercase mt-[2px] ${subtitleColor} transition-opacity duration-300 group-hover:opacity-80`}
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className={`text-[9px] md:text-[11px] font-semibold tracking-[0.35em] uppercase mt-[3px] ${subtitleColor} transition-opacity duration-300 group-hover:opacity-80`}
+          style={{ fontFamily: "'DM Sans', 'Inter', sans-serif" }}
         >
           CONSULTING
         </span>

@@ -348,7 +348,37 @@ export default function Admin() {
           {/* ═══ DASHBOARD TAB ═══ */}
           {activeTab === "dashboard" && (
             <div>
-              <h2 className="text-xl font-serif font-medium text-navy mb-6">Visão geral</h2>
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-xl font-serif font-medium text-navy">Visão geral</h2>
+                  <p className="text-xs text-gray-400 mt-1">Bem-vindo ao painel. Aqui você gerencia todo o conteúdo do site.</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => { setActiveTab("articles"); setShowEditor(true); }}
+                    className="inline-flex items-center gap-1.5 bg-orange text-white px-4 py-2 text-xs font-medium rounded-lg hover:bg-orange-light transition-colors shadow-sm"
+                  >
+                    <Plus size={13} /> Novo artigo
+                  </button>
+                </div>
+              </div>
+              {/* Quick Help Banner */}
+              <div className="bg-gradient-to-r from-navy/5 to-orange/5 border border-navy/10 rounded-lg p-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-orange/10 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                    <BookOpen size={14} className="text-orange" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-navy mb-1">Como usar o painel</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">
+                      <strong>Artigos:</strong> Crie e publique insights sobre temas atuariais. A cada 7 artigos publicados, uma newsletter é enviada automaticamente aos inscritos. &nbsp;
+                      <strong>Mensagens:</strong> Veja os contatos recebidos pelo formulário do site. &nbsp;
+                      <strong>Newsletter:</strong> Gerencie os inscritos. &nbsp;
+                      <strong>Configurações:</strong> Ajuste o SEO e o chat IA.
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div className="bg-white border border-gray-200 rounded-lg p-5">
@@ -640,9 +670,22 @@ export default function Admin() {
               </button>
 
               <form onSubmit={handleSubmitArticle} className="bg-white border border-gray-200 rounded-lg p-8 space-y-6">
-                <h2 className="text-lg font-serif font-medium text-navy">
-                  {editingId ? "Editar artigo" : "Novo artigo"}
-                </h2>
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-serif font-medium text-navy">
+                    {editingId ? "Editar artigo" : "Novo artigo"}
+                  </h2>
+                  <span className="text-[10px] text-gray-400 bg-gray-50 px-2 py-1 rounded">
+                    Dica: Use Markdown no conteúdo (## para títulos, **negrito**, etc.)
+                  </span>
+                </div>
+                {!editingId && (
+                  <div className="bg-blue-50/50 border border-blue-100 rounded-lg p-3">
+                    <p className="text-xs text-blue-700 leading-relaxed">
+                      <strong>Como funciona:</strong> Preencha o título, escolha uma tag (ex: Saúde, Previdência, CPC 33), escreva o conteúdo e publique.
+                      O artigo aparecerá automaticamente na seção "Insights" do site. Após 7 artigos publicados, uma newsletter é enviada aos inscritos.
+                    </p>
+                  </div>
+                )}
 
                 <div>
                   <label className="block text-xs font-medium text-gray-600 mb-1.5">Título</label>

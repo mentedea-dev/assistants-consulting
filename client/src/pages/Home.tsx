@@ -170,34 +170,72 @@ export default function Home() {
         </section>
 
         {/* ═══════════════════════ CLIENT TRUST ═══════════════════════ */}
-        <section className="py-14 md:py-16 bg-linen border-y border-navy/5 overflow-hidden">
-          <div className="container mb-8">
+        <section className="py-14 md:py-20 bg-linen border-y border-navy/5 overflow-hidden">
+          <div className="container mb-10">
             <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-steel/60 text-center">
               {t("clients.trust")}
             </p>
           </div>
           <div className="relative">
             {/* Fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-linen to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-linen to-transparent z-10" />
-            {/* Marquee */}
-            <div className="flex animate-marquee">
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-linen to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-linen to-transparent z-10" />
+            {/* Logo Marquee Row 1 */}
+            <div className="flex animate-marquee mb-8">
               {[...Array(2)].map((_, setIdx) => (
-                <div key={setIdx} className="flex shrink-0 items-center gap-12 md:gap-16 px-6 md:px-8">
+                <div key={setIdx} className="flex shrink-0 items-center gap-14 md:gap-20 px-8">
                   {[
-                    "Banco Central do Brasil", "Eletrobras", "Sabesp", "Carrefour",
-                    "Fujitsu", "Bridgestone", "Banco do Brasil", "Caixa Econômica Federal",
-                    "Petros", "Funcef", "Previ", "Embratel",
-                    "Grupo Pão de Açúcar", "Syngenta", "Reckitt Benckiser", "Goodyear",
-                    "Fundação Itaú Unibanco", "Fundação Cesp", "Real Grandeza", "Valia",
-                    "Telos", "Sistel", "Postalis", "Serpros",
-                  ].map((name) => (
-                    <span
-                      key={`${setIdx}-${name}`}
-                      className="text-sm md:text-base font-medium text-navy/45 whitespace-nowrap tracking-tight"
-                    >
-                      {name}
-                    </span>
+                    { name: "Banco Central", logo: "/logos/banco-central.png" },
+                    { name: "Eletrobras", logo: "/logos/eletrobras.png" },
+                    { name: "Sabesp", logo: "/logos/sabesp.png" },
+                    { name: "Carrefour", logo: "/logos/carrefour.png" },
+                    { name: "Fujitsu", logo: "/logos/fujitsu.png" },
+                    { name: "Bridgestone", logo: "/logos/bridgestone.png" },
+                    { name: "Banco do Brasil", logo: "/logos/banco-brasil.png" },
+                    { name: "Caixa", logo: "/logos/caixa.png" },
+                    { name: "Petros", logo: "/logos/petros.png" },
+                    { name: "Previ", logo: "/logos/previ.png" },
+                    { name: "Itaú Unibanco", logo: "/logos/itau-unibanco.png" },
+                    { name: "Syngenta", logo: "/logos/syngenta.png" },
+                  ].map((client) => (
+                    <img
+                      key={`${setIdx}-${client.name}`}
+                      src={client.logo}
+                      alt={client.name}
+                      title={client.name}
+                      loading="lazy"
+                      className="h-8 md:h-10 w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-500 grayscale hover:grayscale-0"
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
+            {/* Logo Marquee Row 2 — reverse direction */}
+            <div className="flex animate-marquee-reverse">
+              {[...Array(2)].map((_, setIdx) => (
+                <div key={setIdx} className="flex shrink-0 items-center gap-14 md:gap-20 px-8">
+                  {[
+                    { name: "Reckitt", logo: "/logos/reckitt.png" },
+                    { name: "Goodyear", logo: "/logos/goodyear.png" },
+                    { name: "Fundação Cesp", logo: "/logos/fundacao-cesp.png" },
+                    { name: "Real Grandeza", logo: "/logos/real-grandeza.png" },
+                    { name: "Sistel", logo: "/logos/sistel.png" },
+                    { name: "CPFL", logo: "/logos/cpfl.png" },
+                    { name: "Copel", logo: "/logos/copel.png" },
+                    { name: "Serpro", logo: "/logos/serpro.png" },
+                    { name: "Dataprev", logo: "/logos/dataprev.png" },
+                    { name: "Banco do Nordeste", logo: "/logos/banco-nordeste.png" },
+                    { name: "Wacker", logo: "/logos/wacker.png" },
+                    { name: "Alvarez & Marsal", logo: "/logos/alvarez-marsal.png" },
+                  ].map((client) => (
+                    <img
+                      key={`${setIdx}-${client.name}`}
+                      src={client.logo}
+                      alt={client.name}
+                      title={client.name}
+                      loading="lazy"
+                      className="h-8 md:h-10 w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-500 grayscale hover:grayscale-0"
+                    />
                   ))}
                 </div>
               ))}
