@@ -56,7 +56,7 @@ export default function Footer() {
                   className="text-[22px] font-bold tracking-[0.08em] uppercase text-white"
                   style={{ fontFamily: "'DM Sans', 'Inter', sans-serif", letterSpacing: "0.08em" }}
                 >
-                  ssistants
+                  Assistants
                 </span>
                 <span
                   className="text-[9px] font-semibold tracking-[0.35em] uppercase mt-[3px] text-white/70"

@@ -34,13 +34,13 @@ function Wordmark({ variant = "dark" }: { variant?: "dark" | "light" }) {
         interactive
         dotPulse
       />
-      {/* "ssistants" smaller + "CONSULTING" below */}
+      {/* "Assistants" full wordmark + "CONSULTING" below */}
       <div className="flex flex-col leading-none">
         <span
           className={`text-[20px] md:text-[26px] font-bold tracking-[0.08em] uppercase ${textColor} transition-opacity duration-300 group-hover:opacity-80`}
           style={{ fontFamily: "'DM Sans', 'Inter', sans-serif", letterSpacing: "0.08em" }}
         >
-          ssistants
+          Assistants
         </span>
         <span
           className={`text-[9px] md:text-[11px] font-semibold tracking-[0.35em] uppercase mt-[3px] ${subtitleColor} transition-opacity duration-300 group-hover:opacity-80`}

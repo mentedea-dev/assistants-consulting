@@ -138,7 +138,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             </g>
           </motion.svg>
 
-          {/* Text: "ssistants" + "CONSULTING" */}
+          {/* Text: "Assistants" + "CONSULTING" */}
           <motion.div
             className="flex flex-col leading-none"
             initial={{ opacity: 0, x: -20 }}
@@ -153,7 +153,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
               className="text-[32px] md:text-[48px] lg:text-[56px] font-bold tracking-[0.08em] uppercase text-white"
               style={{ fontFamily: "'DM Sans', 'Inter', sans-serif", letterSpacing: "0.08em" }}
             >
-              ssistants
+              Assistants
             </span>
             <motion.span
               className="text-[10px] md:text-[13px] lg:text-[15px] font-semibold tracking-[0.35em] uppercase mt-[4px] text-white/70"
