@@ -26,76 +26,82 @@ type ClientEntry = {
 const ALL_CLIENTS: ClientEntry[] = [
   // Governo e Estatais
   { name: "Banco Central do Brasil", category: "gov", logo: "/logos/banco-central.png", acronym: "BCB" },
-  { name: "Casa da Moeda do Brasil", category: "gov", acronym: "CMB" },
+  { name: "Casa da Moeda do Brasil", category: "gov", logo: "/logos/casa-moeda.png", acronym: "CMB" },
   { name: "SERPRO", category: "gov", logo: "/logos/serpro.png", acronym: "SPR" },
   { name: "Dataprev", category: "gov", logo: "/logos/dataprev.png", acronym: "DTP" },
-  { name: "Conab", category: "gov", acronym: "CNB" },
-  { name: "CDHU", category: "gov", acronym: "CDH" },
-  { name: "CPTM", category: "gov", acronym: "CPT" },
-  { name: "Metrô", category: "gov", acronym: "MTR" },
-  { name: "Transpetro", category: "gov", acronym: "TRP" },
-  { name: "INB", category: "gov", acronym: "INB" },
+  { name: "Conab", category: "gov", logo: "/logos/conab.png", acronym: "CNB" },
+  { name: "CDHU", category: "gov", logo: "/logos/cdhu.png", acronym: "CDH" },
+  { name: "CPTM", category: "gov", logo: "/logos/cptm.png", acronym: "CPT" },
+  { name: "Metrô", category: "gov", logo: "/logos/metro-sp.png", acronym: "MTR" },
+  { name: "Transpetro", category: "gov", logo: "/logos/transpetro.png", acronym: "TRP" },
+  { name: "INB", category: "gov", logo: "/logos/inb.png", acronym: "INB" },
   { name: "Nuclep", category: "gov", acronym: "NCP" },
-  { name: "Eletronuclear", category: "gov", acronym: "ENL" },
+  { name: "Eletronuclear", category: "gov", logo: "/logos/eletronuclear.png", acronym: "ENL" },
   { name: "IPREF", category: "gov", acronym: "IPR" },
   // Energia e Infraestrutura
   { name: "Eletrobras", category: "energy", logo: "/logos/eletrobras.png", acronym: "EBR" },
-  { name: "Eletrobras CGT Eletrosul", category: "energy", acronym: "ELS" },
+  { name: "Eletrobras CGT Eletrosul", category: "energy", logo: "/logos/eletrobras.png", acronym: "ELS" },
   { name: "CPFL Energia", category: "energy", logo: "/logos/cpfl.png", acronym: "CPF" },
   { name: "Copel", category: "energy", logo: "/logos/copel.png", acronym: "CPL" },
   { name: "Sabesp", category: "energy", logo: "/logos/sabesp.png", acronym: "SBS" },
   { name: "Sanepar", category: "energy", logo: "/logos/sanepar.png", acronym: "SNP" },
-  { name: "CAESB", category: "energy", acronym: "CSB" },
-  { name: "CESAN", category: "energy", acronym: "CSN" },
-  { name: "Embasa", category: "energy", acronym: "EMB" },
-  { name: "Compagas", category: "energy", acronym: "CPG" },
+  { name: "CAESB", category: "energy", logo: "/logos/caesb.png", acronym: "CSB" },
+  { name: "CESAN", category: "energy", logo: "/logos/cesan.png", acronym: "CSN" },
+  { name: "Embasa", category: "energy", logo: "/logos/embasa.png", acronym: "EMB" },
+  { name: "Compagas", category: "energy", logo: "/logos/compagas.png", acronym: "CPG" },
   { name: "Amazonas Energia", category: "energy", acronym: "AME" },
   { name: "Roraima Energia", category: "energy", acronym: "RRE" },
   { name: "UEG Araucária", category: "energy", acronym: "UEG" },
   // Saúde
   { name: "Unimed", category: "health", logo: "/logos/unimed.png", acronym: "UNI" },
-  { name: "Trasmontano Saúde", category: "health", acronym: "TRS" },
-  { name: "São Cristóvão Saúde", category: "health", acronym: "SCS" },
+  { name: "Trasmontano Saúde", category: "health", logo: "/logos/trasmontano.png", acronym: "TRS" },
+  { name: "São Cristóvão Saúde", category: "health", logo: "/logos/sao-cristovao.png", acronym: "SCS" },
   { name: "IMASF", category: "health", acronym: "IMS" },
   // Financeiro e Previdência
+  { name: "Banco do Brasil", category: "finance", logo: "/logos/banco-brasil.png", acronym: "BB" },
+  { name: "Caixa Econômica Federal", category: "finance", logo: "/logos/caixa.png", acronym: "CEF" },
   { name: "Banco do Nordeste", category: "finance", logo: "/logos/banco-nordeste.png", acronym: "BNB" },
+  { name: "Fundação Itaú Unibanco", category: "finance", logo: "/logos/itau-unibanco.png", acronym: "ITU" },
+  { name: "Fundação Cesp (Vivest)", category: "finance", logo: "/logos/fundacao-cesp.png", acronym: "VVS" },
+  { name: "Real Grandeza", category: "finance", logo: "/logos/real-grandeza.png", acronym: "FRG" },
+  { name: "Petros", category: "finance", logo: "/logos/petros.png", acronym: "PTR" },
+  { name: "Previ", category: "finance", logo: "/logos/previ.png", acronym: "PRV" },
   { name: "CapitalPrev", category: "finance", acronym: "CPV" },
-  { name: "Sistel", category: "finance", acronym: "SST" },
-  { name: "CIEE", category: "finance", acronym: "CIE" },
+  { name: "Sistel", category: "finance", logo: "/logos/sistel.png", acronym: "SST" },
+  { name: "CIEE", category: "finance", logo: "/logos/ciee.png", acronym: "CIE" },
   { name: "Alvarez & Marsal", category: "finance", logo: "/logos/alvarez-marsal.png", acronym: "A&M" },
   // Indústria e Multinacionais
   { name: "Grupo Carrefour Brasil", category: "industry", logo: "/logos/carrefour.png", acronym: "CRF" },
   { name: "Bridgestone", category: "industry", logo: "/logos/bridgestone.png", acronym: "BRG" },
   { name: "Fujitsu", category: "industry", logo: "/logos/fujitsu.png", acronym: "FJT" },
   { name: "Wacker", category: "industry", logo: "/logos/wacker.png", acronym: "WCK" },
-  { name: "Zeppelin", category: "industry", acronym: "ZPP" },
-  { name: "Klüber Lubrication", category: "industry", acronym: "KLB" },
-  { name: "ChemTrend", category: "industry", acronym: "CHT" },
-  { name: "SunChemical", category: "industry", acronym: "SCH" },
-  { name: "Huf", category: "industry", acronym: "HUF" },
-  { name: "Eternit", category: "industry", acronym: "ETN" },
-  { name: "Dorma", category: "industry", acronym: "DRM" },
-  { name: "Isringhausen ISRI", category: "industry", acronym: "ISR" },
-  { name: "Metalfrio", category: "industry", acronym: "MTF" },
-  { name: "Santher", category: "industry", acronym: "STH" },
-  { name: "SurTec", category: "industry", acronym: "STC" },
-  { name: "Alsco", category: "industry", acronym: "ALS" },
-  { name: "Tekfor", category: "industry", acronym: "TKF" },
-  { name: "Prolec GE", category: "industry", acronym: "PLG" },
-  { name: "Oji Papéis Especiais", category: "industry", acronym: "OJI" },
-  { name: "Produquímica", category: "industry", acronym: "PDQ" },
-  { name: "Racional", category: "industry", acronym: "RCN" },
-  { name: "Leadec Industrial Services", category: "industry", acronym: "LDC" },
+  { name: "Zeppelin", category: "industry", logo: "/logos/zeppelin.png", acronym: "ZPP" },
+  { name: "Klüber Lubrication", category: "industry", logo: "/logos/kluber.png", acronym: "KLB" },
+  { name: "ChemTrend", category: "industry", logo: "/logos/chem-trend.png", acronym: "CHT" },
+  { name: "SunChemical", category: "industry", logo: "/logos/sun-chemical.png", acronym: "SCH" },
+  { name: "Huf", category: "industry", logo: "/logos/huf.png", acronym: "HUF" },
+  { name: "Eternit", category: "industry", logo: "/logos/eternit.png", acronym: "ETN" },
+  { name: "Dorma", category: "industry", logo: "/logos/dorma.png", acronym: "DRM" },
+  { name: "Isringhausen ISRI", category: "industry", logo: "/logos/isringhausen.png", acronym: "ISR" },
+  { name: "Metalfrio", category: "industry", logo: "/logos/metalfrio.png", acronym: "MTF" },
+  { name: "Santher", category: "industry", logo: "/logos/santher.png", acronym: "STH" },
+  { name: "SurTec", category: "industry", logo: "/logos/surtec.png", acronym: "STC" },
+  { name: "Alsco", category: "industry", logo: "/logos/alsco.png", acronym: "ALS" },
+  { name: "Tekfor", category: "industry", logo: "/logos/tekfor.png", acronym: "TKF" },
+  { name: "Prolec GE", category: "industry", logo: "/logos/prolec-ge.png", acronym: "PLG" },
+  { name: "Goodyear", category: "industry", logo: "/logos/goodyear.png", acronym: "GDY" },
+  { name: "Syngenta", category: "industry", logo: "/logos/syngenta.png", acronym: "SYN" },
+  { name: "Reckitt Benckiser", category: "industry", logo: "/logos/reckitt.png", acronym: "RKT" },
+  { name: "Racional", category: "industry", logo: "/logos/racional.png", acronym: "RCN" },
+  { name: "Leadec Industrial Services", category: "industry", logo: "/logos/leadec.png", acronym: "LDC" },
   // Serviços e Tecnologia
-  { name: "Grupo Silvio Santos", category: "services", acronym: "GSS" },
-  { name: "Netshoes", category: "services", acronym: "NTS" },
+  { name: "Grupo Silvio Santos", category: "services", logo: "/logos/grupo-silvio-santos.png", acronym: "GSS" },
+  { name: "Netshoes", category: "services", logo: "/logos/netshoes.png", acronym: "NTS" },
   { name: "Protege", category: "services", acronym: "PTG" },
-  { name: "Dia %", category: "services", acronym: "DIA" },
-  { name: "Cultura", category: "services", acronym: "CLT" },
+  { name: "Dia %", category: "services", logo: "/logos/dia.png", acronym: "DIA" },
   { name: "ITOCHU Corporation", category: "services", logo: "/logos/itochu.png", acronym: "ITC" },
   // Atuação Internacional
   { name: "Banco de Cabo Verde", category: "international", acronym: "BCV" },
-  { name: "ITOCHU Corporation", category: "international", logo: "/logos/itochu.png", acronym: "ITC" },
 ];
 
 const UNIQUE_CLIENTS = ALL_CLIENTS.filter(
@@ -247,59 +253,55 @@ export default function Clientes() {
                   <div className="text-3xl md:text-5xl lg:text-6xl font-serif text-white tracking-tight">
                     <CountUp end={stat.value} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <p className="text-xs text-white/70 mt-3 tracking-wide uppercase font-medium">{stat.label}</p>
+                  <p className="text-xs text-white/70 mt-3 tracking-wide uppercase font-medium">
+                    {stat.label}
+                  </p>
                 </FadeIn>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═══════ CLIENT LOGO WALL ═══════ */}
-        <section className="py-28 md:py-36">
+        {/* Logo Wall */}
+        <section className="py-24 md:py-32">
           <div className="container">
+            <SectionDivider className="mb-16" />
             <FadeIn>
-              <div className="max-w-3xl mb-12 md:mb-16">
-                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
-                  {t("clients.logowall.tag")}
-                </p>
-                <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1]">
-                  {t("clients.logowall.title.1")}<br />{t("clients.logowall.title.2")}
-                </h2>
-                <p className="text-steel text-base max-w-2xl mt-6 leading-[1.8] font-light">
-                  {t("clients.logowall.subtitle")}
-                </p>
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+                <div>
+                  <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-3">
+                    {t("clients.logowall.tag")}
+                  </p>
+                  <h2 className="text-2xl md:text-4xl font-serif text-navy tracking-tight">
+                    {t("clients.logowall.title.1")} {t("clients.logowall.title.2")}
+                  </h2>
+                </div>
+                {/* Category filter */}
+                <div className="flex flex-wrap gap-2">
+                  {CATEGORIES.map((cat) => {
+                    const Icon = cat.icon;
+                    const isActive = activeCategory === cat.key;
+                    return (
+                      <button
+                        key={cat.key}
+                        onClick={() => setActiveCategory(cat.key)}
+                        className={`inline-flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-medium uppercase tracking-wider border transition-all duration-300 ${
+                          isActive
+                            ? "bg-navy text-white border-navy"
+                            : "bg-white text-steel border-navy/10 hover:border-navy/30"
+                        }`}
+                      >
+                        {Icon && <Icon size={13} />}
+                        {t(`clients.cat.${cat.key}`)}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </FadeIn>
 
-            {/* Category filter */}
-            <FadeIn delay={0.15}>
-              <div className="flex flex-wrap gap-2 mb-12 md:mb-16">
-                {CATEGORIES.map((cat) => {
-                  const isActive = activeCategory === cat.key;
-                  const CatIcon = cat.icon;
-                  return (
-                    <button
-                      key={cat.key}
-                      onClick={() => setActiveCategory(cat.key)}
-                      className={`inline-flex items-center gap-2 px-4 py-2.5 text-xs font-medium uppercase tracking-wide transition-all duration-300 border ${
-                        isActive
-                          ? "bg-navy text-white border-navy"
-                          : "bg-white text-navy/60 border-navy/15 hover:border-navy/40 hover:text-navy"
-                      }`}
-                    >
-                      {CatIcon && <CatIcon size={11} />}
-                      {t(`clients.cat.${cat.key}`)}
-                    </button>
-                  );
-                })}
-              </div>
-            </FadeIn>
-
-            {/* Logo Grid */}
-            <motion.div
-              layout
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4"
-            >
+            {/* Grid */}
+            <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
               <AnimatePresence mode="popLayout">
                 {filteredClients.map((client) => (
                   <ClientLogoCard key={client.name} client={client} />
@@ -307,16 +309,10 @@ export default function Clientes() {
               </AnimatePresence>
             </motion.div>
 
-            {/* Client count */}
             <FadeIn delay={0.2}>
-              <div className="mt-10 flex items-center gap-3">
-                <div className="h-px flex-1 bg-navy/8" />
-                <span className="text-xs text-steel uppercase tracking-[0.2em] font-medium px-4">
-                  {filteredClients.length}{" "}
-                  {activeCategory === "all" ? "organizações" : "organizações neste setor"}
-                </span>
-                <div className="h-px flex-1 bg-navy/8" />
-              </div>
+              <p className="text-center text-steel/60 text-xs mt-10 tracking-wide">
+                {t("clients.logowall.subtitle")}
+              </p>
             </FadeIn>
           </div>
         </section>
@@ -325,24 +321,22 @@ export default function Clientes() {
         <section className="py-24 md:py-32 bg-white">
           <div className="container">
             <FadeIn>
-              <div className="max-w-2xl mb-16 md:mb-20">
-                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
-                  {t("clients.sectors.tag")}
-                </p>
-                <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1]">
-                  {t("clients.sectors.title.1")}<br />{t("clients.sectors.title.2")}
-                </h2>
-              </div>
+              <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                {t("clients.sectors.tag")}
+              </p>
+              <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1] mb-16 max-w-2xl">
+                {t("clients.sectors.title.1")} {t("clients.sectors.title.2")}
+              </h2>
             </FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {sectors.map((sector, i) => (
                 <FadeIn key={sector.name} delay={i * 0.08}>
-                  <div className="group p-8 md:p-9 bg-linen border border-navy/5 hover:border-navy/15 transition-all duration-500 card-lift h-full">
-                    <div className="w-11 h-11 bg-navy/4 flex items-center justify-center mb-6">
-                      <sector.icon size={20} className="text-navy" strokeWidth={1.5} />
+                  <div className="group p-8 border border-navy/6 hover:border-orange/20 hover:shadow-lg transition-all duration-500 bg-linen/50">
+                    <div className="w-11 h-11 flex items-center justify-center bg-navy/5 group-hover:bg-orange/10 transition-colors duration-500 mb-6">
+                      <sector.icon size={20} className="text-navy group-hover:text-orange transition-colors duration-500" strokeWidth={1.5} />
                     </div>
-                    <h3 className="text-lg font-serif text-navy tracking-tight mb-3">{sector.name}</h3>
-                    <p className="text-steel text-sm leading-[1.8] font-light">{sector.desc}</p>
+                    <h3 className="text-lg font-serif text-navy mb-3 tracking-tight">{sector.name}</h3>
+                    <p className="text-steel text-sm leading-[1.7] font-light">{sector.desc}</p>
                   </div>
                 </FadeIn>
               ))}
@@ -351,29 +345,26 @@ export default function Clientes() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-24 md:py-32 bg-linen">
+        <section className="py-24 md:py-32 bg-navy">
           <div className="container">
             <FadeIn>
-              <div className="max-w-2xl mb-16 md:mb-20">
-                <p className="text-steel text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
-                  {t("clients.testimonials.tag")}
-                </p>
-                <h2 className="text-3xl md:text-5xl font-serif text-navy tracking-tight leading-[1.1]">
-                  {t("clients.testimonials.title")}
-                </h2>
-              </div>
+              <p className="text-white/60 text-xs font-sans font-semibold uppercase tracking-[0.25em] mb-5">
+                {t("clients.testimonials.tag")}
+              </p>
+              <h2 className="text-3xl md:text-5xl font-serif text-white tracking-tight leading-[1.1] mb-16 max-w-2xl">
+                {t("clients.testimonials.title")}
+              </h2>
             </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-              {testimonials.map((testimonial, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {testimonials.map((t, i) => (
                 <FadeIn key={i} delay={i * 0.12}>
-                  <div className="relative p-8 md:p-10 bg-white border border-navy/6 h-full flex flex-col card-lift">
-                    <span className="absolute top-6 right-8 text-6xl font-serif text-navy/8 leading-none select-none">&ldquo;</span>
-                    <p className="text-navy/75 text-[15px] leading-[1.9] font-light flex-1 relative z-10 italic">
-                      &ldquo;{testimonial.quote}&rdquo;
+                  <div className="p-8 md:p-10 border border-white/8 hover:border-white/20 transition-all duration-500 h-full flex flex-col">
+                    <p className="text-white/80 text-sm leading-[1.8] font-light flex-1 italic mb-8">
+                      "{t.quote}"
                     </p>
-                    <div className="mt-8 pt-6 border-t border-navy/6">
-                      <p className="text-sm font-medium text-navy">{testimonial.author}</p>
-                      <p className="text-xs text-steel mt-1 font-light">{testimonial.company}</p>
+                    <div>
+                      <p className="text-white font-medium text-sm">{t.author}</p>
+                      <p className="text-white/50 text-xs mt-1">{t.company}</p>
                     </div>
                   </div>
                 </FadeIn>
@@ -382,7 +373,6 @@ export default function Clientes() {
           </div>
         </section>
 
-        <SectionDivider className="py-4" />
         <Footer />
       </div>
     </PageTransition>
