@@ -99,7 +99,7 @@ export default function ComingSoon() {
 
         {/* Contact info */}
         <motion.div
-          className="mt-16 text-white text-sm md:text-base lg:text-lg tracking-wide font-medium"
+          className="mt-16 text-white text-lg md:text-xl lg:text-2xl tracking-wide font-semibold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3.0 }}
