@@ -61,9 +61,8 @@ export default function ComingSoon() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.6 }}
         >
-          A <span className="font-semibold">Assistants</span> está se modernizando
-          <br className="hidden sm:block" /> e preparando um{" "}
-          <span className="text-[#E67E22] font-medium italic">novo site</span>.
+          Estamos evoluindo para{" "}
+          <span className="text-[#E67E22] font-medium italic">servir melhor</span>.
         </motion.h1>
 
         <motion.p
@@ -72,7 +71,17 @@ export default function ComingSoon() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 2.0 }}
         >
-          Aguarde!
+          Em breve, uma nova experiência digital.
+        </motion.p>
+
+        {/* English subtitle */}
+        <motion.p
+          className="text-white/30 text-sm md:text-base mt-2 font-light tracking-wide"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 2.2 }}
+        >
+          We are evolving to serve you better — a new digital experience, coming soon.
         </motion.p>
 
         {/* Animated dots loader */}
