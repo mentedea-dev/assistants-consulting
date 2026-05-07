@@ -99,13 +99,13 @@ export default function ComingSoon() {
 
         {/* Contact info */}
         <motion.div
-          className="mt-16 text-white/30 text-xs tracking-wider"
+          className="mt-16 text-white text-sm md:text-base lg:text-lg tracking-wide font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 3.0 }}
         >
           <p>relacionamento@assistants.com.br</p>
-          <p className="mt-1">+55 11 3335-3366</p>
+          <p className="mt-2">+55 11 3335-3366</p>
         </motion.div>
       </div>
     </div>
